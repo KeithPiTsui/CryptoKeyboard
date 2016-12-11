@@ -12,7 +12,7 @@ class KeyboardViewController: UIInputViewController {
     
     lazy var keyboardView: KeyboardView = {let kbv = KeyboardView(); kbv.delegate = self; return kbv}()
     var heightConstraint: NSLayoutConstraint!
-    lazy var inputViewHeight: CGFloat = 320
+    lazy var inputViewHeight: CGFloat = 216
     lazy var dummyLabel: UILabel = {let b = UILabel(); b.translatesAutoresizingMaskIntoConstraints = false; return b}()
     
     
@@ -23,7 +23,7 @@ class KeyboardViewController: UIInputViewController {
     }
     
     // MARK: Set up height constraint
-    func setUpHeightConstraint() {
+    private func setUpHeightConstraint() {
         guard heightConstraint == nil else { heightConstraint.constant = inputViewHeight; return }
         heightConstraint = NSLayoutConstraint(item: view,
                                               attribute: .height,
@@ -34,6 +34,12 @@ class KeyboardViewController: UIInputViewController {
                                               constant: inputViewHeight)
         heightConstraint.priority = UILayoutPriority(UILayoutPriorityDefaultHigh)
         view.addConstraint(heightConstraint)
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        print(view.frame)
+        keyboardView.layoutKeyboard()
     }
     
     override func viewDidLoad(){

@@ -26,7 +26,7 @@ class KeyboardViewItem: UIControl {
         label.minimumScaleFactor = 0.1
         label.isUserInteractionEnabled = false
         label.numberOfLines = 1
-        label.textColor = UIColor.black
+        label.textColor = UIColor.keyboardViewItemInscriptColor
         label.text = "x"
         return label
     }()
@@ -34,7 +34,9 @@ class KeyboardViewItem: UIControl {
     init(frame: CGRect = CGRect.zero, key: Key? = nil) {
         self.key = key
         super.init(frame: frame)
-        backgroundColor = UIColor.lightGray
+        backgroundColor = UIColor.keyboardViewItemBackgroundColor
+        clipsToBounds = true
+        layer.cornerRadius = 6
         addSubview(inscriptLabel)
     }
     
