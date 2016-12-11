@@ -21,7 +21,7 @@ class KeyboardViewItem: UIControl {
         let label = UILabel()
         label.textAlignment = NSTextAlignment.center
         label.baselineAdjustment = UIBaselineAdjustment.alignCenters
-        label.font = label.font.withSize(22)
+        label.font = label.font.withSize(20)
         label.adjustsFontSizeToFitWidth = true
         label.minimumScaleFactor = 0.1
         label.isUserInteractionEnabled = false
@@ -57,7 +57,7 @@ class KeyboardViewItem: UIControl {
         layer.shadowOffset = CGSize(width: 2, height: 2)
         layer.shadowColor = UIColor.darkGray.cgColor
         layer.shadowOpacity = 1
-        layer.shadowRadius = 6
+        //layer.shadowRadius = 6
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -66,7 +66,8 @@ class KeyboardViewItem: UIControl {
 
     override func layoutSubviews() {
         if key.withIcon {
-            iconView.frame = CGRect(x: 0, y: 0, width: frame.width, height: frame.height*1.25)
+            iconView.frame = CGRect(x: 4, y: 4, width: frame.width - 8, height: frame.height - 8)
+            iconView.setNeedsLayout()
         } else {
             inscriptLabel.frame = CGRect(x: 0, y: 0, width: frame.width, height: frame.height)
         }
