@@ -12,7 +12,40 @@
 		0E6B6A371DFA4ABD00712C0A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E6B6A351DFA4ABD00712C0A /* Main.storyboard */; };
 		0E6B6A391DFA4ABD00712C0A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E6B6A381DFA4ABD00712C0A /* Assets.xcassets */; };
 		0E6B6A3C1DFA4ABD00712C0A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E6B6A3A1DFA4ABD00712C0A /* LaunchScreen.storyboard */; };
+		0E6B6A4A1DFA4AE400712C0A /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6B6A491DFA4AE400712C0A /* KeyboardViewController.swift */; };
+		0E6B6A4E1DFA4AE400712C0A /* CryptoKB.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 0E6B6A471DFA4AE400712C0A /* CryptoKB.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		0EA85D141DFD2E3700AFB546 /* DefaultKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA85D111DFD2E3700AFB546 /* DefaultKeyboard.swift */; };
+		0EA85D161DFD2E3700AFB546 /* Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA85D131DFD2E3700AFB546 /* Keyboard.swift */; };
+		0EA85D1D1DFD2E9500AFB546 /* KeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA85D191DFD2E9500AFB546 /* KeyboardView.swift */; };
+		0EA85D1E1DFD2E9500AFB546 /* KeyboardViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA85D1A1DFD2E9500AFB546 /* KeyboardViewItem.swift */; };
+		0EA85D1F1DFD2E9500AFB546 /* KeyboardViewItemPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA85D1B1DFD2E9500AFB546 /* KeyboardViewItemPopup.swift */; };
+		0EA85D201DFD2E9500AFB546 /* KeyboardViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA85D1C1DFD2E9500AFB546 /* KeyboardViewLayout.swift */; };
+		0EA85D241DFD318700AFB546 /* UIColor+ColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA85D231DFD318700AFB546 /* UIColor+ColorScheme.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		0E6B6A4C1DFA4AE400712C0A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0E6B6A261DFA4ABD00712C0A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0E6B6A461DFA4AE400712C0A;
+			remoteInfo = CryptoKB;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		0E6B6A521DFA4AE400712C0A /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				0E6B6A4E1DFA4AE400712C0A /* CryptoKB.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		0E6B6A2E1DFA4ABD00712C0A /* CryptoKeyboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CryptoKeyboard.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -22,10 +55,28 @@
 		0E6B6A381DFA4ABD00712C0A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0E6B6A3B1DFA4ABD00712C0A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0E6B6A3D1DFA4ABD00712C0A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0E6B6A471DFA4AE400712C0A /* CryptoKB.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = CryptoKB.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		0E6B6A491DFA4AE400712C0A /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
+		0E6B6A4B1DFA4AE400712C0A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0EA85D111DFD2E3700AFB546 /* DefaultKeyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultKeyboard.swift; sourceTree = "<group>"; };
+		0EA85D131DFD2E3700AFB546 /* Keyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keyboard.swift; sourceTree = "<group>"; };
+		0EA85D191DFD2E9500AFB546 /* KeyboardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardView.swift; sourceTree = "<group>"; };
+		0EA85D1A1DFD2E9500AFB546 /* KeyboardViewItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardViewItem.swift; sourceTree = "<group>"; };
+		0EA85D1B1DFD2E9500AFB546 /* KeyboardViewItemPopup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardViewItemPopup.swift; sourceTree = "<group>"; };
+		0EA85D1C1DFD2E9500AFB546 /* KeyboardViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardViewLayout.swift; sourceTree = "<group>"; };
+		0EA85D211DFD2FAD00AFB546 /* KeyboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
+		0EA85D231DFD318700AFB546 /* UIColor+ColorScheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+ColorScheme.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		0E6B6A2B1DFA4ABD00712C0A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0E6B6A441DFA4AE400712C0A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -39,6 +90,7 @@
 			isa = PBXGroup;
 			children = (
 				0E6B6A301DFA4ABD00712C0A /* CryptoKeyboard */,
+				0E6B6A481DFA4AE400712C0A /* CryptoKB */,
 				0E6B6A2F1DFA4ABD00712C0A /* Products */,
 			);
 			sourceTree = "<group>";
@@ -47,6 +99,7 @@
 			isa = PBXGroup;
 			children = (
 				0E6B6A2E1DFA4ABD00712C0A /* CryptoKeyboard.app */,
+				0E6B6A471DFA4AE400712C0A /* CryptoKB.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -64,6 +117,47 @@
 			path = CryptoKeyboard;
 			sourceTree = "<group>";
 		};
+		0E6B6A481DFA4AE400712C0A /* CryptoKB */ = {
+			isa = PBXGroup;
+			children = (
+				0EA85D211DFD2FAD00AFB546 /* KeyboardViewController.swift */,
+				0EA85D231DFD318700AFB546 /* UIColor+ColorScheme.swift */,
+				0EA85D181DFD2E7A00AFB546 /* View */,
+				0EA85D171DFD2E3900AFB546 /* Model */,
+				0E6B6A551DFA4B5400712C0A /* SupportingFiles */,
+			);
+			path = CryptoKB;
+			sourceTree = "<group>";
+		};
+		0E6B6A551DFA4B5400712C0A /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				0E6B6A491DFA4AE400712C0A /* KeyboardViewController.swift */,
+				0E6B6A4B1DFA4AE400712C0A /* Info.plist */,
+			);
+			name = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		0EA85D171DFD2E3900AFB546 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0EA85D111DFD2E3700AFB546 /* DefaultKeyboard.swift */,
+				0EA85D131DFD2E3700AFB546 /* Keyboard.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		0EA85D181DFD2E7A00AFB546 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0EA85D191DFD2E9500AFB546 /* KeyboardView.swift */,
+				0EA85D1A1DFD2E9500AFB546 /* KeyboardViewItem.swift */,
+				0EA85D1B1DFD2E9500AFB546 /* KeyboardViewItemPopup.swift */,
+				0EA85D1C1DFD2E9500AFB546 /* KeyboardViewLayout.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -74,15 +168,34 @@
 				0E6B6A2A1DFA4ABD00712C0A /* Sources */,
 				0E6B6A2B1DFA4ABD00712C0A /* Frameworks */,
 				0E6B6A2C1DFA4ABD00712C0A /* Resources */,
+				0E6B6A521DFA4AE400712C0A /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				0E6B6A4D1DFA4AE400712C0A /* PBXTargetDependency */,
 			);
 			name = CryptoKeyboard;
 			productName = CryptoKeyboard;
 			productReference = 0E6B6A2E1DFA4ABD00712C0A /* CryptoKeyboard.app */;
 			productType = "com.apple.product-type.application";
+		};
+		0E6B6A461DFA4AE400712C0A /* CryptoKB */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0E6B6A4F1DFA4AE400712C0A /* Build configuration list for PBXNativeTarget "CryptoKB" */;
+			buildPhases = (
+				0E6B6A431DFA4AE400712C0A /* Sources */,
+				0E6B6A441DFA4AE400712C0A /* Frameworks */,
+				0E6B6A451DFA4AE400712C0A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CryptoKB;
+			productName = CryptoKB;
+			productReference = 0E6B6A471DFA4AE400712C0A /* CryptoKB.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -95,6 +208,11 @@
 				ORGANIZATIONNAME = Keith;
 				TargetAttributes = {
 					0E6B6A2D1DFA4ABD00712C0A = {
+						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = 6T5NK4S24M;
+						ProvisioningStyle = Automatic;
+					};
+					0E6B6A461DFA4AE400712C0A = {
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = 6T5NK4S24M;
 						ProvisioningStyle = Automatic;
@@ -115,6 +233,7 @@
 			projectRoot = "";
 			targets = (
 				0E6B6A2D1DFA4ABD00712C0A /* CryptoKeyboard */,
+				0E6B6A461DFA4AE400712C0A /* CryptoKB */,
 			);
 		};
 /* End PBXProject section */
@@ -130,6 +249,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		0E6B6A451DFA4AE400712C0A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -142,7 +268,30 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		0E6B6A431DFA4AE400712C0A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0EA85D241DFD318700AFB546 /* UIColor+ColorScheme.swift in Sources */,
+				0EA85D141DFD2E3700AFB546 /* DefaultKeyboard.swift in Sources */,
+				0EA85D1D1DFD2E9500AFB546 /* KeyboardView.swift in Sources */,
+				0E6B6A4A1DFA4AE400712C0A /* KeyboardViewController.swift in Sources */,
+				0EA85D1E1DFD2E9500AFB546 /* KeyboardViewItem.swift in Sources */,
+				0EA85D161DFD2E3700AFB546 /* Keyboard.swift in Sources */,
+				0EA85D201DFD2E9500AFB546 /* KeyboardViewLayout.swift in Sources */,
+				0EA85D1F1DFD2E9500AFB546 /* KeyboardViewItemPopup.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		0E6B6A4D1DFA4AE400712C0A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0E6B6A461DFA4AE400712C0A /* CryptoKB */;
+			targetProxy = 0E6B6A4C1DFA4AE400712C0A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		0E6B6A351DFA4ABD00712C0A /* Main.storyboard */ = {
@@ -258,6 +407,7 @@
 		0E6B6A411DFA4ABD00712C0A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 6T5NK4S24M;
 				INFOPLIST_FILE = CryptoKeyboard/Info.plist;
@@ -271,12 +421,39 @@
 		0E6B6A421DFA4ABD00712C0A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 6T5NK4S24M;
 				INFOPLIST_FILE = CryptoKeyboard/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Keith.Pi.Tsui.CryptoKeyboard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		0E6B6A501DFA4AE400712C0A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = 6T5NK4S24M;
+				INFOPLIST_FILE = CryptoKB/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Keith.Pi.Tsui.CryptoKeyboard.CryptoKB;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		0E6B6A511DFA4AE400712C0A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = 6T5NK4S24M;
+				INFOPLIST_FILE = CryptoKB/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Keith.Pi.Tsui.CryptoKeyboard.CryptoKB;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
@@ -300,6 +477,16 @@
 				0E6B6A421DFA4ABD00712C0A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0E6B6A4F1DFA4AE400712C0A /* Build configuration list for PBXNativeTarget "CryptoKB" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0E6B6A501DFA4AE400712C0A /* Debug */,
+				0E6B6A511DFA4AE400712C0A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
