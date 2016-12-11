@@ -60,6 +60,7 @@ extension KeyboardViewController: KeyboardViewDelegate {
 
     func changeKeyboard(_ sender: KeyboardViewItem) {
         print("\(#function):\(#line)")
+        advanceToNextInputMode()
     }
     func pressBackspace(_ sender: KeyboardViewItem) {
         print("\(#function):\(#line)")
