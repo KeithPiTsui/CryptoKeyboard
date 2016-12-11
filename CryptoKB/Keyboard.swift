@@ -39,7 +39,7 @@ struct Keyboard {
     }
 }
 
-struct Key: Hashable {
+struct Key: Hashable, CustomStringConvertible {
     enum KeyType: UInt {
         case character = 0
         case specialCharacter
@@ -56,6 +56,7 @@ struct Key: Hashable {
     static let characterKeyTypes:[KeyType] = [.character, .specialCharacter, .period]
     static let specialKeyTypes:[KeyType] = [.shift, .backspace, .modeChange, .keyboardChange, .return, .settings]
     static let iconKeyType:[KeyType] = [.shift, .backspace, .keyboardChange]
+    var description: String { return "\(self.hashValue)"}
     private static var counter = sequence(first: 0) { $0 + 1 }
     let hashValue: Int = Key.counter.next()!
     

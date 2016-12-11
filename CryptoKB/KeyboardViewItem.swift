@@ -16,6 +16,8 @@ class KeyboardViewItem: UIControl {
         }
     }
 
+    override var description: String { return super.description + key.description }
+    
     //
     lazy var inscriptLabel: UILabel = {
         let label = UILabel()

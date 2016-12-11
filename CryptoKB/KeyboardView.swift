@@ -137,13 +137,13 @@ class KeyboardView: UIView {
     }
     
     
-    var touchToView: [UITouch:UIView] = [:]
-    
+    private var touchToView: [UITouch:UIView] = [:]
+
     override func hitTest(_ point: CGPoint, with event: UIEvent!) -> UIView? {
         return (isHidden || alpha == 0 || !isUserInteractionEnabled || !bounds.contains(point)) ? nil : self
     }
     
-    func handleControl(_ view: UIView?, controlEvent: UIControlEvents) {
+    private func handleControl(_ view: UIView?, controlEvent: UIControlEvents) {
         guard let control = view as? UIControl else { return }
         for target in control.allTargets {
             guard let actions = control.actions(forTarget: target, forControlEvent: controlEvent) else { continue }
@@ -153,8 +153,8 @@ class KeyboardView: UIView {
         }
     }
     
-    // TODO: there's a bit of "stickiness" to Apple's implementation
-    func findNearestView(_ position: CGPoint) -> UIView? {
+    
+    private func findNearestView(_ position: CGPoint) -> UIView? {
         guard self.bounds.contains(position) && !subviews.isEmpty else { return nil}
         var closest: (UIView, CGFloat) = (self, CGFloat.greatestFiniteMagnitude)
         for view in subviews {
@@ -168,7 +168,7 @@ class KeyboardView: UIView {
         return closest.0
     }
     
-    func distanceBetween(_ rect: CGRect, point: CGPoint) -> CGFloat {
+    private func distanceBetween(_ rect: CGRect, point: CGPoint) -> CGFloat {
         if rect.contains(point) {return 0 }
         
         var closest = rect.origin
@@ -190,14 +190,14 @@ class KeyboardView: UIView {
     }
     
     /// reset tracked views without cancelling current touch
-    func resetTrackedViews() {
+    private func resetTrackedViews() {
         for view in touchToView.values {
             handleControl(view, controlEvent: .touchCancel)
         }
         self.touchToView.removeAll(keepingCapacity: true)
     }
     
-    func ownView(_ newTouch: UITouch, viewToOwn: UIView?) -> Bool {
+    private func ownView(_ newTouch: UITouch, viewToOwn: UIView?) -> Bool {
         var foundView = false
         if viewToOwn != nil {
             for (touch, view) in touchToView {
@@ -218,6 +218,7 @@ class KeyboardView: UIView {
         for touch in touches {
             let position = touch.location(in: self)
             let view = findNearestView(position)
+            print(view)
             let viewChangedOwnership = ownView(touch, viewToOwn: view)
             if !viewChangedOwnership {
                 handleControl(view, controlEvent: .touchDown)
@@ -268,8 +269,6 @@ class KeyboardView: UIView {
             touchToView[touch] = nil
         }
     }
-
-    
 }
 
 
