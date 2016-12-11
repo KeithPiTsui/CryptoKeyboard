@@ -30,14 +30,34 @@ class KeyboardViewItem: UIControl {
         label.text = "x"
         return label
     }()
+    
+    lazy var iconView: IconDrawingView! = {
+        var iv: IconDrawingView! = nil
+        switch self.key.type {
+        case .shift:
+            iv = ShiftIconView()
+        case .backspace:
+            iv = BackspaceIconView()
+        case .keyboardChange:
+            iv = GlobeIconView()
+        default:
+            break
+        }
+        return iv
+    }()
 
+    
+    
     init(frame: CGRect = CGRect.zero, key: Key? = nil) {
         self.key = key
         super.init(frame: frame)
         backgroundColor = UIColor.keyboardViewItemBackgroundColor
-        clipsToBounds = true
+        //clipsToBounds = true
         layer.cornerRadius = 6
-        addSubview(inscriptLabel)
+        layer.shadowOffset = CGSize(width: 2, height: 2)
+        layer.shadowColor = UIColor.darkGray.cgColor
+        layer.shadowOpacity = 1
+        layer.shadowRadius = 6
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -45,12 +65,24 @@ class KeyboardViewItem: UIControl {
     }
 
     override func layoutSubviews() {
-        inscriptLabel.frame = CGRect(x: 0, y: 0, width: frame.width, height: frame.height)
+        if key.withIcon {
+            iconView.frame = CGRect(x: 0, y: 0, width: frame.width, height: frame.height*1.25)
+        } else {
+            inscriptLabel.frame = CGRect(x: 0, y: 0, width: frame.width, height: frame.height)
+        }
         super.layoutSubviews()
     }
     
     private func installKey() {
-        inscriptLabel.text = "\(key.hashValue)"
+        for v in subviews {
+            v.removeFromSuperview()
+        }
+        if key.withIcon {
+            addSubview(iconView)
+        } else {
+            addSubview(inscriptLabel)
+            inscriptLabel.text = key.lowercaseKeyCap ?? "\(key.hashValue)"
+        }
     }
     
 }

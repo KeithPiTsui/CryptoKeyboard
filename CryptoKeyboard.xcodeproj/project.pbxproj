@@ -8,12 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		0E1261461DFD680900E7EFE4 /* LayoutConstraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1261451DFD680900E7EFE4 /* LayoutConstraints.swift */; };
+		0E1261481DFD75EE00E7EFE4 /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1261471DFD75EE00E7EFE4 /* KeyboardViewController.swift */; };
+		0E12614A1DFD762200E7EFE4 /* IconDrawingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1261491DFD762200E7EFE4 /* IconDrawingView.swift */; };
 		0E6B6A321DFA4ABD00712C0A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6B6A311DFA4ABD00712C0A /* AppDelegate.swift */; };
 		0E6B6A341DFA4ABD00712C0A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6B6A331DFA4ABD00712C0A /* ViewController.swift */; };
 		0E6B6A371DFA4ABD00712C0A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E6B6A351DFA4ABD00712C0A /* Main.storyboard */; };
 		0E6B6A391DFA4ABD00712C0A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E6B6A381DFA4ABD00712C0A /* Assets.xcassets */; };
 		0E6B6A3C1DFA4ABD00712C0A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E6B6A3A1DFA4ABD00712C0A /* LaunchScreen.storyboard */; };
-		0E6B6A4A1DFA4AE400712C0A /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6B6A491DFA4AE400712C0A /* KeyboardViewController.swift */; };
 		0E6B6A4E1DFA4AE400712C0A /* CryptoKB.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 0E6B6A471DFA4AE400712C0A /* CryptoKB.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		0EA85D141DFD2E3700AFB546 /* DefaultKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA85D111DFD2E3700AFB546 /* DefaultKeyboard.swift */; };
 		0EA85D161DFD2E3700AFB546 /* Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA85D131DFD2E3700AFB546 /* Keyboard.swift */; };
@@ -50,6 +51,8 @@
 
 /* Begin PBXFileReference section */
 		0E1261451DFD680900E7EFE4 /* LayoutConstraints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayoutConstraints.swift; sourceTree = "<group>"; };
+		0E1261471DFD75EE00E7EFE4 /* KeyboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
+		0E1261491DFD762200E7EFE4 /* IconDrawingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IconDrawingView.swift; sourceTree = "<group>"; };
 		0E6B6A2E1DFA4ABD00712C0A /* CryptoKeyboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CryptoKeyboard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E6B6A311DFA4ABD00712C0A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0E6B6A331DFA4ABD00712C0A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -153,6 +156,8 @@
 		0EA85D181DFD2E7A00AFB546 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				0E1261491DFD762200E7EFE4 /* IconDrawingView.swift */,
+				0E1261471DFD75EE00E7EFE4 /* KeyboardViewController.swift */,
 				0EA85D191DFD2E9500AFB546 /* KeyboardView.swift */,
 				0EA85D1A1DFD2E9500AFB546 /* KeyboardViewItem.swift */,
 				0EA85D1B1DFD2E9500AFB546 /* KeyboardViewItemPopup.swift */,
@@ -276,10 +281,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				0EA85D241DFD318700AFB546 /* UIColor+ColorScheme.swift in Sources */,
+				0E1261481DFD75EE00E7EFE4 /* KeyboardViewController.swift in Sources */,
 				0EA85D141DFD2E3700AFB546 /* DefaultKeyboard.swift in Sources */,
 				0EA85D1D1DFD2E9500AFB546 /* KeyboardView.swift in Sources */,
 				0E1261461DFD680900E7EFE4 /* LayoutConstraints.swift in Sources */,
-				0E6B6A4A1DFA4AE400712C0A /* KeyboardViewController.swift in Sources */,
+				0E12614A1DFD762200E7EFE4 /* IconDrawingView.swift in Sources */,
 				0EA85D1E1DFD2E9500AFB546 /* KeyboardViewItem.swift in Sources */,
 				0EA85D161DFD2E3700AFB546 /* Keyboard.swift in Sources */,
 				0EA85D201DFD2E9500AFB546 /* KeyboardViewLayout.swift in Sources */,

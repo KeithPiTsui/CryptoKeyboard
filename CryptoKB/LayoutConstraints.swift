@@ -10,12 +10,12 @@ import Foundation
 import CoreGraphics
 
 struct LayoutConstraints {
-    static let keyboardRowTopGap: CGFloat = 4
+    static let keyboardRowTopGap: CGFloat = 5
     static let keyboardFirstRowLeadingGap: CGFloat = 2
-    static let keyboardFirstRowTailingGap: CGFloat = 2
+//    static let keyboardFirstRowTailingGap: CGFloat = 2
     static let keyboardFirstRowItemGap: CGFloat = 4
     
-    static let keyboardRowGap:CGFloat = 6
-    static let keyboardLastRowGap:CGFloat = 2
+    static let keyboardRowGap:CGFloat = 8
+    static let keyboardLastRowGap:CGFloat = 4
     
 }
