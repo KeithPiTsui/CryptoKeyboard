@@ -10,31 +10,16 @@ import UIKit
 
 class KeyboardViewController: UIInputViewController {
     
-    lazy var keyboardView: KeyboardView = KeyboardView()
+    lazy var keyboardView: KeyboardView = {let kbv = KeyboardView(); kbv.delegate = self; return kbv}()
     var heightConstraint: NSLayoutConstraint!
-    lazy var inputViewHeight: CGFloat = UIScreen.main.bounds.height / 2
+    lazy var inputViewHeight: CGFloat = 320
+    lazy var dummyLabel: UILabel = {let b = UILabel(); b.translatesAutoresizingMaskIntoConstraints = false; return b}()
     
     
     override func updateViewConstraints() {
         guard view.frame.width != 0 && view.frame.height != 0 else {return }
         setUpHeightConstraint()
         super.updateViewConstraints()
-    }
-    
-    override func viewDidLoad(){
-        super.viewDidLoad()
-
-        let b = UIButton(type: .system)
-        b.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(b)
-        let v = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 10))
-        v.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(v)
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        view.setNeedsUpdateConstraints()
     }
     
     // MARK: Set up height constraint
@@ -50,8 +35,22 @@ class KeyboardViewController: UIInputViewController {
         heightConstraint.priority = UILayoutPriority(UILayoutPriorityDefaultHigh)
         view.addConstraint(heightConstraint)
     }
+    
+    override func viewDidLoad(){
+        super.viewDidLoad()
+        view.addSubview(dummyLabel)
+        view.addSubview(keyboardView)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        view.setNeedsUpdateConstraints()
+    }
 }
 
+extension KeyboardViewController: KeyboardViewDelegate {
+    
+}
 
 
 
