@@ -10,7 +10,9 @@ import UIKit
 
 class KeyboardViewController: UIInputViewController {
     
-    lazy var keyboardView: KeyboardView = {let kbv = KeyboardView(); kbv.delegate = self; return kbv}()
+    lazy var keyboardView: KeyboardView = {
+        return KeyboardView(withDelegate:self);
+    }()
     var heightConstraint: NSLayoutConstraint!
     lazy var inputViewHeight: CGFloat = 216
     lazy var dummyLabel: UILabel = {let b = UILabel(); b.translatesAutoresizingMaskIntoConstraints = false; return b}()
@@ -55,7 +57,43 @@ class KeyboardViewController: UIInputViewController {
 }
 
 extension KeyboardViewController: KeyboardViewDelegate {
-    
+
+    func changeKeyboard(_ sender: KeyboardViewItem) {
+        print("\(#function):\(#line)")
+    }
+    func pressBackspace(_ sender: KeyboardViewItem) {
+        print("\(#function):\(#line)")
+    }
+    func pressBackspaceCancel(_ sender: KeyboardViewItem) {
+        print("\(#function):\(#line)")
+    }
+    func pressShiftDown(_ sender: KeyboardViewItem) {
+        print("\(#function):\(#line)")
+    }
+    func pressShiftUpInside(_ sender: KeyboardViewItem) {
+        print("\(#function):\(#line)")
+    }
+    func doubleTapShift(_ sender: KeyboardViewItem) {
+        print("\(#function):\(#line)")
+    }
+    func nextKeyboardPage(_ sender: KeyboardViewItem) {
+        print("\(#function):\(#line)")
+    }
+    func pressSettings(_ sender: KeyboardViewItem) {
+        print("\(#function):\(#line)")
+    }
+    func pressAnOutputItem(_ sender: KeyboardViewItem) {
+        print("\(#function):\(#line)")
+    }
+    func highlightItem(_ sender: KeyboardViewItem) {
+        print("\(#function):\(#line)")
+    }
+    func unhighlightItem(_ sender: KeyboardViewItem) {
+        print("\(#function):\(#line)")
+    }
+    func playClickSound(_ sender: KeyboardViewItem){
+        print("\(#function):\(#line)")
+    }
 }
 
 

@@ -10,11 +10,7 @@ import UIKit
 
 class KeyboardViewItem: UIControl {
     
-    var key: Key! {
-        didSet {
-            installKey()
-        }
-    }
+    var key: Key! { didSet {installKey()} }
 
     override var description: String { return super.description + key.description }
     

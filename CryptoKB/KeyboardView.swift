@@ -8,10 +8,6 @@
 
 import UIKit
 
-protocol KeyboardViewDelegate: class {
-    
-}
-
 class KeyboardView: UIView {
 
     weak var delegate: KeyboardViewDelegate?
@@ -29,8 +25,9 @@ class KeyboardView: UIView {
         }
     }
     
-    override init(frame: CGRect) {
+    init(frame: CGRect = CGRect.zero, withDelegate delegate: KeyboardViewDelegate? = nil) {
         super.init(frame: frame)
+        self.delegate = delegate
         backgroundColor = UIColor.keyboardViewBackgroundColor
         isMultipleTouchEnabled = true
         isUserInteractionEnabled = true
@@ -42,41 +39,47 @@ class KeyboardView: UIView {
         fatalError("Not implemented yet")
     }
     
+    // MARK: -
+    // MARK: Item Assembling and Layout
+    
     func layoutKeyboard () {
         guard let superview = superview else { return }
-        //print(superview.frame)
         frame = superview.frame
         positionKeyboardItems()
     }
     
     private func assembleKeyboardItems () {
-    
         for view in subviews {
             view.removeFromSuperview()
-            if view is KeyboardViewItem {
-                itemPool.append(view as! KeyboardViewItem)
+            if let kbv = view as? KeyboardViewItem {
+                kbv.removeTarget(nil, action: nil, for: .allEvents)
+                itemPool.append(kbv)
             }
         }
-//        addSubview(item)
-//        addSubview(item2)
         
         for row in keyboard.keys[keyboardPage] {
             for key in row.flatMap({$0}) {
-                let item = dequeueItem()
-                item.key = key
+                let item = dequeueItem(forKey: key)
                 addSubview(item)
             }
         }
     }
     
-    private func dequeueItem() -> KeyboardViewItem {
-        guard itemPool.isEmpty else { return itemPool.removeLast() }
-        return KeyboardViewItem()
+    private func dequeueItem(forKey key: Key) -> KeyboardViewItem {
+        var keyboardViewItem: KeyboardViewItem! = nil
+        if itemPool.isEmpty {
+            keyboardViewItem = KeyboardViewItem()
+        } else {
+            keyboardViewItem = itemPool.removeLast()
+        }
+        keyboardViewItem.key = key
+        
+        bindKey(key: key, withKeyboardViewItem: keyboardViewItem)
+        
+        return keyboardViewItem
     }
     
-    
     private func positionKeyboardItems () {
-        
         // First line
         let itemWidth = (frame.width - 2*LayoutConstraints.keyboardFirstRowLeadingGap - 9*LayoutConstraints.keyboardFirstRowItemGap) / 10
         let itemHeight = (frame.height - LayoutConstraints.keyboardRowTopGap - 3*LayoutConstraints.keyboardRowGap - LayoutConstraints.keyboardLastRowGap) / 4
@@ -136,6 +139,64 @@ class KeyboardView: UIView {
         }
     }
     
+    
+    // MARK -
+    // MARK - Touch Event Hanlder
+    
+    private func bindKey(key: Key, withKeyboardViewItem item: KeyboardViewItem) {
+        guard let delegate = delegate else {return}
+        
+        item.removeTarget(nil, action: nil, for: UIControlEvents.allEvents)
+        
+        switch key.type {
+        case Key.KeyType.keyboardChange:
+            item.addTarget(delegate, action: Selector(("changeKeyboard:")), for: .touchUpInside)
+            
+        case Key.KeyType.backspace:
+            let cancelEvents: UIControlEvents = [.touchDragExit, .touchUpOutside, .touchCancel, .touchDragOutside]
+            item.addTarget(delegate, action: Selector(("pressBackspace:")), for: .touchDown)
+            item.addTarget(delegate, action: Selector(("pressBackspaceCancel:")), for: cancelEvents)
+            
+        case Key.KeyType.shift:
+            item.addTarget(delegate, action: Selector(("pressShiftDown:")), for: .touchDown)
+            item.addTarget(delegate, action: Selector(("pressShiftUpInside:")), for: .touchUpInside)
+            item.addTarget(delegate, action: Selector(("doubleTapShift:")), for: .touchDownRepeat)
+            
+        case Key.KeyType.modeChange:
+            item.addTarget(delegate, action: Selector(("nextKeyboardPage:")), for: .touchDown)
+            
+        case Key.KeyType.settings:
+            item.addTarget(delegate, action: Selector(("pressSettings:")), for: .touchUpInside)
+            
+        default:
+            break
+        }
+        
+//        if key.isCharacter {
+//            if UIDevice.current.userInterfaceIdiom != UIUserInterfaceIdiom.pad {
+//                item.addTarget(delegate, action: #selector(KeyboardViewController.showPopup(_:)), for: [.touchDown, .touchDragInside, .touchDragEnter])
+//                //item.addTarget(keyView, action: Selector(("hidePopup")), for: [.touchDragExit, .touchCancel])
+//                item.addTarget(delegate, action: #selector(KeyboardViewController.hidePopupDelay(_:)), for: [.touchUpInside, .touchUpOutside, .touchDragOutside])
+//            }
+//        }
+        
+        if key.hasOutput {
+            item.addTarget(delegate, action: Selector(("pressAnOutputItem:")), for: .touchUpInside)
+        }
+        
+        if key.type != Key.KeyType.shift && key.type != Key.KeyType.modeChange {
+            item.addTarget(delegate, action: Selector(("highlightItem:")), for: [.touchDown, .touchDragInside, .touchDragEnter])
+            item.addTarget(delegate, action: Selector(("unhighlightItem:")), for: [.touchUpInside, .touchUpOutside, .touchDragOutside, .touchDragExit, .touchCancel])
+        }
+        
+        item.addTarget(delegate, action: Selector(("playClickSound:")), for: .touchDown)
+    }
+    
+    
+    
+    
+    // MARK: -
+    // MARK: Touch Detection
     
     private var touchToView: [UITouch:UIView] = [:]
 
@@ -218,12 +279,10 @@ class KeyboardView: UIView {
         for touch in touches {
             let position = touch.location(in: self)
             let view = findNearestView(position)
-            print(view)
             let viewChangedOwnership = ownView(touch, viewToOwn: view)
             if !viewChangedOwnership {
                 handleControl(view, controlEvent: .touchDown)
                 if touch.tapCount > 1 {
-                    // two events, I think this is the correct behavior but I have not tested with an actual UIControl
                     handleControl(view, controlEvent: .touchDownRepeat)
                 }
             }
