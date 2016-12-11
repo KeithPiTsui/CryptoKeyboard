@@ -25,7 +25,6 @@ class KeyboardViewItem: UIControl {
         label.isUserInteractionEnabled = false
         label.numberOfLines = 1
         label.textColor = UIColor.keyboardViewItemInscriptColor
-        label.text = "x"
         return label
     }()
     

@@ -18,7 +18,7 @@ class KeyboardView: UIView {
     
     var itemPool: [KeyboardViewItem] = []
     
-    var keyboardPage: Int = 0 {
+    var keyboardPage: Int = 2 {
         didSet {
             assembleKeyboardItems()
             positionKeyboardItems()
@@ -27,6 +27,7 @@ class KeyboardView: UIView {
     
     init(frame: CGRect = CGRect.zero, withDelegate delegate: KeyboardViewDelegate? = nil) {
         super.init(frame: frame)
+        
         self.delegate = delegate
         backgroundColor = UIColor.keyboardViewBackgroundColor
         isMultipleTouchEnabled = true
@@ -79,7 +80,19 @@ class KeyboardView: UIView {
         return keyboardViewItem
     }
     
-    private func positionKeyboardItems () {
+    private func positionKeyboardItems() {
+        switch keyboardPage {
+        case 0:
+            positionKeyboardItemsPageZero()
+        case 1:
+            positionKeyboardItemsPageOne()
+        case 2:
+            positionKeyboardItemsPageOne()
+        default: break
+        }
+    }
+    
+    private func positionKeyboardItemsPageZero () {
         // First line
         let itemWidth = (frame.width - 2*LayoutConstraints.keyboardFirstRowLeadingGap - 9*LayoutConstraints.keyboardFirstRowItemGap) / 10
         let itemHeight = (frame.height - LayoutConstraints.keyboardRowTopGap - 3*LayoutConstraints.keyboardRowGap - LayoutConstraints.keyboardLastRowGap) / 4
@@ -90,6 +103,7 @@ class KeyboardView: UIView {
         }
         
         // Second line
+        
         let secondRowLeadingGap = (frame.width - 9 * itemWidth - 8 * LayoutConstraints.keyboardFirstRowItemGap) / 2
         for i in 0...8 {
             let x = secondRowLeadingGap + CGFloat(i) * (itemWidth + LayoutConstraints.keyboardFirstRowItemGap)
@@ -118,25 +132,92 @@ class KeyboardView: UIView {
             let y = LayoutConstraints.keyboardRowTopGap + itemHeight*3 + LayoutConstraints.keyboardRowGap*3
             if i == 0 {
                 let iw = itemWidth + LayoutConstraints.keyboardRowGap
-                let x = LayoutConstraints.keyboardFirstRowLeadingGap + CGFloat(i) * (iw + LayoutConstraints.keyboardFirstRowItemGap)
+                let x = LayoutConstraints.keyboardFirstRowLeadingGap
                 subviews[i+28].frame = CGRect(x: x, y: y, width: iw, height: itemHeight)
             } else if i == 1 {
-                let iw = subviews[28].frame.width
-                let x = subviews[20].frame.origin.x + subviews[20].frame.width - iw
+                let iw = subviews[28+i-1].frame.width
+                let x = subviews[28+i-1].frame.origin.x + subviews[28+i-1].frame.width + LayoutConstraints.keyboardRowGap
                 subviews[i+28].frame = CGRect(x: x, y: y, width: iw, height: itemHeight)
             } else if i == 2 {
-                let x = subviews[21].frame.origin.x
+                let x = subviews[28+i-1].frame.origin.x + subviews[28+i-1].frame.width + LayoutConstraints.keyboardRowGap
                 subviews[i+28].frame = CGRect(x: x, y: y, width: itemWidth, height: itemHeight)
             } else if i == 3 {
-                let x = subviews[22].frame.origin.x
-                let iw = subviews[25].frame.origin.x + subviews[25].frame.width - x
+                let x = subviews[28+i-1].frame.origin.x + subviews[28+i-1].frame.width + LayoutConstraints.keyboardRowGap
+                let iw = itemWidth * 4 + LayoutConstraints.keyboardRowGap * 3
                 subviews[i+28].frame = CGRect(x: x, y: y, width: iw, height: itemHeight)
             } else if i == 4 {
-                let x = subviews[26].frame.origin.x
+                let x = subviews[28+i-1].frame.origin.x + subviews[28+i-1].frame.width + LayoutConstraints.keyboardRowGap
                 let iw = frame.width - LayoutConstraints.keyboardFirstRowLeadingGap - x
                 subviews[i+28].frame = CGRect(x: x, y: y, width: iw, height: itemHeight)
             }
         }
+    }
+    
+    private func positionKeyboardItemsPageOne () {
+        // First line
+        let itemWidth = (frame.width - 2*LayoutConstraints.keyboardFirstRowLeadingGap - 9*LayoutConstraints.keyboardFirstRowItemGap) / 10
+        let itemHeight = (frame.height - LayoutConstraints.keyboardRowTopGap - 3*LayoutConstraints.keyboardRowGap - LayoutConstraints.keyboardLastRowGap) / 4
+        for i in 0...9 {
+            let x = LayoutConstraints.keyboardFirstRowLeadingGap + CGFloat(i) * (itemWidth + LayoutConstraints.keyboardFirstRowItemGap)
+            let y = LayoutConstraints.keyboardRowTopGap
+            subviews[i].frame = CGRect(x: x, y: y, width: itemWidth, height: itemHeight)
+        }
+        
+        // Second line
+        
+        for i in 0...9 {
+            let x = LayoutConstraints.keyboardFirstRowLeadingGap + CGFloat(i) * (itemWidth + LayoutConstraints.keyboardFirstRowItemGap)
+            let y = LayoutConstraints.keyboardRowTopGap + itemHeight + LayoutConstraints.keyboardRowGap
+            subviews[i+10].frame = CGRect(x: x, y: y, width: itemWidth, height: itemHeight)
+        }
+        
+        // Third line
+        for i in 0...6 {
+            let y = LayoutConstraints.keyboardRowTopGap + itemHeight*2 + LayoutConstraints.keyboardRowGap*2
+            if i == 0 {
+                let iw = itemWidth + LayoutConstraints.keyboardRowGap
+                let x = LayoutConstraints.keyboardFirstRowLeadingGap + CGFloat(i) * (iw + LayoutConstraints.keyboardFirstRowItemGap)
+                subviews[i+20].frame = CGRect(x: x, y: y, width: iw, height: itemHeight)
+            } else if i == 6 {
+                let x = frame.width - LayoutConstraints.keyboardFirstRowLeadingGap - subviews[20].frame.width
+                subviews[i+20].frame = CGRect(x: x, y: y, width: subviews[19].frame.width, height: itemHeight)
+                
+            } else if i == 1 {
+                let x = subviews[20].frame.origin.x + subviews[20].frame.width + 3 * LayoutConstraints.keyboardRowGap
+                let iw = (frame.width - subviews[20].frame.width * 2 - LayoutConstraints.keyboardRowGap * 10) / 5
+                subviews[i+20].frame = CGRect(x: x, y: y, width: iw, height: itemHeight)
+            } else {
+                let x = subviews[i+20-1].frame.origin.x + subviews[i+20-1].frame.width + LayoutConstraints.keyboardRowGap
+                let iw = subviews[i+20-1].frame.width
+                subviews[i+20].frame = CGRect(x: x, y: y, width: iw, height: itemHeight)
+            }
+        }
+        
+        // Four line
+        for i in 0...4 {
+            let y = LayoutConstraints.keyboardRowTopGap + itemHeight*3 + LayoutConstraints.keyboardRowGap*3
+            if i == 0 {
+                let iw = itemWidth + LayoutConstraints.keyboardRowGap
+                let x = LayoutConstraints.keyboardFirstRowLeadingGap
+                subviews[i+27].frame = CGRect(x: x, y: y, width: iw, height: itemHeight)
+            } else if i == 1 {
+                let iw = subviews[27+i-1].frame.width
+                let x = subviews[27+i-1].frame.origin.x + subviews[27+i-1].frame.width + LayoutConstraints.keyboardRowGap
+                subviews[i+27].frame = CGRect(x: x, y: y, width: iw, height: itemHeight)
+            } else if i == 2 {
+                let x = subviews[27+i-1].frame.origin.x + subviews[27+i-1].frame.width + LayoutConstraints.keyboardRowGap
+                subviews[i+27].frame = CGRect(x: x, y: y, width: itemWidth, height: itemHeight)
+            } else if i == 3 {
+                let x = subviews[27+i-1].frame.origin.x + subviews[27+i-1].frame.width + LayoutConstraints.keyboardRowGap
+                let iw = itemWidth * 4 + LayoutConstraints.keyboardRowGap * 3
+                subviews[i+27].frame = CGRect(x: x, y: y, width: iw, height: itemHeight)
+            } else if i == 4 {
+                let x = subviews[27+i-1].frame.origin.x + subviews[27+i-1].frame.width + LayoutConstraints.keyboardRowGap
+                let iw = frame.width - LayoutConstraints.keyboardFirstRowLeadingGap - x
+                subviews[i+27].frame = CGRect(x: x, y: y, width: iw, height: itemHeight)
+            }
+        }
+
     }
     
     
