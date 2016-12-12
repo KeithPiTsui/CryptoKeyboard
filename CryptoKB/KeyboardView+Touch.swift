@@ -10,62 +10,6 @@ import UIKit
 
 extension KeyboardView {
     
-    // MARK -
-    // MARK - Touch Event Hanlder
-    
-    /// Setup key, view item and its target-action
-    ///
-    /// Don't call this function directly
-    func bindKey(key: Key, withKeyboardViewItem item: KeyboardViewItem) {
-        guard let delegate = delegate else {return}
-        
-        item.removeTarget(nil, action: nil, for: UIControlEvents.allEvents)
-        
-        switch key.type {
-        case Key.KeyType.keyboardChange:
-            item.addTarget(delegate, action: Selector(("changeKeyboard:")), for: .touchUpInside)
-            
-        case Key.KeyType.backspace:
-            let cancelEvents: UIControlEvents = [.touchDragExit, .touchUpOutside, .touchCancel, .touchDragOutside]
-            item.addTarget(delegate, action: Selector(("pressBackspace:")), for: .touchDown)
-            item.addTarget(delegate, action: Selector(("pressBackspaceCancel:")), for: cancelEvents)
-            
-        case Key.KeyType.shift:
-            item.addTarget(delegate, action: Selector(("pressShiftDown:")), for: .touchDown)
-            item.addTarget(delegate, action: Selector(("pressShiftUpInside:")), for: .touchUpInside)
-            item.addTarget(delegate, action: Selector(("doubleTapShift:")), for: .touchDownRepeat)
-            
-        case Key.KeyType.modeChange:
-            item.addTarget(delegate, action: Selector(("nextKeyboardPage:")), for: .touchDown)
-            
-        case Key.KeyType.settings:
-            item.addTarget(delegate, action: Selector(("pressSettings:")), for: .touchUpInside)
-            
-        default:
-            break
-        }
-        
-        //        if key.isCharacter {
-        //            if UIDevice.current.userInterfaceIdiom != UIUserInterfaceIdiom.pad {
-        //                item.addTarget(delegate, action: #selector(KeyboardViewController.showPopup(_:)), for: [.touchDown, .touchDragInside, .touchDragEnter])
-        //                //item.addTarget(keyView, action: Selector(("hidePopup")), for: [.touchDragExit, .touchCancel])
-        //                item.addTarget(delegate, action: #selector(KeyboardViewController.hidePopupDelay(_:)), for: [.touchUpInside, .touchUpOutside, .touchDragOutside])
-        //            }
-        //        }
-        
-        if key.hasOutput {
-            item.addTarget(delegate, action: Selector(("pressAnOutputItem:")), for: .touchUpInside)
-        }
-        
-        if key.type != Key.KeyType.shift && key.type != Key.KeyType.modeChange {
-            item.addTarget(delegate, action: Selector(("highlightItem:")), for: [.touchDown, .touchDragInside, .touchDragEnter])
-            item.addTarget(delegate, action: Selector(("unhighlightItem:")), for: [.touchUpInside, .touchUpOutside, .touchDragOutside, .touchDragExit, .touchCancel])
-        }
-        
-        item.addTarget(delegate, action: Selector(("playClickSound:")), for: .touchDown)
-    }
-    
-    
     // MARK: -
     // MARK: Touch Detection
     
@@ -74,13 +18,8 @@ extension KeyboardView {
     }
     
     private func handleControl(_ view: UIView?, controlEvent: UIControlEvents) {
-        guard let control = view as? UIControl else { return }
-        for target in control.allTargets {
-            guard let actions = control.actions(forTarget: target, forControlEvent: controlEvent) else { continue }
-            for action in actions {
-                control.sendAction(Selector(action), to: target, for: nil)
-            }
-        }
+        guard let control = view as? KeyboardViewItem, let delegate = delegate else { return }
+        delegate.keyboardViewItem(control, receivedEvent: controlEvent, inKeyboard: self)
     }
     
     private func findNearestView(_ position: CGPoint) -> UIView? {

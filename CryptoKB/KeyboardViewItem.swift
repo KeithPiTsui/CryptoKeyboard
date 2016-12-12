@@ -8,7 +8,7 @@
 
 import UIKit
 
-class KeyboardViewItem: UIControl {
+class KeyboardViewItem: UIView {
     
     var key: Key! { didSet {installKey()} }
 

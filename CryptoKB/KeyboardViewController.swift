@@ -90,6 +90,82 @@ class KeyboardViewController: UIInputViewController {
 // MARK: Keyboard View Delegate Extension
 extension KeyboardViewController: KeyboardViewDelegate {
 
+    func keyboardViewItem(_ item: KeyboardViewItem, receivedEvent event: UIControlEvents, inKeyboard keyboard: KeyboardView) {
+        print("\(#function):\(#line):\(item):\(event):\(keyboard)")
+        handlEvent(event, withKeyboardViewItem: item)
+    }
+    
+    // MARK -
+    // MARK - Touch Event Hanlder
+    private func handlEvent(_ event: UIControlEvents, withKeyboardViewItem item: KeyboardViewItem) {
+        guard let key = item.key else { return }
+        
+        switch key.type {
+        case .keyboardChange:
+            if event == .touchUpInside {
+                changeKeyboard(item)
+            }
+
+        case .backspace:
+            if event == .touchDown {
+                pressBackspace(item)
+            }
+            if [.touchDragExit, .touchUpOutside, .touchCancel, .touchDragOutside].contains(event) {
+                pressBackspaceCancel(item)
+            }
+        case .shift:
+            if event == .touchDown {
+                pressShiftDown(item)
+            }
+            if event == .touchUpInside {
+                pressShiftUpInside(item)
+            }
+            if event == .touchDownRepeat {
+                doubleTapShift(item)
+            }
+        case .modeChange:
+            if event == .touchDown {
+                nextKeyboardPage(item)
+            }
+        case .settings:
+            if event == .touchUpInside {
+                pressSettings(item)
+            }
+        default:
+            break
+        }
+        
+        if key.isCharacter {
+            if UIDevice.current.userInterfaceIdiom != UIUserInterfaceIdiom.pad {
+                if [.touchDown, .touchDragInside, .touchDragEnter].contains(event) {
+                    showPopup(item)
+                }
+                if [.touchUpInside, .touchUpOutside, .touchDragOutside].contains(event) {
+                    hidePopupDelay(item)
+                }
+            }
+        }
+        
+
+        if key.hasOutput && event == .touchUpInside {
+                pressAnOutputItem(item)
+        }
+
+        if key.type != .shift && key.type != .modeChange {
+            
+            if [.touchDown, .touchDragInside, .touchDragEnter].contains(event) {
+                highlightItem(item)
+            }
+            if [.touchUpInside, .touchUpOutside, .touchDragOutside, .touchDragExit, .touchCancel].contains(event) {
+                unhighlightItem(item)
+            }
+        }
+        
+        if event == .touchDown {
+            playClickSound(item)
+        }
+    }
+    
     func changeKeyboard(_ sender: KeyboardViewItem) {
         print("\(#function):\(#line)")
         advanceToNextInputMode()
@@ -126,6 +202,12 @@ extension KeyboardViewController: KeyboardViewDelegate {
     }
     func playClickSound(_ sender: KeyboardViewItem){
         print("\(#function):\(#line)")
+    }
+    func showPopup(_ sender: KeyboardViewItem) {
+        
+    }
+    func hidePopupDelay(_ sender: KeyboardViewItem){
+        
     }
 }
 

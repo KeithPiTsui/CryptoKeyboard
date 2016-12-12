@@ -26,7 +26,6 @@ extension KeyboardView {
         for view in subviews {
             view.removeFromSuperview()
             if let kbv = view as? KeyboardViewItem {
-                kbv.removeTarget(nil, action: nil, for: .allEvents)
                 itemPool.append(kbv)
             }
         }
@@ -48,7 +47,7 @@ extension KeyboardView {
         }
         keyboardViewItem.key = key
         
-        bindKey(key: key, withKeyboardViewItem: keyboardViewItem)
+        //bindKey(key: key, withKeyboardViewItem: keyboardViewItem)
         
         return keyboardViewItem
     }
