@@ -18,7 +18,7 @@ class KeyboardView: UIView {
             positionKeyboardItems()
         }
     }
-    var frameSize: CGSize?
+    var boundSize: CGSize?
     
     init(frame: CGRect = CGRect.zero, withDelegate delegate: KeyboardViewDelegate? = nil) {
         super.init(frame: frame)
@@ -39,23 +39,14 @@ class KeyboardView: UIView {
     // MARK: Item Assembling and Layout
     
     override func layoutSubviews() {
-        print("\(#function) Keyboard View Super view frame: \(superview?.frame)")
-        print("\(#function) Keyboard View Super view frame: \(frame)")
         super.layoutSubviews()
-        
-        if (frame.width != 0 && frame.height != 0) && (frameSize == nil || frame.size.equalTo(frameSize!) == false) {
-            frameSize = frame.size
+        if (bounds.width != 0 && bounds.height != 0) && (boundSize == nil || (bounds.size.equalTo(boundSize!) == false)) {
+            boundSize = bounds.size
             self.layoutKeyboard()
         }
-        print("\(#function) layout completed")
-        
-        
     }
     
     func layoutKeyboard () {
-        print("\(#function)")
-//        guard let superview = superview else { return }
-//        frame = superview.frame
         positionKeyboardItems()
     }
     
