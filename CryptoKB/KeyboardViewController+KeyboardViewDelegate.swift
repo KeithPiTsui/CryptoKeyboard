@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AudioToolbox
 
 // MARK: -
 // MARK: Keyboard View Delegate Extension
@@ -89,17 +90,17 @@ extension KeyboardViewController: KeyboardViewDelegate {
         }
     }
     
-    func changeKeyboard(_ sender: KeyboardViewItem) {
+    private func changeKeyboard(_ sender: KeyboardViewItem) {
         print("\(#function):\(#line)")
         advanceToNextInputMode()
     }
-    func pressBackspace(_ sender: KeyboardViewItem) {
+    private func pressBackspace(_ sender: KeyboardViewItem) {
         print("\(#function):\(#line)")
     }
-    func pressBackspaceCancel(_ sender: KeyboardViewItem) {
+    private func pressBackspaceCancel(_ sender: KeyboardViewItem) {
         print("\(#function):\(#line)")
     }
-    func pressShiftDown(_ sender: KeyboardViewItem) {
+    private func pressShiftDown(_ sender: KeyboardViewItem) {
         print("\(#function):\(#line)")
         switch shiftState {
         case .disabled:
@@ -110,11 +111,12 @@ extension KeyboardViewController: KeyboardViewDelegate {
             shiftState = .disabled
         }
     }
-    func pressShiftUpInside(_ sender: KeyboardViewItem) {
+    
+    private func pressShiftUpInside(_ sender: KeyboardViewItem) {
         print("\(#function):\(#line)")
         
     }
-    func doubleTapShift(_ sender: KeyboardViewItem) {
+    private func doubleTapShift(_ sender: KeyboardViewItem) {
         print("\(#function):\(#line)")
         switch shiftState {
         case .disabled:
@@ -125,30 +127,40 @@ extension KeyboardViewController: KeyboardViewDelegate {
             shiftState = .disabled
         }
     }
-    func nextKeyboardPage(_ sender: KeyboardViewItem) {
+    private func nextKeyboardPage(_ sender: KeyboardViewItem) {
         print("\(#function):\(#line)")
         guard let page = sender.key.toMode else {return}
         keyboardView.keyboardPage = page
     }
-    func pressSettings(_ sender: KeyboardViewItem) {
+    private func pressSettings(_ sender: KeyboardViewItem) {
         print("\(#function):\(#line)")
     }
-    func pressAnOutputItem(_ sender: KeyboardViewItem) {
+    private func pressAnOutputItem(_ sender: KeyboardViewItem) {
+        print("\(#function):\(#line)")
+        guard let key = sender.key else { return }
+        textDocumentProxy.insertText(key.outputForCase(self.shiftState.isUppercase))
+    }
+    private func highlightItem(_ sender: KeyboardViewItem) {
         print("\(#function):\(#line)")
     }
-    func highlightItem(_ sender: KeyboardViewItem) {
+    private func unhighlightItem(_ sender: KeyboardViewItem) {
         print("\(#function):\(#line)")
     }
-    func unhighlightItem(_ sender: KeyboardViewItem) {
+    private func playClickSound(_ sender: KeyboardViewItem){
         print("\(#function):\(#line)")
     }
-    func playClickSound(_ sender: KeyboardViewItem){
-        print("\(#function):\(#line)")
-    }
-    func showPopup(_ sender: KeyboardViewItem) {
+    private func showPopup(_ sender: KeyboardViewItem) {
         
     }
-    func hidePopupDelay(_ sender: KeyboardViewItem){
+    private func hidePopupDelay(_ sender: KeyboardViewItem){
         
     }
+    
+    // this only works if full access is enabled
+    private func playKeySound() {
+        DispatchQueue.global(qos: DispatchQoS.QoSClass.default).async {
+            AudioServicesPlaySystemSound(1104)
+        }
+    }
+    
 }
