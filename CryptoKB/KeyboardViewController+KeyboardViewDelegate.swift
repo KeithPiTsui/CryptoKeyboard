@@ -96,6 +96,8 @@ extension KeyboardViewController: KeyboardViewDelegate {
     }
     private func pressBackspace(_ sender: KeyboardViewItem) {
         print("\(#function):\(#line)")
+        textDocumentProxy.deleteBackward()
+        setCapsIfNeeded()
     }
     private func pressBackspaceCancel(_ sender: KeyboardViewItem) {
         print("\(#function):\(#line)")
@@ -139,6 +141,7 @@ extension KeyboardViewController: KeyboardViewDelegate {
         print("\(#function):\(#line)")
         guard let key = sender.key else { return }
         textDocumentProxy.insertText(key.outputForCase(self.shiftState.isUppercase))
+        setCapsIfNeeded()
     }
     private func highlightItem(_ sender: KeyboardViewItem) {
         print("\(#function):\(#line)")
@@ -148,6 +151,7 @@ extension KeyboardViewController: KeyboardViewDelegate {
     }
     private func playClickSound(_ sender: KeyboardViewItem){
         print("\(#function):\(#line)")
+        playKeySound()
     }
     private func showPopup(_ sender: KeyboardViewItem) {
         
@@ -162,5 +166,4 @@ extension KeyboardViewController: KeyboardViewDelegate {
             AudioServicesPlaySystemSound(1104)
         }
     }
-    
 }

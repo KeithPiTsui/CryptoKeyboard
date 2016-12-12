@@ -95,6 +95,12 @@ final class KeyboardViewController: UIInputViewController {
         super.viewDidAppear(animated)
         view.setNeedsUpdateConstraints()
     }
+    
+    // MARK: -
+    // MARK: Text Editing
+    override func textDidChange(_ textInput: UITextInput?) {
+        setCapsIfNeeded()
+    }
 }
 
 
