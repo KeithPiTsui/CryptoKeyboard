@@ -43,7 +43,7 @@ class KeyboardView: UIView {
         print("\(#function) Keyboard View Super view frame: \(frame)")
         super.layoutSubviews()
         
-        if frameSize == nil || frame.size.equalTo(frameSize!) == false {
+        if (frame.width != 0 && frame.height != 0) && (frameSize == nil || frame.size.equalTo(frameSize!) == false) {
             frameSize = frame.size
             self.layoutKeyboard()
         }
