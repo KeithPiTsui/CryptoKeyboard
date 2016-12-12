@@ -19,6 +19,8 @@ extension UIColor {
     static let globalDrawingColor = UIColor(204,208,202)
     static let shiftIconDrawingColor = UIColor(204,208,202)
     static let shiftIconHighlightDrawingColor = UIColor(207,59,124)
+    static let backspaceFillColor = UIColor.white
+    static let backspaceInscriptColor = UIColor(25, 9, 43)
     
     convenience init(_ r:CGFloat, _ g: CGFloat, _ b: CGFloat, _ a: CGFloat = 1) {
          self.init(red: r/255, green: g/255, blue: b/255, alpha: a)
@@ -26,6 +28,6 @@ extension UIColor {
 }
 
 struct KeyboardAppearanceScheme {
-    static let keyboardViewItemInscriptFont = UIFont(name: "ChalkboardSE-Light", size: 20)
-    static let topBarInscriptFont = UIFont(name: "ChalkboardSE-Light", size: 20)
+    static let keyboardViewItemInscriptFont = UIFont(name: "ChalkboardSE-Light", size: 25)
+    static let topBarInscriptFont = UIFont(name: "ChalkboardSE-Light", size: 18)
 }

@@ -15,24 +15,23 @@ import UIKit
 ///////////////////
 
 final class BackspaceIconView: IconDrawingView {
+    var inscriptColor: UIColor = UIColor.white {didSet{setNeedsDisplay()}}
     override func drawCall(_ color: UIColor) {
-        drawBackspace(self.bounds, color: color)
+        drawBackspace(bounds, fillColor: color, inscriptColor: inscriptColor)
     }
 }
 
 final class ShiftIconView: IconDrawingView {
-    var withLock: Bool = false {
-        didSet {self.setNeedsDisplay()}
-    }
+    var withLock: Bool = false { didSet {setNeedsDisplay()}}
     
     override func drawCall(_ color: UIColor) {
-        drawShift(self.bounds, color: color, withRect: self.withLock)
+        drawShift(bounds, color: color, withRect: withLock)
     }
 }
 
 final class GlobeIconView: IconDrawingView {
     override func drawCall(_ color: UIColor) {
-        drawGlobe(self.bounds, color: color)
+        drawGlobe(bounds, color: color)
     }
 }
 
@@ -97,7 +96,7 @@ fileprivate func drawInContext(_ fromSize: CGSize, toRect: CGRect, drawingFuncti
     drawingFunction()
 }
 
-fileprivate func drawBackspace(_ bounds: CGRect, color: UIColor) {
+fileprivate func drawBackspace(_ bounds: CGRect, fillColor: UIColor, inscriptColor: UIColor) {
     let factors = getFactors(CGSize(width: 44, height: 32), toRect: bounds)
     let xScalingFactor = factors.xScalingFactor
     let yScalingFactor = factors.yScalingFactor
@@ -105,8 +104,8 @@ fileprivate func drawBackspace(_ bounds: CGRect, color: UIColor) {
     
     drawInContext(CGSize(width: 44 * xScalingFactor, height: 32 * yScalingFactor), toRect: bounds){
         //// Color Declarations
-        let color = color
-        let color2 = UIColor.gray // TODO:
+        let color = fillColor
+        let color2 = inscriptColor
         
         //// Bezier Drawing
         let bezierPath = UIBezierPath()

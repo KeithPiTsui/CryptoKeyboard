@@ -38,7 +38,10 @@ class KeyboardViewItem: UIView {
             iv = ShiftIconView()
             iv.color = UIColor.shiftIconDrawingColor
         case .backspace:
-            iv = BackspaceIconView()
+            let bv = BackspaceIconView()
+            bv.color = UIColor.backspaceFillColor
+            bv.inscriptColor = UIColor.backspaceInscriptColor
+            iv = bv
         case .keyboardChange:
             iv = GlobeIconView()
             iv.color = UIColor.globalDrawingColor
@@ -53,9 +56,6 @@ class KeyboardViewItem: UIView {
         super.init(frame: frame)
         backgroundColor = UIColor.keyboardViewItemBackgroundColor
         layer.cornerRadius = 6
-//        layer.shadowOffset = CGSize(width: 2, height: 2)
-//        layer.shadowColor = UIColor.darkGray.cgColor
-//        layer.shadowOpacity = 1
     }
     
     required init?(coder aDecoder: NSCoder) {
