@@ -9,13 +9,26 @@
 import Foundation
 
 extension KeyboardViewController: InputInterpreterOutputReceiverDelegate {
-    func receiveOutputCharacter(char: String) {
-        print("Received a encrypted message: \(char)")
-        let orgText = topBar.middleLabel.text ?? ""
-        topBar.middleLabel.text = orgText + char
+    
+    func receiveHeuristicOutputCharacter(char: String) {
+        heuristicTextLabel.text = (heuristicTextLabel.text ?? "") + char
+    }
+    
+    func receiveEncryptedOutputCharacter(char: String) {
+        encryptedTextLabel.text = (encryptedTextLabel.text ?? "") + char
+    }
+    
+    func receiveDecryptedOutputCharacter(char: String) {
+        decryptedTextLabel.text = (decryptedTextLabel.text ?? "") + char
     }
     
     func removeLastOutputCharacter() {
-        
+        for label in [heuristicTextLabel, encryptedTextLabel, decryptedTextLabel] {
+            if label.text != nil && label.text!.isEmpty == false {
+                var text = label.text!
+                text.remove(at: text.index(before: text.endIndex))
+                label.text = text
+            }
+        }
     }
 }

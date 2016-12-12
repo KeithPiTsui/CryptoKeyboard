@@ -8,6 +8,11 @@
 
 import UIKit
 
+
+protocol TopBarViewDelegate {
+     func topBarLabel(_ label: UILabel, receivedEvent event: UIControlEvents, inTopBar topBar: TopBarView)
+}
+
 class TopBarView: UIView {
     var leftLabel: UILabel = {
         let label = UILabel()
@@ -55,9 +60,14 @@ class TopBarView: UIView {
         return label
     }()
 
+    var delegate: TopBarViewDelegate?
+    var touchToView: [UITouch:UIView] = [:]
     
-    override init(frame: CGRect) {
+    init(frame: CGRect = CGRect.zero, delegate: TopBarViewDelegate? = nil) {
+        self.delegate = delegate
         super.init(frame: frame)
+        isMultipleTouchEnabled = true
+        isUserInteractionEnabled = true
         assembleUIElements()
     }
     
@@ -159,8 +169,12 @@ class TopBarView: UIView {
                                                                  constant: 1))
         
         self.addConstraints(keyboradViewLayoutConstraints)
-        
-        
+    }
+    
+    func resetLabels() {
+        for label in [leftLabel, middleLabel, rightLabel] {
+            label.text = nil
+        }
     }
 }
 

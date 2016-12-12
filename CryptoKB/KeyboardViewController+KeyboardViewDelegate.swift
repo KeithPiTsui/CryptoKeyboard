@@ -95,6 +95,7 @@ extension KeyboardViewController: KeyboardViewDelegate {
     private func pressBackspace(_ sender: KeyboardViewItem) {
         print("\(#function)")
         textDocumentProxy.deleteBackward()
+        textInterpreter.removeLastReceiveCharacter()
         setCapsIfNeeded()
     }
     
@@ -140,7 +141,7 @@ extension KeyboardViewController: KeyboardViewDelegate {
         print("\(#function)")
         guard let key = sender.key else { return }
         let outputCharacter = key.outputForCase(self.shiftState.isUppercase)
-        textDocumentProxy.insertText(outputCharacter)
+        //textDocumentProxy.insertText(outputCharacter)
         
         textInterpreter.receiveACharacter(char: outputCharacter)
         

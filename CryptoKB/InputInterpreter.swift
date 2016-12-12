@@ -16,7 +16,9 @@ protocol InputInterpreterProtocol {
 }
 
 protocol InputInterpreterOutputReceiverDelegate: class {
-    func receiveOutputCharacter(char: String)
+    func receiveHeuristicOutputCharacter(char: String)
+    func receiveEncryptedOutputCharacter(char: String)
+    func receiveDecryptedOutputCharacter(char: String)
     func removeLastOutputCharacter()
 }
 
@@ -27,6 +29,10 @@ class InputInterpreter: InputInterpreterProtocol {
     var receivedCharacters: [String] = []
     var cipherType: CipherType = .caesar
     var cipherKey: String = "3"
+    
+    init(delegate: InputInterpreterOutputReceiverDelegate? = nil) {
+        self.delegate = delegate
+    }
     
     func receiveACharacter(char: String) {
         receivedCharacters.append(char)
@@ -47,11 +53,28 @@ class InputInterpreter: InputInterpreterProtocol {
     private func translateIntoCipherOf(cipherType: CipherType, andKey key: String) {
         guard let message = receivedCharacters.last, let delegate = delegate else { return }
         if let message = try? CipherManager.sharedInstance().encryptMessage(message, with: cipherType, andKey: key) {
-            delegate.receiveOutputCharacter(char: message)
+            delegate.receiveEncryptedOutputCharacter(char: message)
         }
+        
+        if let message = try? CipherManager.sharedInstance().decryptMessage(message, with: cipherType, andKey: key) {
+            delegate.receiveDecryptedOutputCharacter(char: message)
+        }
+        delegate.receiveHeuristicOutputCharacter(char: message)
     }
     
 }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

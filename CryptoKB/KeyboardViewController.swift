@@ -11,17 +11,27 @@ import UIKit
 weak var GlobalKeyboardViewController: KeyboardViewController! = nil
 
 final class KeyboardViewController: UIInputViewController {
+    
+    // MARK: -
+    // MARK: Class or Static Properties
     static let shiftStateChangedNotification = Notification.Name("ShiftStateChanged")
-    lazy var keyboardView: KeyboardView = {
-        return KeyboardView(withDelegate:self);
-    }()
+    
+    // MARK: -
+    // MARK: Instance Properties
+    lazy var keyboardView: KeyboardView = { return KeyboardView(withDelegate:self); }()
+    
     lazy var topBar: TopBarView = {
-        let tbv = TopBarView()
+        let tbv = TopBarView(delegate:self)
         tbv.translatesAutoresizingMaskIntoConstraints = false
         tbv.backgroundColor = UIColor.lightGray
         tbv.alpha = 0.8
         return tbv
     }()
+    
+    var heuristicTextLabel: UILabel { return topBar.leftLabel}
+    var encryptedTextLabel: UILabel { return topBar.middleLabel}
+    var decryptedTextLabel: UILabel { return topBar.rightLabel}
+    
     
     var heightConstraint: NSLayoutConstraint!
     lazy var inputViewHeight: CGFloat = self.topBarHeight + self.keyboardViewheight
@@ -31,20 +41,16 @@ final class KeyboardViewController: UIInputViewController {
     var keyboradViewLayoutConstraints: [NSLayoutConstraint] = []
     
     var shiftState: ShiftState = .disabled {
-        didSet {
-            if (oldValue != shiftState) {
-                NotificationCenter.default.post(name: KeyboardViewController.shiftStateChangedNotification, object: nil)
-            }
-        }
+        didSet { if (oldValue != shiftState) {NotificationCenter.default.post(name: KeyboardViewController.shiftStateChangedNotification, object: nil)}}
     }
     
     var autoPeriodState: AutoPeriodState = .noSpace
     
-    lazy var textInterpreter: InputInterpreter = {
-        let interpreter = InputInterpreter()
-        interpreter.delegate = self
-        return interpreter
-    }()
+    lazy var textInterpreter: InputInterpreter = { return InputInterpreter(delegate: self)}()
+    
+    
+    
+    
     
     // MARK: -
     // MARK: Layout Keyboard
