@@ -82,7 +82,6 @@
 		0EA85D1A1DFD2E9500AFB546 /* KeyboardViewItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardViewItem.swift; sourceTree = "<group>"; };
 		0EA85D1B1DFD2E9500AFB546 /* KeyboardViewItemPopup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardViewItemPopup.swift; sourceTree = "<group>"; };
 		0EA85D1C1DFD2E9500AFB546 /* KeyboardView+Layout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "KeyboardView+Layout.swift"; sourceTree = "<group>"; };
-		0EA85D211DFD2FAD00AFB546 /* KeyboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
 		0EA85D231DFD318700AFB546 /* UIColor+ColorScheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+ColorScheme.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -147,7 +146,6 @@
 			isa = PBXGroup;
 			children = (
 				0E28CCDB1DFE640D00BCAC75 /* Utilities */,
-				0EA85D211DFD2FAD00AFB546 /* KeyboardViewController.swift */,
 				0EA85D231DFD318700AFB546 /* UIColor+ColorScheme.swift */,
 				0E1261451DFD680900E7EFE4 /* LayoutConstraints.swift */,
 				0EA85D181DFD2E7A00AFB546 /* View */,
