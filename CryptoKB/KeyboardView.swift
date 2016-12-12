@@ -21,7 +21,7 @@ class KeyboardView: UIView {
     /// to record which page it is now, when page change, re-organize keyboard
     ///
     /// value must be correspoding to data model keyboard
-    var keyboardPage: Int = 2 {
+    var keyboardPage: Int = 0 {
         didSet {
             assembleKeyboardItems()
             layoutKeyboard()

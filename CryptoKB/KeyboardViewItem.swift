@@ -82,7 +82,25 @@ class KeyboardViewItem: UIView {
             addSubview(iconView)
         } else {
             addSubview(inscriptLabel)
-            inscriptLabel.text = key.lowercaseKeyCap ?? "\(key.hashValue)"
+            inscriptLabel.text = (GlobalKeyboardViewController.shiftState.isUppercase ? key.uppercaseKeyCap : key.lowercaseKeyCap) ?? "\(key.hashValue)"
+        }
+    }
+    
+    override func didMoveToSuperview() {
+        super.didMoveToSuperview()
+        if superview != nil {
+            NotificationCenter.default.addObserver(self,
+                                                   selector: #selector(KeyboardViewItem.updateViewItemInscript(_:)),
+                                                   name: KeyboardViewController.shiftStateChangedNotification,
+                                                   object: nil)
+        } else {
+            NotificationCenter.default.removeObserver(self)
+        }
+    }
+    
+    func updateViewItemInscript(_ notification: Notification) {
+        if key.withIcon == false {
+            inscriptLabel.text = (GlobalKeyboardViewController.shiftState.isUppercase ? key.uppercaseKeyCap : key.lowercaseKeyCap) ?? "\(key.hashValue)"
         }
     }
     

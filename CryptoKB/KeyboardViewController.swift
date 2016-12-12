@@ -8,8 +8,10 @@
 
 import UIKit
 
-class KeyboardViewController: UIInputViewController {
-    
+weak var GlobalKeyboardViewController: KeyboardViewController! = nil
+
+final class KeyboardViewController: UIInputViewController {
+    static let shiftStateChangedNotification = Notification.Name("ShiftStateChanged")
     lazy var keyboardView: KeyboardView = {
         return KeyboardView(withDelegate:self);
     }()
@@ -17,6 +19,14 @@ class KeyboardViewController: UIInputViewController {
     lazy var inputViewHeight: CGFloat = 216
     lazy var dummyLabel: UILabel = {let b = UILabel(); b.translatesAutoresizingMaskIntoConstraints = false; return b}()
     var keyboradViewLayoutConstraints: [NSLayoutConstraint] = []
+    
+    var shiftState: ShiftState = .disabled {
+        didSet {
+            if (oldValue != shiftState) {
+                NotificationCenter.default.post(name: KeyboardViewController.shiftStateChangedNotification, object: nil)
+            }
+        }
+    }
     
     // MARK: -
     // MARK: Layout Keyboard
@@ -77,6 +87,7 @@ class KeyboardViewController: UIInputViewController {
     
     override func viewDidLoad(){
         super.viewDidLoad()
+        GlobalKeyboardViewController = self
         view.addSubview(keyboardView)
     }
     
