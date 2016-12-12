@@ -89,6 +89,7 @@ class KeyboardViewItem: UIView {
     override func didMoveToSuperview() {
         super.didMoveToSuperview()
         if superview != nil {
+            NotificationCenter.default.removeObserver(self)
             NotificationCenter.default.addObserver(self,
                                                    selector: #selector(KeyboardViewItem.updateViewItemInscript(_:)),
                                                    name: KeyboardViewController.shiftStateChangedNotification,

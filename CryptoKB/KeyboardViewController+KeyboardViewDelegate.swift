@@ -101,9 +101,6 @@ extension KeyboardViewController: KeyboardViewDelegate {
     }
     func pressShiftDown(_ sender: KeyboardViewItem) {
         print("\(#function):\(#line)")
-    }
-    func pressShiftUpInside(_ sender: KeyboardViewItem) {
-        print("\(#function):\(#line)")
         switch shiftState {
         case .disabled:
             shiftState = .enabled
@@ -112,6 +109,10 @@ extension KeyboardViewController: KeyboardViewDelegate {
         case .locked:
             shiftState = .disabled
         }
+    }
+    func pressShiftUpInside(_ sender: KeyboardViewItem) {
+        print("\(#function):\(#line)")
+        
     }
     func doubleTapShift(_ sender: KeyboardViewItem) {
         print("\(#function):\(#line)")
