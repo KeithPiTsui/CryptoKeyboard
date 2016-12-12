@@ -105,6 +105,24 @@ class KeyboardViewItem: UIView {
         }
     }
     
+    /// Item Popup
+    func showPopup() {
+        
+    }
+    
+    func hidePopup() {
+        
+    }
+    
+    /// Item Highlight
+    func highlightItem() {
+        
+    }
+    
+    func unhighlightItem() {
+        
+    }
+    
 }
 
 

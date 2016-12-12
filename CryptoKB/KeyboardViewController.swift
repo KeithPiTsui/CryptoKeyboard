@@ -28,6 +28,8 @@ final class KeyboardViewController: UIInputViewController {
         }
     }
     
+    var autoPeriodState: AutoPeriodState = .noSpace
+    
     // MARK: -
     // MARK: Layout Keyboard
     

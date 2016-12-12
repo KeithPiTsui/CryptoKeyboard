@@ -38,7 +38,7 @@ extension KeyboardViewController {
         }
     }
     
-    private func characterIsPunctuation(_ character: Character) -> Bool {
+    func characterIsPunctuation(_ character: Character) -> Bool {
         return [".","!","?"].contains(character)
     }
     
@@ -46,7 +46,7 @@ extension KeyboardViewController {
         return ["\n", "\r"].contains(character)
     }
     
-    private func characterIsWhitespace(_ character: Character) -> Bool {
+    func characterIsWhitespace(_ character: Character) -> Bool {
         // there are others, but who cares
         return [" ", "\n", "\r", "\t"].contains(character)
     }

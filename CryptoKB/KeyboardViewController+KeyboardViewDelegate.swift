@@ -41,9 +41,6 @@ extension KeyboardViewController: KeyboardViewDelegate {
                 if event == .touchDown {
                     pressShiftDown(item)
                 }
-                if event == .touchUpInside {
-                    pressShiftUpInside(item)
-                }
                 if event == .touchDownRepeat {
                     doubleTapShift(item)
                 }
@@ -91,19 +88,22 @@ extension KeyboardViewController: KeyboardViewDelegate {
     }
     
     private func changeKeyboard(_ sender: KeyboardViewItem) {
-        print("\(#function):\(#line)")
+        print("\(#function)")
         advanceToNextInputMode()
     }
+    
     private func pressBackspace(_ sender: KeyboardViewItem) {
-        print("\(#function):\(#line)")
+        print("\(#function)")
         textDocumentProxy.deleteBackward()
         setCapsIfNeeded()
     }
+    
     private func pressBackspaceCancel(_ sender: KeyboardViewItem) {
-        print("\(#function):\(#line)")
+        print("\(#function)")
     }
+    
     private func pressShiftDown(_ sender: KeyboardViewItem) {
-        print("\(#function):\(#line)")
+        print("\(#function)")
         switch shiftState {
         case .disabled:
             shiftState = .enabled
@@ -114,12 +114,8 @@ extension KeyboardViewController: KeyboardViewDelegate {
         }
     }
     
-    private func pressShiftUpInside(_ sender: KeyboardViewItem) {
-        print("\(#function):\(#line)")
-        
-    }
     private func doubleTapShift(_ sender: KeyboardViewItem) {
-        print("\(#function):\(#line)")
+        print("\(#function)")
         switch shiftState {
         case .disabled:
             shiftState = .locked
@@ -129,35 +125,46 @@ extension KeyboardViewController: KeyboardViewDelegate {
             shiftState = .disabled
         }
     }
+    
     private func nextKeyboardPage(_ sender: KeyboardViewItem) {
-        print("\(#function):\(#line)")
+        print("\(#function)")
         guard let page = sender.key.toMode else {return}
         keyboardView.keyboardPage = page
     }
+    
     private func pressSettings(_ sender: KeyboardViewItem) {
-        print("\(#function):\(#line)")
+        print("\(#function)")
     }
+    
     private func pressAnOutputItem(_ sender: KeyboardViewItem) {
-        print("\(#function):\(#line)")
+        print("\(#function)")
         guard let key = sender.key else { return }
         textDocumentProxy.insertText(key.outputForCase(self.shiftState.isUppercase))
+        handleAutoPeriod(key)
         setCapsIfNeeded()
     }
+    
     private func highlightItem(_ sender: KeyboardViewItem) {
-        print("\(#function):\(#line)")
+        print("\(#function)")
+        sender.highlightItem()
     }
+    
     private func unhighlightItem(_ sender: KeyboardViewItem) {
-        print("\(#function):\(#line)")
+        print("\(#function)")
+        sender.unhighlightItem()
     }
-    private func playClickSound(_ sender: KeyboardViewItem){
-        print("\(#function):\(#line)")
-        playKeySound()
-    }
+    
     private func showPopup(_ sender: KeyboardViewItem) {
-        
+        sender.showPopup()
     }
+    
     private func hidePopupDelay(_ sender: KeyboardViewItem){
-        
+        sender.hidePopup()
+    }
+    
+    private func playClickSound(_ sender: KeyboardViewItem){
+        print("\(#function)")
+        playKeySound()
     }
     
     // this only works if full access is enabled
@@ -167,3 +174,7 @@ extension KeyboardViewController: KeyboardViewDelegate {
         }
     }
 }
+
+
+
+
