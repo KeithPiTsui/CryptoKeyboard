@@ -90,6 +90,7 @@ final class KeyboardViewController: UIInputViewController {
     override func viewDidLoad(){
         super.viewDidLoad()
         GlobalKeyboardViewController = self
+        view.clipsToBounds = false
         view.addSubview(keyboardView)
     }
     

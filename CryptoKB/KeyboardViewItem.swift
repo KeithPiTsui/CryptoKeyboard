@@ -16,6 +16,8 @@ class KeyboardViewItem: UIView {
     
     var boundSize: CGSize?
     
+    var popup: UIView?
+    
     lazy var inscriptLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = NSTextAlignment.center
@@ -107,11 +109,12 @@ class KeyboardViewItem: UIView {
     
     /// Item Popup
     func showPopup() {
-        
+        popup = KeyboardViewItemPopup(keyboardViewItem: self)
+        addSubview(popup!)
     }
     
     func hidePopup() {
-        
+        popup?.removeFromSuperview()
     }
     
     /// Item Highlight

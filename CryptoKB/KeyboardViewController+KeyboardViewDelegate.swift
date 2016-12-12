@@ -159,7 +159,9 @@ extension KeyboardViewController: KeyboardViewDelegate {
     }
     
     private func hidePopupDelay(_ sender: KeyboardViewItem){
-        sender.hidePopup()
+        delay(0.2) {
+            sender.hidePopup()
+        }
     }
     
     private func playClickSound(_ sender: KeyboardViewItem){
@@ -172,6 +174,11 @@ extension KeyboardViewController: KeyboardViewDelegate {
         DispatchQueue.global(qos: DispatchQoS.QoSClass.default).async {
             AudioServicesPlaySystemSound(1104)
         }
+    }
+    
+    private func delay(_ delay:Double, closure:@escaping ()->()) {
+        let when = DispatchTime.now() + delay
+        DispatchQueue.main.asyncAfter(deadline: when, execute: closure)
     }
 }
 

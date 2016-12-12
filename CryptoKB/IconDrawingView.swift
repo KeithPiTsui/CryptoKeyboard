@@ -43,7 +43,7 @@ class IconDrawingView: UIView {
         CGColorSpaceCreateDeviceRGB()
         ctx.saveGState()
         defer { ctx.restoreGState() }
-        self.drawCall(self.color ?? UIColor.black)
+        drawCall(color ?? UIColor.black)
     }
 
     
