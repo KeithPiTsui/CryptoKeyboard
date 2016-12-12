@@ -139,7 +139,11 @@ extension KeyboardViewController: KeyboardViewDelegate {
     private func pressAnOutputItem(_ sender: KeyboardViewItem) {
         print("\(#function)")
         guard let key = sender.key else { return }
-        textDocumentProxy.insertText(key.outputForCase(self.shiftState.isUppercase))
+        let outputCharacter = key.outputForCase(self.shiftState.isUppercase)
+        textDocumentProxy.insertText(outputCharacter)
+        
+        textInterpreter.receiveACharacter(char: outputCharacter)
+        
         handleAutoPeriod(key)
         setCapsIfNeeded()
     }

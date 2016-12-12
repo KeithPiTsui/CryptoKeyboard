@@ -21,7 +21,6 @@ class TopBarView: UIView {
         label.isUserInteractionEnabled = false
         label.numberOfLines = 1
         label.textColor = UIColor.keyboardViewItemInscriptColor
-        label.text = "left"
         return label
     }()
 
@@ -37,7 +36,7 @@ class TopBarView: UIView {
         label.isUserInteractionEnabled = false
         label.numberOfLines = 1
         label.textColor = UIColor.keyboardViewItemInscriptColor
-        label.text = "middle"
+        
         return label
     }()
 
@@ -53,7 +52,6 @@ class TopBarView: UIView {
         label.isUserInteractionEnabled = false
         label.numberOfLines = 1
         label.textColor = UIColor.keyboardViewItemInscriptColor
-        label.text = "right"
         return label
     }()
 

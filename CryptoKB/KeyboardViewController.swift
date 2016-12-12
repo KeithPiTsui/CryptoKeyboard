@@ -40,6 +40,12 @@ final class KeyboardViewController: UIInputViewController {
     
     var autoPeriodState: AutoPeriodState = .noSpace
     
+    lazy var textInterpreter: InputInterpreter = {
+        let interpreter = InputInterpreter()
+        interpreter.delegate = self
+        return interpreter
+    }()
+    
     // MARK: -
     // MARK: Layout Keyboard
     

@@ -1,0 +1,19 @@
+{
+    "Cipher":
+    {   "CipherClassName":"Cipher",
+        "CipherName":"Cipher",
+        "CipherDescription":"Raw Cipher without transforming any character",
+        "CipherKeyDescription":"No key required",
+        "CipherKeyValidateRegex":"",
+        "CipherIconName":"Cipher"
+    },
+    
+    "CaesarCipher":
+    {   "CipherClassName":"CaesarCipher",
+        "CipherName":"CaesarCipher",
+        "CipherDescription":"CaesarCipher",
+        "CipherKeyDescription":"Key must be a non-negative number",
+        "CipherKeyValidateRegex":"",
+        "CipherIconName":"CaesarCipher"
+    }
+}
