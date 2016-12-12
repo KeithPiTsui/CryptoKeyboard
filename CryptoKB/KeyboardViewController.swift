@@ -18,6 +18,8 @@ class KeyboardViewController: UIInputViewController {
     lazy var dummyLabel: UILabel = {let b = UILabel(); b.translatesAutoresizingMaskIntoConstraints = false; return b}()
     var keyboradViewLayoutConstraints: [NSLayoutConstraint] = []
     
+    // MARK: -
+    // MARK: Layout Keyboard
     
     override func updateViewConstraints() {
         guard view.frame.width != 0 && view.frame.height != 0 else {return }
@@ -25,8 +27,6 @@ class KeyboardViewController: UIInputViewController {
         setupKeyboardLayoutConstraints()
         super.updateViewConstraints()
     }
-    
-    // MARK: Set up height constraint
     private func setUpHeightConstraint() {
         guard heightConstraint == nil else { heightConstraint.constant = inputViewHeight; return }
         heightConstraint = NSLayoutConstraint(item: view,
@@ -39,7 +39,6 @@ class KeyboardViewController: UIInputViewController {
         heightConstraint.priority = UILayoutPriority(UILayoutPriorityDefaultHigh)
         view.addConstraint(heightConstraint)
     }
-    
     private func setupKeyboardLayoutConstraints() {
         guard keyboradViewLayoutConstraints.isEmpty else { return }
         keyboradViewLayoutConstraints.append( NSLayoutConstraint(item: keyboardView,
@@ -73,6 +72,9 @@ class KeyboardViewController: UIInputViewController {
         view.addConstraints(keyboradViewLayoutConstraints)
     }
     
+    // MARK: -
+    // MARK: View Controller Life Cycle
+    
     override func viewDidLoad(){
         super.viewDidLoad()
         view.addSubview(keyboardView)
@@ -84,6 +86,8 @@ class KeyboardViewController: UIInputViewController {
     }
 }
 
+// MARK: -
+// MARK: Keyboard View Delegate Extension
 extension KeyboardViewController: KeyboardViewDelegate {
 
     func changeKeyboard(_ sender: KeyboardViewItem) {
