@@ -159,12 +159,12 @@
 			isa = PBXGroup;
 			children = (
 				0E1261471DFD75EE00E7EFE4 /* KeyboardViewController.swift */,
-				0E1261491DFD762200E7EFE4 /* IconDrawingView.swift */,
 				0EA85D191DFD2E9500AFB546 /* KeyboardView.swift */,
 				0EA85D1A1DFD2E9500AFB546 /* KeyboardViewItem.swift */,
 				0EA85D1B1DFD2E9500AFB546 /* KeyboardViewItemPopup.swift */,
 				0EA85D1C1DFD2E9500AFB546 /* KeyboardViewLayout.swift */,
 				0E3C9F201DFD943300D44E51 /* KeyboardViewDelegate.swift */,
+				0E1261491DFD762200E7EFE4 /* IconDrawingView.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";

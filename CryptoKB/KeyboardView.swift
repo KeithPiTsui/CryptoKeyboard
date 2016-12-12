@@ -9,25 +9,20 @@
 import UIKit
 
 class KeyboardView: UIView {
-
     weak var delegate: KeyboardViewDelegate?
-    
-    lazy var item: KeyboardViewItem = KeyboardViewItem(key: self.keyboard.keys[0][0][0]!)
-    lazy var item2: KeyboardViewItem = KeyboardViewItem(key: self.keyboard.keys[0][0][1]!)
     let keyboard: Keyboard = Keyboard.defaultKeyboard
-    
     var itemPool: [KeyboardViewItem] = []
-    
     var keyboardPage: Int = 2 {
         didSet {
             assembleKeyboardItems()
             positionKeyboardItems()
         }
     }
+    var frameSize: CGSize?
     
     init(frame: CGRect = CGRect.zero, withDelegate delegate: KeyboardViewDelegate? = nil) {
         super.init(frame: frame)
-        
+        translatesAutoresizingMaskIntoConstraints = false
         self.delegate = delegate
         backgroundColor = UIColor.keyboardViewBackgroundColor
         isMultipleTouchEnabled = true
@@ -43,9 +38,24 @@ class KeyboardView: UIView {
     // MARK: -
     // MARK: Item Assembling and Layout
     
+    override func layoutSubviews() {
+        print("\(#function) Keyboard View Super view frame: \(superview?.frame)")
+        print("\(#function) Keyboard View Super view frame: \(frame)")
+        super.layoutSubviews()
+        
+        if frameSize == nil || frame.size.equalTo(frameSize!) == false {
+            frameSize = frame.size
+            self.layoutKeyboard()
+        }
+        print("\(#function) layout completed")
+        
+        
+    }
+    
     func layoutKeyboard () {
-        guard let superview = superview else { return }
-        frame = superview.frame
+        print("\(#function)")
+//        guard let superview = superview else { return }
+//        frame = superview.frame
         positionKeyboardItems()
     }
     
@@ -274,8 +284,6 @@ class KeyboardView: UIView {
     }
     
     
-    
-    
     // MARK: -
     // MARK: Touch Detection
     
@@ -294,7 +302,6 @@ class KeyboardView: UIView {
             }
         }
     }
-    
     
     private func findNearestView(_ position: CGPoint) -> UIView? {
         guard self.bounds.contains(position) && !subviews.isEmpty else { return nil}
@@ -409,6 +416,7 @@ class KeyboardView: UIView {
             touchToView[touch] = nil
         }
     }
+    
 }
 
 

@@ -42,19 +42,15 @@ class KeyboardViewItem: UIControl {
         }
         return iv
     }()
-
-    
     
     init(frame: CGRect = CGRect.zero, key: Key? = nil) {
         self.key = key
         super.init(frame: frame)
         backgroundColor = UIColor.keyboardViewItemBackgroundColor
-        //clipsToBounds = true
         layer.cornerRadius = 6
         layer.shadowOffset = CGSize(width: 2, height: 2)
         layer.shadowColor = UIColor.darkGray.cgColor
         layer.shadowOpacity = 1
-        //layer.shadowRadius = 6
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -62,6 +58,10 @@ class KeyboardViewItem: UIControl {
     }
 
     override func layoutSubviews() {
+        
+        print("\(#function) Keyboard View Super view frame: \(superview?.frame)")
+        print("\(#function) Keyboard View Super view frame: \(frame)")
+        
         if key.withIcon {
             iconView.frame = CGRect(x: 4, y: 4, width: frame.width - 8, height: frame.height - 8)
             iconView.setNeedsLayout()
@@ -69,6 +69,8 @@ class KeyboardViewItem: UIControl {
             inscriptLabel.frame = CGRect(x: 0, y: 0, width: frame.width, height: frame.height)
         }
         super.layoutSubviews()
+        
+        print("\(#function) layout completed")
     }
     
     private func installKey() {
