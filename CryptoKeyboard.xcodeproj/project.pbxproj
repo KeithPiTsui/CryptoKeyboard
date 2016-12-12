@@ -14,6 +14,7 @@
 		0E28CCD61DFE480200BCAC75 /* KeyboardViewController+KeyboardViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E28CCD51DFE480200BCAC75 /* KeyboardViewController+KeyboardViewDelegate.swift */; };
 		0E28CCD81DFE532800BCAC75 /* KeyboardViewController+AutoCap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E28CCD71DFE532800BCAC75 /* KeyboardViewController+AutoCap.swift */; };
 		0E28CCDA1DFE551000BCAC75 /* KeyboardViewController+AutoSuffixPeriod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E28CCD91DFE551000BCAC75 /* KeyboardViewController+AutoSuffixPeriod.swift */; };
+		0E28CCDD1DFE643A00BCAC75 /* UsefulFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E28CCDC1DFE643A00BCAC75 /* UsefulFunctions.swift */; };
 		0E3C9F211DFD943300D44E51 /* KeyboardViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E3C9F201DFD943300D44E51 /* KeyboardViewDelegate.swift */; };
 		0E6B6A321DFA4ABD00712C0A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6B6A311DFA4ABD00712C0A /* AppDelegate.swift */; };
 		0E6B6A341DFA4ABD00712C0A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6B6A331DFA4ABD00712C0A /* ViewController.swift */; };
@@ -62,6 +63,7 @@
 		0E28CCD51DFE480200BCAC75 /* KeyboardViewController+KeyboardViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "KeyboardViewController+KeyboardViewDelegate.swift"; sourceTree = "<group>"; };
 		0E28CCD71DFE532800BCAC75 /* KeyboardViewController+AutoCap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "KeyboardViewController+AutoCap.swift"; sourceTree = "<group>"; };
 		0E28CCD91DFE551000BCAC75 /* KeyboardViewController+AutoSuffixPeriod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "KeyboardViewController+AutoSuffixPeriod.swift"; sourceTree = "<group>"; };
+		0E28CCDC1DFE643A00BCAC75 /* UsefulFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsefulFunctions.swift; sourceTree = "<group>"; };
 		0E3C9F201DFD943300D44E51 /* KeyboardViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardViewDelegate.swift; sourceTree = "<group>"; };
 		0E6B6A2E1DFA4ABD00712C0A /* CryptoKeyboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CryptoKeyboard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E6B6A311DFA4ABD00712C0A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -101,6 +103,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0E28CCDB1DFE640D00BCAC75 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				0E28CCDC1DFE643A00BCAC75 /* UsefulFunctions.swift */,
+			);
+			name = Utilities;
+			sourceTree = "<group>";
+		};
 		0E6B6A251DFA4ABD00712C0A = {
 			isa = PBXGroup;
 			children = (
@@ -135,6 +145,7 @@
 		0E6B6A481DFA4AE400712C0A /* CryptoKB */ = {
 			isa = PBXGroup;
 			children = (
+				0E28CCDB1DFE640D00BCAC75 /* Utilities */,
 				0EA85D211DFD2FAD00AFB546 /* KeyboardViewController.swift */,
 				0EA85D231DFD318700AFB546 /* UIColor+ColorScheme.swift */,
 				0E1261451DFD680900E7EFE4 /* LayoutConstraints.swift */,
@@ -304,6 +315,7 @@
 				0E28CCD41DFE3C3900BCAC75 /* KeyboardView+Touch.swift in Sources */,
 				0E12614A1DFD762200E7EFE4 /* IconDrawingView.swift in Sources */,
 				0E28CCDA1DFE551000BCAC75 /* KeyboardViewController+AutoSuffixPeriod.swift in Sources */,
+				0E28CCDD1DFE643A00BCAC75 /* UsefulFunctions.swift in Sources */,
 				0E3C9F211DFD943300D44E51 /* KeyboardViewDelegate.swift in Sources */,
 				0EA85D1E1DFD2E9500AFB546 /* KeyboardViewItem.swift in Sources */,
 				0EA85D161DFD2E3700AFB546 /* Keyboard.swift in Sources */,
