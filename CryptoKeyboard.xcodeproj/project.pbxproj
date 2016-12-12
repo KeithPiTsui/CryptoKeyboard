@@ -15,6 +15,7 @@
 		0E28CCD81DFE532800BCAC75 /* KeyboardViewController+AutoCap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E28CCD71DFE532800BCAC75 /* KeyboardViewController+AutoCap.swift */; };
 		0E28CCDA1DFE551000BCAC75 /* KeyboardViewController+AutoSuffixPeriod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E28CCD91DFE551000BCAC75 /* KeyboardViewController+AutoSuffixPeriod.swift */; };
 		0E28CCDD1DFE643A00BCAC75 /* UsefulFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E28CCDC1DFE643A00BCAC75 /* UsefulFunctions.swift */; };
+		0E28CCDF1DFE6D7A00BCAC75 /* TopBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E28CCDE1DFE6D7A00BCAC75 /* TopBarView.swift */; };
 		0E3C9F211DFD943300D44E51 /* KeyboardViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E3C9F201DFD943300D44E51 /* KeyboardViewDelegate.swift */; };
 		0E6B6A321DFA4ABD00712C0A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6B6A311DFA4ABD00712C0A /* AppDelegate.swift */; };
 		0E6B6A341DFA4ABD00712C0A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6B6A331DFA4ABD00712C0A /* ViewController.swift */; };
@@ -64,6 +65,7 @@
 		0E28CCD71DFE532800BCAC75 /* KeyboardViewController+AutoCap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "KeyboardViewController+AutoCap.swift"; sourceTree = "<group>"; };
 		0E28CCD91DFE551000BCAC75 /* KeyboardViewController+AutoSuffixPeriod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "KeyboardViewController+AutoSuffixPeriod.swift"; sourceTree = "<group>"; };
 		0E28CCDC1DFE643A00BCAC75 /* UsefulFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsefulFunctions.swift; sourceTree = "<group>"; };
+		0E28CCDE1DFE6D7A00BCAC75 /* TopBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopBarView.swift; sourceTree = "<group>"; };
 		0E3C9F201DFD943300D44E51 /* KeyboardViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardViewDelegate.swift; sourceTree = "<group>"; };
 		0E6B6A2E1DFA4ABD00712C0A /* CryptoKeyboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CryptoKeyboard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E6B6A311DFA4ABD00712C0A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -73,7 +75,6 @@
 		0E6B6A3B1DFA4ABD00712C0A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0E6B6A3D1DFA4ABD00712C0A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0E6B6A471DFA4AE400712C0A /* CryptoKB.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = CryptoKB.appex; sourceTree = BUILT_PRODUCTS_DIR; };
-		0E6B6A491DFA4AE400712C0A /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
 		0E6B6A4B1DFA4AE400712C0A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0EA85D111DFD2E3700AFB546 /* DefaultKeyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultKeyboard.swift; sourceTree = "<group>"; };
 		0EA85D131DFD2E3700AFB546 /* Keyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keyboard.swift; sourceTree = "<group>"; };
@@ -159,7 +160,6 @@
 		0E6B6A551DFA4B5400712C0A /* SupportingFiles */ = {
 			isa = PBXGroup;
 			children = (
-				0E6B6A491DFA4AE400712C0A /* KeyboardViewController.swift */,
 				0E6B6A4B1DFA4AE400712C0A /* Info.plist */,
 			);
 			name = SupportingFiles;
@@ -168,8 +168,8 @@
 		0EA85D171DFD2E3900AFB546 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				0EA85D111DFD2E3700AFB546 /* DefaultKeyboard.swift */,
 				0EA85D131DFD2E3700AFB546 /* Keyboard.swift */,
+				0EA85D111DFD2E3700AFB546 /* DefaultKeyboard.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -177,6 +177,7 @@
 		0EA85D181DFD2E7A00AFB546 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				0E28CCDE1DFE6D7A00BCAC75 /* TopBarView.swift */,
 				0E1261471DFD75EE00E7EFE4 /* KeyboardViewController.swift */,
 				0E28CCD51DFE480200BCAC75 /* KeyboardViewController+KeyboardViewDelegate.swift */,
 				0E28CCD71DFE532800BCAC75 /* KeyboardViewController+AutoCap.swift */,
@@ -307,6 +308,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0EA85D241DFD318700AFB546 /* UIColor+ColorScheme.swift in Sources */,
+				0E28CCDF1DFE6D7A00BCAC75 /* TopBarView.swift in Sources */,
 				0E1261481DFD75EE00E7EFE4 /* KeyboardViewController.swift in Sources */,
 				0EA85D141DFD2E3700AFB546 /* DefaultKeyboard.swift in Sources */,
 				0EA85D1D1DFD2E9500AFB546 /* KeyboardView.swift in Sources */,

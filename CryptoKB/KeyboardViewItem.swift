@@ -109,6 +109,7 @@ class KeyboardViewItem: UIView {
     
     /// Item Popup
     func showPopup() {
+        popup?.removeFromSuperview()
         popup = KeyboardViewItemPopup(keyboardViewItem: self)
         addSubview(popup!)
     }

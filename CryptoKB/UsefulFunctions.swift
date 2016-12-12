@@ -8,8 +8,8 @@
 
 import UIKit
 
-func delay(_ delay:Double, closure:@escaping ()->()) {
-    let when = DispatchTime.now() + delay
+func delay(_ seconds:Double, closure:@escaping ()->()) {
+    let when = DispatchTime.now() + seconds
     DispatchQueue.main.asyncAfter(deadline: when, execute: closure)
 }
 

@@ -159,7 +159,7 @@ extension KeyboardViewController: KeyboardViewDelegate {
     }
     
     private func hidePopupDelay(_ sender: KeyboardViewItem){
-        delay(0.2) {
+        delay(0.1) {
             sender.hidePopup()
         }
     }
