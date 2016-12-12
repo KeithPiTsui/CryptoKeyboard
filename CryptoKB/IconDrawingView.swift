@@ -47,7 +47,7 @@ class IconDrawingView: UIView {
     }
 
     
-    var color: UIColor? {didSet {if self.color != nil {self.setNeedsDisplay()}}}
+    var color: UIColor? {didSet {if self.color != nil {setNeedsDisplay()}}}
     
     convenience init() {
         self.init(frame: CGRect.zero)
@@ -171,8 +171,6 @@ fileprivate func drawShift(_ bounds: CGRect, color: UIColor, withRect: Bool) {
     let yScalingFactor = factors.yScalingFactor
 
     drawInContext(CGSize(width: 38 * xScalingFactor, height: (withRect ? 34 + 4 : 32) * yScalingFactor), toRect: bounds){
-        //// Color Declarations
-        let color2 = color
         
         //// Bezier Drawing
         let bezierPath = UIBezierPath()
@@ -199,14 +197,14 @@ fileprivate func drawShift(_ bounds: CGRect, color: UIColor, withRect: Bool) {
                             controlPoint1: CGPoint(x: 28 * xScalingFactor, y: 26 * yScalingFactor),
                             controlPoint2: CGPoint(x: 28 * xScalingFactor, y: 18 * yScalingFactor))
         bezierPath.close()
-        color2.setFill()
-        bezierPath.fill()
+        color.setStroke()
+        bezierPath.stroke()
         
         if withRect {
             //// Rectangle Drawing
             let rectanglePath = UIBezierPath(rect: CGRect(x: 10 * xScalingFactor, y: 34 * yScalingFactor, width: 18 * xScalingFactor, height: 4 * yScalingFactor))
-            color2.setFill()
-            rectanglePath.fill()
+            color.setStroke()
+            rectanglePath.stroke()
         }
     }
 }

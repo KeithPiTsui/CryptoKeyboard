@@ -16,47 +16,47 @@ protocol TopBarViewDelegate {
 class TopBarView: UIView {
     var leftLabel: UILabel = {
         let label = UILabel()
-        label.backgroundColor = UIColor.darkGray
+        label.backgroundColor = UIColor.clear
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = NSTextAlignment.center
         label.baselineAdjustment = UIBaselineAdjustment.alignCenters
-        label.font = label.font.withSize(20)
+        label.font = KeyboardAppearanceScheme.topBarInscriptFont
         label.adjustsFontSizeToFitWidth = true
         label.minimumScaleFactor = 0.1
         label.isUserInteractionEnabled = false
         label.numberOfLines = 1
-        label.textColor = UIColor.keyboardViewItemInscriptColor
+        label.textColor = UIColor.topBarInscriptColor
         return label
     }()
 
     var middleLabel: UILabel = {
         let label = UILabel()
-        label.backgroundColor = UIColor.darkGray
+        label.backgroundColor = UIColor.clear
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = NSTextAlignment.center
         label.baselineAdjustment = UIBaselineAdjustment.alignCenters
-        label.font = label.font.withSize(20)
+        label.font = KeyboardAppearanceScheme.topBarInscriptFont
         label.adjustsFontSizeToFitWidth = true
         label.minimumScaleFactor = 0.1
         label.isUserInteractionEnabled = false
         label.numberOfLines = 1
-        label.textColor = UIColor.keyboardViewItemInscriptColor
+        label.textColor = UIColor.topBarInscriptColor
         
         return label
     }()
 
     var rightLabel: UILabel = {
         let label = UILabel()
-        label.backgroundColor = UIColor.darkGray
+        label.backgroundColor = UIColor.clear
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = NSTextAlignment.center
         label.baselineAdjustment = UIBaselineAdjustment.alignCenters
-        label.font = label.font.withSize(20)
+        label.font = KeyboardAppearanceScheme.topBarInscriptFont
         label.adjustsFontSizeToFitWidth = true
         label.minimumScaleFactor = 0.1
         label.isUserInteractionEnabled = false
         label.numberOfLines = 1
-        label.textColor = UIColor.keyboardViewItemInscriptColor
+        label.textColor = UIColor.topBarInscriptColor
         return label
     }()
 
@@ -68,6 +68,7 @@ class TopBarView: UIView {
         super.init(frame: frame)
         isMultipleTouchEnabled = true
         isUserInteractionEnabled = true
+        backgroundColor = UIColor.topBarBackgroundColor
         assembleUIElements()
     }
     

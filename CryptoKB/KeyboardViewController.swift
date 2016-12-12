@@ -23,8 +23,6 @@ final class KeyboardViewController: UIInputViewController {
     lazy var topBar: TopBarView = {
         let tbv = TopBarView(delegate:self)
         tbv.translatesAutoresizingMaskIntoConstraints = false
-        tbv.backgroundColor = UIColor.lightGray
-        tbv.alpha = 0.8
         return tbv
     }()
     

@@ -22,7 +22,7 @@ class KeyboardViewItem: UIView {
         let label = UILabel()
         label.textAlignment = NSTextAlignment.center
         label.baselineAdjustment = UIBaselineAdjustment.alignCenters
-        label.font = label.font.withSize(20)
+        label.font = KeyboardAppearanceScheme.keyboardViewItemInscriptFont
         label.adjustsFontSizeToFitWidth = true
         label.minimumScaleFactor = 0.1
         label.isUserInteractionEnabled = false
@@ -36,10 +36,12 @@ class KeyboardViewItem: UIView {
         switch self.key.type {
         case .shift:
             iv = ShiftIconView()
+            iv.color = UIColor.shiftIconDrawingColor
         case .backspace:
             iv = BackspaceIconView()
         case .keyboardChange:
             iv = GlobeIconView()
+            iv.color = UIColor.globalDrawingColor
         default:
             break
         }
@@ -51,9 +53,9 @@ class KeyboardViewItem: UIView {
         super.init(frame: frame)
         backgroundColor = UIColor.keyboardViewItemBackgroundColor
         layer.cornerRadius = 6
-        layer.shadowOffset = CGSize(width: 2, height: 2)
-        layer.shadowColor = UIColor.darkGray.cgColor
-        layer.shadowOpacity = 1
+//        layer.shadowOffset = CGSize(width: 2, height: 2)
+//        layer.shadowColor = UIColor.darkGray.cgColor
+//        layer.shadowOpacity = 1
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -109,22 +111,50 @@ class KeyboardViewItem: UIView {
     
     /// Item Popup
     func showPopup() {
-        popup?.removeFromSuperview()
-        popup = KeyboardViewItemPopup(keyboardViewItem: self)
-        addSubview(popup!)
+        UIView.animate(withDuration: 0.1) {
+            self.backgroundColor = UIColor.keyboardViewItemHighlightedBackgroundColor
+        }
+        
     }
     
     func hidePopup() {
-        popup?.removeFromSuperview()
+        UIView.animate(withDuration: 0.1) {
+            self.backgroundColor = UIColor.keyboardViewItemBackgroundColor
+        }
     }
     
     /// Item Highlight
     func highlightItem() {
-        
+
     }
     
     func unhighlightItem() {
         
+    }
+    
+    func shiftEnable() {
+        guard key.type == .shift else { return }
+        UIView.animate(withDuration: 0.1) {
+            self.iconView.color = UIColor.shiftIconHighlightDrawingColor
+            self.layer.borderWidth = 0
+        }
+    }
+    
+    func shiftDisable() {
+        guard key.type == .shift else { return }
+        UIView.animate(withDuration: 0.1) {
+            self.iconView.color = UIColor.shiftIconDrawingColor
+            self.layer.borderWidth = 0
+        }
+    }
+    
+    func shiftLocked() {
+        guard key.type == .shift, let shiftView = iconView as? ShiftIconView else { return }
+        UIView.animate(withDuration: 0.1) {
+            shiftView.color = UIColor.shiftIconHighlightDrawingColor
+            self.layer.borderWidth = 1
+            self.layer.borderColor = UIColor.shiftIconHighlightDrawingColor.cgColor
+        }
     }
     
 }

@@ -103,16 +103,21 @@ extension KeyboardViewController: KeyboardViewDelegate {
         print("\(#function)")
     }
     
+    
     private func pressShiftDown(_ sender: KeyboardViewItem) {
         print("\(#function)")
         switch shiftState {
         case .disabled:
             shiftState = .enabled
+            sender.shiftEnable()
         case .enabled:
             shiftState = .disabled
+            sender.shiftDisable()
         case .locked:
             shiftState = .disabled
+            sender.shiftDisable()
         }
+        
     }
     
     private func doubleTapShift(_ sender: KeyboardViewItem) {
@@ -120,10 +125,13 @@ extension KeyboardViewController: KeyboardViewDelegate {
         switch shiftState {
         case .disabled:
             shiftState = .locked
+            sender.shiftLocked()
         case .enabled:
             shiftState = .locked
+            sender.shiftLocked()
         case .locked:
             shiftState = .disabled
+            sender.shiftDisable()
         }
     }
     
