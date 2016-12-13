@@ -134,15 +134,10 @@ struct SpellChecker {
     }
     
     init?(contentsOfFile file: String) {
-        
         guard let filePath = Bundle.main.path(forResource: file, ofType: nil) else {return nil}
-        
-        if let text = (try? String(contentsOfFile: filePath, encoding: String.Encoding.utf8))?.lowercased() {
-            let words = text.unicodeScalars.split { !("a"..."z").contains($0) }.map { String($0) }
-            for word in words { self.train(word: word) }
-        } else {
-            return nil
-        }
+        guard let text = (try? String(contentsOfFile: filePath, encoding: String.Encoding.utf8))?.lowercased() else {return nil}
+        let words = text.unicodeScalars.split { !("a"..."z").contains($0) }.map { String($0) }
+        for word in words { self.train(word: word) }
     }
 
     func known<S: Sequence>(words: S) -> Set<String>? where S.Iterator.Element == String {
@@ -160,12 +155,16 @@ struct SpellChecker {
         return known_edits.isEmpty ? nil : known_edits
     }
     
-    func correct(word: String) -> String {
+    func correct(word: String) -> [String] {
         let candidates = known(words: [word]) ?? known(words: edits(word: word)) ?? knownEdits2(word: word)
         if candidates != nil {
-            return candidates!.reduce(word) {(knownWords[$0] ?? 1) < (knownWords[$1] ?? 1) ? $1 : $0}
+            return candidates!.reduce([]) {
+                var strs = $0.0
+                strs.append($0.1)
+                return strs
+            }
         } else {
-            return word
+            return [word]
         }
     }
 }

@@ -172,7 +172,7 @@ func printFontNames() {
 
 func testSpellingAutoCorrector() {
     let checker = SpellChecker(contentsOfFile: "words.txt")
-    let checkedWord = checker?.correct(word: "hlelo")
+    let checkedWord = checker?.correct(word: "hello")
     print(checkedWord)
 }
 
