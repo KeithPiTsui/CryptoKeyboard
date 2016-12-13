@@ -46,7 +46,7 @@ extension KeyboardViewController: KeyboardViewDelegate {
                 }
                 
             case .modeChange:
-                if event == .touchDown {
+                if event == .touchUpInside {
                     nextKeyboardPage(item)
                 }
             case .settings:
@@ -109,13 +109,10 @@ extension KeyboardViewController: KeyboardViewDelegate {
         switch shiftState {
         case .disabled:
             shiftState = .enabled
-            sender.shiftEnable()
         case .enabled:
             shiftState = .disabled
-            sender.shiftDisable()
         case .locked:
             shiftState = .disabled
-            sender.shiftDisable()
         }
         
     }
@@ -125,13 +122,10 @@ extension KeyboardViewController: KeyboardViewDelegate {
         switch shiftState {
         case .disabled:
             shiftState = .locked
-            sender.shiftLocked()
         case .enabled:
             shiftState = .locked
-            sender.shiftLocked()
         case .locked:
             shiftState = .disabled
-            sender.shiftDisable()
         }
     }
     
@@ -149,10 +143,13 @@ extension KeyboardViewController: KeyboardViewDelegate {
         print("\(#function)")
         guard let key = sender.key else { return }
         let outputCharacter = key.outputForCase(self.shiftState.isUppercase)
-        //textDocumentProxy.insertText(outputCharacter)
-        
-        textInterpreter.receiveACharacter(char: outputCharacter)
-        
+        if key.isCharacter {
+            textInterpreter.receiveACharacter(char: outputCharacter)
+        } else {
+            textDocumentProxy.insertText(outputCharacter)
+            textInterpreter.resetState()
+            topBar.resetLabels()
+        }
         handleAutoPeriod(key)
         setCapsIfNeeded()
     }
@@ -172,9 +169,7 @@ extension KeyboardViewController: KeyboardViewDelegate {
     }
     
     private func hidePopupDelay(_ sender: KeyboardViewItem){
-        delay(0.1) {
-            sender.hidePopup()
-        }
+        sender.hidePopup()
     }
     
     private func playClickSound(_ sender: KeyboardViewItem){

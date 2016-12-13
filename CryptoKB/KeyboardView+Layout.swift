@@ -47,8 +47,6 @@ extension KeyboardView {
         }
         keyboardViewItem.key = key
         
-        //bindKey(key: key, withKeyboardViewItem: keyboardViewItem)
-        
         return keyboardViewItem
     }
     

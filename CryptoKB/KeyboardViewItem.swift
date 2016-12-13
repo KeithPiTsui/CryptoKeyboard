@@ -31,7 +31,18 @@ class KeyboardViewItem: UIView {
         return label
     }()
     
-    lazy var iconView: IconDrawingView! = {
+    private var _iconView: IconDrawingView?
+    
+    var iconView: IconDrawingView {
+        if _iconView != nil {
+            return _iconView!
+        } else {
+            _iconView = iconDrawingView()
+            return _iconView!
+        }
+    }
+    
+    private func iconDrawingView() -> IconDrawingView {
         var iv: IconDrawingView! = nil
         switch self.key.type {
         case .shift:
@@ -49,7 +60,7 @@ class KeyboardViewItem: UIView {
             break
         }
         return iv
-    }()
+    }
     
     init(frame: CGRect = CGRect.zero, key: Key? = nil) {
         self.key = key
@@ -82,7 +93,9 @@ class KeyboardViewItem: UIView {
         for v in subviews {
             v.removeFromSuperview()
         }
+        
         if key.withIcon {
+            _iconView = nil
             addSubview(iconView)
         } else {
             addSubview(inscriptLabel)
@@ -95,7 +108,7 @@ class KeyboardViewItem: UIView {
         if superview != nil {
             NotificationCenter.default.removeObserver(self)
             NotificationCenter.default.addObserver(self,
-                                                   selector: #selector(KeyboardViewItem.updateViewItemInscript(_:)),
+                                                   selector: #selector(KeyboardViewItem.handleShiftStateChangedNotification(_:)),
                                                    name: KeyboardViewController.shiftStateChangedNotification,
                                                    object: nil)
         } else {
@@ -103,10 +116,31 @@ class KeyboardViewItem: UIView {
         }
     }
     
-    func updateViewItemInscript(_ notification: Notification) {
+    func handleShiftStateChangedNotification(_ notification: Notification) {
         if key.withIcon == false {
             inscriptLabel.text = (GlobalKeyboardViewController.shiftState.isUppercase ? key.uppercaseKeyCap : key.lowercaseKeyCap) ?? "\(key.hashValue)"
         }
+        if key.type == .shift {
+            switch GlobalKeyboardViewController.shiftState {
+            case .enabled:
+                UIView.animate(withDuration: 0.1) {
+                    self.iconView.color = UIColor.shiftIconHighlightDrawingColor
+                    self.layer.borderWidth = 0
+                }
+            case .disabled:
+                UIView.animate(withDuration: 0.1) {
+                    self.iconView.color = UIColor.shiftIconDrawingColor
+                    self.layer.borderWidth = 0
+                }
+            case .locked:
+                UIView.animate(withDuration: 0.1) {
+                    self.iconView.color = UIColor.shiftIconHighlightDrawingColor
+                    self.layer.borderWidth = 1
+                    self.layer.borderColor = UIColor.shiftIconHighlightDrawingColor.cgColor
+                }
+            }
+        }
+        
     }
     
     /// Item Popup
@@ -131,32 +165,6 @@ class KeyboardViewItem: UIView {
     func unhighlightItem() {
         
     }
-    
-    func shiftEnable() {
-        guard key.type == .shift else { return }
-        UIView.animate(withDuration: 0.1) {
-            self.iconView.color = UIColor.shiftIconHighlightDrawingColor
-            self.layer.borderWidth = 0
-        }
-    }
-    
-    func shiftDisable() {
-        guard key.type == .shift else { return }
-        UIView.animate(withDuration: 0.1) {
-            self.iconView.color = UIColor.shiftIconDrawingColor
-            self.layer.borderWidth = 0
-        }
-    }
-    
-    func shiftLocked() {
-        guard key.type == .shift, let shiftView = iconView as? ShiftIconView else { return }
-        UIView.animate(withDuration: 0.1) {
-            shiftView.color = UIColor.shiftIconHighlightDrawingColor
-            self.layer.borderWidth = 1
-            self.layer.borderColor = UIColor.shiftIconHighlightDrawingColor.cgColor
-        }
-    }
-    
 }
 
 
