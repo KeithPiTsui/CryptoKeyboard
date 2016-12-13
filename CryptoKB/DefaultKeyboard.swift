@@ -43,8 +43,8 @@ fileprivate var keyRepresentations:
 (.modeChange,   nil,  "123",    1,      0, 3 ,0),
 (.keyboardChange, nil,  nil,    nil,    1, 3 ,0),
 (.settings,     nil,    nil,    nil,    2, 3 ,0),
-(.space,        " ","space",    nil,    3, 3 ,0),
-(.return,      "\n","Return",   nil,    4, 3 ,0),
+(.space,        " ",    nil,    nil,    3, 3 ,0),
+(.return,      "\n","Ret",   nil,    4, 3 ,0),
 
 (.specialCharacter,"1", nil,    nil,    0, 0 ,1),
 (.specialCharacter,"2", nil,    nil,    1, 0 ,1),
@@ -79,7 +79,7 @@ fileprivate var keyRepresentations:
 (.modeChange,   nil,  "ABC",    0,      0, 3 ,1),
 (.keyboardChange,   nil,nil,    nil,    1, 3 ,1),
 (.settings,         nil,nil,    nil,    2, 3 ,1),
-(.space,        " ","space",    nil,    3, 3 ,1),
+(.space,        " ",    nil,    nil,    3, 3 ,1),
 (.return,      "\n","Return",   nil,    4, 3 ,1),
 
 (.specialCharacter,"[", nil,    nil,    0, 0 ,2),
@@ -115,7 +115,7 @@ fileprivate var keyRepresentations:
 (.modeChange,   nil,  "ABC",    0,      0, 3 ,2),
 (.keyboardChange,   nil,nil,    nil,    1, 3 ,2),
 (.settings,         nil,nil,    nil,    2, 3 ,2),
-(.space,        " ","space",    nil,    3, 3 ,2),
+(.space,        " ",    nil,    nil,    3, 3 ,2),
 (.return,      "\n","Return",   nil,    4, 3 ,2),
 ]
 

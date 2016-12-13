@@ -14,6 +14,18 @@ import UIKit
 // SHAPE OBJECTS //
 ///////////////////
 
+final class ReturnIconView: IconDrawingView{
+    override func drawCall(_ color: UIColor) {
+        drawReturnArrow(bounds, color: color)
+    }
+}
+
+final class SettingIconView: IconDrawingView {
+    override func drawCall(_ color: UIColor) {
+        drawGear(bounds, color: color)
+    }
+}
+
 final class BackspaceIconView: IconDrawingView {
     var inscriptColor: UIColor = UIColor.white {didSet{setNeedsDisplay()}}
     override func drawCall(_ color: UIColor) {
@@ -300,3 +312,48 @@ fileprivate func drawGlobe(_ bounds: CGRect, color: UIColor) {
     
     }
 }
+
+fileprivate func drawGear(_ bounds: CGRect, color: UIColor) {
+    let factors = getFactors(CGSize(width: 40, height: 40), toRect: bounds)
+    let xScalingFactor = factors.xScalingFactor
+    let yScalingFactor = factors.yScalingFactor
+    drawInContext(CGSize(width: 40 * xScalingFactor, height: 40 * yScalingFactor), toRect: bounds){
+        guard let img = UIImage(named: "gear"), let ctx = UIGraphicsGetCurrentContext() else { return }
+        let rect = CGRect(x:0, y:0, width: 40 * xScalingFactor, height: 40 * xScalingFactor)
+        ctx.setBlendMode(.sourceIn)
+        ctx.setFillColor(color.cgColor)
+        ctx.fill(rect)
+        img.draw(in: rect)
+    }
+}
+
+fileprivate func drawReturnArrow(_ bounds: CGRect, color: UIColor) {
+    let factors = getFactors(CGSize(width: 57, height: 36), toRect: bounds)
+    let xScalingFactor = factors.xScalingFactor
+    let yScalingFactor = factors.yScalingFactor
+    drawInContext(CGSize(width: 57 * xScalingFactor, height: 36 * yScalingFactor), toRect: bounds){
+        guard let img = UIImage(named: "returnArrow"), let ctx = UIGraphicsGetCurrentContext() else { return }
+        let rect = CGRect(x:0, y:0, width: 57 * xScalingFactor, height: 36 * xScalingFactor)
+        ctx.setBlendMode(.sourceIn)
+        ctx.setFillColor(color.cgColor)
+        ctx.fill(rect)
+        img.draw(in: rect)
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

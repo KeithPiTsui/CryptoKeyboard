@@ -56,6 +56,12 @@ class KeyboardViewItem: UIView {
         case .keyboardChange:
             iv = GlobeIconView()
             iv.color = UIColor.globalDrawingColor
+        case .settings:
+            iv = SettingIconView()
+            iv.color = UIColor.globalDrawingColor
+        case .return:
+            iv = ReturnIconView()
+            iv.color = UIColor.globalDrawingColor
         default:
             break
         }
@@ -66,6 +72,7 @@ class KeyboardViewItem: UIView {
         self.key = key
         super.init(frame: frame)
         backgroundColor = UIColor.keyboardViewItemBackgroundColor
+        clipsToBounds = true
         layer.cornerRadius = 6
     }
     
@@ -90,16 +97,20 @@ class KeyboardViewItem: UIView {
     }
     
     private func installKey() {
-        for v in subviews {
-            v.removeFromSuperview()
-        }
+        for v in subviews { v.removeFromSuperview()}
         
         if key.withIcon {
             _iconView = nil
             addSubview(iconView)
         } else {
             addSubview(inscriptLabel)
-            inscriptLabel.text = (GlobalKeyboardViewController.shiftState.isUppercase ? key.uppercaseKeyCap : key.lowercaseKeyCap) ?? "\(key.hashValue)"
+            if key.type == .space {
+                inscriptLabel.text = nil
+                inscriptLabel.backgroundColor = UIColor.spaceColor
+            } else {
+                inscriptLabel.text = (GlobalKeyboardViewController.shiftState.isUppercase ? key.uppercaseKeyCap : key.lowercaseKeyCap) ?? "\(key.hashValue)"
+                inscriptLabel.backgroundColor = UIColor.clear
+            }
         }
     }
     

@@ -17,6 +17,7 @@ extension UIColor {
     static let topBarBackgroundColor = UIColor(27,18,46)
     static let topBarInscriptColor = UIColor(152,157,170)
     static let globalDrawingColor = UIColor(204,208,202)
+    static let spaceColor = UIColor(204,208,202,0.4)
     static let shiftIconDrawingColor = UIColor(204,208,202)
     static let shiftIconHighlightDrawingColor = UIColor(207,59,124)
     static let backspaceFillColor = UIColor.white

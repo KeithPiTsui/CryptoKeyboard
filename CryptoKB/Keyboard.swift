@@ -51,11 +51,16 @@ struct Key: Hashable, CustomStringConvertible {
         case space
         case `return`
         case settings
+        
+        case alphabet
+        case number
+        case punctuation
+        
     }
     
     static let characterKeyTypes:[KeyType] = [.character, .specialCharacter, .period]
     static let specialKeyTypes:[KeyType] = [.shift, .backspace, .modeChange, .keyboardChange, .return, .settings]
-    static let iconKeyType:[KeyType] = [.shift, .backspace, .keyboardChange]
+    static let iconKeyType:[KeyType] = [.shift, .backspace, .keyboardChange, .settings, .return]
     var description: String { return "\(self.hashValue)"}
     private static var counter = sequence(first: 0) { $0 + 1 }
     let hashValue: Int = Key.counter.next()!
@@ -74,7 +79,7 @@ struct Key: Hashable, CustomStringConvertible {
     var isCharacter: Bool { return Key.characterKeyTypes.contains(type) }
     var isSpecial: Bool { return Key.specialKeyTypes.contains(type) }
     var withIcon: Bool { return Key.iconKeyType.contains(type) }
-    var hasOutput: Bool { return (uppercaseOutput != nil) || (lowercaseOutput != nil) }
+    var hasOutput: Bool { return meaning != nil }
     
     
     init(type: KeyType, meaning: String? = nil,  inscript: String? = nil, mode: Int? = nil) {
