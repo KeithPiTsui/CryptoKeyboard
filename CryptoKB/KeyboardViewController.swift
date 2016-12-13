@@ -147,6 +147,7 @@ final class KeyboardViewController: UIInputViewController {
         view.addSubview(topBar)
         view.addSubview(keyboardView)
 //        printFontNames()
+        testSpellingAutoCorrector()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -167,6 +168,12 @@ func printFontNames() {
             print("Family:\(familyName)\nFont:\(fontname)")
         }
     }
+}
+
+func testSpellingAutoCorrector() {
+    let checker = SpellChecker(contentsOfFile: "words.txt")
+    let checkedWord = checker?.correct(word: "hlelo")
+    print(checkedWord)
 }
 
 
