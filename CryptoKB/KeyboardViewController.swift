@@ -147,7 +147,7 @@ final class KeyboardViewController: UIInputViewController {
         view.addSubview(topBar)
         view.addSubview(keyboardView)
 //        printFontNames()
-        testSpellingAutoCorrector()
+        //testSpellingAutoCorrector()
     }
     
     override func viewDidAppear(_ animated: Bool) {

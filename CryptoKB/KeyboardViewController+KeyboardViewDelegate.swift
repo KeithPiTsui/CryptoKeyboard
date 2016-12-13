@@ -136,6 +136,7 @@ extension KeyboardViewController: KeyboardViewDelegate {
     func backspaceRepeatCallback() {
         playKeySound()
         textDocumentProxy.deleteBackward()
+        textInterpreter.removeLastReceiveCharacter()
         setCapsIfNeeded()
     }
     
@@ -185,8 +186,16 @@ extension KeyboardViewController: KeyboardViewDelegate {
         if key.isAlphabet {
             textInterpreter.receiveACharacter(char: outputCharacter)
         } else {
-            textInterpreter.resetState()
-            topBar.resetLabels()
+            if let text = encryptedTextLabel.text {
+                let characterCount = textInterpreter.receivedCharacters.count
+                for _ in 0...characterCount {textDocumentProxy.deleteBackward()}
+                textDocumentProxy.insertText(text+outputCharacter)
+                textInterpreter.resetState()
+                topBar.resetLabels()
+            }
+            
+            //textInterpreter.resetState()
+            //topBar.resetLabels()
         }
         
         if key.type == .punctuation {
