@@ -9,7 +9,6 @@
 import UIKit
 
 extension UIColor {
-    //static let keyboardViewBackgroundColor = UIColor(red: 209/255, green: 211/255, blue: 218/255, alpha: 0.5)
     static let keyboardViewBackgroundColor = UIColor(25, 9, 43)
     static let keyboardViewItemBackgroundColor = UIColor.clear
     static let keyboardViewItemInscriptColor = UIColor.white
@@ -20,7 +19,7 @@ extension UIColor {
     static let spaceColor = UIColor(204,208,202,0.4)
     static let shiftIconDrawingColor = UIColor(204,208,202)
     static let shiftIconHighlightDrawingColor = UIColor(207,59,124)
-    static let backspaceFillColor = UIColor.white
+    static let backspaceFillColor = UIColor(204,208,202)
     static let backspaceInscriptColor = UIColor(25, 9, 43)
     
     convenience init(_ r:CGFloat, _ g: CGFloat, _ b: CGFloat, _ a: CGFloat = 1) {

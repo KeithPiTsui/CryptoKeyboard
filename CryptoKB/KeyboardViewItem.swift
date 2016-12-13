@@ -8,43 +8,10 @@
 
 import UIKit
 
-class KeyboardViewItem: UIView {
-    
-    var key: Key! { didSet {installKey()} }
-
-    override var description: String { return super.description + key.description }
-    
-    var boundSize: CGSize?
-    
-    var popup: UIView?
-    
-    lazy var inscriptLabel: UILabel = {
-        let label = UILabel()
-        label.textAlignment = NSTextAlignment.center
-        label.baselineAdjustment = UIBaselineAdjustment.alignCenters
-        label.font = KeyboardAppearanceScheme.keyboardViewItemInscriptFont
-        label.adjustsFontSizeToFitWidth = true
-        label.minimumScaleFactor = 0.1
-        label.isUserInteractionEnabled = false
-        label.numberOfLines = 1
-        label.textColor = UIColor.keyboardViewItemInscriptColor
-        return label
-    }()
-    
-    private var _iconView: IconDrawingView?
-    
-    var iconView: IconDrawingView {
-        if _iconView != nil {
-            return _iconView!
-        } else {
-            _iconView = iconDrawingView()
-            return _iconView!
-        }
-    }
-    
-    private func iconDrawingView() -> IconDrawingView {
+final class KeyboardViewItem: UIView {
+    private static func iconDrawingView(keyType type: Key.KeyType) -> IconDrawingView {
         var iv: IconDrawingView! = nil
-        switch self.key.type {
+        switch type {
         case .shift:
             iv = ShiftIconView()
             iv.color = UIColor.shiftIconDrawingColor
@@ -67,6 +34,27 @@ class KeyboardViewItem: UIView {
         }
         return iv
     }
+    override var description: String { return super.description + key.description }
+    
+    var key: Key! { didSet {installKey()} }
+    private var boundSize: CGSize?
+    
+    lazy var inscriptLabel: UILabel = {
+        let label = UILabel.keyboardLabel(font: KeyboardAppearanceScheme.keyboardViewItemInscriptFont, textColor: UIColor.keyboardViewItemInscriptColor)
+        return label
+    }()
+    
+    private var _iconView: IconDrawingView?
+    
+    var iconView: IconDrawingView {
+        if _iconView != nil {
+            return _iconView!
+        } else {
+            _iconView = KeyboardViewItem.iconDrawingView(keyType: key.type)
+            return _iconView!
+        }
+    }
+    
     
     init(frame: CGRect = CGRect.zero, key: Key? = nil) {
         self.key = key
@@ -114,8 +102,10 @@ class KeyboardViewItem: UIView {
         }
         if key.type == .modeChange {
             inscriptLabel.font = KeyboardAppearanceScheme.keyboardViewItemInscriptFontSmall
+            inscriptLabel.textColor = UIColor.globalDrawingColor
         } else {
             inscriptLabel.font = KeyboardAppearanceScheme.keyboardViewItemInscriptFont
+            inscriptLabel.textColor = UIColor.keyboardViewItemInscriptColor
         }
     }
     

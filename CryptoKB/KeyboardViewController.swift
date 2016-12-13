@@ -142,7 +142,7 @@ final class KeyboardViewController: UIInputViewController {
         GlobalKeyboardViewController = self
         view.addSubview(topBar)
         view.addSubview(keyboardView)
-        printFontNames()
+//        printFontNames()
     }
     
     override func viewDidAppear(_ animated: Bool) {

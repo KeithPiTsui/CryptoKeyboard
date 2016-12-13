@@ -9,7 +9,7 @@
 import UIKit
 
 extension UILabel {
-    static func topBarLabel(font: UIFont, textColor: UIColor, text: String? = nil) -> UILabel {
+    static func keyboardLabel(font: UIFont, textColor: UIColor, text: String? = nil) -> UILabel {
         let label = UILabel()
         label.backgroundColor = UIColor.clear
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -74,41 +74,39 @@ protocol TopBarViewDelegate {
 class TopBarView: UIView {
     
     lazy var leftLabel: UILabel = {
-        let label = UILabel.topBarLabel(font: KeyboardAppearanceScheme.topBarInscriptFont, textColor: UIColor.topBarInscriptColor)
+        let label = UILabel.keyboardLabel(font: KeyboardAppearanceScheme.topBarInscriptFont, textColor: UIColor.topBarInscriptColor)
         assembleLabel(label, leftTag: self.leftLabelLeftCornerTag)
         return label
     }()
-    
     lazy var leftLabelLeftCornerTag: UILabel = {
-        let label =  UILabel.topBarLabel(font: KeyboardAppearanceScheme.topBarTagInscriptFont, textColor: UIColor.topBarInscriptColor, text: "Raw")
+        let label =  UILabel.keyboardLabel(font: KeyboardAppearanceScheme.topBarTagInscriptFont, textColor: UIColor.topBarInscriptColor, text: "Raw")
         return label
     }()
     
     
 
     lazy var middleLabel: UILabel = {
-        let label = UILabel.topBarLabel(font: KeyboardAppearanceScheme.topBarInscriptFont, textColor: UIColor.topBarInscriptColor)
+        let label = UILabel.keyboardLabel(font: KeyboardAppearanceScheme.topBarInscriptFont, textColor: UIColor.topBarInscriptColor)
         assembleLabel(label, leftTag: self.middleLabelLeftCornerTag)
         return label
     }()
-    
     lazy var middleLabelLeftCornerTag: UILabel = {
-        let label = UILabel.topBarLabel(font: KeyboardAppearanceScheme.topBarTagInscriptFont, textColor: UIColor.topBarInscriptColor, text: self.cipherName)
+        let label = UILabel.keyboardLabel(font: KeyboardAppearanceScheme.topBarTagInscriptFont, textColor: UIColor.topBarInscriptColor, text: self.cipherName)
         return label
     }()
     
+    
     lazy var rightLabel: UILabel = {
-        let label = UILabel.topBarLabel(font: KeyboardAppearanceScheme.topBarInscriptFont, textColor: UIColor.topBarInscriptColor)
+        let label = UILabel.keyboardLabel(font: KeyboardAppearanceScheme.topBarInscriptFont, textColor: UIColor.topBarInscriptColor)
         assembleLabel(label, leftTag: self.rightLabelLeftCornerTag)
         return label
     }()
-    
     lazy var rightLabelLeftCornerTag: UILabel = {
-        let label = UILabel.topBarLabel(font: KeyboardAppearanceScheme.topBarTagInscriptFont, textColor: UIColor.topBarInscriptColor, text: "De-"+self.cipherName)
+        let label = UILabel.keyboardLabel(font: KeyboardAppearanceScheme.topBarTagInscriptFont, textColor: UIColor.topBarInscriptColor, text: "De-"+self.cipherName)
         return label
     }()
 
-    var cipherName = "Caesar"
+    var cipherName = "Caesar" {didSet{middleLabelLeftCornerTag.text = cipherName; rightLabelLeftCornerTag.text = "De-"+cipherName}}
     
     
     var delegate: TopBarViewDelegate?
@@ -132,7 +130,6 @@ class TopBarView: UIView {
         addSubview(middleLabel)
         addSubview(rightLabel)
         var keyboradViewLayoutConstraints = [NSLayoutConstraint]()
-        
         keyboradViewLayoutConstraints.append( NSLayoutConstraint(item: leftLabel,
                                                                  attribute: .height,
                                                                  relatedBy: .equal,
@@ -219,7 +216,6 @@ class TopBarView: UIView {
                                                                  attribute: .right,
                                                                  multiplier: 1,
                                                                  constant: 1))
-        
         self.addConstraints(keyboradViewLayoutConstraints)
     }
     
