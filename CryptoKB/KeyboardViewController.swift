@@ -27,8 +27,8 @@ final class KeyboardViewController: UIInputViewController {
     }()
     
     var heuristicTextLabel: UILabel { return topBar.leftLabel}
-    var encryptedTextLabel: UILabel { return topBar.middleLabel}
-    var decryptedTextLabel: UILabel { return topBar.rightLabel}
+    var encryptedTextLabel: UILabel { return topBar.rightLabel}
+    //var decryptedTextLabel: UILabel { return topBar.rightLabel}
     
     
     var heightConstraint: NSLayoutConstraint!

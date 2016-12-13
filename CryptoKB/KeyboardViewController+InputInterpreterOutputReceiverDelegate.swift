@@ -19,11 +19,11 @@ extension KeyboardViewController: InputInterpreterOutputReceiverDelegate {
     }
     
     func receiveDecryptedOutputCharacter(char: String) {
-        decryptedTextLabel.text = (decryptedTextLabel.text ?? "") + char
+        //decryptedTextLabel.text = (decryptedTextLabel.text ?? "") + char
     }
     
     func removeLastOutputCharacter() {
-        for label in [heuristicTextLabel, encryptedTextLabel, decryptedTextLabel] {
+        for label in [heuristicTextLabel, encryptedTextLabel] {
             if label.text != nil && label.text!.isEmpty == false {
                 var text = label.text!
                 text.remove(at: text.index(before: text.endIndex))

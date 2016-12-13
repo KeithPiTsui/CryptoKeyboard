@@ -79,7 +79,7 @@ class TopBarView: UIView {
         return label
     }()
     lazy var leftLabelLeftCornerTag: UILabel = {
-        let label =  UILabel.keyboardLabel(font: KeyboardAppearanceScheme.topBarTagInscriptFont, textColor: UIColor.topBarInscriptColor, text: "Raw")
+        let label =  UILabel.keyboardLabel(font: KeyboardAppearanceScheme.topBarTagInscriptFont, textColor: UIColor.topBarInscriptColor, text: "plaintext")
         return label
     }()
     
@@ -98,15 +98,20 @@ class TopBarView: UIView {
     
     lazy var rightLabel: UILabel = {
         let label = UILabel.keyboardLabel(font: KeyboardAppearanceScheme.topBarInscriptFont, textColor: UIColor.topBarInscriptColor)
-        assembleLabel(label, leftTag: self.rightLabelLeftCornerTag)
+        assembleLabel(label, leftTag: self.rightLabelLeftCornerTag, rightTag: self.rightLabelRightCornerTag)
         return label
     }()
     lazy var rightLabelLeftCornerTag: UILabel = {
-        let label = UILabel.keyboardLabel(font: KeyboardAppearanceScheme.topBarTagInscriptFont, textColor: UIColor.topBarInscriptColor, text: "De-"+self.cipherName)
+        let label = UILabel.keyboardLabel(font: KeyboardAppearanceScheme.topBarTagInscriptFont, textColor: UIColor.topBarInscriptColor, text: "Secret")
+        return label
+    }()
+    
+    lazy var rightLabelRightCornerTag: UILabel = {
+        let label = UILabel.keyboardLabel(font: KeyboardAppearanceScheme.topBarTagInscriptFont, textColor: UIColor.topBarInscriptColor, text: self.cipherName)
         return label
     }()
 
-    var cipherName = "Caesar" {didSet{middleLabelLeftCornerTag.text = cipherName; rightLabelLeftCornerTag.text = "De-"+cipherName}}
+    var cipherName = "Caesar" {didSet{rightLabelRightCornerTag.text = cipherName}}
     
     
     var delegate: TopBarViewDelegate?
@@ -127,7 +132,7 @@ class TopBarView: UIView {
     
     private func assembleUIElements () {
         addSubview(leftLabel)
-        addSubview(middleLabel)
+        //addSubview(middleLabel)
         addSubview(rightLabel)
         var keyboradViewLayoutConstraints = [NSLayoutConstraint]()
         keyboradViewLayoutConstraints.append( NSLayoutConstraint(item: leftLabel,
@@ -142,7 +147,7 @@ class TopBarView: UIView {
                                                                  relatedBy: .equal,
                                                                  toItem: self,
                                                                  attribute: .width,
-                                                                 multiplier: 1/3,
+                                                                 multiplier: 1/2,
                                                                  constant: 0))
         keyboradViewLayoutConstraints.append( NSLayoutConstraint(item: leftLabel,
                                                                  attribute: .top,
@@ -159,60 +164,60 @@ class TopBarView: UIView {
                                                                  multiplier: 1,
                                                                  constant: 0))
         
-        keyboradViewLayoutConstraints.append( NSLayoutConstraint(item: middleLabel,
+//        keyboradViewLayoutConstraints.append( NSLayoutConstraint(item: middleLabel,
+//                                                                 attribute: .height,
+//                                                                 relatedBy: .equal,
+//                                                                 toItem: self,
+//                                                                 attribute: .height,
+//                                                                 multiplier: 1,
+//                                                                 constant: 0))
+//        keyboradViewLayoutConstraints.append( NSLayoutConstraint(item: middleLabel,
+//                                                                 attribute: .width,
+//                                                                 relatedBy: .equal,
+//                                                                 toItem: self,
+//                                                                 attribute: .width,
+//                                                                 multiplier: 1/3,
+//                                                                 constant: -1))
+//        keyboradViewLayoutConstraints.append( NSLayoutConstraint(item: middleLabel,
+//                                                                 attribute: .top,
+//                                                                 relatedBy: .equal,
+//                                                                 toItem: self,
+//                                                                 attribute: .top,
+//                                                                 multiplier: 1,
+//                                                                 constant: 0))
+//        keyboradViewLayoutConstraints.append( NSLayoutConstraint(item: middleLabel,
+//                                                                 attribute: .left,
+//                                                                 relatedBy: .equal,
+//                                                                 toItem: leftLabel,
+//                                                                 attribute: .right,
+//                                                                 multiplier: 1,
+//                                                                 constant: 1))
+        
+        keyboradViewLayoutConstraints.append( NSLayoutConstraint(item: rightLabel,
                                                                  attribute: .height,
                                                                  relatedBy: .equal,
                                                                  toItem: self,
                                                                  attribute: .height,
                                                                  multiplier: 1,
                                                                  constant: 0))
-        keyboradViewLayoutConstraints.append( NSLayoutConstraint(item: middleLabel,
-                                                                 attribute: .width,
+        keyboradViewLayoutConstraints.append( NSLayoutConstraint(item: rightLabel,
+                                                                 attribute: .right,
                                                                  relatedBy: .equal,
                                                                  toItem: self,
-                                                                 attribute: .width,
-                                                                 multiplier: 1/3,
-                                                                 constant: -1))
-        keyboradViewLayoutConstraints.append( NSLayoutConstraint(item: middleLabel,
+                                                                 attribute: .right,
+                                                                 multiplier: 1,
+                                                                 constant: 0))
+        keyboradViewLayoutConstraints.append( NSLayoutConstraint(item: rightLabel,
                                                                  attribute: .top,
                                                                  relatedBy: .equal,
                                                                  toItem: self,
                                                                  attribute: .top,
                                                                  multiplier: 1,
                                                                  constant: 0))
-        keyboradViewLayoutConstraints.append( NSLayoutConstraint(item: middleLabel,
+        keyboradViewLayoutConstraints.append( NSLayoutConstraint(item: rightLabel,
                                                                  attribute: .left,
                                                                  relatedBy: .equal,
                                                                  toItem: leftLabel,
-                                                                 attribute: .right,
-                                                                 multiplier: 1,
-                                                                 constant: 1))
-        
-        keyboradViewLayoutConstraints.append( NSLayoutConstraint(item: rightLabel,
-                                                                 attribute: .height,
-                                                                 relatedBy: .equal,
-                                                                 toItem: self,
-                                                                 attribute: .height,
-                                                                 multiplier: 1,
-                                                                 constant: 0))
-        keyboradViewLayoutConstraints.append( NSLayoutConstraint(item: rightLabel,
-                                                                 attribute: .right,
-                                                                 relatedBy: .equal,
-                                                                 toItem: self,
-                                                                 attribute: .right,
-                                                                 multiplier: 1,
-                                                                 constant: 0))
-        keyboradViewLayoutConstraints.append( NSLayoutConstraint(item: rightLabel,
-                                                                 attribute: .top,
-                                                                 relatedBy: .equal,
-                                                                 toItem: self,
-                                                                 attribute: .top,
-                                                                 multiplier: 1,
-                                                                 constant: 0))
-        keyboradViewLayoutConstraints.append( NSLayoutConstraint(item: rightLabel,
-                                                                 attribute: .left,
-                                                                 relatedBy: .equal,
-                                                                 toItem: middleLabel,
                                                                  attribute: .right,
                                                                  multiplier: 1,
                                                                  constant: 1))
@@ -220,7 +225,7 @@ class TopBarView: UIView {
     }
     
     func resetLabels() {
-        for label in [leftLabel, middleLabel, rightLabel] {
+        for label in [leftLabel, rightLabel] {
             label.text = nil
         }
     }
