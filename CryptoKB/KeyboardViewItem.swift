@@ -112,6 +112,11 @@ class KeyboardViewItem: UIView {
                 inscriptLabel.backgroundColor = UIColor.clear
             }
         }
+        if key.type == .modeChange {
+            inscriptLabel.font = KeyboardAppearanceScheme.keyboardViewItemInscriptFontSmall
+        } else {
+            inscriptLabel.font = KeyboardAppearanceScheme.keyboardViewItemInscriptFont
+        }
     }
     
     override func didMoveToSuperview() {

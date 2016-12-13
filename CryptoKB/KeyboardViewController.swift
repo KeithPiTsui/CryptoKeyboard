@@ -142,6 +142,7 @@ final class KeyboardViewController: UIInputViewController {
         GlobalKeyboardViewController = self
         view.addSubview(topBar)
         view.addSubview(keyboardView)
+        printFontNames()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -153,6 +154,14 @@ final class KeyboardViewController: UIInputViewController {
     // MARK: Text Editing
     override func textDidChange(_ textInput: UITextInput?) {
         setCapsIfNeeded()
+    }
+}
+
+func printFontNames() {
+    for familyName in UIFont.familyNames {
+        for fontname in UIFont.fontNames(forFamilyName: familyName) {
+            print("Family:\(familyName)\nFont:\(fontname)")
+        }
     }
 }
 
