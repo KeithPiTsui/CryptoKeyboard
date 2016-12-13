@@ -86,7 +86,7 @@ final class KeyboardViewItem: UIView {
     
     private func installKey() {
         for v in subviews { v.removeFromSuperview()}
-        
+        layer.borderWidth = 0
         if key.withIcon {
             _iconView = nil
             addSubview(iconView)

@@ -58,11 +58,10 @@ struct Key: Hashable, CustomStringConvertible {
         
         case alphabet
         case number
+        case symbol
         case punctuation
         
     }
-    
-    static let characterKeyTypes:[KeyType] = [.character, .specialCharacter, .period]
     
     static let highlightableKeyTypes:[KeyType] = [.character, .specialCharacter, .period]
     static let iconKeyType:[KeyType] = [.shift, .backspace, .keyboardChange, .settings, .return]
@@ -77,8 +76,7 @@ struct Key: Hashable, CustomStringConvertible {
     var uppercaseOutput: String? {return self.meaning?.uppercased()}
     var lowercaseOutput: String? {return self.meaning?.lowercased()}
     
-    
-    var isCharacter: Bool { return Key.characterKeyTypes.contains(type) }
+    var isAlphabet: Bool {return type == .alphabet}
     var isHighlightable: Bool { return Key.highlightableKeyTypes.contains(type) }
     
     var withIcon: Bool { return Key.iconKeyType.contains(type) }

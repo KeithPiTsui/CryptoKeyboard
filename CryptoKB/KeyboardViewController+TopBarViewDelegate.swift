@@ -11,7 +11,9 @@ import UIKit
 extension KeyboardViewController: TopBarViewDelegate {
     func topBarLabel(_ label: UILabel, receivedEvent event: UIControlEvents, inTopBar topBar: TopBarView) {
         guard let text = label.text, event == .touchUpInside else { return }
-        textDocumentProxy.insertText(text)
+        let characterCount = textInterpreter.receivedCharacters.count
+        for _ in 0..<characterCount {textDocumentProxy.deleteBackward()}
+        textDocumentProxy.insertText(text+" ")
         textInterpreter.resetState()
         topBar.resetLabels()
     }

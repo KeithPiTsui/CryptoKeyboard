@@ -143,13 +143,22 @@ extension KeyboardViewController: KeyboardViewDelegate {
         print("\(#function)")
         guard let key = sender.key else { return }
         let outputCharacter = key.outputForCase(self.shiftState.isUppercase)
-        if key.isCharacter {
+        
+        textDocumentProxy.insertText(outputCharacter)
+        
+        if key.isAlphabet {
             textInterpreter.receiveACharacter(char: outputCharacter)
         } else {
-            textDocumentProxy.insertText(outputCharacter)
             textInterpreter.resetState()
             topBar.resetLabels()
         }
+        
+        if key.type == .punctuation {
+            delay(0.2) {
+                self.keyboardView.keyboardPage = 0
+            }
+        }
+        
         handleAutoPeriod(key)
         setCapsIfNeeded()
     }
