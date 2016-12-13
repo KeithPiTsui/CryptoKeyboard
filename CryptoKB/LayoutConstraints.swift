@@ -15,5 +15,7 @@ struct LayoutConstraints {
     static let keyboardFirstRowItemGap: CGFloat = 2
     static let keyboardRowGap:CGFloat = 4
     static let keyboardLastRowGap:CGFloat = 4
+    static let topBarHeight:CGFloat = 50
+    static let keyboardViewHeight:CGFloat = 216
     
 }

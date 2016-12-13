@@ -33,8 +33,8 @@ final class KeyboardViewController: UIInputViewController {
     
     var heightConstraint: NSLayoutConstraint!
     lazy var inputViewHeight: CGFloat = self.topBarHeight + self.keyboardViewheight
-    var topBarHeight: CGFloat = 50
-    var keyboardViewheight: CGFloat = 216
+    var topBarHeight: CGFloat = LayoutConstraints.topBarHeight
+    var keyboardViewheight: CGFloat = LayoutConstraints.keyboardViewHeight
     lazy var dummyLabel: UILabel = {let b = UILabel(); b.translatesAutoresizingMaskIntoConstraints = false; return b}()
     var keyboradViewLayoutConstraints: [NSLayoutConstraint] = []
     
