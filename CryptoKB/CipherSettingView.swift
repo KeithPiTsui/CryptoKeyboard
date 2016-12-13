@@ -10,23 +10,24 @@ import UIKit
 
 protocol CipherSettingViewDelegate: class {
     
+    
 }
 
 
-class CipherSettingView: UIView {
+final class CipherSettingView: UIView {
 
-    let topBar: CipherSettingTopBarView = CipherSettingTopBarView()
-    let morseLabel: UILabel = UILabel.keyboardLabel(font: KeyboardAppearanceScheme.keyboardViewItemInscriptFont, textColor: UIColor.keyboardViewItemInscriptColor, text: "Morse")
-    let morseLine: UIView = UIView()
-    let caesarLabel: UILabel = UILabel.keyboardLabel(font: KeyboardAppearanceScheme.keyboardViewItemInscriptFont, textColor: UIColor.keyboardViewItemInscriptColor, text: "Caesar")
-    let caesarLine: UIView = UIView()
-    let vigenereLabel: UILabel = UILabel.keyboardLabel(font: KeyboardAppearanceScheme.keyboardViewItemInscriptFont, textColor: UIColor.keyboardViewItemInscriptColor, text: "Vigenere")
-    let vigenereLine: UIView = UIView()
-    let keywordLabel: UILabel = UILabel.keyboardLabel(font: KeyboardAppearanceScheme.keyboardViewItemInscriptFont, textColor: UIColor.keyboardViewItemInscriptColor, text: "Keyword")
-    let keywordLine: UIView = UIView()
-    let zigzagLabel: UILabel = UILabel.keyboardLabel(font: KeyboardAppearanceScheme.keyboardViewItemInscriptFont, textColor: UIColor.keyboardViewItemInscriptColor, text: "Zigzag")
-    let zigzagLine: UIView = UIView()
-    let cipherSelectSlider: UISlider = UISlider()
+    private lazy var topBar: CipherSettingTopBarView = CipherSettingTopBarView(withDelegate: self)
+    private let morseLabel: UILabel = UILabel.keyboardLabel(font: KeyboardAppearanceScheme.keyboardViewItemInscriptFont, textColor: UIColor.keyboardViewItemInscriptColor, text: "Morse")
+    private let morseLine: UIView = UIView()
+    private let caesarLabel: UILabel = UILabel.keyboardLabel(font: KeyboardAppearanceScheme.keyboardViewItemInscriptFont, textColor: UIColor.keyboardViewItemInscriptColor, text: "Caesar")
+    private let caesarLine: UIView = UIView()
+    private let vigenereLabel: UILabel = UILabel.keyboardLabel(font: KeyboardAppearanceScheme.keyboardViewItemInscriptFont, textColor: UIColor.keyboardViewItemInscriptColor, text: "Vigenere")
+    private let vigenereLine: UIView = UIView()
+    private let keywordLabel: UILabel = UILabel.keyboardLabel(font: KeyboardAppearanceScheme.keyboardViewItemInscriptFont, textColor: UIColor.keyboardViewItemInscriptColor, text: "Keyword")
+    private let keywordLine: UIView = UIView()
+    private let zigzagLabel: UILabel = UILabel.keyboardLabel(font: KeyboardAppearanceScheme.keyboardViewItemInscriptFont, textColor: UIColor.keyboardViewItemInscriptColor, text: "Zigzag")
+    private let zigzagLine: UIView = UIView()
+    private let cipherSelectSlider: UISlider = UISlider()
     
     /// To record bound change
     private var boundSize: CGSize?
@@ -76,7 +77,9 @@ class CipherSettingView: UIView {
 }
 
 
-
+extension CipherSettingView: CipherSettingTopBarViewDelegate {
+    
+}
 
 
 
