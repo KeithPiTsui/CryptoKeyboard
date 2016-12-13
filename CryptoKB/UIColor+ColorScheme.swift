@@ -29,6 +29,7 @@ extension UIColor {
 }
 
 struct KeyboardAppearanceScheme {
-    static let keyboardViewItemInscriptFont = UIFont(name: "ChalkboardSE-Light", size: 25)
-    static let topBarInscriptFont = UIFont(name: "ChalkboardSE-Light", size: 18)
+    static let keyboardViewItemInscriptFont = UIFont(name: "ChalkboardSE-Light", size: 25)!
+    static let topBarInscriptFont = UIFont(name: "ChalkboardSE-Light", size: 18)!
+    static let topBarTagInscriptFont = UIFont(name: "ChalkboardSE-Light", size: 12)!
 }

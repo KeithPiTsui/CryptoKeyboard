@@ -8,58 +8,109 @@
 
 import UIKit
 
+extension UILabel {
+    static func topBarLabel(font: UIFont, textColor: UIColor, text: String? = nil) -> UILabel {
+        let label = UILabel()
+        label.backgroundColor = UIColor.clear
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textAlignment = NSTextAlignment.center
+        label.baselineAdjustment = UIBaselineAdjustment.alignCenters
+        label.font = font
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.1
+        label.isUserInteractionEnabled = false
+        label.numberOfLines = 1
+        label.textColor = textColor
+        label.text = text
+        return label
+    }
+}
+
+fileprivate func assembleLabel(_ label: UILabel, leftTag: UILabel? = nil, rightTag: UILabel? = nil) {
+    if let leftTag = leftTag {
+        label.addSubview(leftTag)
+        var constraints = [NSLayoutConstraint]()
+        constraints.append( NSLayoutConstraint(item: leftTag,
+                                               attribute: .top,
+                                               relatedBy: .equal,
+                                               toItem: label,
+                                               attribute: .top,
+                                               multiplier: 1,
+                                               constant: 0))
+        constraints.append( NSLayoutConstraint(item: leftTag,
+                                               attribute: .left,
+                                               relatedBy: .equal,
+                                               toItem: label,
+                                               attribute: .left,
+                                               multiplier: 1,
+                                               constant: 0))
+        label.addConstraints(constraints)
+    }
+    if let rightTag = rightTag {
+        label.addSubview(rightTag)
+        var constraints = [NSLayoutConstraint]()
+        constraints.append( NSLayoutConstraint(item: rightTag,
+                                               attribute: .top,
+                                               relatedBy: .equal,
+                                               toItem: label,
+                                               attribute: .top,
+                                               multiplier: 1,
+                                               constant: 0))
+        constraints.append( NSLayoutConstraint(item: rightTag,
+                                               attribute: .right,
+                                               relatedBy: .equal,
+                                               toItem: label,
+                                               attribute: .right,
+                                               multiplier: 1,
+                                               constant: 0))
+        label.addConstraints(constraints)
+    }
+}
 
 protocol TopBarViewDelegate {
      func topBarLabel(_ label: UILabel, receivedEvent event: UIControlEvents, inTopBar topBar: TopBarView)
 }
 
 class TopBarView: UIView {
-    var leftLabel: UILabel = {
-        let label = UILabel()
-        label.backgroundColor = UIColor.clear
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.textAlignment = NSTextAlignment.center
-        label.baselineAdjustment = UIBaselineAdjustment.alignCenters
-        label.font = KeyboardAppearanceScheme.topBarInscriptFont
-        label.adjustsFontSizeToFitWidth = true
-        label.minimumScaleFactor = 0.1
-        label.isUserInteractionEnabled = false
-        label.numberOfLines = 1
-        label.textColor = UIColor.topBarInscriptColor
+    
+    lazy var leftLabel: UILabel = {
+        let label = UILabel.topBarLabel(font: KeyboardAppearanceScheme.topBarInscriptFont, textColor: UIColor.topBarInscriptColor)
+        assembleLabel(label, leftTag: self.leftLabelLeftCornerTag)
+        return label
+    }()
+    
+    lazy var leftLabelLeftCornerTag: UILabel = {
+        let label =  UILabel.topBarLabel(font: KeyboardAppearanceScheme.topBarTagInscriptFont, textColor: UIColor.topBarInscriptColor, text: "Raw")
+        return label
+    }()
+    
+    
+
+    lazy var middleLabel: UILabel = {
+        let label = UILabel.topBarLabel(font: KeyboardAppearanceScheme.topBarInscriptFont, textColor: UIColor.topBarInscriptColor)
+        assembleLabel(label, leftTag: self.middleLabelLeftCornerTag)
+        return label
+    }()
+    
+    lazy var middleLabelLeftCornerTag: UILabel = {
+        let label = UILabel.topBarLabel(font: KeyboardAppearanceScheme.topBarTagInscriptFont, textColor: UIColor.topBarInscriptColor, text: self.cipherName)
+        return label
+    }()
+    
+    lazy var rightLabel: UILabel = {
+        let label = UILabel.topBarLabel(font: KeyboardAppearanceScheme.topBarInscriptFont, textColor: UIColor.topBarInscriptColor)
+        assembleLabel(label, leftTag: self.rightLabelLeftCornerTag)
+        return label
+    }()
+    
+    lazy var rightLabelLeftCornerTag: UILabel = {
+        let label = UILabel.topBarLabel(font: KeyboardAppearanceScheme.topBarTagInscriptFont, textColor: UIColor.topBarInscriptColor, text: "De-"+self.cipherName)
         return label
     }()
 
-    var middleLabel: UILabel = {
-        let label = UILabel()
-        label.backgroundColor = UIColor.clear
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.textAlignment = NSTextAlignment.center
-        label.baselineAdjustment = UIBaselineAdjustment.alignCenters
-        label.font = KeyboardAppearanceScheme.topBarInscriptFont
-        label.adjustsFontSizeToFitWidth = true
-        label.minimumScaleFactor = 0.1
-        label.isUserInteractionEnabled = false
-        label.numberOfLines = 1
-        label.textColor = UIColor.topBarInscriptColor
-        
-        return label
-    }()
-
-    var rightLabel: UILabel = {
-        let label = UILabel()
-        label.backgroundColor = UIColor.clear
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.textAlignment = NSTextAlignment.center
-        label.baselineAdjustment = UIBaselineAdjustment.alignCenters
-        label.font = KeyboardAppearanceScheme.topBarInscriptFont
-        label.adjustsFontSizeToFitWidth = true
-        label.minimumScaleFactor = 0.1
-        label.isUserInteractionEnabled = false
-        label.numberOfLines = 1
-        label.textColor = UIColor.topBarInscriptColor
-        return label
-    }()
-
+    var cipherName = "Caesar"
+    
+    
     var delegate: TopBarViewDelegate?
     var touchToView: [UITouch:UIView] = [:]
     
