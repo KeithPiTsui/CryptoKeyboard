@@ -47,6 +47,10 @@ final class KeyboardViewController: UIInputViewController {
     lazy var textInterpreter: InputInterpreter = { return InputInterpreter(delegate: self)}()
     
     
+    let backspaceDelay: TimeInterval = 0.5
+    let backspaceRepeat: TimeInterval = 0.07
+    var backspaceDelayTimer: Timer?
+    var backspaceRepeatTimer: Timer?
     
     
     

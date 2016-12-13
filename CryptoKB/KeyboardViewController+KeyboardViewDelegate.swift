@@ -33,7 +33,7 @@ extension KeyboardViewController: KeyboardViewDelegate {
                 if event == .touchDown {
                     pressBackspace(item)
                 }
-                if [.touchDragExit, .touchUpOutside, .touchCancel, .touchDragOutside].contains(event) {
+                if [.touchDragExit,.touchUpInside, .touchUpOutside, .touchCancel, .touchDragOutside].contains(event) {
                     pressBackspaceCancel(item)
                 }
                 
@@ -97,10 +97,46 @@ extension KeyboardViewController: KeyboardViewDelegate {
         textDocumentProxy.deleteBackward()
         textInterpreter.removeLastReceiveCharacter()
         setCapsIfNeeded()
+        // trigger for subsequent deletes
+        backspaceDelayTimer = Timer.scheduledTimer(timeInterval: backspaceDelay - backspaceRepeat,
+                                                   target: self,
+                                                   selector: #selector(KeyboardViewController.backspaceDelayCallback),
+                                                   userInfo: nil,
+                                                   repeats: false)
     }
     
-    private func pressBackspaceCancel(_ sender: KeyboardViewItem) {
-        print("\(#function)")
+    func cancelBackspaceTimers() {
+        backspaceDelayTimer?.invalidate()
+        backspaceRepeatTimer?.invalidate()
+        backspaceDelayTimer = nil
+        backspaceRepeatTimer = nil
+    }
+    
+//    func backspaceDown(_ sender: KeyboardViewItem) {
+//        cancelBackspaceTimers()
+//        textDocumentProxy.deleteBackward()
+//        setCapsIfNeeded()
+//        
+//        
+//    }
+    
+    func pressBackspaceCancel(_ sender: KeyboardViewItem) {
+        cancelBackspaceTimers()
+    }
+    
+    func backspaceDelayCallback() {
+        self.backspaceDelayTimer = nil
+        self.backspaceRepeatTimer = Timer.scheduledTimer(timeInterval: backspaceRepeat,
+                                                         target: self,
+                                                         selector: #selector(KeyboardViewController.backspaceRepeatCallback),
+                                                         userInfo: nil,
+                                                         repeats: true)
+    }
+    
+    func backspaceRepeatCallback() {
+        playKeySound()
+        textDocumentProxy.deleteBackward()
+        setCapsIfNeeded()
     }
     
     
