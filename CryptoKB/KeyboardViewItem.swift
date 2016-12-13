@@ -149,28 +149,11 @@ final class KeyboardViewItem: UIView {
         
     }
     
-    /// Item Popup
-    func showPopup() {
+    var highlighted: Bool = false {didSet {
         UIView.animate(withDuration: 0.1) {
-            self.backgroundColor = UIColor.keyboardViewItemHighlightedBackgroundColor
+            self.backgroundColor = self.highlighted ? UIColor.keyboardViewItemHighlightedBackgroundColor : UIColor.keyboardViewItemBackgroundColor
         }
-        
-    }
-    
-    func hidePopup() {
-        UIView.animate(withDuration: 0.1) {
-            self.backgroundColor = UIColor.keyboardViewItemBackgroundColor
-        }
-    }
-    
-    /// Item Highlight
-    func highlightItem() {
-
-    }
-    
-    func unhighlightItem() {
-        
-    }
+        }}
 }
 
 

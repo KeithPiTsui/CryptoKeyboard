@@ -63,6 +63,8 @@ struct Key: Hashable, CustomStringConvertible {
     }
     
     static let characterKeyTypes:[KeyType] = [.character, .specialCharacter, .period]
+    
+    static let highlightableKeyTypes:[KeyType] = [.character, .specialCharacter, .period]
     static let iconKeyType:[KeyType] = [.shift, .backspace, .keyboardChange, .settings, .return]
     
     let type: KeyType
@@ -77,6 +79,8 @@ struct Key: Hashable, CustomStringConvertible {
     
     
     var isCharacter: Bool { return Key.characterKeyTypes.contains(type) }
+    var isHighlightable: Bool { return Key.highlightableKeyTypes.contains(type) }
+    
     var withIcon: Bool { return Key.iconKeyType.contains(type) }
     var hasOutput: Bool { return meaning != nil }
     

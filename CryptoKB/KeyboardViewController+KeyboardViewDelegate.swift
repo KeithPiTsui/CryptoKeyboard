@@ -57,13 +57,13 @@ extension KeyboardViewController: KeyboardViewDelegate {
                 break
         }
         
-        if key.isCharacter {
+        if key.isHighlightable {
             if UIDevice.current.userInterfaceIdiom != UIUserInterfaceIdiom.pad {
                 if [.touchDown, .touchDragInside, .touchDragEnter].contains(event) {
-                    showPopup(item)
+                    highlightItem(item)
                 }
                 if [.touchUpInside, .touchUpOutside, .touchDragOutside].contains(event) {
-                    hidePopupDelay(item)
+                    unhighlightItem(item)
                 }
             }
         }
@@ -156,20 +156,12 @@ extension KeyboardViewController: KeyboardViewDelegate {
     
     private func highlightItem(_ sender: KeyboardViewItem) {
         print("\(#function)")
-        sender.highlightItem()
+        sender.highlighted = true
     }
     
     private func unhighlightItem(_ sender: KeyboardViewItem) {
         print("\(#function)")
-        sender.unhighlightItem()
-    }
-    
-    private func showPopup(_ sender: KeyboardViewItem) {
-        sender.showPopup()
-    }
-    
-    private func hidePopupDelay(_ sender: KeyboardViewItem){
-        sender.hidePopup()
+        sender.highlighted = false
     }
     
     private func playClickSound(_ sender: KeyboardViewItem){
