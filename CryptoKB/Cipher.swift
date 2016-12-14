@@ -113,7 +113,7 @@ extension CharacterSet {
 
 fileprivate let uppercaseLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".chars
 
-struct Vigenere: Endecryting {
+struct VigenereCipher: Endecryting {
     
     static let name: String = "Vigenere"
     
@@ -159,7 +159,7 @@ struct Vigenere: Endecryting {
 }
 
 
-struct Keyword: Endecryting {
+struct KeywordCipher: Endecryting {
     static let name: String = "Keyword"
     
     static func encrypt(message: String, withKey key: String) throws -> String {
