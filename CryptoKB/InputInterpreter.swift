@@ -52,11 +52,12 @@ class InputInterpreter: InputInterpreterProtocol {
     
     private func translateIntoCipherOf(cipherType: CipherType, andKey key: String) {
         guard let message = receivedCharacters.last, let delegate = delegate else { return }
-        if let message = try? CipherManager.sharedInstance().encryptMessage(message, with: cipherType, andKey: key) {
+        
+        if let message = try? MorseCode.encrypt(message: message, withKey: key) {
             delegate.receiveEncryptedOutputCharacter(char: message)
         }
         
-        if let message = try? CipherManager.sharedInstance().decryptMessage(message, with: cipherType, andKey: key) {
+        if let message = try? MorseCode.decrypt(message: message, withKey: key) {
             delegate.receiveDecryptedOutputCharacter(char: message)
         }
         delegate.receiveHeuristicOutputCharacter(char: message)

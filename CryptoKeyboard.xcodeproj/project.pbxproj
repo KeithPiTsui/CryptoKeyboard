@@ -17,12 +17,6 @@
 		0E28CCDD1DFE643A00BCAC75 /* UsefulFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E28CCDC1DFE643A00BCAC75 /* UsefulFunctions.swift */; };
 		0E28CCDF1DFE6D7A00BCAC75 /* TopBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E28CCDE1DFE6D7A00BCAC75 /* TopBarView.swift */; };
 		0E28CCE21DFE748C00BCAC75 /* InputInterpreter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E28CCE11DFE748C00BCAC75 /* InputInterpreter.swift */; };
-		0E28CCF11DFE78FD00BCAC75 /* CipherError.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E28CCE61DFE78FD00BCAC75 /* CipherError.m */; };
-		0E28CCF21DFE78FD00BCAC75 /* CipherErrorDescription.json in Resources */ = {isa = PBXBuildFile; fileRef = 0E28CCE71DFE78FD00BCAC75 /* CipherErrorDescription.json */; };
-		0E28CCF41DFE78FD00BCAC75 /* Cipher.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E28CCEB1DFE78FD00BCAC75 /* Cipher.m */; };
-		0E28CCF51DFE78FD00BCAC75 /* CaesarCipher.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E28CCED1DFE78FD00BCAC75 /* CaesarCipher.m */; };
-		0E28CCF61DFE78FD00BCAC75 /* CipherManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E28CCEF1DFE78FD00BCAC75 /* CipherManager.m */; };
-		0E28CCF71DFE78FD00BCAC75 /* CipherRegistionList.json in Resources */ = {isa = PBXBuildFile; fileRef = 0E28CCF01DFE78FD00BCAC75 /* CipherRegistionList.json */; };
 		0E28CCF91DFE7BE000BCAC75 /* KeyboardViewController+InputInterpreterOutputReceiverDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E28CCF81DFE7BE000BCAC75 /* KeyboardViewController+InputInterpreterOutputReceiverDelegate.swift */; };
 		0E28CCFB1DFE854800BCAC75 /* TopBarView+Touch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E28CCFA1DFE854800BCAC75 /* TopBarView+Touch.swift */; };
 		0E28CCFD1DFE85EE00BCAC75 /* KeyboardViewController+TopBarViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E28CCFC1DFE85EE00BCAC75 /* KeyboardViewController+TopBarViewDelegate.swift */; };
@@ -35,6 +29,9 @@
 		0E5DE9231E00E82600FAEF09 /* CipherSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5DE9221E00E82600FAEF09 /* CipherSettingViewController.swift */; };
 		0E5DE9251E00E88300FAEF09 /* KeyboardViewController+CipherSettingViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5DE9241E00E88300FAEF09 /* KeyboardViewController+CipherSettingViewControllerDelegate.swift */; };
 		0E5DE9281E0122AD00FAEF09 /* AlphabetKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5DE9271E0122AD00FAEF09 /* AlphabetKeyboard.swift */; };
+		0E5DE92D1E0134A100FAEF09 /* MorseCodeMapping.json in Resources */ = {isa = PBXBuildFile; fileRef = 0E5DE92C1E0134A100FAEF09 /* MorseCodeMapping.json */; };
+		0E5DE9311E01650800FAEF09 /* CipherManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5DE9301E01650800FAEF09 /* CipherManager.swift */; };
+		0E5DE9331E01656200FAEF09 /* Cipher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5DE9321E01656200FAEF09 /* Cipher.swift */; };
 		0E6B6A321DFA4ABD00712C0A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6B6A311DFA4ABD00712C0A /* AppDelegate.swift */; };
 		0E6B6A341DFA4ABD00712C0A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6B6A331DFA4ABD00712C0A /* ViewController.swift */; };
 		0E6B6A371DFA4ABD00712C0A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E6B6A351DFA4ABD00712C0A /* Main.storyboard */; };
@@ -85,17 +82,6 @@
 		0E28CCDC1DFE643A00BCAC75 /* UsefulFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsefulFunctions.swift; sourceTree = "<group>"; };
 		0E28CCDE1DFE6D7A00BCAC75 /* TopBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopBarView.swift; sourceTree = "<group>"; };
 		0E28CCE11DFE748C00BCAC75 /* InputInterpreter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputInterpreter.swift; sourceTree = "<group>"; };
-		0E28CCE41DFE78FC00BCAC75 /* CryptoKB-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CryptoKB-Bridging-Header.h"; sourceTree = "<group>"; };
-		0E28CCE51DFE78FD00BCAC75 /* CipherError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CipherError.h; sourceTree = "<group>"; };
-		0E28CCE61DFE78FD00BCAC75 /* CipherError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CipherError.m; sourceTree = "<group>"; };
-		0E28CCE71DFE78FD00BCAC75 /* CipherErrorDescription.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = CipherErrorDescription.json; sourceTree = "<group>"; };
-		0E28CCEA1DFE78FD00BCAC75 /* Cipher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cipher.h; sourceTree = "<group>"; };
-		0E28CCEB1DFE78FD00BCAC75 /* Cipher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Cipher.m; sourceTree = "<group>"; };
-		0E28CCEC1DFE78FD00BCAC75 /* CaesarCipher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaesarCipher.h; sourceTree = "<group>"; };
-		0E28CCED1DFE78FD00BCAC75 /* CaesarCipher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaesarCipher.m; sourceTree = "<group>"; };
-		0E28CCEE1DFE78FD00BCAC75 /* CipherManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CipherManager.h; sourceTree = "<group>"; };
-		0E28CCEF1DFE78FD00BCAC75 /* CipherManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CipherManager.m; sourceTree = "<group>"; };
-		0E28CCF01DFE78FD00BCAC75 /* CipherRegistionList.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = CipherRegistionList.json; sourceTree = "<group>"; };
 		0E28CCF81DFE7BE000BCAC75 /* KeyboardViewController+InputInterpreterOutputReceiverDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "KeyboardViewController+InputInterpreterOutputReceiverDelegate.swift"; sourceTree = "<group>"; };
 		0E28CCFA1DFE854800BCAC75 /* TopBarView+Touch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TopBarView+Touch.swift"; sourceTree = "<group>"; };
 		0E28CCFC1DFE85EE00BCAC75 /* KeyboardViewController+TopBarViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "KeyboardViewController+TopBarViewDelegate.swift"; sourceTree = "<group>"; };
@@ -108,6 +94,9 @@
 		0E5DE9221E00E82600FAEF09 /* CipherSettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CipherSettingViewController.swift; sourceTree = "<group>"; };
 		0E5DE9241E00E88300FAEF09 /* KeyboardViewController+CipherSettingViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "KeyboardViewController+CipherSettingViewControllerDelegate.swift"; sourceTree = "<group>"; };
 		0E5DE9271E0122AD00FAEF09 /* AlphabetKeyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlphabetKeyboard.swift; sourceTree = "<group>"; };
+		0E5DE92C1E0134A100FAEF09 /* MorseCodeMapping.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = MorseCodeMapping.json; sourceTree = "<group>"; };
+		0E5DE9301E01650800FAEF09 /* CipherManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CipherManager.swift; sourceTree = "<group>"; };
+		0E5DE9321E01656200FAEF09 /* Cipher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cipher.swift; sourceTree = "<group>"; };
 		0E6B6A2E1DFA4ABD00712C0A /* CryptoKeyboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CryptoKeyboard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E6B6A311DFA4ABD00712C0A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0E6B6A331DFA4ABD00712C0A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -171,17 +160,8 @@
 		0E28CCE31DFE76FF00BCAC75 /* Cyphers */ = {
 			isa = PBXGroup;
 			children = (
-				0E28CCE51DFE78FD00BCAC75 /* CipherError.h */,
-				0E28CCE61DFE78FD00BCAC75 /* CipherError.m */,
-				0E28CCE71DFE78FD00BCAC75 /* CipherErrorDescription.json */,
-				0E28CCEA1DFE78FD00BCAC75 /* Cipher.h */,
-				0E28CCEB1DFE78FD00BCAC75 /* Cipher.m */,
-				0E28CCEC1DFE78FD00BCAC75 /* CaesarCipher.h */,
-				0E28CCED1DFE78FD00BCAC75 /* CaesarCipher.m */,
-				0E28CCEE1DFE78FD00BCAC75 /* CipherManager.h */,
-				0E28CCEF1DFE78FD00BCAC75 /* CipherManager.m */,
-				0E28CCF01DFE78FD00BCAC75 /* CipherRegistionList.json */,
-				0E28CCE41DFE78FC00BCAC75 /* CryptoKB-Bridging-Header.h */,
+				0E5DE92F1E0164F500FAEF09 /* Swift */,
+				0E5DE92E1E0164E600FAEF09 /* Objc */,
 			);
 			name = Cyphers;
 			sourceTree = "<group>";
@@ -233,6 +213,23 @@
 				0E5DE9271E0122AD00FAEF09 /* AlphabetKeyboard.swift */,
 			);
 			name = AlphabetKeyboard;
+			sourceTree = "<group>";
+		};
+		0E5DE92E1E0164E600FAEF09 /* Objc */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Objc;
+			sourceTree = "<group>";
+		};
+		0E5DE92F1E0164F500FAEF09 /* Swift */ = {
+			isa = PBXGroup;
+			children = (
+				0E5DE9301E01650800FAEF09 /* CipherManager.swift */,
+				0E5DE9321E01656200FAEF09 /* Cipher.swift */,
+				0E5DE92C1E0134A100FAEF09 /* MorseCodeMapping.json */,
+			);
+			name = Swift;
 			sourceTree = "<group>";
 		};
 		0E6B6A251DFA4ABD00712C0A = {
@@ -407,10 +404,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0E28CCF21DFE78FD00BCAC75 /* CipherErrorDescription.json in Resources */,
 				0E3F18651DFF9AC900E80D0C /* Media.xcassets in Resources */,
+				0E5DE92D1E0134A100FAEF09 /* MorseCodeMapping.json in Resources */,
 				0E3F186A1DFFEE8300E80D0C /* words.txt in Resources */,
-				0E28CCF71DFE78FD00BCAC75 /* CipherRegistionList.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -437,27 +433,25 @@
 				0E1261481DFD75EE00E7EFE4 /* KeyboardViewController.swift in Sources */,
 				0EA85D141DFD2E3700AFB546 /* DefaultKeyboard.swift in Sources */,
 				0EA85D1D1DFD2E9500AFB546 /* KeyboardView.swift in Sources */,
-				0E28CCF61DFE78FD00BCAC75 /* CipherManager.m in Sources */,
+				0E5DE9311E01650800FAEF09 /* CipherManager.swift in Sources */,
 				0E28CCD81DFE532800BCAC75 /* KeyboardViewController+AutoCap.swift in Sources */,
 				0E1261461DFD680900E7EFE4 /* LayoutConstraints.swift in Sources */,
 				0E28CCD41DFE3C3900BCAC75 /* KeyboardView+Touch.swift in Sources */,
 				0E12614A1DFD762200E7EFE4 /* IconDrawingView.swift in Sources */,
 				0E28CCFB1DFE854800BCAC75 /* TopBarView+Touch.swift in Sources */,
 				0E28CCDA1DFE551000BCAC75 /* KeyboardViewController+AutoSuffixPeriod.swift in Sources */,
-				0E28CCF41DFE78FD00BCAC75 /* Cipher.m in Sources */,
-				0E28CCF51DFE78FD00BCAC75 /* CaesarCipher.m in Sources */,
 				0E28CCFD1DFE85EE00BCAC75 /* KeyboardViewController+TopBarViewDelegate.swift in Sources */,
 				0E3F18731E001FF200E80D0C /* NumericPadView.swift in Sources */,
 				0E5DE9251E00E88300FAEF09 /* KeyboardViewController+CipherSettingViewControllerDelegate.swift in Sources */,
 				0E28CCDD1DFE643A00BCAC75 /* UsefulFunctions.swift in Sources */,
 				0E3C9F211DFD943300D44E51 /* KeyboardViewDelegate.swift in Sources */,
 				0E28CCF91DFE7BE000BCAC75 /* KeyboardViewController+InputInterpreterOutputReceiverDelegate.swift in Sources */,
+				0E5DE9331E01656200FAEF09 /* Cipher.swift in Sources */,
 				0EA85D1E1DFD2E9500AFB546 /* KeyboardViewItem.swift in Sources */,
 				0EA85D161DFD2E3700AFB546 /* Keyboard.swift in Sources */,
 				0EA85D201DFD2E9500AFB546 /* KeyboardView+Layout.swift in Sources */,
 				0E5DE9231E00E82600FAEF09 /* CipherSettingViewController.swift in Sources */,
 				0E28CCE21DFE748C00BCAC75 /* InputInterpreter.swift in Sources */,
-				0E28CCF11DFE78FD00BCAC75 /* CipherError.m in Sources */,
 				0E3F18681DFFE24100E80D0C /* SpellingAutoCorretor.swift in Sources */,
 				0E28CCD61DFE480200BCAC75 /* KeyboardViewController+KeyboardViewDelegate.swift in Sources */,
 				0EA85D1F1DFD2E9500AFB546 /* KeyboardViewItemPopup.swift in Sources */,
@@ -623,7 +617,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = Keith.Pi.Tsui.CryptoKeyboard.CryptoKB;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "CryptoKB/CryptoKB-Bridging-Header.h";
+				SWIFT_INSTALL_OBJC_HEADER = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
@@ -639,7 +634,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = Keith.Pi.Tsui.CryptoKeyboard.CryptoKB;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "CryptoKB/CryptoKB-Bridging-Header.h";
+				SWIFT_INSTALL_OBJC_HEADER = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
