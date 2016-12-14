@@ -15,6 +15,8 @@ enum EndecError: Error {
 enum CipherType {
     case caesar
     case morse
+    case Vigenere
+    case keyword
 }
 
 /// Including Encryption and Decryption
@@ -81,27 +83,18 @@ fileprivate func loadMorseCodeMap() -> [String:String]{
 
 fileprivate let morseCodeMap = loadMorseCodeMap()
 
-
-
 struct MorseCode: Endecryting {
     static let name: String = "MorseCode"
     
     static func encrypt(message: String, withKey key: String) throws -> String {
         return message.uppercased().chars.reduce("") { (initializer: String, element: String) -> String in
-            let org = initializer
-            let char = element
-            
-            var str = char
-            let isLetter = letters.contains(char)
-            if let mappedStr = morseCodeMap[char] {
+            var str = element; let isLetter = letters.contains(element)
+            if let mappedStr = morseCodeMap[element] {
                 str = mappedStr
             }
-            if char == " " {
-                str += "    "
-            } else if isLetter {
-                str += "  "
-            }
-            return org + str
+            if element == " " { str += "    "}
+            else if isLetter { str += "  "}
+            return initializer + str
         }
     }
     
@@ -112,7 +105,79 @@ struct MorseCode: Endecryting {
 }
 
 
+extension CharacterSet {
+    static let alphabet: CharacterSet = {
+        return CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ")
+    }()
+}
 
+struct Vigenere: Endecryting {
+    private static let letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".chars
+    
+    static let name: String = "Vigenere"
+    
+    static func encrypt(message: String, withKey key: String) throws -> String {
+        guard key.isEmpty == false else { return message }
+        guard key.trimmingCharacters(in: CharacterSet.alphabet).isEmpty else { throw EndecError.invalidKey}
+        var keys = key.uppercased().chars
+        var keyIndex = 0
+        return message.uppercased().chars.reduce("") { (initializer: String, element: String) -> String in
+            var str = element
+            let K = keys[keyIndex%keys.count]
+            if let Mi = letters.index(of: element), let Ki = letters.index(of: K) {
+                let Ei = (Mi + Ki) % 26
+                str = letters[Ei]
+            }
+            
+            if CharacterSet.alphabet.contains(element.unicodeScalars.first!) {
+                keyIndex += 1
+            }
+            return initializer + str
+        }
+    }
+    
+    static func decrypt(message: String, withKey key: String) throws -> String {
+        guard key.isEmpty == false else { return message }
+        guard key.trimmingCharacters(in: CharacterSet.alphabet).isEmpty else { throw EndecError.invalidKey}
+        var keys = key.uppercased().chars
+        var keyIndex = 0
+        return message.uppercased().chars.reduce("") { (initializer: String, element: String) -> String in
+            var str = element
+            let K = keys[keyIndex%keys.count]
+            if let Ci = letters.index(of: element), let Ki = letters.index(of: K) {
+                let Ei = ((Ci - Ki) % 26 + 26) % 26
+                str = letters[Ei]
+            }
+            
+            if CharacterSet.alphabet.contains(element.unicodeScalars.first!) {
+                keyIndex += 1
+            }
+            return initializer + str
+        }
+    }
+}
+
+
+struct Keyword: Endecryting {
+    static let name: String = "Keyword"
+    
+    static func encrypt(message: String, withKey key: String) throws -> String {
+        return message.uppercased().chars.reduce("") { (initializer: String, element: String) -> String in
+            var str = element; let isLetter = letters.contains(element)
+            if let mappedStr = morseCodeMap[element] {
+                str = mappedStr
+            }
+            if element == " " { str += "    "}
+            else if isLetter { str += "  "}
+            return initializer + str
+        }
+    }
+    
+    static func decrypt(message: String, withKey key: String) throws -> String {
+        
+        return ""
+    }
+}
 
 
 
