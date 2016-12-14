@@ -174,6 +174,16 @@ extension KeyboardViewController: KeyboardViewDelegate {
     
     private func pressSettings(_ sender: KeyboardViewItem) {
         print("\(#function)")
+        let vc = CipherSettingViewController()
+        vc.delegate = self
+        let nvc = UINavigationController(rootViewController: vc)
+        nvc.modalTransitionStyle = .partialCurl
+        nvc.modalPresentationStyle = .fullScreen
+        //nvc.navigationBar.backgroundColor = UIColor.topBarBackgroundColor
+        nvc.navigationBar.tintColor = UIColor.topBarInscriptColor
+        nvc.navigationBar.barTintColor = UIColor.topBarBackgroundColor
+        vc.view.backgroundColor = UIColor.keyboardViewBackgroundColor
+        present(nvc, animated: true, completion: nil)
     }
     
     private func pressAnOutputItem(_ sender: KeyboardViewItem) {
