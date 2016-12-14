@@ -12,6 +12,17 @@ protocol CipherSettingTopBarViewDelegate: class {
     func valuesForDisplay() -> [String]
 }
 
+extension UILabel {
+    static func cipherSettingLabel(font: UIFont, textColor: UIColor, text: String? = nil) -> UILabel {
+        let label = UILabel.keyboardLabel(font: font, textColor: textColor, text: text)
+        label.backgroundColor = UIColor.topBarInscriptColor
+        label.layer.cornerRadius = 6
+        label.clipsToBounds = true
+        label.widthAnchor.constraint(equalToConstant: 20).isActive = true
+        return label
+    }
+}
+
 class CipherSettingTopBarView: UIView {
     
     unowned var delegate: CipherSettingTopBarViewDelegate
@@ -53,7 +64,7 @@ class CipherSettingTopBarView: UIView {
     private func assembleElements() {
         values = delegate.valuesForDisplay()
         for value in values {
-            let label = UILabel.keyboardLabel(font: KeyboardAppearanceScheme.topBarInscriptFont, textColor: UIColor.topBarInscriptColor, text: value)
+            let label = UILabel.cipherSettingLabel(font: KeyboardAppearanceScheme.topBarInscriptFont, textColor: UIColor.keyboardViewItemInscriptColor, text: value)
             addSubview(label)
             labels.append(label)
         }
@@ -72,30 +83,30 @@ class CipherSettingTopBarView: UIView {
             myConstraints.append(NSLayoutConstraint(item: labels[mid], attribute: .centerX, relatedBy: .equal, toItem: self, attribute: .centerX, multiplier: 1, constant: 0))
             for i in 0..<mid {
                 myConstraints.append(NSLayoutConstraint(item: labels[i], attribute: .centerY, relatedBy: .equal, toItem: self, attribute: .centerY, multiplier: 1, constant: 0))
-                myConstraints.append(NSLayoutConstraint(item: labels[i], attribute: .right, relatedBy: .equal, toItem: labels[i+1], attribute: .left, multiplier: 1, constant: 0))
+                myConstraints.append(NSLayoutConstraint(item: labels[i], attribute: .right, relatedBy: .equal, toItem: labels[i+1], attribute: .left, multiplier: 1, constant: -2))
                 
             }
             for i in (mid+1)..<labels.count {
                 myConstraints.append(NSLayoutConstraint(item: labels[i], attribute: .centerY, relatedBy: .equal, toItem: self, attribute: .centerY, multiplier: 1, constant: 0))
-                myConstraints.append(NSLayoutConstraint(item: labels[i], attribute: .left, relatedBy: .equal, toItem: labels[i-1], attribute: .right, multiplier: 1, constant: 0))
+                myConstraints.append(NSLayoutConstraint(item: labels[i], attribute: .left, relatedBy: .equal, toItem: labels[i-1], attribute: .right, multiplier: 1, constant: 2))
             }
         } else {
             let midRight = labels.count / 2
             myConstraints.append(NSLayoutConstraint(item: labels[midRight], attribute: .centerY, relatedBy: .equal, toItem: self, attribute: .centerY, multiplier: 1, constant: 0))
-            myConstraints.append(NSLayoutConstraint(item: labels[midRight], attribute: .left, relatedBy: .equal, toItem: self, attribute: .centerX, multiplier: 1, constant: 0))
+            myConstraints.append(NSLayoutConstraint(item: labels[midRight], attribute: .left, relatedBy: .equal, toItem: self, attribute: .centerX, multiplier: 1, constant: 1))
             
             let midLeft = labels.count / 2 - 1
             myConstraints.append(NSLayoutConstraint(item: labels[midLeft], attribute: .centerY, relatedBy: .equal, toItem: self, attribute: .centerY, multiplier: 1, constant: 0))
-            myConstraints.append(NSLayoutConstraint(item: labels[midLeft], attribute: .right, relatedBy: .equal, toItem: self, attribute: .centerX, multiplier: 1, constant: 0))
+            myConstraints.append(NSLayoutConstraint(item: labels[midLeft], attribute: .right, relatedBy: .equal, toItem: self, attribute: .centerX, multiplier: 1, constant: -1))
             
             for i in 0..<midLeft {
                 myConstraints.append(NSLayoutConstraint(item: labels[i], attribute: .centerY, relatedBy: .equal, toItem: self, attribute: .centerY, multiplier: 1, constant: 0))
-                myConstraints.append(NSLayoutConstraint(item: labels[i], attribute: .right, relatedBy: .equal, toItem: labels[i+1], attribute: .left, multiplier: 1, constant: 0))
+                myConstraints.append(NSLayoutConstraint(item: labels[i], attribute: .right, relatedBy: .equal, toItem: labels[i+1], attribute: .left, multiplier: 1, constant: -2))
                 
             }
             for i in (midRight+1)..<labels.count {
                 myConstraints.append(NSLayoutConstraint(item: labels[i], attribute: .centerY, relatedBy: .equal, toItem: self, attribute: .centerY, multiplier: 1, constant: 0))
-                myConstraints.append(NSLayoutConstraint(item: labels[i], attribute: .left, relatedBy: .equal, toItem: labels[i-1], attribute: .right, multiplier: 1, constant: 0))
+                myConstraints.append(NSLayoutConstraint(item: labels[i], attribute: .left, relatedBy: .equal, toItem: labels[i-1], attribute: .right, multiplier: 1, constant: 2))
             }
         }
         
