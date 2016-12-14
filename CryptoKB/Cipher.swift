@@ -12,11 +12,12 @@ enum EndecError: Error {
     case invalidKey
 }
 
-enum CipherType {
+enum CipherType: Int, Hashable {
     case caesar
     case morse
     case Vigenere
     case keyword
+    var hashValue: Int { return self.rawValue }
 }
 
 /// Including Encryption and Decryption

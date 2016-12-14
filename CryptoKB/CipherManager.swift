@@ -8,11 +8,22 @@
 
 import Foundation
 
-//final class CipherManager {
-//    static let shared: CipherManager = CipherManager()
-//    
-//    
-//    private init() {
-//        
-//    }
-//}
+struct CipherManager {
+    static let ciphers: [CipherType: Endecryting.Type] = [.caesar:CaesarCipher.self, .keyword:KeywordCipher.self, .Vigenere:VigenereCipher.self, .morse:MorseCode.self]
+    
+    static func encrypt(message: String, withKey key: String, andCipherType type: CipherType) throws -> String {
+        do {
+            return try ciphers[type]!.encrypt(message: message, withKey: message)
+        } catch let e {
+            throw e
+        }
+    }
+    
+    static func decrypt(message: String, withKey key: String, andCipherType type: CipherType) throws -> String {
+        do {
+            return try ciphers[type]!.decrypt(message: message, withKey: message)
+        } catch let e {
+            throw e
+        }
+    }
+}
