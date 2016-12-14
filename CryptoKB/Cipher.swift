@@ -111,8 +111,9 @@ extension CharacterSet {
     }()
 }
 
+fileprivate let uppercaseLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".chars
+
 struct Vigenere: Endecryting {
-    private static let letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".chars
     
     static let name: String = "Vigenere"
     
@@ -124,9 +125,9 @@ struct Vigenere: Endecryting {
         return message.uppercased().chars.reduce("") { (initializer: String, element: String) -> String in
             var str = element
             let K = keys[keyIndex%keys.count]
-            if let Mi = letters.index(of: element), let Ki = letters.index(of: K) {
+            if let Mi = uppercaseLetters.index(of: element), let Ki = uppercaseLetters.index(of: K) {
                 let Ei = (Mi + Ki) % 26
-                str = letters[Ei]
+                str = uppercaseLetters[Ei]
             }
             
             if CharacterSet.alphabet.contains(element.unicodeScalars.first!) {
@@ -144,9 +145,9 @@ struct Vigenere: Endecryting {
         return message.uppercased().chars.reduce("") { (initializer: String, element: String) -> String in
             var str = element
             let K = keys[keyIndex%keys.count]
-            if let Ci = letters.index(of: element), let Ki = letters.index(of: K) {
+            if let Ci = uppercaseLetters.index(of: element), let Ki = uppercaseLetters.index(of: K) {
                 let Ei = ((Ci - Ki) % 26 + 26) % 26
-                str = letters[Ei]
+                str = uppercaseLetters[Ei]
             }
             
             if CharacterSet.alphabet.contains(element.unicodeScalars.first!) {
@@ -162,20 +163,38 @@ struct Keyword: Endecryting {
     static let name: String = "Keyword"
     
     static func encrypt(message: String, withKey key: String) throws -> String {
+        guard key.isEmpty == false else { return message }
+        guard key.trimmingCharacters(in: CharacterSet.alphabet).isEmpty else { throw EndecError.invalidKey}
+
+        let keys = Set(key.uppercased().chars)
+        var mapping = Array(keys).sorted()
+        mapping.append(contentsOf: uppercaseLetters.filter {!keys.contains($0)})
+
         return message.uppercased().chars.reduce("") { (initializer: String, element: String) -> String in
-            var str = element; let isLetter = letters.contains(element)
-            if let mappedStr = morseCodeMap[element] {
-                str = mappedStr
+            var str = element
+            if let idx = uppercaseLetters.index(of: element) {
+                str = mapping[idx]
             }
-            if element == " " { str += "    "}
-            else if isLetter { str += "  "}
             return initializer + str
         }
     }
     
     static func decrypt(message: String, withKey key: String) throws -> String {
         
-        return ""
+        guard key.isEmpty == false else { return message }
+        guard key.trimmingCharacters(in: CharacterSet.alphabet).isEmpty else { throw EndecError.invalidKey}
+        
+        let keys = Set(key.uppercased().chars)
+        var mapping = Array(keys).sorted()
+        mapping.append(contentsOf: uppercaseLetters.filter {!keys.contains($0)})
+        
+        return message.uppercased().chars.reduce("") { (initializer: String, element: String) -> String in
+            var str = element
+            if let idx = mapping.index(of: element) {
+                str = uppercaseLetters[idx]
+            }
+            return initializer + str
+        }
     }
 }
 
