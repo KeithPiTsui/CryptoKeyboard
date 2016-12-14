@@ -30,7 +30,6 @@
 		0E3F18651DFF9AC900E80D0C /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E3F18641DFF9AC900E80D0C /* Media.xcassets */; };
 		0E3F18681DFFE24100E80D0C /* SpellingAutoCorretor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E3F18671DFFE24100E80D0C /* SpellingAutoCorretor.swift */; };
 		0E3F186A1DFFEE8300E80D0C /* words.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0E3F18691DFFEE8300E80D0C /* words.txt */; };
-		0E3F186C1E001F3100E80D0C /* CipherSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E3F186B1E001F3100E80D0C /* CipherSettingView.swift */; };
 		0E3F18711E001F7700E80D0C /* CipherSettingTopBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E3F18701E001F7700E80D0C /* CipherSettingTopBarView.swift */; };
 		0E3F18731E001FF200E80D0C /* NumericPadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E3F18721E001FF200E80D0C /* NumericPadView.swift */; };
 		0E3F18751E0028D800E80D0C /* AlphabetPadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E3F18741E0028D800E80D0C /* AlphabetPadView.swift */; };
@@ -104,7 +103,6 @@
 		0E3F18641DFF9AC900E80D0C /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		0E3F18671DFFE24100E80D0C /* SpellingAutoCorretor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpellingAutoCorretor.swift; sourceTree = "<group>"; };
 		0E3F18691DFFEE8300E80D0C /* words.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = words.txt; sourceTree = "<group>"; };
-		0E3F186B1E001F3100E80D0C /* CipherSettingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CipherSettingView.swift; sourceTree = "<group>"; };
 		0E3F18701E001F7700E80D0C /* CipherSettingTopBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CipherSettingTopBarView.swift; sourceTree = "<group>"; };
 		0E3F18721E001FF200E80D0C /* NumericPadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumericPadView.swift; sourceTree = "<group>"; };
 		0E3F18741E0028D800E80D0C /* AlphabetPadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlphabetPadView.swift; sourceTree = "<group>"; };
@@ -200,7 +198,6 @@
 			isa = PBXGroup;
 			children = (
 				0E5DE9221E00E82600FAEF09 /* CipherSettingViewController.swift */,
-				0E3F186B1E001F3100E80D0C /* CipherSettingView.swift */,
 				0E3F18701E001F7700E80D0C /* CipherSettingTopBarView.swift */,
 				0E3F18721E001FF200E80D0C /* NumericPadView.swift */,
 				0E3F18741E0028D800E80D0C /* AlphabetPadView.swift */,
@@ -452,7 +449,6 @@
 				0EA85D201DFD2E9500AFB546 /* KeyboardView+Layout.swift in Sources */,
 				0E5DE9231E00E82600FAEF09 /* CipherSettingViewController.swift in Sources */,
 				0E28CCE21DFE748C00BCAC75 /* InputInterpreter.swift in Sources */,
-				0E3F186C1E001F3100E80D0C /* CipherSettingView.swift in Sources */,
 				0E28CCF11DFE78FD00BCAC75 /* CipherError.m in Sources */,
 				0E3F18681DFFE24100E80D0C /* SpellingAutoCorretor.swift in Sources */,
 				0E28CCD61DFE480200BCAC75 /* KeyboardViewController+KeyboardViewDelegate.swift in Sources */,

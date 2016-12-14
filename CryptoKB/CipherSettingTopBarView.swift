@@ -10,6 +10,7 @@ import UIKit
 
 protocol CipherSettingTopBarViewDelegate: class {
     func valuesForDisplay() -> [String]
+    func getTouched()
 }
 
 extension UILabel {
@@ -34,13 +35,14 @@ class CipherSettingTopBarView: UIView {
     init(frame: CGRect = CGRect.zero, withDelegate delegate: CipherSettingTopBarViewDelegate) {
         self.delegate = delegate
         super.init(frame: frame)
-        translatesAutoresizingMaskIntoConstraints = false
-        backgroundColor = UIColor.red
-        isOpaque = false
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func recieveATouch() {
+        print("\(#function)")
     }
     
     func reloadValues () {
@@ -67,6 +69,9 @@ class CipherSettingTopBarView: UIView {
             let label = UILabel.cipherSettingLabel(font: KeyboardAppearanceScheme.topBarInscriptFont, textColor: UIColor.keyboardViewItemInscriptColor, text: value)
             addSubview(label)
             labels.append(label)
+            let recognizer = UITapGestureRecognizer(target: self, action: #selector(CipherSettingTopBarView.recieveATouch))
+            label.isUserInteractionEnabled = true
+            label.addGestureRecognizer(recognizer)
         }
     }
     
@@ -109,26 +114,6 @@ class CipherSettingTopBarView: UIView {
                 myConstraints.append(NSLayoutConstraint(item: labels[i], attribute: .left, relatedBy: .equal, toItem: labels[i-1], attribute: .right, multiplier: 1, constant: 2))
             }
         }
-        
-        
-        
-//        for i in 0..<labels.count {
-//            myConstraints.append(NSLayoutConstraint(item: labels[i], attribute: .centerY, relatedBy: .equal, toItem: self, attribute: .centerY, multiplier: 1, constant: 0))
-//            if i == 0 {
-//                myConstraints.append(NSLayoutConstraint(item: labels[i], attribute: .left, relatedBy: .equal, toItem: self, attribute: .left, multiplier: 1, constant: 0))
-//            } else {
-//                myConstraints.append(NSLayoutConstraint(item: labels[i], attribute: .left, relatedBy: .equal, toItem: labels[i-1], attribute: .right, multiplier: 1, constant: 0))
-//            }
-//        }
-//        for i in (0..<labels.count).reversed() {
-//            myConstraints.append(NSLayoutConstraint(item: labels[i], attribute: .centerY, relatedBy: .equal, toItem: self, attribute: .centerY, multiplier: 1, constant: 0))
-//            if i == labels.count - 1 {
-//                myConstraints.append(NSLayoutConstraint(item: labels[i], attribute: .right, relatedBy: .equal, toItem: self, attribute: .right, multiplier: 1, constant: 0))
-//            } else {
-//                myConstraints.append(NSLayoutConstraint(item: labels[i], attribute: .right, relatedBy: .equal, toItem: labels[i+1], attribute: .left, multiplier: 1, constant: 0))
-//            }
-//        }
-        
     }
     
     private func layoutUIElements() {

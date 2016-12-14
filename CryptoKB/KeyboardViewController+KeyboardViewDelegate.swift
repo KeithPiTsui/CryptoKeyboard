@@ -177,9 +177,7 @@ extension KeyboardViewController: KeyboardViewDelegate {
         let vc = CipherSettingViewController()
         vc.delegate = self
         let nvc = UINavigationController(rootViewController: vc)
-        nvc.modalTransitionStyle = .partialCurl
-        nvc.modalPresentationStyle = .fullScreen
-        //nvc.navigationBar.backgroundColor = UIColor.topBarBackgroundColor
+        nvc.modalTransitionStyle = .crossDissolve
         nvc.navigationBar.tintColor = UIColor.topBarInscriptColor
         nvc.navigationBar.barTintColor = UIColor.topBarBackgroundColor
         vc.view.backgroundColor = UIColor.keyboardViewBackgroundColor

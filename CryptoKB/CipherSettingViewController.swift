@@ -36,24 +36,39 @@ class CipherSettingViewController: UIViewController {
     
     lazy var doneBtn: UIBarButtonItem = {
         let img = UIImage(named: "checkedSymbol")!
-        let item = UIBarButtonItem(image: img, style: .plain, target: self, action: #selector(CipherSettingViewController.cancel))
+        let item = UIBarButtonItem(image: img, style: .plain, target: self, action: #selector(CipherSettingViewController.done))
         item.tintColor = UIColor.barCheckedSymbolColor
         return item
     }()
     
     lazy var cipherTopBar: CipherSettingTopBarView = {
         let tb = CipherSettingTopBarView(withDelegate: self)
+//        let recognizer = UITapGestureRecognizer(target: self, action: #selector(CipherSettingViewController.test))
+//        tb.isUserInteractionEnabled = true
+//        tb.addGestureRecognizer(recognizer)
+        tb.backgroundColor = UIColor.red
+        tb.frame = CGRect(0, 0, 150, 50)
         return tb
     }()
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.leftBarButtonItem = cancelBtn
         navigationItem.rightBarButtonItem = doneBtn
         navigationItem.titleView = cipherTopBar
+//        let btn = UIButton(type: .system)
+//        btn.setTitle("TapMe", for: .normal)
+//        btn.addTarget(self, action: #selector(CipherSettingViewController.test), for: .touchUpInside)
+//        navigationItem.titleView = btn
         
         assembleElements()
         layoutElements()
+    }
+    
+    func test() {
+        print("\(#function)")
     }
     
     func cancel() {
@@ -133,6 +148,10 @@ class CipherSettingViewController: UIViewController {
 extension CipherSettingViewController: CipherSettingTopBarViewDelegate {
     func valuesForDisplay() -> [String] {
         return ["A","B","C","D","E","F"]
+    }
+    
+    func getTouched() {
+         
     }
 }
 
