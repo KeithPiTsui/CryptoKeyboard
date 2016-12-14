@@ -60,7 +60,11 @@ class CipherSettingViewController: UIViewController {
     
     func cancel() {
         print("\(#function)")
-        dismiss(animated: true, completion: nil)
+        if alphabetKeyboardSlideIned {
+            alphabetKeyboardSlideOut()
+        } else {
+            dismiss(animated: true, completion: nil)
+        }
     }
     
     func done() {
@@ -70,15 +74,31 @@ class CipherSettingViewController: UIViewController {
     
     // MARK: -
     // MARK: Slide in Alphabet Keyboard
-    private lazy var alphabetkeyboard: AlphabetKeyboard = AlphabetKeyboard(withDelegate: self)
+    private lazy var alphabetkeyboard: AlphabetKeyboard = {
+        let v  = AlphabetKeyboard(withDelegate: self)
+        return v}()
+    private var alphabetKeyboardSlideIned: Bool = false
+    private lazy var alphabetKeyboardConstraints: [NSLayoutConstraint] = {
+        var constraints = [NSLayoutConstraint]()
+        constraints.append(self.alphabetkeyboard.leftAnchor.constraint(equalTo: self.view.leftAnchor))
+        constraints.append(self.alphabetkeyboard.rightAnchor.constraint(equalTo: self.view.rightAnchor))
+        constraints.append(self.alphabetkeyboard.topAnchor.constraint(equalTo: self.topLayoutGuide.bottomAnchor))
+        constraints.append(self.alphabetkeyboard.bottomAnchor.constraint(equalTo: self.bottomLayoutGuide.topAnchor))
+        return constraints
+    }()
     
     fileprivate func alphabetkeyboardSlideIn(){
         view.addSubview(alphabetkeyboard)
-        alphabetkeyboard.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-        alphabetkeyboard.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-        alphabetkeyboard.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor).isActive = true
-        alphabetkeyboard.bottomAnchor.constraint(equalTo: bottomLayoutGuide.topAnchor).isActive = true
+        NSLayoutConstraint.activate(alphabetKeyboardConstraints)
+        alphabetKeyboardSlideIned = true
     }
+    
+    private func alphabetKeyboardSlideOut(){
+        NSLayoutConstraint.deactivate(alphabetKeyboardConstraints)
+        alphabetkeyboard.removeFromSuperview()
+        alphabetKeyboardSlideIned = false
+    }
+    
     
     
     
