@@ -17,7 +17,7 @@ class AlphabetKeyboard: UIView {
     weak var delegate: AlphabetKeyboardDelegate?
     
     /// keyboard view data model, contains every item's information
-    let keyboard: Keyboard = Keyboard.defaultKeyboard
+    let keyboard: Keyboard = Keyboard.alphabetKeyboard
     
     /// a array to store reuse keyboard view item
     var itemPool: [KeyboardViewItem] = []

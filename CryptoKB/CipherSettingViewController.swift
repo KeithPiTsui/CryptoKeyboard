@@ -62,6 +62,8 @@ class CipherSettingViewController: UIViewController {
         print("\(#function)")
         if alphabetKeyboardSlideIned {
             alphabetKeyboardSlideOut()
+        } else if numericKeyboardSlideIned {
+            numericKeyboardSlideOut()
         } else {
             dismiss(animated: true, completion: nil)
         }
@@ -71,6 +73,35 @@ class CipherSettingViewController: UIViewController {
         print("\(#function)")
         dismiss(animated: true, completion: nil)
     }
+    
+    // MARK: -
+    // MARK: Slide in Numerics Keyboard
+    private lazy var numericKeyboard: NumericKeyboard = {
+        let v  = NumericKeyboard(withDelegate: self)
+        return v}()
+    private var numericKeyboardSlideIned: Bool = false
+    private lazy var numericKeyboardConstraints: [NSLayoutConstraint] = {
+        var constraints = [NSLayoutConstraint]()
+        constraints.append(self.numericKeyboard.leftAnchor.constraint(equalTo: self.view.leftAnchor))
+        constraints.append(self.numericKeyboard.rightAnchor.constraint(equalTo: self.view.rightAnchor))
+        constraints.append(self.numericKeyboard.topAnchor.constraint(equalTo: self.topLayoutGuide.bottomAnchor))
+        constraints.append(self.numericKeyboard.bottomAnchor.constraint(equalTo: self.bottomLayoutGuide.topAnchor))
+        return constraints
+    }()
+    
+    fileprivate func numericKeyboardSlideIn(){
+        view.addSubview(numericKeyboard)
+        NSLayoutConstraint.activate(numericKeyboardConstraints)
+        numericKeyboardSlideIned = true
+    }
+    
+    private func numericKeyboardSlideOut(){
+        NSLayoutConstraint.deactivate(numericKeyboardConstraints)
+        numericKeyboard.removeFromSuperview()
+        numericKeyboardSlideIned = false
+    }
+    
+    
     
     // MARK: -
     // MARK: Slide in Alphabet Keyboard
@@ -87,7 +118,7 @@ class CipherSettingViewController: UIViewController {
         return constraints
     }()
     
-    fileprivate func alphabetkeyboardSlideIn(){
+    fileprivate func alphabetKeyboardSlideIn(){
         view.addSubview(alphabetkeyboard)
         NSLayoutConstraint.activate(alphabetKeyboardConstraints)
         alphabetKeyboardSlideIned = true
@@ -176,7 +207,8 @@ extension CipherSettingViewController: CipherSettingTopBarViewDelegate {
     
     func getTouched() {
         print("\(#function)")
-        alphabetkeyboardSlideIn()
+        //alphabetKeyboardSlideIn()
+        numericKeyboardSlideIn()
     }
 }
 
@@ -185,6 +217,42 @@ extension CipherSettingViewController: AlphabetKeyboardDelegate {
         print("\(#function)")
     }
 }
+
+//NumericKeyboardDelegate
+extension CipherSettingViewController: NumericKeyboardDelegate {
+    func nKeyboardViewItem(_ item: KeyboardViewItem, receivedEvent event: UIControlEvents, inKeyboard keyboard: NumericKeyboard) {
+        print("\(#function)")
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

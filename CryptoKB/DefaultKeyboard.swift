@@ -7,6 +7,21 @@
 //  Copyright © 2016 Apple. All rights reserved.
 //
 
+
+fileprivate var numericKeyRepresentations:
+    [(type: Key.KeyType, meaning: String?, inscript: String?, mode: Int?, column: Int, row: Int, page: Int)]? = [
+        (.number,"1", nil,    nil,    0, 0 ,0),
+        (.number,"2", nil,    nil,    1, 0 ,0),
+        (.number,"3", nil,    nil,    2, 0 ,0),
+        (.number,"4", nil,    nil,    0, 1 ,0),
+        (.number,"5", nil,    nil,    1, 1 ,0),
+        (.number,"6", nil,    nil,    2, 1 ,0),
+        (.number,"7", nil,    nil,    0, 2 ,0),
+        (.number,"8", nil,    nil,    1, 2 ,0),
+        (.number,"9", nil,    nil,    2, 2 ,0),
+        (.number,"0", nil,    nil,    0, 3 ,0),
+        (.backspace,    nil,    nil,    nil,    1, 3 ,0)]
+
 fileprivate var alphabetKeyRepresentations:
     [(type: Key.KeyType, meaning: String?, inscript: String?, mode: Int?, column: Int, row: Int, page: Int)]? = [
         (.alphabet,    "Q",    nil,    nil,    0, 0, 0),
@@ -173,6 +188,17 @@ extension Keyboard {
                 = Key(type: keyRep.type, meaning: keyRep.meaning, inscript: keyRep.inscript, mode: keyRep.mode)
         }
         alphabetKeyRepresentations = nil
+        return defaultKeyboard
+    }()
+    
+    static let numericKeyboard: Keyboard = {
+        assert(numericKeyRepresentations != nil, "Key Representations must not be nil")
+        var defaultKeyboard = Keyboard(columns: 3, rows: 4, pages: 1)
+        for keyRep in numericKeyRepresentations! {
+            defaultKeyboard.keys[keyRep.page][keyRep.row][keyRep.column]
+                = Key(type: keyRep.type, meaning: keyRep.meaning, inscript: keyRep.inscript, mode: keyRep.mode)
+        }
+        numericKeyRepresentations = nil
         return defaultKeyboard
     }()
 
