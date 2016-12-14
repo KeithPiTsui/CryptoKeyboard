@@ -7,6 +7,39 @@
 //  Copyright © 2016 Apple. All rights reserved.
 //
 
+fileprivate var alphabetKeyRepresentations:
+    [(type: Key.KeyType, meaning: String?, inscript: String?, mode: Int?, column: Int, row: Int, page: Int)]? = [
+        (.alphabet,    "Q",    nil,    nil,    0, 0, 0),
+        (.alphabet,    "W",    nil,    nil,    1, 0, 0),
+        (.alphabet,    "E",    nil,    nil,    2, 0, 0),
+        (.alphabet,    "R",    nil,    nil,    3, 0, 0),
+        (.alphabet,    "T",    nil,    nil,    4, 0 ,0),
+        (.alphabet,    "Y",    nil,    nil,    5, 0 ,0),
+        (.alphabet,    "U",    nil,    nil,    6, 0 ,0),
+        (.alphabet,    "I",    nil,    nil,    7, 0 ,0),
+        (.alphabet,    "O",    nil,    nil,    8, 0 ,0),
+        (.alphabet,    "P",    nil,    nil,    9, 0 ,0),
+        
+        (.alphabet,    "A",    nil,    nil,    0, 1 ,0),
+        (.alphabet,    "S",    nil,    nil,    1, 1 ,0),
+        (.alphabet,    "D",    nil,    nil,    2, 1 ,0),
+        (.alphabet,    "F",    nil,    nil,    3, 1 ,0),
+        (.alphabet,    "G",    nil,    nil,    4, 1 ,0),
+        (.alphabet,    "H",    nil,    nil,    5, 1 ,0),
+        (.alphabet,    "J",    nil,    nil,    6, 1 ,0),
+        (.alphabet,    "K",    nil,    nil,    7, 1 ,0),
+        (.alphabet,    "L",    nil,    nil,    8, 1 ,0),
+        
+        (.shift,        nil,    nil,    nil,    0, 2 ,0),
+        (.alphabet,    "Z",    nil,    nil,    1, 2 ,0),
+        (.alphabet,    "X",    nil,    nil,    2, 2 ,0),
+        (.alphabet,    "C",    nil,    nil,    3, 2 ,0),
+        (.alphabet,    "V",    nil,    nil,    4, 2 ,0),
+        (.alphabet,    "B",    nil,    nil,    5, 2 ,0),
+        (.alphabet,    "N",    nil,    nil,    6, 2 ,0),
+        (.alphabet,    "M",    nil,    nil,    7, 2 ,0),
+        (.backspace,    nil,    nil,    nil,    8, 2 ,0)]
+
 fileprivate var keyRepresentations:
 [(type: Key.KeyType, meaning: String?, inscript: String?, mode: Int?, column: Int, row: Int, page: Int)]? = [
 (.alphabet,    "Q",    nil,    nil,    0, 0, 0),
@@ -131,6 +164,18 @@ extension Keyboard {
         keyRepresentations = nil
         return defaultKeyboard
     }()
+    
+    static let alphabetKeyboard: Keyboard = {
+        assert(alphabetKeyRepresentations != nil, "Key Representations must not be nil")
+        var defaultKeyboard = Keyboard(columns: 10, rows: 3, pages: 1)
+        for keyRep in alphabetKeyRepresentations! {
+            defaultKeyboard.keys[keyRep.page][keyRep.row][keyRep.column]
+                = Key(type: keyRep.type, meaning: keyRep.meaning, inscript: keyRep.inscript, mode: keyRep.mode)
+        }
+        alphabetKeyRepresentations = nil
+        return defaultKeyboard
+    }()
+
 }
 
 

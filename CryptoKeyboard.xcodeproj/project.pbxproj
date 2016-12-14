@@ -32,9 +32,9 @@
 		0E3F186A1DFFEE8300E80D0C /* words.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0E3F18691DFFEE8300E80D0C /* words.txt */; };
 		0E3F18711E001F7700E80D0C /* CipherSettingTopBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E3F18701E001F7700E80D0C /* CipherSettingTopBarView.swift */; };
 		0E3F18731E001FF200E80D0C /* NumericPadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E3F18721E001FF200E80D0C /* NumericPadView.swift */; };
-		0E3F18751E0028D800E80D0C /* AlphabetPadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E3F18741E0028D800E80D0C /* AlphabetPadView.swift */; };
 		0E5DE9231E00E82600FAEF09 /* CipherSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5DE9221E00E82600FAEF09 /* CipherSettingViewController.swift */; };
 		0E5DE9251E00E88300FAEF09 /* KeyboardViewController+CipherSettingViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5DE9241E00E88300FAEF09 /* KeyboardViewController+CipherSettingViewControllerDelegate.swift */; };
+		0E5DE9281E0122AD00FAEF09 /* AlphabetKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5DE9271E0122AD00FAEF09 /* AlphabetKeyboard.swift */; };
 		0E6B6A321DFA4ABD00712C0A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6B6A311DFA4ABD00712C0A /* AppDelegate.swift */; };
 		0E6B6A341DFA4ABD00712C0A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6B6A331DFA4ABD00712C0A /* ViewController.swift */; };
 		0E6B6A371DFA4ABD00712C0A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E6B6A351DFA4ABD00712C0A /* Main.storyboard */; };
@@ -105,9 +105,9 @@
 		0E3F18691DFFEE8300E80D0C /* words.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = words.txt; sourceTree = "<group>"; };
 		0E3F18701E001F7700E80D0C /* CipherSettingTopBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CipherSettingTopBarView.swift; sourceTree = "<group>"; };
 		0E3F18721E001FF200E80D0C /* NumericPadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumericPadView.swift; sourceTree = "<group>"; };
-		0E3F18741E0028D800E80D0C /* AlphabetPadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlphabetPadView.swift; sourceTree = "<group>"; };
 		0E5DE9221E00E82600FAEF09 /* CipherSettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CipherSettingViewController.swift; sourceTree = "<group>"; };
 		0E5DE9241E00E88300FAEF09 /* KeyboardViewController+CipherSettingViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "KeyboardViewController+CipherSettingViewControllerDelegate.swift"; sourceTree = "<group>"; };
+		0E5DE9271E0122AD00FAEF09 /* AlphabetKeyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlphabetKeyboard.swift; sourceTree = "<group>"; };
 		0E6B6A2E1DFA4ABD00712C0A /* CryptoKeyboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CryptoKeyboard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E6B6A311DFA4ABD00712C0A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0E6B6A331DFA4ABD00712C0A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -200,7 +200,6 @@
 				0E5DE9221E00E82600FAEF09 /* CipherSettingViewController.swift */,
 				0E3F18701E001F7700E80D0C /* CipherSettingTopBarView.swift */,
 				0E3F18721E001FF200E80D0C /* NumericPadView.swift */,
-				0E3F18741E0028D800E80D0C /* AlphabetPadView.swift */,
 			);
 			name = Setting;
 			sourceTree = "<group>";
@@ -226,6 +225,14 @@
 				0E28CCFA1DFE854800BCAC75 /* TopBarView+Touch.swift */,
 			);
 			name = KeyboardTopBar;
+			sourceTree = "<group>";
+		};
+		0E5DE9261E01228900FAEF09 /* AlphabetKeyboard */ = {
+			isa = PBXGroup;
+			children = (
+				0E5DE9271E0122AD00FAEF09 /* AlphabetKeyboard.swift */,
+			);
+			name = AlphabetKeyboard;
 			sourceTree = "<group>";
 		};
 		0E6B6A251DFA4ABD00712C0A = {
@@ -296,6 +303,7 @@
 		0EA85D181DFD2E7A00AFB546 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				0E5DE9261E01228900FAEF09 /* AlphabetKeyboard */,
 				0E3F186F1E001F5000E80D0C /* KeyboardTopBar */,
 				0E3F186E1E001F3F00E80D0C /* KeyboardView */,
 				0E3F186D1E001F3600E80D0C /* Setting */,
@@ -425,7 +433,7 @@
 				0E3F18711E001F7700E80D0C /* CipherSettingTopBarView.swift in Sources */,
 				0EA85D241DFD318700AFB546 /* UIColor+ColorScheme.swift in Sources */,
 				0E28CCDF1DFE6D7A00BCAC75 /* TopBarView.swift in Sources */,
-				0E3F18751E0028D800E80D0C /* AlphabetPadView.swift in Sources */,
+				0E5DE9281E0122AD00FAEF09 /* AlphabetKeyboard.swift in Sources */,
 				0E1261481DFD75EE00E7EFE4 /* KeyboardViewController.swift in Sources */,
 				0EA85D141DFD2E3700AFB546 /* DefaultKeyboard.swift in Sources */,
 				0EA85D1D1DFD2E9500AFB546 /* KeyboardView.swift in Sources */,

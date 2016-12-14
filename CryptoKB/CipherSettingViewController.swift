@@ -43,10 +43,6 @@ class CipherSettingViewController: UIViewController {
     
     lazy var cipherTopBar: CipherSettingTopBarView = {
         let tb = CipherSettingTopBarView(withDelegate: self)
-//        let recognizer = UITapGestureRecognizer(target: self, action: #selector(CipherSettingViewController.test))
-//        tb.isUserInteractionEnabled = true
-//        tb.addGestureRecognizer(recognizer)
-        tb.backgroundColor = UIColor.red
         tb.frame = CGRect(0, 0, 150, 50)
         return tb
     }()
@@ -58,17 +54,8 @@ class CipherSettingViewController: UIViewController {
         navigationItem.leftBarButtonItem = cancelBtn
         navigationItem.rightBarButtonItem = doneBtn
         navigationItem.titleView = cipherTopBar
-//        let btn = UIButton(type: .system)
-//        btn.setTitle("TapMe", for: .normal)
-//        btn.addTarget(self, action: #selector(CipherSettingViewController.test), for: .touchUpInside)
-//        navigationItem.titleView = btn
-        
         assembleElements()
         layoutElements()
-    }
-    
-    func test() {
-        print("\(#function)")
     }
     
     func cancel() {
@@ -80,6 +67,23 @@ class CipherSettingViewController: UIViewController {
         print("\(#function)")
         dismiss(animated: true, completion: nil)
     }
+    
+    // MARK: -
+    // MARK: Slide in Alphabet Keyboard
+    private lazy var alphabetkeyboard: AlphabetKeyboard = AlphabetKeyboard(withDelegate: self)
+    
+    fileprivate func alphabetkeyboardSlideIn(){
+        view.addSubview(alphabetkeyboard)
+        alphabetkeyboard.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        alphabetkeyboard.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        alphabetkeyboard.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor).isActive = true
+        alphabetkeyboard.bottomAnchor.constraint(equalTo: bottomLayoutGuide.topAnchor).isActive = true
+    }
+    
+    
+    
+    // MARK: -
+    // MARK: primary UI Elements and Layout
     
     private let morseLabel: UILabel = UILabel.keyboardLabel(font: KeyboardAppearanceScheme.keyboardViewItemInscriptFont, textColor: UIColor.keyboardViewItemInscriptColor, text: "Morse")
     private let morseLine: UIView = UIView.cipherSettingLineView(lineWidth: 5, lineColor: UIColor.white)
@@ -151,10 +155,16 @@ extension CipherSettingViewController: CipherSettingTopBarViewDelegate {
     }
     
     func getTouched() {
-         
+        print("\(#function)")
+        alphabetkeyboardSlideIn()
     }
 }
 
+extension CipherSettingViewController: AlphabetKeyboardDelegate {
+    func keyboardViewItem(_ item: KeyboardViewItem, receivedEvent event: UIControlEvents, inKeyboard keyboard: AlphabetKeyboard) {
+        print("\(#function)")
+    }
+}
 
 
 

@@ -43,6 +43,7 @@ class CipherSettingTopBarView: UIView {
     
     func recieveATouch() {
         print("\(#function)")
+        delegate.getTouched()
     }
     
     func reloadValues () {
