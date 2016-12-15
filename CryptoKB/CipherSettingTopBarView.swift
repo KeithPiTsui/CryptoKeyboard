@@ -28,7 +28,7 @@ class CipherSettingTopBarView: UIView {
     
     unowned var delegate: CipherSettingTopBarViewDelegate
     
-    private var values: [String] = []
+    //private var values: [String] = []
     private var labels: [UILabel] = []
     private var myConstraints: [NSLayoutConstraint] = []
     
@@ -57,23 +57,18 @@ class CipherSettingTopBarView: UIView {
             NSLayoutConstraint.deactivate(myConstraints)
             myConstraints.removeAll(keepingCapacity: true)
         }
-        for v in labels {
-            v.removeFromSuperview()
-        }
+        labels.forEach{$0.removeFromSuperview()}
         labels.removeAll(keepingCapacity: true)
-        values.removeAll(keepingCapacity: true)
     }
     
     private func assembleElements() {
-        values = delegate.valuesForDisplay()
-        for value in values {
+        labels.append(contentsOf: delegate.valuesForDisplay().map { (value) -> UILabel in
             let label = UILabel.cipherSettingLabel(font: KeyboardAppearanceScheme.topBarInscriptFont, textColor: UIColor.keyboardViewItemInscriptColor, text: value)
             addSubview(label)
-            labels.append(label)
-            let recognizer = UITapGestureRecognizer(target: self, action: #selector(CipherSettingTopBarView.recieveATouch))
             label.isUserInteractionEnabled = true
-            label.addGestureRecognizer(recognizer)
-        }
+            label.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(CipherSettingTopBarView.recieveATouch)))
+            return label
+        })
     }
     
     private func setupConstraints() {

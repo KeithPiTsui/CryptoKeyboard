@@ -6,18 +6,19 @@
 //  Copyright © 2016 Keith. All rights reserved.
 //
 
+import Swift
+
 import Foundation
 
 enum EndecError: Error {
     case invalidKey
 }
 
-enum CipherType: Int, Hashable {
+enum CipherType: Int {
     case caesar
     case morse
     case Vigenere
     case keyword
-    var hashValue: Int { return self.rawValue }
 }
 
 
@@ -46,9 +47,6 @@ struct CaesarCipher: Endecryting {
     static func encrypt(message: String, withKey key: String) throws -> String {
         guard let keyNumberValue = Int(key) else { throw EndecError.invalidKey }
         if keyNumberValue ==  0 { return message }
-    
-        
-        
         var secret: String = ""
         for char in message.chars {
             var encryptedChar = char
@@ -103,16 +101,13 @@ struct MorseCode: Endecryting {
     }
     
     static func decrypt(message: String, withKey key: String) throws -> String {
-       
         return ""
     }
 }
 
 
 extension CharacterSet {
-    static let alphabet: CharacterSet = {
-        return CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ")
-    }()
+    static let alphabet: CharacterSet = {return CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ")}()
 }
 
 fileprivate let uppercaseLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".chars
@@ -201,16 +196,6 @@ struct KeywordCipher: Endecryting {
         }
     }
 }
-
-
-
-
-
-
-
-
-
-
 
 
 

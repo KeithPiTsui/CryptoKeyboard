@@ -147,15 +147,7 @@ class CipherSettingViewController: UIViewController {
     private let cipherSelectSlider: UISlider = {let v = UISlider(); v.translatesAutoresizingMaskIntoConstraints = false; v.backgroundColor = UIColor.lightGray; return v}()
     
     private func assembleElements () {
-        view.addSubview(morseLabel)
-        view.addSubview(morseLine)
-        view.addSubview(caesarLabel)
-        view.addSubview(caesarLine)
-        view.addSubview(vigenereLabel)
-        view.addSubview(vigenereLine)
-        view.addSubview(keywordLabel)
-        view.addSubview(keywordLine)
-        view.addSubview(cipherSelectSlider)
+        [morseLabel, morseLine, caesarLabel, caesarLine, vigenereLabel, vigenereLine, keywordLabel, keywordLine, cipherSelectSlider].forEach(view.addSubview)
     }
     
     private func layoutElements() {
