@@ -20,6 +20,7 @@ enum CipherType: Int, Hashable {
     var hashValue: Int { return self.rawValue }
 }
 
+
 /// Including Encryption and Decryption
 protocol Endecryting {
     static var name: String {get}
@@ -45,6 +46,8 @@ struct CaesarCipher: Endecryting {
     static func encrypt(message: String, withKey key: String) throws -> String {
         guard let keyNumberValue = Int(key) else { throw EndecError.invalidKey }
         if keyNumberValue ==  0 { return message }
+    
+        
         
         var secret: String = ""
         for char in message.chars {

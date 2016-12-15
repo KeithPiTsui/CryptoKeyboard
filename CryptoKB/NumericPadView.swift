@@ -94,14 +94,8 @@ class NumericKeyboard: UIView {
     }
     
     private func dequeueItem(forKey key: Key) -> KeyboardViewItem {
-        var keyboardViewItem: KeyboardViewItem! = nil
-        if itemPool.isEmpty {
-            keyboardViewItem = KeyboardViewItem()
-        } else {
-            keyboardViewItem = itemPool.removeLast()
-        }
+        let keyboardViewItem = itemPool.popLast() ?? KeyboardViewItem()
         keyboardViewItem.key = key
-        
         return keyboardViewItem
     }
     
