@@ -111,7 +111,7 @@ class TopBarView: UIView {
         return label
     }()
 
-    var cipherName = "Caesar" {didSet{rightLabelRightCornerTag.text = cipherName}}
+    var cipherName = "Morse" {didSet{rightLabelRightCornerTag.text = cipherName}}
     
     
     var delegate: TopBarViewDelegate?

@@ -18,11 +18,17 @@ final class KeyboardViewController: UIInputViewController {
     
     // MARK: -
     // MARK: Instance Properties
+    
+    var cipherName: String = "Caesar"
+    var cipherType: CipherType = .caesar
+    var cipherKey: String = "3"
+    
     lazy var keyboardView: KeyboardView = { return KeyboardView(withDelegate:self); }()
     
     lazy var topBar: TopBarView = {
         let tbv = TopBarView(delegate:self)
         tbv.translatesAutoresizingMaskIntoConstraints = false
+        tbv.cipherName = self.cipherName
         return tbv
     }()
     
@@ -143,11 +149,10 @@ final class KeyboardViewController: UIInputViewController {
     
     override func viewDidLoad(){
         super.viewDidLoad()
+        loadCipherSetting()
         GlobalKeyboardViewController = self
         view.addSubview(topBar)
         view.addSubview(keyboardView)
-//        printFontNames()
-        //testSpellingAutoCorrector()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -159,6 +164,32 @@ final class KeyboardViewController: UIInputViewController {
     // MARK: Text Editing
     override func textDidChange(_ textInput: UITextInput?) {
         setCapsIfNeeded()
+    }
+    
+    
+    // MARK: -
+    // MARK: Cipher Setting
+    private func loadCipherSetting() {
+        //UserDefaults.standard.setValue(token, forKey: "user_auth_token")
+        if let cipherTypeRawValue = UserDefaults.standard.value(forKey: KeyboardExtensionConstants.cipherType) as? Int,
+           let cipherType = CipherType(rawValue: cipherTypeRawValue) {
+            self.cipherType = cipherType
+        } else {
+            UserDefaults.standard.setValue(self.cipherType.rawValue, forKey: KeyboardExtensionConstants.cipherType)
+        }
+        
+        if let cipherName = UserDefaults.standard.value(forKey: KeyboardExtensionConstants.cipherName) as? String {
+            self.cipherName = cipherName
+        } else {
+            UserDefaults.standard.setValue(self.cipherName, forKey: KeyboardExtensionConstants.cipherName)
+        }
+        
+        if let cipherKey = UserDefaults.standard.value(forKey: KeyboardExtensionConstants.cipherKey) as? String{
+            self.cipherKey = cipherKey
+        } else {
+            UserDefaults.standard.setValue(self.cipherKey, forKey: KeyboardExtensionConstants.cipherKey)
+        }
+        UserDefaults.standard.synchronize()
     }
 }
 

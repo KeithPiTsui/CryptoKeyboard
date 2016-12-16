@@ -9,7 +9,7 @@
 import Foundation
 
 struct CipherManager {
-    static let ciphers: [CipherType: Endecryting.Type] = [.caesar:CaesarCipher.self, .keyword:KeywordCipher.self, .Vigenere:VigenereCipher.self, .morse:MorseCode.self]
+    static let ciphers: [CipherType: Endecryting.Type] = [.caesar:CaesarCipher.self, .keyword:KeywordCipher.self, .vigenere:VigenereCipher.self, .morse:MorseCode.self]
     
     static func encrypt(message: String, withKey key: String, andCipherType type: CipherType) throws -> String {
         do {

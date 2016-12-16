@@ -27,8 +27,7 @@ extension UILabel {
 class CipherSettingTopBarView: UIView {
     
     unowned var delegate: CipherSettingTopBarViewDelegate
-    
-    //private var values: [String] = []
+
     private var labels: [UILabel] = []
     private var myConstraints: [NSLayoutConstraint] = []
     

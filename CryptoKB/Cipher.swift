@@ -17,14 +17,21 @@ enum EndecError: Error {
 enum CipherType: Int {
     case caesar
     case morse
-    case Vigenere
+    case vigenere
     case keyword
+}
+
+enum CipherKeyType {
+    case number
+    case letter
 }
 
 
 /// Including Encryption and Decryption
 protocol Endecryting {
     static var name: String {get}
+    static var digits: UInt {get}
+    static var keyType: CipherKeyType {get}
     static func encrypt(message: String, withKey key: String) throws -> String;
     static func decrypt(message: String, withKey key: String) throws -> String;
 }
@@ -42,8 +49,9 @@ extension String {
 fileprivate let letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ".chars;
 
 struct CaesarCipher: Endecryting {
-    
+    static let digits: UInt = 2
     static let name: String = "CaesarCipher"
+    static let keyType: CipherKeyType = .number
     static func encrypt(message: String, withKey key: String) throws -> String {
         guard let keyNumberValue = Int(key) else { throw EndecError.invalidKey }
         if keyNumberValue ==  0 { return message }
@@ -87,7 +95,8 @@ fileprivate let morseCodeMap = loadMorseCodeMap()
 
 struct MorseCode: Endecryting {
     static let name: String = "MorseCode"
-    
+    static let digits: UInt = 0
+    static let keyType: CipherKeyType = .letter
     static func encrypt(message: String, withKey key: String) throws -> String {
         return message.uppercased().chars.reduce("") { (initializer: String, element: String) -> String in
             var str = element; let isLetter = letters.contains(element)
@@ -115,7 +124,8 @@ fileprivate let uppercaseLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".chars
 struct VigenereCipher: Endecryting {
     
     static let name: String = "Vigenere"
-    
+    static let digits: UInt = 5
+    static let keyType: CipherKeyType = .letter
     static func encrypt(message: String, withKey key: String) throws -> String {
         guard key.isEmpty == false else { return message }
         guard key.trimmingCharacters(in: CharacterSet.alphabet).isEmpty else { throw EndecError.invalidKey}
@@ -160,7 +170,8 @@ struct VigenereCipher: Endecryting {
 
 struct KeywordCipher: Endecryting {
     static let name: String = "Keyword"
-    
+    static let digits: UInt = 5
+    static let keyType: CipherKeyType = .letter
     static func encrypt(message: String, withKey key: String) throws -> String {
         guard key.isEmpty == false else { return message }
         guard key.trimmingCharacters(in: CharacterSet.alphabet).isEmpty else { throw EndecError.invalidKey}

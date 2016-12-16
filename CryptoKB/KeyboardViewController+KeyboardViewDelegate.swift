@@ -174,7 +174,7 @@ extension KeyboardViewController: KeyboardViewDelegate {
     
     private func pressSettings(_ sender: KeyboardViewItem) {
         print("\(#function)")
-        let vc = CipherSettingViewController()
+        let vc = CipherSettingViewController(cipherName: cipherName, cipherType: cipherType, cipherKey: cipherKey)
         vc.delegate = self
         let nvc = UINavigationController(rootViewController: vc)
         nvc.modalTransitionStyle = .crossDissolve

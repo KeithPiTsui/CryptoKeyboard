@@ -9,7 +9,8 @@
 import UIKit
 
 protocol CipherSettingViewControllerDelegate: class {
-    
+    func didSelect(cipherName: String, cipherType: CipherType, cipherKey: String)
+    func cancelSelect()
 }
 
 extension UIView {
@@ -24,35 +25,98 @@ extension UIView {
     }
 }
 
-class CipherSettingViewController: UIViewController {
+final class CipherSettingViewController: UIViewController {
 
     weak var delegate: CipherSettingViewControllerDelegate?
     
-    lazy var cancelBtn: UIBarButtonItem = {
+    private lazy var cancelBtn: UIBarButtonItem = {
         let img = UIImage(named: "backArrow")!
         let item = UIBarButtonItem(image: img, style: .plain, target: self, action: #selector(CipherSettingViewController.cancel))
         return item
     }()
     
-    lazy var doneBtn: UIBarButtonItem = {
+    private lazy var doneBtn: UIBarButtonItem = {
         let img = UIImage(named: "checkedSymbol")!
         let item = UIBarButtonItem(image: img, style: .plain, target: self, action: #selector(CipherSettingViewController.done))
         item.tintColor = UIColor.barCheckedSymbolColor
         return item
     }()
     
-    lazy var cipherTopBar: CipherSettingTopBarView = {
+    private lazy var cipherTopBar: CipherSettingTopBarView = {
         let tb = CipherSettingTopBarView(withDelegate: self)
         tb.frame = CGRect(0, 0, 150, 50)
         return tb
     }()
     
+    private let originalCipherType: CipherType
+    private let originalCipherKey: String
+    
+
+    fileprivate var cipherType: CipherType {didSet{highlightSelectedLabel()}}
+    
+    
+    private lazy var cipherKeys:[String] = ["","","",""]
+    
+    private lazy var cipherTypes: [CipherType] = [.morse, .caesar, .vigenere, .keyword]
+    
+    private func cipherName() -> String {
+        return CipherManager.ciphers[cipherType]!.name
+    }
+    
+    fileprivate func cipherKey() -> String {
+        return cipherKeys[cipherTypes.index(of: cipherType)!]
+    }
+    
+    fileprivate var cipherUpdated: Bool {
+        return originalCipherKey != self.cipherKeys[cipherTypes.index(of: cipherType)!]
+            || originalCipherType != cipherType
+    }
+    
+    private func updateCipherKey() {
+        
+    }
+    
+    private func highlightSelectedLabel() {
+        [morseLabel, caesarLabel, vigenereLabel,keywordLabel].forEach{$0.textColor = UIColor.white}
+        [caesarLine, keywordLine, morseLine,vigenereLine].forEach{$0.backgroundColor = UIColor.white}
+        UIView.animate(withDuration: 0.2) {
+            switch self.cipherType {
+            case .caesar:
+                self.caesarLabel.textColor = UIColor.red
+                self.caesarLine.backgroundColor = UIColor.red
+            case .keyword:
+                self.keywordLabel.textColor = UIColor.red
+                self.keywordLine.backgroundColor = UIColor.red
+            case .morse:
+                self.morseLabel.textColor = UIColor.red
+                self.morseLine.backgroundColor = UIColor.red
+            case .vigenere:
+                self.vigenereLabel.textColor = UIColor.red
+                self.vigenereLine.backgroundColor = UIColor.red
+            }
+        }
+    }
+    
+    
+    init(cipherName: String, cipherType: CipherType, cipherKey: String) {
+        originalCipherType = cipherType
+        originalCipherKey = cipherKey
+        self.cipherType = cipherType
+        super.init(nibName: nil, bundle: nil)
+        for (idx, ct) in cipherTypes.enumerated() {
+            cipherKeys[idx] = ct == cipherType ? cipherKey : (0..<CipherManager.ciphers[ct]!.digits).reduce(""){$0.0+" "}
+        }
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.leftBarButtonItem = cancelBtn
-        navigationItem.rightBarButtonItem = doneBtn
+        //navigationItem.rightBarButtonItem = doneBtn
         navigationItem.titleView = cipherTopBar
         assembleElements()
         layoutElements()
@@ -71,6 +135,9 @@ class CipherSettingViewController: UIViewController {
     
     func done() {
         print("\(#function)")
+        if cipherUpdated {
+            delegate?.didSelect(cipherName: cipherName(), cipherType: cipherType, cipherKey: cipherKey())
+        }
         dismiss(animated: true, completion: nil)
     }
     
@@ -136,18 +203,71 @@ class CipherSettingViewController: UIViewController {
     // MARK: -
     // MARK: primary UI Elements and Layout
     
-    private let morseLabel: UILabel = UILabel.keyboardLabel(font: KeyboardAppearanceScheme.keyboardViewItemInscriptFont, textColor: UIColor.keyboardViewItemInscriptColor, text: "Morse")
-    private let morseLine: UIView = UIView.cipherSettingLineView(lineWidth: 5, lineColor: UIColor.white)
-    private let caesarLabel: UILabel = UILabel.keyboardLabel(font: KeyboardAppearanceScheme.keyboardViewItemInscriptFont, textColor: UIColor.keyboardViewItemInscriptColor, text: "Caesar")
-    private let caesarLine: UIView = UIView.cipherSettingLineView(lineWidth: 5, lineColor: UIColor.white)
-    private let vigenereLabel: UILabel = UILabel.keyboardLabel(font: KeyboardAppearanceScheme.keyboardViewItemInscriptFont, textColor: UIColor.keyboardViewItemInscriptColor, text: "Vigenere")
-    private let vigenereLine: UIView = UIView.cipherSettingLineView(lineWidth: 5, lineColor: UIColor.white)
-    private let keywordLabel: UILabel = UILabel.keyboardLabel(font: KeyboardAppearanceScheme.keyboardViewItemInscriptFont, textColor: UIColor.keyboardViewItemInscriptColor, text: "Keyword")
-    private let keywordLine: UIView = UIView.cipherSettingLineView(lineWidth: 5, lineColor: UIColor.white)
-    private let cipherSelectSlider: UISlider = {let v = UISlider(); v.translatesAutoresizingMaskIntoConstraints = false; v.backgroundColor = UIColor.lightGray; return v}()
+   private lazy var morseLabel: UILabel = UILabel.keyboardLabel(font: KeyboardAppearanceScheme.keyboardViewItemInscriptFont, textColor: UIColor.keyboardViewItemInscriptColor, text: "Morse")
+    private lazy var morseLine: UIView = UIView.cipherSettingLineView(lineWidth: 5, lineColor: UIColor.white)
+    private lazy var caesarLabel: UILabel = UILabel.keyboardLabel(font: KeyboardAppearanceScheme.keyboardViewItemInscriptFont, textColor: UIColor.keyboardViewItemInscriptColor, text: "Caesar")
+    private lazy var caesarLine: UIView = UIView.cipherSettingLineView(lineWidth: 5, lineColor: UIColor.white)
+    private lazy var vigenereLabel: UILabel = UILabel.keyboardLabel(font: KeyboardAppearanceScheme.keyboardViewItemInscriptFont, textColor: UIColor.keyboardViewItemInscriptColor, text: "Vigenere")
+    private lazy var vigenereLine: UIView = UIView.cipherSettingLineView(lineWidth: 5, lineColor: UIColor.white)
+    private lazy var keywordLabel: UILabel = UILabel.keyboardLabel(font: KeyboardAppearanceScheme.keyboardViewItemInscriptFont, textColor: UIColor.keyboardViewItemInscriptColor, text: "Keyword")
+    private lazy var keywordLine: UIView = UIView.cipherSettingLineView(lineWidth: 5, lineColor: UIColor.white)
+    
+    private lazy var locations:[Float] = [13.5274,38.3562,62.3288,86.8151]
+    private lazy var ranges: [Range<Float>] = [0..<25.9418, 25.9418..<50.3425, 50.3425..<74.5720, 74.5720..<100.1]
+    private var lastStep: Float = 0
+    
+    private lazy var cipherSelectSlider: UISlider = {
+        let v = UISlider()
+        v.translatesAutoresizingMaskIntoConstraints = false
+        v.backgroundColor = UIColor.clear
+        let leftTrack = UIImage(named:"brightnessBar")!
+        let rightTrack = leftTrack
+        let cursor = UIImage(named: "cursorThumb")!
+        v.minimumValue = 0
+        v.maximumValue = 100
+        v.setMinimumTrackImage(leftTrack, for: .normal)
+        v.setMaximumTrackImage(rightTrack, for: .normal)
+        v.setThumbImage(cursor, for: .normal)
+        return v
+    }()
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        highlightSelectedLabel()
+    }
+    
+    
+    func sliderValueChanged(sender: UISlider) {
+        print("\(#function): \(sender.value)")
+        guard let idx  = (ranges.index{$0.contains(sender.value)}) else { return }
+        sender.value = locations[idx]
+    }
+    
+    func sliderDragUp(sender: UISlider) {
+        print("\(#function): \(sender.value)")
+        guard let idx  = (ranges.index{$0.contains(sender.value)}) else { return }
+        cipherType = cipherTypes[idx]
+    }
+    
+    private func slideInKeyboard() {
+        switch CipherManager.ciphers[cipherType]!.keyType {
+        case .letter:
+            alphabetKeyboardSlideIn()
+        case .number:
+            numericKeyboardSlideIn()
+        }
+    }
+    
     
     private func assembleElements () {
         [morseLabel, morseLine, caesarLabel, caesarLine, vigenereLabel, vigenereLine, keywordLabel, keywordLine, cipherSelectSlider].forEach(view.addSubview)
+        
+        if let idx = cipherTypes.index(of: cipherType) {
+            cipherSelectSlider.value = locations[idx]
+        }
+        
+        cipherSelectSlider.addTarget(self, action: #selector(CipherSettingViewController.sliderDragUp(sender:)), for: .touchUpInside)
+        cipherSelectSlider.addTarget(self, action: #selector(CipherSettingViewController.sliderValueChanged(sender:)), for: .valueChanged)
     }
     
     private func layoutElements() {
@@ -187,19 +307,16 @@ class CipherSettingViewController: UIViewController {
         
         NSLayoutConstraint.activate(constraints)
     }
-    
-    
 }
 
 
 extension CipherSettingViewController: CipherSettingTopBarViewDelegate {
     func valuesForDisplay() -> [String] {
-        return ["A","B","C","D","E","F"]
+        return self.cipherKey().chars
     }
     
     func getTouched() {
         print("\(#function)")
-        //alphabetKeyboardSlideIn()
         numericKeyboardSlideIn()
     }
 }
