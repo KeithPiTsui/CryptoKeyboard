@@ -42,29 +42,33 @@ final class CipherSettingViewController: UIViewController {
         return item
     }()
     
-    private lazy var cipherTopBar: CipherSettingTopBarView = {
+    fileprivate lazy var cipherTopBar: CipherSettingTopBarView = {
         let tb = CipherSettingTopBarView(withDelegate: self)
         tb.frame = CGRect(0, 0, 150, 50)
         return tb
     }()
     
     private let originalCipherType: CipherType
-    private let originalCipherKey: String
+    private let originalCipherKey: [String]
     
 
     fileprivate var cipherType: CipherType {didSet{highlightSelectedLabel()}}
     
     
-    private lazy var cipherKeys:[String] = ["","","",""]
+    fileprivate lazy var cipherKeys:[[String]] = [[""],[""],[""],[""]]
     
     private lazy var cipherTypes: [CipherType] = [.morse, .caesar, .vigenere, .keyword]
+    
+    fileprivate var cipherIndex: Int {
+        return self.cipherTypes.index(of: self.cipherType)!
+    }
     
     private func cipherName() -> String {
         return CipherManager.ciphers[cipherType]!.name
     }
     
     fileprivate func cipherKey() -> String {
-        return cipherKeys[cipherTypes.index(of: cipherType)!]
+        return cipherKeys[cipherTypes.index(of: cipherType)!].joined()
     }
     
     fileprivate var cipherUpdated: Bool {
@@ -100,11 +104,11 @@ final class CipherSettingViewController: UIViewController {
     
     init(cipherName: String, cipherType: CipherType, cipherKey: String) {
         originalCipherType = cipherType
-        originalCipherKey = cipherKey
+        originalCipherKey = cipherKey.chars
         self.cipherType = cipherType
         super.init(nibName: nil, bundle: nil)
         for (idx, ct) in cipherTypes.enumerated() {
-            cipherKeys[idx] = ct == cipherType ? cipherKey : (0..<CipherManager.ciphers[ct]!.digits).reduce(""){$0.0+" "}
+            cipherKeys[idx] = ct == cipherType ? cipherKey.chars : (0..<CipherManager.ciphers[ct]!.digits).reduce([]){$0.0+[" "]}
         }
     }
     
@@ -247,6 +251,8 @@ final class CipherSettingViewController: UIViewController {
         print("\(#function): \(sender.value)")
         guard let idx  = (ranges.index{$0.contains(sender.value)}) else { return }
         cipherType = cipherTypes[idx]
+        cipherTopBar.reloadValues()
+        slideInKeyboard()
     }
     
     private func slideInKeyboard() {
@@ -324,6 +330,27 @@ extension CipherSettingViewController: CipherSettingTopBarViewDelegate {
 extension CipherSettingViewController: AlphabetKeyboardDelegate {
     func keyboardViewItem(_ item: KeyboardViewItem, receivedEvent event: UIControlEvents, inKeyboard keyboard: AlphabetKeyboard) {
         print("\(#function)")
+        
+        if event == .touchUpInside {
+            if item.key.type == .alphabet {
+                let letter = item.key.outputForCase(false)
+                var letters = cipherKeys[cipherIndex]
+                if let idx = letters.index(of: " ") {
+                    letters[idx] = letter
+                }
+                cipherKeys[cipherIndex] = letters
+            } else if item.key.type == .backspace {
+                var letters = cipherKeys[cipherIndex]
+                if var idx = letters.index(of: " "), idx != letters.startIndex{
+                    idx = letters.index(before: idx)
+                    letters[idx] = " "
+                } else {
+                    letters[letters.index(before: letters.endIndex)] = " "
+                }
+                cipherKeys[cipherIndex] = letters
+            }
+            cipherTopBar.reloadValues()
+        }
     }
 }
 
@@ -331,6 +358,7 @@ extension CipherSettingViewController: AlphabetKeyboardDelegate {
 extension CipherSettingViewController: NumericKeyboardDelegate {
     func nKeyboardViewItem(_ item: KeyboardViewItem, receivedEvent event: UIControlEvents, inKeyboard keyboard: NumericKeyboard) {
         print("\(#function)")
+        
     }
 }
 
