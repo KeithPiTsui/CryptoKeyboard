@@ -120,7 +120,6 @@ final class CipherSettingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.leftBarButtonItem = cancelBtn
-        //navigationItem.rightBarButtonItem = doneBtn
         navigationItem.titleView = cipherTopBar
         assembleElements()
         layoutElements()
@@ -313,6 +312,36 @@ final class CipherSettingViewController: UIViewController {
         
         NSLayoutConstraint.activate(constraints)
     }
+    
+    fileprivate func updateDoneButton(){
+        if cipherKeys[cipherIndex].index(of: " ") == nil && cipherUpdated == true {
+            navigationItem.setRightBarButton(doneBtn, animated: true)
+        } else {
+            navigationItem.setRightBarButton(nil, animated: true)
+        }
+    }
+    
+    fileprivate func handleKeyPressDown(_ key: Key) {
+        if key.type == .alphabet || key.type == .number {
+            let letter = key.outputForCase(false)
+            var letters = cipherKeys[cipherIndex]
+            if let idx = letters.index(of: " ") {
+                letters[idx] = letter
+            }
+            cipherKeys[cipherIndex] = letters
+        } else if key.type == .backspace {
+            var letters = cipherKeys[cipherIndex]
+            if var idx = letters.index(of: " "), idx != letters.startIndex{
+                idx = letters.index(before: idx)
+                letters[idx] = " "
+            } else {
+                letters[letters.index(before: letters.endIndex)] = " "
+            }
+            cipherKeys[cipherIndex] = letters
+        }
+        cipherTopBar.reloadValues()
+        updateDoneButton()
+    }
 }
 
 
@@ -332,32 +361,57 @@ extension CipherSettingViewController: AlphabetKeyboardDelegate {
         print("\(#function)")
         
         if event == .touchUpInside {
-            if item.key.type == .alphabet {
-                let letter = item.key.outputForCase(false)
-                var letters = cipherKeys[cipherIndex]
-                if let idx = letters.index(of: " ") {
-                    letters[idx] = letter
-                }
-                cipherKeys[cipherIndex] = letters
-            } else if item.key.type == .backspace {
-                var letters = cipherKeys[cipherIndex]
-                if var idx = letters.index(of: " "), idx != letters.startIndex{
-                    idx = letters.index(before: idx)
-                    letters[idx] = " "
-                } else {
-                    letters[letters.index(before: letters.endIndex)] = " "
-                }
-                cipherKeys[cipherIndex] = letters
-            }
-            cipherTopBar.reloadValues()
+            handleKeyPressDown(item.key)
+            //            if item.key.type == .alphabet {
+//                let letter = item.key.outputForCase(false)
+//                var letters = cipherKeys[cipherIndex]
+//                if let idx = letters.index(of: " ") {
+//                    letters[idx] = letter
+//                }
+//                cipherKeys[cipherIndex] = letters
+//            } else if item.key.type == .backspace {
+//                var letters = cipherKeys[cipherIndex]
+//                if var idx = letters.index(of: " "), idx != letters.startIndex{
+//                    idx = letters.index(before: idx)
+//                    letters[idx] = " "
+//                } else {
+//                    letters[letters.index(before: letters.endIndex)] = " "
+//                }
+//                cipherKeys[cipherIndex] = letters
+//            }
+//            cipherTopBar.reloadValues()
         }
     }
+    
+    
 }
 
 //NumericKeyboardDelegate
 extension CipherSettingViewController: NumericKeyboardDelegate {
     func nKeyboardViewItem(_ item: KeyboardViewItem, receivedEvent event: UIControlEvents, inKeyboard keyboard: NumericKeyboard) {
         print("\(#function)")
+        if event == .touchUpInside {
+            handleKeyPressDown(item.key)
+            
+//            if item.key.type == .number {
+//                let letter = item.key.outputForCase(false)
+//                var letters = cipherKeys[cipherIndex]
+//                if let idx = letters.index(of: " ") {
+//                    letters[idx] = letter
+//                }
+//                cipherKeys[cipherIndex] = letters
+//            } else if item.key.type == .backspace {
+//                var letters = cipherKeys[cipherIndex]
+//                if var idx = letters.index(of: " "), idx != letters.startIndex{
+//                    idx = letters.index(before: idx)
+//                    letters[idx] = " "
+//                } else {
+//                    letters[letters.index(before: letters.endIndex)] = " "
+//                }
+//                cipherKeys[cipherIndex] = letters
+//            }
+//            cipherTopBar.reloadValues()
+        }
         
     }
 }

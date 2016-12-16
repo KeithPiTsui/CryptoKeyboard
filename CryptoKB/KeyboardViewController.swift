@@ -21,7 +21,7 @@ final class KeyboardViewController: UIInputViewController {
     
     var cipherName: String = "Caesar"
     var cipherType: CipherType = .caesar
-    var cipherKey: String = "3"
+    var cipherKey: String = "03"
     
     lazy var keyboardView: KeyboardView = { return KeyboardView(withDelegate:self); }()
     
