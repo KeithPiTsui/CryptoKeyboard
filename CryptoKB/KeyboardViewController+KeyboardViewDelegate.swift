@@ -201,9 +201,6 @@ extension KeyboardViewController: KeyboardViewDelegate {
                 textInterpreter.resetState()
                 topBar.resetLabels()
             }
-            
-            //textInterpreter.resetState()
-            //topBar.resetLabels()
         }
         
         if key.type == .punctuation {
@@ -214,6 +211,11 @@ extension KeyboardViewController: KeyboardViewDelegate {
         
         handleAutoPeriod(key)
         setCapsIfNeeded()
+    }
+    
+    func discardAllInput() {
+        textInterpreter.resetState()
+        topBar.resetLabels()
     }
     
     private func highlightItem(_ sender: KeyboardViewItem) {

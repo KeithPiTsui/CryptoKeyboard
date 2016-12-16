@@ -20,8 +20,8 @@ final class KeyboardViewController: UIInputViewController {
     // MARK: Instance Properties
     
     var cipherName: String = "Caesar"
-    var cipherType: CipherType = .caesar
-    var cipherKey: String = "03"
+    var cipherType: CipherType = .caesar {didSet{textInterpreter.cipherType = cipherType}}
+    var cipherKey: String = "03" {didSet{textInterpreter.cipherKey = cipherKey}}
     
     lazy var keyboardView: KeyboardView = { return KeyboardView(withDelegate:self); }()
     

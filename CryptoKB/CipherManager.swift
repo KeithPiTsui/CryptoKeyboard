@@ -13,7 +13,7 @@ struct CipherManager {
     
     static func encrypt(message: String, withKey key: String, andCipherType type: CipherType) throws -> String {
         do {
-            return try ciphers[type]!.encrypt(message: message, withKey: message)
+            return try ciphers[type]!.encrypt(message: message, withKey: key)
         } catch let e {
             throw e
         }
@@ -21,7 +21,7 @@ struct CipherManager {
     
     static func decrypt(message: String, withKey key: String, andCipherType type: CipherType) throws -> String {
         do {
-            return try ciphers[type]!.decrypt(message: message, withKey: message)
+            return try ciphers[type]!.decrypt(message: message, withKey: key)
         } catch let e {
             throw e
         }
