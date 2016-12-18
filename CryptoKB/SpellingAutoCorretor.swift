@@ -23,24 +23,22 @@ prefix func ..< <I: Comparable> (rhs: I) -> RangeEnd<I> { return RangeEnd(end: r
 
 extension String {
     
-    subscript(r: RangeStart<String.Index>) -> String { return self[r.start..<self.endIndex] }
+    subscript(r: RangeStart<String.UnicodeScalarView.Index>) -> String.UnicodeScalarView {
+        return unicodeScalars[r.start..<unicodeScalars.endIndex] }
     
-    subscript(r: RangeEnd<String.Index>) -> String { return self[self.startIndex..<r.end]}
+    subscript(r: RangeEnd<String.UnicodeScalarView.Index>) -> String.UnicodeScalarView {
+        return unicodeScalars[unicodeScalars.startIndex..<r.end]}
     
-    var indices:[String.Index] {
-        var idc: [String.Index] = []
-        idc.reserveCapacity(characters.count)
-        var idx = startIndex
-        while idx != endIndex {
+    var indices:[String.UnicodeScalarView.Index] {
+        var idc: [String.UnicodeScalarView.Index] = []
+        idc.reserveCapacity(unicodeScalars.count)
+        var idx = unicodeScalars.startIndex
+        while idx != unicodeScalars.endIndex {
             idc.append(idx)
-            idx = index(after: idx)
+            idx = unicodeScalars.index(after: idx)
         }
         return idc
     }
-    
-    func dropFirst() -> String { return isEmpty ? self : substring(from: index(after: startIndex)) }
-    
-    var first: Character? { return isEmpty ? nil : self[startIndex] }
 }
 
 final class SpellChecker {
@@ -83,6 +81,8 @@ final class SpellChecker {
         return s.isEmpty ? nil : s
     }
     
+    private static let alphabet = "abcdefghijklmnopqrstuvwxyz".unicodeScalars
+    
     /// Given a word, produce a set of possible alternatives with
     /// letters transposed, deleted, replaced or rogue characters inserted
     private static func possibles(word: String) -> Set<String> {
@@ -95,27 +95,44 @@ final class SpellChecker {
         let deletes = splits.map { $0.0 + $0.1.dropFirst() }
         
         // (H, ello) -> Hlelo
-        let transposes: [String] = splits.map { left, right in
-            guard let rFirst = right.first else { return "" }
+        let transposes: [String.UnicodeScalarView] = splits.map { left, right in
+            var left = left
+            guard let rFirst = right.first else { return String.UnicodeScalarView() }
             let drop1 = right.dropFirst()
-            guard let rSecond = drop1.first else { return "" }
+            guard let rSecond = drop1.first else { return String.UnicodeScalarView() }
             let drop2 = drop1.dropFirst()
-            return "\(left)\(rSecond)\(rFirst)\(drop2)"
+            
+            left.append(rSecond)
+            left.append(rFirst)
+            left.append(contentsOf: drop2)
+            return left
+            
             }.filter { !$0.isEmpty }
         
-        let alphabet = "abcdefghijklmnopqrstuvwxyz"
         
-        let replaces = splits.flatMap { left, right in
+        
+        let replaces = splits.flatMap { (left: String.UnicodeScalarView, right: String.UnicodeScalarView) -> [String.UnicodeScalarView] in
             // (he, llo) becomes healo, heblo, heclo etc
-            alphabet.unicodeScalars.map { "\(left)\($0)\(right.dropFirst())" }
+            return alphabet.map {
+                var left = left
+                left.append($0)
+                left.append(contentsOf: right.dropFirst())
+                return left
+            }
         }
         
-        let inserts = splits.flatMap { left, right in
+        let inserts = splits.flatMap { (left: String.UnicodeScalarView, right: String.UnicodeScalarView) -> [String.UnicodeScalarView]  in
             // (he, llo) becomes heallo, hebllo, hecllo etc
-            alphabet.unicodeScalars.map { "\(left)\($0)\(right)" }
+            return alphabet.map {
+                var left = left
+                left.append($0)
+                left.append(contentsOf: right)
+                return left
+            }
         }
+        let combined = (deletes + transposes + replaces + inserts).map{String($0)}
         
-        return Set(deletes + transposes + replaces + inserts)
+        return Set(combined)
     }
 }
 
