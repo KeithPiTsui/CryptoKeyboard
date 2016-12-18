@@ -89,6 +89,7 @@ final class SpellChecker {
         if word.isEmpty { return [] }
         
         /// Hello ->("", Hello) (H, ello), (He, llo), (Hel, lo), (Hell,o), (Hello, "")
+        // using unicode scalar will optimize this line from O(n^2) -> O(n)
         let splits = word.indices.map { (word[..<$0], word[$0..<])}
         
         // Hello -> ello, hllo, helo, helo, hell, hello
@@ -97,14 +98,11 @@ final class SpellChecker {
         // (H, ello) -> Hlelo
         let transposes: [String.UnicodeScalarView] = splits.map { left, right in
             var left = left
-            guard let rFirst = right.first else { return String.UnicodeScalarView() }
-            let drop1 = right.dropFirst()
-            guard let rSecond = drop1.first else { return String.UnicodeScalarView() }
-            let drop2 = drop1.dropFirst()
-            
-            left.append(rSecond)
-            left.append(rFirst)
-            left.append(contentsOf: drop2)
+            guard right.count >= 2 else {return String.UnicodeScalarView()}
+            let second = right.index(after: right.startIndex)
+            left.append(right[second])
+            left.append(right[right.startIndex])
+            left.append(contentsOf: right.suffix(from: right.index(after: second)))
             return left
             
             }.filter { !$0.isEmpty }
