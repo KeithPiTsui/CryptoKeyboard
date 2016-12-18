@@ -158,6 +158,7 @@ final class KeyboardViewController: UIInputViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         view.setNeedsUpdateConstraints()
+        testSpellingAutoCorrector()
     }
     
     // MARK: -
@@ -202,9 +203,9 @@ func printFontNames() {
 }
 
 func testSpellingAutoCorrector() {
-    let checker = SpellChecker(contentsOfFile: "words.txt")
-    _ = checker?.correct(word: "hello")
-    //print(checkedWord)
+    
+    let checkedWord = SpellChecker.defaultChecker.correct(word: "Helol")
+    print(checkedWord)
 }
 
 

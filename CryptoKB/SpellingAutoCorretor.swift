@@ -8,39 +8,6 @@
 
 import Foundation
 
-
-//var word = "Hello"
-//
-//// hello becomes (,hello), (h,ello), (he,llo) etc.
-//let splits = word.indices.map { (word[..<$0], word[$0..<])}
-//
-//// (h, ello) becomes hllo
-//let deletes = splits.map { $0.0 + $0.1.dropFirst() }
-//
-//
-//// (h, ello) becomes hlelo
-//let transposes: [String] = splits.map { left, right in
-//                                        if let fst = right.first {
-//                                            let drop1 = right.dropFirst()
-//                                            if let snd = drop1.first {
-//                                                let drop2 = drop1.dropFirst()
-//                                                return "\(left)\(snd)\(fst)\(drop2)"
-//                                            }
-//                                        }
-//                                    return ""}.filter {!$0.isEmpty }
-//
-//let alphabet = "abcdefghijklmnopqrstuvwxyz"
-//
-//let replaces = splits.flatMap { left, right in
-//    // (he, llo) becomes healo, heblo, heclo etc
-//    alphabet.characters.map { "\(left)\($0)\(right.dropFirst())" }
-//}
-//
-//let inserts = splits.flatMap { left, right in
-//    // (he, llo) becomes heallo, hebllo, hecllo etc
-//    alphabet.characters.map { "\(left)\($0)\(right)" }
-//}
-
 // even though infix ..< already exists, we need to declare it
 // two more times for the prefix and postfix form
 postfix operator ..<
@@ -51,10 +18,10 @@ struct RangeStart<I: Comparable> { let start: I }
 struct RangeEnd<I: Comparable> { let end: I }
 
 // and define ..< to return them
-postfix func ..<<I: Comparable>(lhs: I) -> RangeStart<I>
+postfix func ..< <I: Comparable> (lhs: I) -> RangeStart<I>
 { return RangeStart(start: lhs) }
 
-prefix func ..<<I: Comparable>(rhs: I) -> RangeEnd<I>
+prefix func ..< <I: Comparable> (rhs: I) -> RangeEnd<I>
 { return RangeEnd(end: rhs) }
 
 // finally, extend String to have a slicing subscript for these types:
@@ -78,9 +45,7 @@ extension String {
     
     func dropFirst() -> String {
         if isEmpty {return self}
-        var retStr = self
-        retStr.remove(at: startIndex)
-        return retStr
+        return substring(from: index(after: startIndex))
     }
     
     var first: String? {
@@ -89,83 +54,83 @@ extension String {
     }
 }
 
-/// Given a word, produce a set of possible alternatives with
-/// letters transposed, deleted, replaced or rogue characters inserted
-fileprivate func edits(word: String) -> Set<String> {
-    if word.isEmpty { return [] }
+final class SpellChecker {
     
-    let splits = word.indices.map {
-        (word[word.startIndex..<$0], word[$0..<word.endIndex])
-    }
+    static let defaultChecker: SpellChecker = {return SpellChecker(contentsOfFile: "words.txt")!}()
     
-    let deletes = splits.map { $0.0 + $0.1.dropFirst() }
-    
-    let transposes: [String] = splits.map { left, right in
-        if let fst = right.first {
-            let drop1 = right.dropFirst()
-            if let snd = drop1.first {
-                let drop2 = drop1.dropFirst()
-                return "\(left)\(snd)\(fst)\(drop2)"
-            }
-        }
-        return ""
-        }.filter { !$0.isEmpty }
-    
-    let alphabet = "abcdefghijklmnopqrstuvwxyz"
-    
-    let replaces = splits.flatMap { left, right in
-        // (he, llo) becomes healo, heblo, heclo etc
-        alphabet.characters.map { "\(left)\($0)\(right.dropFirst())" }
-    }
-    
-    let inserts = splits.flatMap { left, right in
-        // (he, llo) becomes heallo, hebllo, hecllo etc
-        alphabet.characters.map { "\(left)\($0)\(right)" }
-    }
-    
-    return Set(deletes + transposes + replaces + inserts)
-}
-
-struct SpellChecker {
-    var knownWords: [String:Int] = [:]
-    
-    mutating func train(word: String) {
-        knownWords[word] = knownWords[word]?.advanced(by: 1) ?? 1
-    }
+    /// Using Set for vocabulary container is due to its O(1) retrival
+    var vocabulary: Set<String>
     
     init?(contentsOfFile file: String) {
         guard let filePath = Bundle.main.path(forResource: file, ofType: nil) else {return nil}
         guard let text = (try? String(contentsOfFile: filePath, encoding: String.Encoding.utf8))?.lowercased() else {return nil}
         let words = text.unicodeScalars.split { !("a"..."z").contains($0) }.map { String($0) }
-        for word in words { self.train(word: word) }
+        vocabulary = Set(words)
     }
 
-    func known<S: Sequence>(words: S) -> Set<String>? where S.Iterator.Element == String {
-        let s = Set(words.filter{ self.knownWords.index(forKey: $0) != nil })
-        return s.isEmpty ? nil : s
-    }
-
-    func knownEdits2(word: String) -> Set<String>? {
-        var known_edits: Set<String> = []
-        for edit in edits(word: word) {
-            if let k = known(words: edits(word: edit)) {
-                known_edits.formUnion(k)
+    func correct(word: String) -> Set<String> {
+        
+        if let candidates = SpellChecker.inVocabulary(words: [word], vocabulary: vocabulary) {
+            return candidates
+        }
+        
+        let possibleWords = SpellChecker.possibles(word: word)
+        if let candidates = SpellChecker.inVocabulary(words: possibleWords, vocabulary: vocabulary) {
+            return candidates
+        }
+        
+        var candidates: Set<String> = []
+        for possibleWord in possibleWords {
+            if let k = SpellChecker.inVocabulary(words: SpellChecker.possibles(word: possibleWord), vocabulary: vocabulary) {
+                candidates.formUnion(k)
             }
         }
-        return known_edits.isEmpty ? nil : known_edits
+        if candidates.isEmpty { return [word] }
+        return candidates
     }
     
-    func correct(word: String) -> [String] {
-        let candidates = known(words: [word]) ?? known(words: edits(word: word)) ?? knownEdits2(word: word)
-        if candidates != nil {
-            return candidates!.reduce([]) {
-                var strs = $0.0
-                strs.append($0.1)
-                return strs
+    private static func inVocabulary<S: Sequence>(words: S, vocabulary: Set<String>) -> Set<String>? where S.Iterator.Element == String {
+        let s = Set( words.filter{ vocabulary.contains($0) } )
+        return s.isEmpty ? nil : s
+    }
+    
+    /// Given a word, produce a set of possible alternatives with
+    /// letters transposed, deleted, replaced or rogue characters inserted
+    private static func possibles(word: String) -> Set<String> {
+        if word.isEmpty { return [] }
+        
+        /// Hello ->("", Hello) (H, ello), (He, llo), (Hel, lo), (Hell,o), (Hello, "")
+        let splits = word.indices.map { (word[..<$0], word[$0..<])}
+        
+        
+        // Hello -> ello, hllo, helo, helo, hell, hello
+        let deletes = splits.map { $0.0 + $0.1.dropFirst() }
+        
+        // (H, ello) -> Hlelo
+        let transposes: [String] = splits.map { left, right in
+            if let fst = right.first {          // e
+                let drop1 = right.dropFirst()   // llo
+                if let snd = drop1.first {      // l
+                    let drop2 = drop1.dropFirst()   // lo
+                    return "\(left)\(snd)\(fst)\(drop2)" // Hlelo
+                }
             }
-        } else {
-            return [word]
+            return ""
+            }.filter { !$0.isEmpty }
+        
+        let alphabet = "abcdefghijklmnopqrstuvwxyz"
+        
+        let replaces = splits.flatMap { left, right in
+            // (he, llo) becomes healo, heblo, heclo etc
+            alphabet.characters.map { "\(left)\($0)\(right.dropFirst())" }
         }
+        
+        let inserts = splits.flatMap { left, right in
+            // (he, llo) becomes heallo, hebllo, hecllo etc
+            alphabet.characters.map { "\(left)\($0)\(right)" }
+        }
+        
+        return Set(deletes + transposes + replaces + inserts)
     }
 }
 
