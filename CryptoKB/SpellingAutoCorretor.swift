@@ -13,28 +13,23 @@ import Foundation
 postfix operator ..<
 prefix operator ..<
 
-// then, declare a couple of simple custom types that indicate one-sided ranges:
+
 struct RangeStart<I: Comparable> { let start: I }
 struct RangeEnd<I: Comparable> { let end: I }
 
-// and define ..< to return them
-postfix func ..< <I: Comparable> (lhs: I) -> RangeStart<I>
-{ return RangeStart(start: lhs) }
+postfix func ..< <I: Comparable> (lhs: I) -> RangeStart<I> { return RangeStart(start: lhs) }
 
-prefix func ..< <I: Comparable> (rhs: I) -> RangeEnd<I>
-{ return RangeEnd(end: rhs) }
+prefix func ..< <I: Comparable> (rhs: I) -> RangeEnd<I> { return RangeEnd(end: rhs) }
 
-// finally, extend String to have a slicing subscript for these types:
 extension String {
-    subscript(r: RangeStart<String.Index>) -> String {
-        return self[r.start..<self.endIndex]
-    }
-    subscript(r: RangeEnd<String.Index>) -> String {
-        return self[self.startIndex..<r.end]
-    }
+    
+    subscript(r: RangeStart<String.Index>) -> String { return self[r.start..<self.endIndex] }
+    
+    subscript(r: RangeEnd<String.Index>) -> String { return self[self.startIndex..<r.end]}
     
     var indices:[String.Index] {
         var idc: [String.Index] = []
+        idc.reserveCapacity(characters.count)
         var idx = startIndex
         while idx != endIndex {
             idc.append(idx)
@@ -43,15 +38,9 @@ extension String {
         return idc
     }
     
-    func dropFirst() -> String {
-        if isEmpty {return self}
-        return substring(from: index(after: startIndex))
-    }
+    func dropFirst() -> String { return isEmpty ? self : substring(from: index(after: startIndex)) }
     
-    var first: String? {
-        if isEmpty {return nil}
-        return substring(to: index(after: startIndex))
-    }
+    var first: Character? { return isEmpty ? nil : self[startIndex] }
 }
 
 final class SpellChecker {
@@ -102,32 +91,28 @@ final class SpellChecker {
         /// Hello ->("", Hello) (H, ello), (He, llo), (Hel, lo), (Hell,o), (Hello, "")
         let splits = word.indices.map { (word[..<$0], word[$0..<])}
         
-        
         // Hello -> ello, hllo, helo, helo, hell, hello
         let deletes = splits.map { $0.0 + $0.1.dropFirst() }
         
         // (H, ello) -> Hlelo
         let transposes: [String] = splits.map { left, right in
-            if let fst = right.first {          // e
-                let drop1 = right.dropFirst()   // llo
-                if let snd = drop1.first {      // l
-                    let drop2 = drop1.dropFirst()   // lo
-                    return "\(left)\(snd)\(fst)\(drop2)" // Hlelo
-                }
-            }
-            return ""
+            guard let rFirst = right.first else { return "" }
+            let drop1 = right.dropFirst()
+            guard let rSecond = drop1.first else { return "" }
+            let drop2 = drop1.dropFirst()
+            return "\(left)\(rSecond)\(rFirst)\(drop2)"
             }.filter { !$0.isEmpty }
         
         let alphabet = "abcdefghijklmnopqrstuvwxyz"
         
         let replaces = splits.flatMap { left, right in
             // (he, llo) becomes healo, heblo, heclo etc
-            alphabet.characters.map { "\(left)\($0)\(right.dropFirst())" }
+            alphabet.unicodeScalars.map { "\(left)\($0)\(right.dropFirst())" }
         }
         
         let inserts = splits.flatMap { left, right in
             // (he, llo) becomes heallo, hebllo, hecllo etc
-            alphabet.characters.map { "\(left)\($0)\(right)" }
+            alphabet.unicodeScalars.map { "\(left)\($0)\(right)" }
         }
         
         return Set(deletes + transposes + replaces + inserts)
