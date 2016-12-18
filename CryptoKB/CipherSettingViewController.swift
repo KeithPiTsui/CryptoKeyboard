@@ -206,14 +206,14 @@ final class CipherSettingViewController: UIViewController {
     // MARK: -
     // MARK: primary UI Elements and Layout
     
-   private lazy var morseLabel: UILabel = UILabel.keyboardLabel(font: KeyboardAppearanceScheme.keyboardViewItemInscriptFont, textColor: UIColor.keyboardViewItemInscriptColor, text: "Morse")
-    private lazy var morseLine: UIView = UIView.cipherSettingLineView(lineWidth: 5, lineColor: UIColor.white)
-    private lazy var caesarLabel: UILabel = UILabel.keyboardLabel(font: KeyboardAppearanceScheme.keyboardViewItemInscriptFont, textColor: UIColor.keyboardViewItemInscriptColor, text: "Caesar")
-    private lazy var caesarLine: UIView = UIView.cipherSettingLineView(lineWidth: 5, lineColor: UIColor.white)
-    private lazy var vigenereLabel: UILabel = UILabel.keyboardLabel(font: KeyboardAppearanceScheme.keyboardViewItemInscriptFont, textColor: UIColor.keyboardViewItemInscriptColor, text: "Vigenere")
-    private lazy var vigenereLine: UIView = UIView.cipherSettingLineView(lineWidth: 5, lineColor: UIColor.white)
-    private lazy var keywordLabel: UILabel = UILabel.keyboardLabel(font: KeyboardAppearanceScheme.keyboardViewItemInscriptFont, textColor: UIColor.keyboardViewItemInscriptColor, text: "Keyword")
-    private lazy var keywordLine: UIView = UIView.cipherSettingLineView(lineWidth: 5, lineColor: UIColor.white)
+   private lazy var morseLabel: UILabel = UILabel.keyboardLabel(font: KeyboardAppearanceScheme.keyboardViewItemInscriptFontSmall, textColor: UIColor.keyboardViewItemInscriptColor, text: "Morse")
+    private lazy var morseLine: UIView = UIView.cipherSettingLineView(lineWidth: 2, lineColor: UIColor.white)
+    private lazy var caesarLabel: UILabel = UILabel.keyboardLabel(font: KeyboardAppearanceScheme.keyboardViewItemInscriptFontSmall, textColor: UIColor.keyboardViewItemInscriptColor, text: "Caesar")
+    private lazy var caesarLine: UIView = UIView.cipherSettingLineView(lineWidth: 2, lineColor: UIColor.white)
+    private lazy var vigenereLabel: UILabel = UILabel.keyboardLabel(font: KeyboardAppearanceScheme.keyboardViewItemInscriptFontSmall, textColor: UIColor.keyboardViewItemInscriptColor, text: "Vigenere")
+    private lazy var vigenereLine: UIView = UIView.cipherSettingLineView(lineWidth: 2, lineColor: UIColor.white)
+    private lazy var keywordLabel: UILabel = UILabel.keyboardLabel(font: KeyboardAppearanceScheme.keyboardViewItemInscriptFontSmall, textColor: UIColor.keyboardViewItemInscriptColor, text: "Keyword")
+    private lazy var keywordLine: UIView = UIView.cipherSettingLineView(lineWidth: 2, lineColor: UIColor.white)
     
     private lazy var locations:[Float] = [13.5274,38.3562,62.3288,86.8151]
     private lazy var ranges: [Range<Float>] = [0..<25.9418, 25.9418..<50.3425, 50.3425..<74.5720, 74.5720..<100.1]

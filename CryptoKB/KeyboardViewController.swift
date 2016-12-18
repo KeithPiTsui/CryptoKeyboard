@@ -19,7 +19,7 @@ final class KeyboardViewController: UIInputViewController {
     // MARK: -
     // MARK: Instance Properties
     
-    var cipherName: String = "Caesar"
+    var cipherName: String = "Caesar" {didSet{topBar.cipherName = cipherName}}
     var cipherType: CipherType = .caesar {didSet{textInterpreter.cipherType = cipherType}}
     var cipherKey: String = "03" {didSet{textInterpreter.cipherKey = cipherKey}}
     
