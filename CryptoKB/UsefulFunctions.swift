@@ -48,8 +48,29 @@ func dictionaryOfNames(_ arr:UIView...) -> [String:UIView] {
     return d
 }
 
+extension UILabel {
+    static func keyboardLabel(font: UIFont, textColor: UIColor, text: String? = nil) -> UILabel {
+        let label = UILabel()
+        label.backgroundColor = UIColor.clear
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textAlignment = NSTextAlignment.center
+        label.baselineAdjustment = UIBaselineAdjustment.alignCenters
+        label.font = font
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.1
+        label.isUserInteractionEnabled = false
+        label.numberOfLines = 1
+        label.textColor = textColor
+        label.text = text
+        return label
+    }
+}
 
-
+struct KeyboardExtensionConstants {
+    static let cipherType = "CipherType"
+    static let cipherKey = "CipherKey"
+    static let cipherName = "CipherName"
+}
 
 
 

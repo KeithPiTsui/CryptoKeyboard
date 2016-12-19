@@ -8,23 +8,7 @@
 
 import UIKit
 
-extension UILabel {
-    static func keyboardLabel(font: UIFont, textColor: UIColor, text: String? = nil) -> UILabel {
-        let label = UILabel()
-        label.backgroundColor = UIColor.clear
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.textAlignment = NSTextAlignment.center
-        label.baselineAdjustment = UIBaselineAdjustment.alignCenters
-        label.font = font
-        label.adjustsFontSizeToFitWidth = true
-        label.minimumScaleFactor = 0.1
-        label.isUserInteractionEnabled = false
-        label.numberOfLines = 1
-        label.textColor = textColor
-        label.text = text
-        return label
-    }
-}
+
 
 fileprivate func assembleLabel(_ label: UILabel, leftTag: UILabel? = nil, rightTag: UILabel? = nil) {
     if let leftTag = leftTag {

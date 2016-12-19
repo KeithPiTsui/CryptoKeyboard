@@ -35,12 +35,18 @@ struct KeyboardAppearanceScheme {
      Font:ChalkboardSE-Light
      Family:Chalkboard SE
      Font:ChalkboardSE-Regular*/
-    static let keyboardViewItemInscriptFont = UIFont(name: "ChalkboardSE-Regular", size: 25)!
+    static let keyboardViewItemInscriptFont = UIFont(name: "ChalkboardSE-Light", size: 25)!
     static let keyboardViewItemInscriptFontSmall = UIFont(name: "ChalkboardSE-Light", size: 18)!
     static let topBarInscriptFont = UIFont(name: "ChalkboardSE-Light", size: 18)!
     static let topBarTagInscriptFont = UIFont(name: "ChalkboardSE-Light", size: 12)!
 }
 
+extension UIFont {
+    static let keyboardViewItemInscriptFont = UIFont(name: "ChalkboardSE-Light", size: 25)!
+    static let keyboardViewItemInscriptFontSmall = UIFont(name: "ChalkboardSE-Light", size: 18)!
+    static let topBarInscriptFont = UIFont(name: "ChalkboardSE-Light", size: 18)!
+    static let topBarTagInscriptFont = UIFont(name: "ChalkboardSE-Light", size: 12)!
+}
 
 
 struct KeyboardConstants {
