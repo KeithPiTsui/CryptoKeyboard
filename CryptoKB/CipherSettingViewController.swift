@@ -42,6 +42,11 @@ final class CipherSettingViewController: UIViewController {
         return item
     }()
     
+    private lazy var cipherNameBtn: UIBarButtonItem = {
+        let item = UIBarButtonItem(title: "Cipher", style: .plain, target: nil, action: nil)
+        return item
+    }()
+    
     fileprivate lazy var cipherTopBar: CipherSettingTopBarView = {
         let tb = CipherSettingTopBarView(withDelegate: self)
         tb.frame = CGRect(0, 0, 150, 50)
@@ -83,6 +88,7 @@ final class CipherSettingViewController: UIViewController {
     private func highlightSelectedLabel() {
         [morseLabel, caesarLabel, vigenereLabel,keywordLabel].forEach{$0.textColor = UIColor.white}
         [caesarLine, keywordLine, morseLine,vigenereLine].forEach{$0.backgroundColor = UIColor.white}
+        cipherNameBtn.title = CipherManager.ciphers[cipherType]!.name
         UIView.animate(withDuration: 0.2) {
             switch self.cipherType {
             case .caesar:
@@ -121,12 +127,14 @@ final class CipherSettingViewController: UIViewController {
         super.viewDidLoad()
         navigationItem.leftBarButtonItem = cancelBtn
         navigationItem.titleView = cipherTopBar
+        navigationItem.rightBarButtonItem = cipherNameBtn
         assembleElements()
         layoutElements()
     }
     
     func cancel() {
         print("\(#function)")
+        updateDoneButton()
         if alphabetKeyboardSlideIned {
             alphabetKeyboardSlideOut()
         } else if numericKeyboardSlideIned {
@@ -230,7 +238,7 @@ final class CipherSettingViewController: UIViewController {
         v.maximumValue = 100
         v.setMinimumTrackImage(leftTrack, for: .normal)
         v.setMaximumTrackImage(rightTrack, for: .normal)
-        v.setThumbImage(cursor, for: .normal)
+        //v.setThumbImage(cursor, for: .normal)
         return v
     }()
     
@@ -242,24 +250,28 @@ final class CipherSettingViewController: UIViewController {
     
     func sliderValueChanged(sender: UISlider) {
         print("\(#function): \(sender.value)")
-        guard let idx  = (ranges.index{$0.contains(sender.value)}) else { return }
-        sender.value = locations[idx]
     }
     
     func sliderDragUp(sender: UISlider) {
         print("\(#function): \(sender.value)")
         guard let idx  = (ranges.index{$0.contains(sender.value)}) else { return }
+        sender.setValue(locations[idx], animated: true)
         cipherType = cipherTypes[idx]
         cipherTopBar.reloadValues()
         slideInKeyboard()
+        updateDoneButton()
     }
     
     private func slideInKeyboard() {
-        switch CipherManager.ciphers[cipherType]!.keyType {
-        case .letter:
-            alphabetKeyboardSlideIn()
-        case .number:
-            numericKeyboardSlideIn()
+        delay(0.2){
+            switch CipherManager.ciphers[self.cipherType]!.keyType {
+            case .letter:
+                self.alphabetKeyboardSlideIn()
+            case .number:
+                self.numericKeyboardSlideIn()
+            case .none: // no need a key
+                self.updateDoneButton()
+            }
         }
     }
     
@@ -316,8 +328,9 @@ final class CipherSettingViewController: UIViewController {
     fileprivate func updateDoneButton(){
         if cipherKeys[cipherIndex].index(of: " ") == nil && cipherUpdated == true {
             navigationItem.setRightBarButton(doneBtn, animated: true)
+            
         } else {
-            navigationItem.setRightBarButton(nil, animated: true)
+            navigationItem.setRightBarButton(cipherNameBtn, animated: true)
         }
     }
     
@@ -362,24 +375,6 @@ extension CipherSettingViewController: AlphabetKeyboardDelegate {
         
         if event == .touchUpInside {
             handleKeyPressDown(item.key)
-            //            if item.key.type == .alphabet {
-//                let letter = item.key.outputForCase(false)
-//                var letters = cipherKeys[cipherIndex]
-//                if let idx = letters.index(of: " ") {
-//                    letters[idx] = letter
-//                }
-//                cipherKeys[cipherIndex] = letters
-//            } else if item.key.type == .backspace {
-//                var letters = cipherKeys[cipherIndex]
-//                if var idx = letters.index(of: " "), idx != letters.startIndex{
-//                    idx = letters.index(before: idx)
-//                    letters[idx] = " "
-//                } else {
-//                    letters[letters.index(before: letters.endIndex)] = " "
-//                }
-//                cipherKeys[cipherIndex] = letters
-//            }
-//            cipherTopBar.reloadValues()
         }
     }
     
@@ -392,25 +387,6 @@ extension CipherSettingViewController: NumericKeyboardDelegate {
         print("\(#function)")
         if event == .touchUpInside {
             handleKeyPressDown(item.key)
-            
-//            if item.key.type == .number {
-//                let letter = item.key.outputForCase(false)
-//                var letters = cipherKeys[cipherIndex]
-//                if let idx = letters.index(of: " ") {
-//                    letters[idx] = letter
-//                }
-//                cipherKeys[cipherIndex] = letters
-//            } else if item.key.type == .backspace {
-//                var letters = cipherKeys[cipherIndex]
-//                if var idx = letters.index(of: " "), idx != letters.startIndex{
-//                    idx = letters.index(before: idx)
-//                    letters[idx] = " "
-//                } else {
-//                    letters[letters.index(before: letters.endIndex)] = " "
-//                }
-//                cipherKeys[cipherIndex] = letters
-//            }
-//            cipherTopBar.reloadValues()
         }
         
     }

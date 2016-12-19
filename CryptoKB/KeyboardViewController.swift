@@ -34,7 +34,6 @@ final class KeyboardViewController: UIInputViewController {
     
     var heuristicTextLabel: UILabel { return topBar.leftLabel}
     var encryptedTextLabel: UILabel { return topBar.rightLabel}
-    //var decryptedTextLabel: UILabel { return topBar.rightLabel}
     
     
     var heightConstraint: NSLayoutConstraint!
@@ -158,7 +157,6 @@ final class KeyboardViewController: UIInputViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         view.setNeedsUpdateConstraints()
-        testSpellingAutoCorrector()
     }
     
     // MARK: -
@@ -171,7 +169,6 @@ final class KeyboardViewController: UIInputViewController {
     // MARK: -
     // MARK: Cipher Setting
     private func loadCipherSetting() {
-        //UserDefaults.standard.setValue(token, forKey: "user_auth_token")
         if let cipherTypeRawValue = UserDefaults.standard.value(forKey: KeyboardExtensionConstants.cipherType) as? Int,
            let cipherType = CipherType(rawValue: cipherTypeRawValue) {
             self.cipherType = cipherType

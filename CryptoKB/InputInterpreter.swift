@@ -25,7 +25,7 @@ protocol InputInterpreterOutputReceiverDelegate: class {
 class InputInterpreter: InputInterpreterProtocol {
     
     weak var delegate: InputInterpreterOutputReceiverDelegate?
-    
+    var archivedCharacters: [[String]] = []
     var receivedCharacters: [String] = []
     var cipherType: CipherType = .caesar
     var cipherKey: String = "3"
@@ -47,6 +47,7 @@ class InputInterpreter: InputInterpreterProtocol {
     }
     
     func resetState() {
+        archivedCharacters.append(receivedCharacters)
         receivedCharacters.removeAll(keepingCapacity: true)
     }
     

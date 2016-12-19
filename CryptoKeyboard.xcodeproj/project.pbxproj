@@ -152,8 +152,8 @@
 				0E1261471DFD75EE00E7EFE4 /* KeyboardViewController.swift */,
 				0E28CCFC1DFE85EE00BCAC75 /* KeyboardViewController+TopBarViewDelegate.swift */,
 				0E28CCD51DFE480200BCAC75 /* KeyboardViewController+KeyboardViewDelegate.swift */,
-				0E5DE9241E00E88300FAEF09 /* KeyboardViewController+CipherSettingViewControllerDelegate.swift */,
 				0E28CCF81DFE7BE000BCAC75 /* KeyboardViewController+InputInterpreterOutputReceiverDelegate.swift */,
+				0E5DE9241E00E88300FAEF09 /* KeyboardViewController+CipherSettingViewControllerDelegate.swift */,
 				0E28CCD71DFE532800BCAC75 /* KeyboardViewController+AutoCap.swift */,
 				0E28CCD91DFE551000BCAC75 /* KeyboardViewController+AutoSuffixPeriod.swift */,
 			);

@@ -113,9 +113,20 @@ class TopBarView: UIView {
 
     var cipherName = "Morse" {didSet{rightLabelRightCornerTag.text = cipherName}}
     
-    
     var delegate: TopBarViewDelegate?
+    
     var touchToView: [UITouch:UIView] = [:]
+    var leftCharacters: [String] = [] {didSet{updateLeftLabelText()}}
+    var rightCharacters: [String] = [] {didSet{updateRightLabeText()}}
+    
+    private func updateLeftLabelText(){
+        leftLabel.text = leftCharacters.reduce(""){$0+$1}
+    }
+    
+    private func updateRightLabeText(){
+        rightLabel.text = rightCharacters.reduce(""){$0+$1}
+    }
+    
     
     init(frame: CGRect = CGRect.zero, delegate: TopBarViewDelegate? = nil) {
         self.delegate = delegate
@@ -225,9 +236,8 @@ class TopBarView: UIView {
     }
     
     func resetLabels() {
-        for label in [leftLabel, rightLabel] {
-            label.text = nil
-        }
+        leftCharacters.removeAll(keepingCapacity: true)
+        rightCharacters.removeAll(keepingCapacity: true)
     }
 }
 

@@ -11,24 +11,23 @@ import Foundation
 extension KeyboardViewController: InputInterpreterOutputReceiverDelegate {
     
     func receiveHeuristicOutputCharacter(char: String) {
-        heuristicTextLabel.text = (heuristicTextLabel.text ?? "") + char
+        topBar.leftCharacters.append(char)
     }
     
     func receiveEncryptedOutputCharacter(char: String) {
-        encryptedTextLabel.text = (encryptedTextLabel.text ?? "") + char
+        topBar.rightCharacters.append(char)
     }
     
     func receiveDecryptedOutputCharacter(char: String) {
-        //decryptedTextLabel.text = (decryptedTextLabel.text ?? "") + char
+        
     }
     
     func removeLastOutputCharacter() {
-        for label in [heuristicTextLabel, encryptedTextLabel] {
-            if label.text != nil && label.text!.isEmpty == false {
-                var text = label.text!
-                text.remove(at: text.index(before: text.endIndex))
-                label.text = text
-            }
+        if topBar.leftCharacters.isEmpty == false {
+            topBar.leftCharacters.removeLast()
+        }
+        if topBar.rightCharacters.isEmpty == false {
+            topBar.rightCharacters.removeLast()
         }
     }
 }

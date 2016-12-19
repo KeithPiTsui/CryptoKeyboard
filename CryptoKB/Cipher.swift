@@ -24,6 +24,7 @@ enum CipherType: Int {
 enum CipherKeyType {
     case number
     case letter
+    case none
 }
 
 
@@ -50,7 +51,7 @@ fileprivate let letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
 struct CaesarCipher: Endecryting {
     static let digits: UInt = 2
-    static let name: String = "CaesarCipher"
+    static let name: String = "Caesar"
     static let keyType: CipherKeyType = .number
     static func encrypt(message: String, withKey key: String) throws -> String {
         guard let keyNumberValue = Int(key) else { throw EndecError.invalidKey }
@@ -94,9 +95,9 @@ fileprivate func loadMorseCodeMap() -> [String:String]{
 fileprivate let morseCodeMap = loadMorseCodeMap()
 
 struct MorseCode: Endecryting {
-    static let name: String = "MorseCode"
+    static let name: String = "Morse"
     static let digits: UInt = 0
-    static let keyType: CipherKeyType = .letter
+    static let keyType: CipherKeyType = .none
     static func encrypt(message: String, withKey key: String) throws -> String {
         return message.uppercased().chars.reduce("") { (initializer: String, element: String) -> String in
             var str = element; let isLetter = letters.contains(element)

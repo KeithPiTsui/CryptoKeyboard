@@ -88,13 +88,53 @@ extension KeyboardViewController: KeyboardViewDelegate {
     }
     
     private func changeKeyboard(_ sender: KeyboardViewItem) {
-        print("\(#function)")
         advanceToNextInputMode()
     }
     
+    
+    
+    private func pressShiftDown(_ sender: KeyboardViewItem) {
+        switch shiftState {
+        case .disabled:
+            shiftState = .enabled
+        case .enabled:
+            shiftState = .disabled
+        case .locked:
+            shiftState = .disabled
+        }
+    }
+    
+    private func doubleTapShift(_ sender: KeyboardViewItem) {
+        switch shiftState {
+        case .disabled:
+            shiftState = .locked
+        case .enabled:
+            shiftState = .locked
+        case .locked:
+            shiftState = .disabled
+        }
+    }
+    
+    private func nextKeyboardPage(_ sender: KeyboardViewItem) {
+        guard let page = sender.key.toMode else {return}
+        keyboardView.keyboardPage = page
+    }
+    
+    private func pressSettings(_ sender: KeyboardViewItem) {
+        let vc = CipherSettingViewController(cipherName: cipherName, cipherType: cipherType, cipherKey: cipherKey)
+        vc.delegate = self
+        let nvc = UINavigationController(rootViewController: vc)
+        nvc.modalTransitionStyle = .crossDissolve
+        nvc.navigationBar.tintColor = UIColor.topBarInscriptColor
+        nvc.navigationBar.barTintColor = UIColor.topBarBackgroundColor
+        vc.view.backgroundColor = UIColor.keyboardViewBackgroundColor
+        present(nvc, animated: true, completion: nil)
+    }
+    
+    /// Delete a character backward
     private func pressBackspace(_ sender: KeyboardViewItem) {
         print("\(#function)")
-        textDocumentProxy.deleteBackward()
+        deleteACharacterBackward()
         textInterpreter.removeLastReceiveCharacter()
         setCapsIfNeeded()
         // trigger for subsequent deletes
@@ -105,22 +145,14 @@ extension KeyboardViewController: KeyboardViewDelegate {
                                                    repeats: false)
     }
     
-    func cancelBackspaceTimers() {
+    private func cancelBackspaceTimers() {
         backspaceDelayTimer?.invalidate()
         backspaceRepeatTimer?.invalidate()
         backspaceDelayTimer = nil
         backspaceRepeatTimer = nil
     }
     
-//    func backspaceDown(_ sender: KeyboardViewItem) {
-//        cancelBackspaceTimers()
-//        textDocumentProxy.deleteBackward()
-//        setCapsIfNeeded()
-//        
-//        
-//    }
-    
-    func pressBackspaceCancel(_ sender: KeyboardViewItem) {
+    private func pressBackspaceCancel(_ sender: KeyboardViewItem) {
         cancelBackspaceTimers()
     }
     
@@ -135,57 +167,17 @@ extension KeyboardViewController: KeyboardViewDelegate {
     
     func backspaceRepeatCallback() {
         playKeySound()
-        textDocumentProxy.deleteBackward()
+        deleteACharacterBackward()
         textInterpreter.removeLastReceiveCharacter()
         setCapsIfNeeded()
     }
     
-    
-    private func pressShiftDown(_ sender: KeyboardViewItem) {
-        print("\(#function)")
-        switch shiftState {
-        case .disabled:
-            shiftState = .enabled
-        case .enabled:
-            shiftState = .disabled
-        case .locked:
-            shiftState = .disabled
-        }
-        
+    private func deleteACharacterBackward(){
+        textDocumentProxy.deleteBackward()
     }
-    
-    private func doubleTapShift(_ sender: KeyboardViewItem) {
-        print("\(#function)")
-        switch shiftState {
-        case .disabled:
-            shiftState = .locked
-        case .enabled:
-            shiftState = .locked
-        case .locked:
-            shiftState = .disabled
-        }
-    }
-    
-    private func nextKeyboardPage(_ sender: KeyboardViewItem) {
-        print("\(#function)")
-        guard let page = sender.key.toMode else {return}
-        keyboardView.keyboardPage = page
-    }
-    
-    private func pressSettings(_ sender: KeyboardViewItem) {
-        print("\(#function)")
-        let vc = CipherSettingViewController(cipherName: cipherName, cipherType: cipherType, cipherKey: cipherKey)
-        vc.delegate = self
-        let nvc = UINavigationController(rootViewController: vc)
-        nvc.modalTransitionStyle = .crossDissolve
-        nvc.navigationBar.tintColor = UIColor.topBarInscriptColor
-        nvc.navigationBar.barTintColor = UIColor.topBarBackgroundColor
-        vc.view.backgroundColor = UIColor.keyboardViewBackgroundColor
-        present(nvc, animated: true, completion: nil)
-    }
-    
+
+    /// Output a character forward
     private func pressAnOutputItem(_ sender: KeyboardViewItem) {
-        print("\(#function)")
         guard let key = sender.key else { return }
         let outputCharacter = key.outputForCase(self.shiftState.isUppercase)
         
@@ -219,17 +211,14 @@ extension KeyboardViewController: KeyboardViewDelegate {
     }
     
     private func highlightItem(_ sender: KeyboardViewItem) {
-        print("\(#function)")
         sender.highlighted = true
     }
     
     private func unhighlightItem(_ sender: KeyboardViewItem) {
-        print("\(#function)")
         sender.highlighted = false
     }
     
     private func playClickSound(_ sender: KeyboardViewItem){
-        print("\(#function)")
         playKeySound()
     }
     
