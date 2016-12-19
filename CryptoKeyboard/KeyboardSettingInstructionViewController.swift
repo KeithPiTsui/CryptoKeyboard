@@ -8,12 +8,18 @@
 
 import UIKit
 
+protocol KeyboardSettingInstructionViewControllerDelegate: class {
+    func KeyboardSettingInstructionViewControllerClosed(_ viewController: KeyboardSettingInstructionViewController)
+}
+
 final class KeyboardSettingInstructionViewController: UIViewController {
 
+    weak var delegate: KeyboardSettingInstructionViewControllerDelegate?
+    
     lazy var headLabel: UILabel = {
         let l = UILabel()
         l.translatesAutoresizingMaskIntoConstraints = false
-        l.text = "2 steps to Use CryptoKeyboar"
+        l.text = "2 steps to Use CryptoKeyboard"
         l.font = UIFont.topBarInscriptFont
         l.textColor = UIColor.keyboardViewBackgroundColor
         return l
@@ -22,7 +28,6 @@ final class KeyboardSettingInstructionViewController: UIViewController {
     lazy var scrollingInstructionView: UIScrollView = {
         let v = UIScrollView()
         v.translatesAutoresizingMaskIntoConstraints = false
-//        v.backgroundColor = UIColor.white
         v.showsHorizontalScrollIndicator = false
         v.isPagingEnabled = true
         return v
@@ -31,22 +36,19 @@ final class KeyboardSettingInstructionViewController: UIViewController {
     lazy var scrollingInstructionViewContentView: UIView = {
         let v = UIView()
         v.translatesAutoresizingMaskIntoConstraints = false
-        //v.backgroundColor = UIColor.lightGray
         return v
     }()
     
     lazy var instructionControllers: [UIViewController] = {
-   
-        
         let btn = UIButton(type: UIButtonType.roundedRect)
         btn.setTitle("GotoSetting", for: .normal)
         btn.addTarget(self, action: #selector(KeyboardSettingInstructionViewController.gotoSetting), for: .touchUpInside)
         
-        let vc1 = SettingInstructionViewController(step: 1, instruction: "Add CryptoKeyboard", demoImage: UIImage(named: "KeyboardSetting")!, actionButton: btn)
+        let vc1 = SettingInstructionPageViewController(step: 1, instruction: "Add CryptoKeyboard", demoImage: UIImage(named: "KeyboardSetting")!, actionButton: btn)
         vc1.view.backgroundColor = UIColor.orange
         
         
-        let vc2 = SettingInstructionViewController(step: 2, instruction: "Choose CryptoKeyboard", demoImage: UIImage(named: "KeyboardAdding")!)
+        let vc2 = SettingInstructionPageViewController(step: 2, instruction: "Choose CryptoKeyboard", demoImage: UIImage(named: "KeyboardAdding")!)
         vc2.view.backgroundColor = UIColor.brown
         return [vc1,vc2]
     }()
@@ -76,6 +78,19 @@ final class KeyboardSettingInstructionViewController: UIViewController {
     
     var layoutConstraints: [NSLayoutConstraint] = []
     
+    lazy var closeBtn: UIButton = {
+        let btn = UIButton(type: UIButtonType.roundedRect)
+        btn.translatesAutoresizingMaskIntoConstraints = false
+        btn.addTarget(self, action: #selector(KeyboardSettingInstructionViewController.close), for: .touchUpInside)
+        btn.setTitle("Close", for: .normal)
+        return btn
+    }()
+    
+    func close() {
+        delegate?.KeyboardSettingInstructionViewControllerClosed(self)
+    }
+    
+    
     deinit {
         deassembleChildViewController()
     }
@@ -87,6 +102,11 @@ final class KeyboardSettingInstructionViewController: UIViewController {
     }
     
     private func assembleUIElements() {
+        
+        view.addSubview(closeBtn)
+        layoutConstraints.append(closeBtn.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor, constant: 10))
+        layoutConstraints.append(closeBtn.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -8))
+        
         view.addSubview(headLabel)
         layoutConstraints.append(headLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor))
         layoutConstraints.append(headLabel.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor, constant: 50))

@@ -16,7 +16,7 @@ extension UILabel {
     }
 }
 
-final class SettingInstructionViewController: UIViewController {
+final class SettingInstructionPageViewController: UIViewController {
 
     private var step: Int
     private var instruction: String
