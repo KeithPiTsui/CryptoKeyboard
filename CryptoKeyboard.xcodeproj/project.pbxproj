@@ -26,12 +26,12 @@
 		0E3F186A1DFFEE8300E80D0C /* words.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0E3F18691DFFEE8300E80D0C /* words.txt */; };
 		0E3F18711E001F7700E80D0C /* CipherSettingTopBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E3F18701E001F7700E80D0C /* CipherSettingTopBarView.swift */; };
 		0E3F18731E001FF200E80D0C /* NumericPadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E3F18721E001FF200E80D0C /* NumericPadView.swift */; };
-		0E420BF81E078A4000F41640 /* KeyboardSettingInstructionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E420BF71E078A4000F41640 /* KeyboardSettingInstructionView.swift */; };
 		0E420BF91E078C0800F41640 /* UIColor+ColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA85D231DFD318700AFB546 /* UIColor+ColorScheme.swift */; };
 		0E420BFA1E078C0800F41640 /* LayoutConstraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1261451DFD680900E7EFE4 /* LayoutConstraints.swift */; };
 		0E420BFB1E078C0800F41640 /* UsefulFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E28CCDC1DFE643A00BCAC75 /* UsefulFunctions.swift */; };
 		0E420BFD1E0790D300F41640 /* KeyboardSettingInstructionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E420BFC1E0790D300F41640 /* KeyboardSettingInstructionViewController.swift */; };
 		0E420BFF1E07C63700F41640 /* SettingInstructionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E420BFE1E07C63700F41640 /* SettingInstructionViewController.swift */; };
+		0E420C031E07D5CB00F41640 /* SettingHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E420C021E07D5CB00F41640 /* SettingHelper.m */; };
 		0E5DE9231E00E82600FAEF09 /* CipherSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5DE9221E00E82600FAEF09 /* CipherSettingViewController.swift */; };
 		0E5DE9251E00E88300FAEF09 /* KeyboardViewController+CipherSettingViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5DE9241E00E88300FAEF09 /* KeyboardViewController+CipherSettingViewControllerDelegate.swift */; };
 		0E5DE9281E0122AD00FAEF09 /* AlphabetKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5DE9271E0122AD00FAEF09 /* AlphabetKeyboard.swift */; };
@@ -95,9 +95,11 @@
 		0E3F18691DFFEE8300E80D0C /* words.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = words.txt; sourceTree = "<group>"; };
 		0E3F18701E001F7700E80D0C /* CipherSettingTopBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CipherSettingTopBarView.swift; sourceTree = "<group>"; };
 		0E3F18721E001FF200E80D0C /* NumericPadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumericPadView.swift; sourceTree = "<group>"; };
-		0E420BF71E078A4000F41640 /* KeyboardSettingInstructionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardSettingInstructionView.swift; sourceTree = "<group>"; };
 		0E420BFC1E0790D300F41640 /* KeyboardSettingInstructionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardSettingInstructionViewController.swift; sourceTree = "<group>"; };
 		0E420BFE1E07C63700F41640 /* SettingInstructionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingInstructionViewController.swift; sourceTree = "<group>"; };
+		0E420C001E07D5CB00F41640 /* CryptoKeyboard-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CryptoKeyboard-Bridging-Header.h"; sourceTree = "<group>"; };
+		0E420C011E07D5CB00F41640 /* SettingHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingHelper.h; sourceTree = "<group>"; };
+		0E420C021E07D5CB00F41640 /* SettingHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingHelper.m; sourceTree = "<group>"; };
 		0E5DE9221E00E82600FAEF09 /* CipherSettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CipherSettingViewController.swift; sourceTree = "<group>"; };
 		0E5DE9241E00E88300FAEF09 /* KeyboardViewController+CipherSettingViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "KeyboardViewController+CipherSettingViewControllerDelegate.swift"; sourceTree = "<group>"; };
 		0E5DE9271E0122AD00FAEF09 /* AlphabetKeyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlphabetKeyboard.swift; sourceTree = "<group>"; };
@@ -244,11 +246,13 @@
 			children = (
 				0E6B6A311DFA4ABD00712C0A /* AppDelegate.swift */,
 				0E420BFC1E0790D300F41640 /* KeyboardSettingInstructionViewController.swift */,
+				0E420BFE1E07C63700F41640 /* SettingInstructionViewController.swift */,
 				0E6B6A381DFA4ABD00712C0A /* Assets.xcassets */,
 				0E6B6A3A1DFA4ABD00712C0A /* LaunchScreen.storyboard */,
 				0E6B6A3D1DFA4ABD00712C0A /* Info.plist */,
-				0E420BF71E078A4000F41640 /* KeyboardSettingInstructionView.swift */,
-				0E420BFE1E07C63700F41640 /* SettingInstructionViewController.swift */,
+				0E420C011E07D5CB00F41640 /* SettingHelper.h */,
+				0E420C021E07D5CB00F41640 /* SettingHelper.m */,
+				0E420C001E07D5CB00F41640 /* CryptoKeyboard-Bridging-Header.h */,
 			);
 			path = CryptoKeyboard;
 			sourceTree = "<group>";
@@ -350,6 +354,7 @@
 					0E6B6A2D1DFA4ABD00712C0A = {
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = 6T5NK4S24M;
+						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 					};
 					0E6B6A461DFA4AE400712C0A = {
@@ -408,11 +413,11 @@
 			files = (
 				0E6B6A321DFA4ABD00712C0A /* AppDelegate.swift in Sources */,
 				0E420BFD1E0790D300F41640 /* KeyboardSettingInstructionViewController.swift in Sources */,
-				0E420BF81E078A4000F41640 /* KeyboardSettingInstructionView.swift in Sources */,
 				0E420BF91E078C0800F41640 /* UIColor+ColorScheme.swift in Sources */,
 				0E420BFA1E078C0800F41640 /* LayoutConstraints.swift in Sources */,
 				0E420BFB1E078C0800F41640 /* UsefulFunctions.swift in Sources */,
 				0E420BFF1E07C63700F41640 /* SettingInstructionViewController.swift in Sources */,
+				0E420C031E07D5CB00F41640 /* SettingHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -572,11 +577,15 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 6T5NK4S24M;
 				INFOPLIST_FILE = CryptoKeyboard/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Keith.Pi.Tsui.CryptoKeyboard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "CryptoKeyboard/CryptoKeyboard-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -586,11 +595,14 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 6T5NK4S24M;
 				INFOPLIST_FILE = CryptoKeyboard/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Keith.Pi.Tsui.CryptoKeyboard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "CryptoKeyboard/CryptoKeyboard-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

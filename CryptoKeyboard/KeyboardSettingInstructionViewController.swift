@@ -36,12 +36,43 @@ final class KeyboardSettingInstructionViewController: UIViewController {
     }()
     
     lazy var instructionControllers: [UIViewController] = {
-        let vc1 = UIViewController()
+   
+        
+        let btn = UIButton(type: UIButtonType.roundedRect)
+        btn.setTitle("GotoSetting", for: .normal)
+        btn.addTarget(self, action: #selector(KeyboardSettingInstructionViewController.gotoSetting), for: .touchUpInside)
+        
+        let vc1 = SettingInstructionViewController(step: 1, instruction: "Add CryptoKeyboard", demoImage: UIImage(named: "KeyboardSetting")!, actionButton: btn)
         vc1.view.backgroundColor = UIColor.orange
-        let vc2 = UIViewController()
+        
+        
+        let vc2 = SettingInstructionViewController(step: 2, instruction: "Choose CryptoKeyboard", demoImage: UIImage(named: "KeyboardAdding")!)
         vc2.view.backgroundColor = UIColor.brown
         return [vc1,vc2]
     }()
+    
+    func gotoSetting() {
+        print("\(#function):\(UIApplicationOpenSettingsURLString)")
+        
+        guard let url = URL(string:UIApplicationOpenSettingsURLString) else { return }
+        guard let url2 = URL(string:"prefs:root=General&path=Keyboard/KEYBOARDS") else { return }
+        if UIApplication.shared.canOpenURL(url2) {
+            if #available(iOS 10.0, *) {
+                UIApplication.shared.open(url2, options: [:]) { print($0)}
+            } else {
+                // Fallback on earlier versions
+                UIApplication.shared.openURL(url2)
+            }
+        } else if UIApplication.shared.canOpenURL(url) {
+            if #available(iOS 10.0, *) {
+                UIApplication.shared.open(url, options: [:]) { print($0)}
+            } else {
+                // Fallback on earlier versions
+                UIApplication.shared.openURL(url)
+            }
+        }
+
+    }
     
     var layoutConstraints: [NSLayoutConstraint] = []
     
