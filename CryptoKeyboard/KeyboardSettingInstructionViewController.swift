@@ -22,14 +22,16 @@ final class KeyboardSettingInstructionViewController: UIViewController {
     lazy var scrollingInstructionView: UIScrollView = {
         let v = UIScrollView()
         v.translatesAutoresizingMaskIntoConstraints = false
-        v.backgroundColor = UIColor.white
+//        v.backgroundColor = UIColor.white
+        v.showsHorizontalScrollIndicator = false
+        v.isPagingEnabled = true
         return v
     }()
     
     lazy var scrollingInstructionViewContentView: UIView = {
         let v = UIView()
         v.translatesAutoresizingMaskIntoConstraints = false
-        v.backgroundColor = UIColor.lightGray
+        //v.backgroundColor = UIColor.lightGray
         return v
     }()
     
@@ -60,10 +62,15 @@ final class KeyboardSettingInstructionViewController: UIViewController {
         
         // scrollingInstructionView
         view.addSubview(scrollingInstructionView)
+        layoutConstraints.append(scrollingInstructionView.centerXAnchor.constraint(equalTo: view.centerXAnchor))
+        layoutConstraints.append(scrollingInstructionView.centerYAnchor.constraint(equalTo: view.centerYAnchor))
         layoutConstraints.append(scrollingInstructionView.leftAnchor.constraint(equalTo: view.leftAnchor))
         layoutConstraints.append(scrollingInstructionView.rightAnchor.constraint(equalTo: view.rightAnchor))
-        layoutConstraints.append(scrollingInstructionView.topAnchor.constraint(equalTo: headLabel.bottomAnchor, constant: 20))
-        layoutConstraints.append(scrollingInstructionView.bottomAnchor.constraint(equalTo: bottomLayoutGuide.topAnchor, constant: -100))
+        
+        let screenSize = UIScreen.main.bounds.size
+        
+        layoutConstraints.append(scrollingInstructionView.heightAnchor.constraint(equalToConstant: screenSize.height / 2))
+        
         
         // scrollingInstructionViewContentView
         scrollingInstructionView.addSubview(scrollingInstructionViewContentView)
@@ -72,25 +79,31 @@ final class KeyboardSettingInstructionViewController: UIViewController {
         layoutConstraints.append(scrollingInstructionViewContentView.rightAnchor.constraint(equalTo: scrollingInstructionView.rightAnchor, constant: 0))
         layoutConstraints.append(scrollingInstructionViewContentView.bottomAnchor.constraint(equalTo: scrollingInstructionView.bottomAnchor, constant: 0))
         
+        
+        
         var previousView: UIView? = nil
         for vc in instructionControllers {
             guard let v = vc.view else { continue }
             addChildViewController(vc)
             
             v.translatesAutoresizingMaskIntoConstraints = false
+            v.layer.cornerRadius = 6
+            v.layer.shadowRadius = 6
+            v.layer.shadowOpacity = 1
+            v.layer.shadowOffset = CGSize(5,5)
             scrollingInstructionViewContentView.addSubview(v)
             
             if previousView == nil {
-                layoutConstraints.append(v.leftAnchor.constraint(equalTo: scrollingInstructionViewContentView.leftAnchor, constant: 50))
+                layoutConstraints.append(v.leftAnchor.constraint(equalTo: scrollingInstructionViewContentView.leftAnchor, constant: screenSize.width / 5 * 1))
                 
             } else {
-                layoutConstraints.append(v.leftAnchor.constraint(equalTo: previousView!.rightAnchor, constant: 10))
+                layoutConstraints.append(v.leftAnchor.constraint(equalTo: previousView!.rightAnchor, constant: 20))
             }
 
-            layoutConstraints.append(v.widthAnchor.constraint(equalToConstant: 100))
-            layoutConstraints.append(v.heightAnchor.constraint(equalToConstant: 100))
-            layoutConstraints.append(v.topAnchor.constraint(equalTo: scrollingInstructionViewContentView.topAnchor, constant: 10))
-            layoutConstraints.append(v.bottomAnchor.constraint(equalTo: scrollingInstructionViewContentView.bottomAnchor, constant: -10))
+            layoutConstraints.append(v.widthAnchor.constraint(equalToConstant: screenSize.width / 5 * 3))
+            layoutConstraints.append(v.heightAnchor.constraint(equalToConstant: screenSize.height / 2 - 40))
+            layoutConstraints.append(v.topAnchor.constraint(equalTo: scrollingInstructionViewContentView.topAnchor, constant: 20))
+            layoutConstraints.append(v.bottomAnchor.constraint(equalTo: scrollingInstructionViewContentView.bottomAnchor, constant: -20))
             
             vc.didMove(toParentViewController: self)
             previousView = v
@@ -98,7 +111,7 @@ final class KeyboardSettingInstructionViewController: UIViewController {
         
         // last instruction view
         if previousView != nil {
-            layoutConstraints.append(previousView!.rightAnchor.constraint(equalTo: scrollingInstructionViewContentView.rightAnchor, constant: -50))
+            layoutConstraints.append(previousView!.rightAnchor.constraint(equalTo: scrollingInstructionViewContentView.rightAnchor, constant: -screenSize.width / 5 * 1))
         }
         
         NSLayoutConstraint.activate(layoutConstraints)
