@@ -30,7 +30,10 @@ extension AppDelegate: KeyboardSettingInstructionViewControllerDelegate {
         UIView.animate(withDuration: 0.2, animations: { 
             viewController.view.alpha = 0
         }) { (succeed) in
-            self.window!.rootViewController = CipherIntroductionViewController()
+            
+            let vc = CipherIntroductionViewController()
+            let nvc = UINavigationController(rootViewController: vc)
+            self.window!.rootViewController = nvc
             self.window!.rootViewController!.view.alpha = 0
             UIView.animate(withDuration: 0.2) {
                 self.window!.rootViewController!.view.alpha = 1

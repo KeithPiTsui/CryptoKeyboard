@@ -25,13 +25,60 @@ final class CipherIntroductionViewController: UIViewController {
         present(nvc, animated: true, completion: nil)
     }
     
+    lazy var translatorBtn: UIButton = {
+        let btn = UIButton(type: UIButtonType.roundedRect)
+        btn.translatesAutoresizingMaskIntoConstraints = false
+        btn.addTarget(self, action: #selector(CipherIntroductionViewController.gotoTranslator), for: .touchUpInside)
+        btn.setTitle("translator", for: .normal)
+        return btn
+    }()
+    
+    
+    func gotoTranslator() {
+        let vc = CipherTranslatorViewController()
+        navigationController?.pushViewController(vc, animated: true)
+        
+    }
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Cipher Intro"
         view.backgroundColor = UIColor.white
         
         view.addSubview(infoBtn)
-        
         infoBtn.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         infoBtn.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor, constant: 8).isActive = true
+        
+        view.addSubview(translatorBtn)
+        translatorBtn.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        translatorBtn.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor, constant: 8).isActive = true
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
