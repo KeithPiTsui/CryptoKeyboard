@@ -22,6 +22,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.backgroundColor = UIColor.white
         window!.rootViewController = v
         window!.makeKeyAndVisible()
+        
+        testMorseCodeTranslation()
+        
+        
         return true
     }
 }
@@ -44,3 +48,13 @@ extension AppDelegate: KeyboardSettingInstructionViewControllerDelegate {
     }
 }
 
+func testMorseCodeTranslation() {
+    let message = "I am Kei.th ."
+    if let morseCode = try? CipherManager.encrypt(message: message, withKey: "", andCipherType: .morse) {
+        let backMessage = try? CipherManager.decrypt(message: morseCode, withKey: "", andCipherType: .morse)
+        print(message)
+        print(morseCode)
+        print(backMessage)
+    }
+    
+}

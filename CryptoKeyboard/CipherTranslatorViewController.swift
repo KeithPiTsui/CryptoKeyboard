@@ -10,6 +10,10 @@ import UIKit
 
 class CipherTranslatorViewController: UIViewController {
     
+    private var cipherType: CipherType = .morse
+    private var cipherKey: String = ""
+    private var cipherName: String { return CipherManager.ciphers[cipherType]!.name }
+    
     private lazy var wholeArea: UIView = {
         let v = UIView()
         v.translatesAutoresizingMaskIntoConstraints = false
@@ -60,10 +64,9 @@ class CipherTranslatorViewController: UIViewController {
         btn.backgroundColor = UIColor.white
         btn.alpha = 0.8
         btn.layer.cornerRadius = 6
-//        btn.clipsToBounds = true
         btn.layer.shadowOpacity = 1
         btn.layer.shadowOffset = CGSize(1,1)
-        
+        btn.addTarget(self, action: #selector(CipherTranslatorViewController.tranlateButtonGetClick), for: .touchUpInside)
         return btn
     }()
     
@@ -130,6 +133,17 @@ class CipherTranslatorViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
+    func tranlateButtonGetClick() {
+        originalTextView.resignFirstResponder()
+        translateMessage()
+    }
+    
+    func translateMessage() {
+        guard let message = originalTextView.text else { return }
+        guard let translatedMsg = try? CipherManager.decrypt(message: message, withKey: cipherKey, andCipherType: cipherType) else { return }
+        translatedTextView.text = translatedMsg
+    }
+    
 }
 
 

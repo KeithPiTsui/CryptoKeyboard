@@ -93,6 +93,8 @@ fileprivate func loadMorseCodeMap() -> [String:String]{
 }
 
 fileprivate let morseCodeMap = loadMorseCodeMap()
+fileprivate var morseCodeMapReverse: [String:String] = [:]
+
 
 struct MorseCode: Endecryting {
     static let name: String = "Morse"
@@ -105,14 +107,83 @@ struct MorseCode: Endecryting {
             if let mappedStr = morseCodeMap[element] {
                 str = mappedStr
             }
-            if element == " " { str += "   "}
+            if element == " " { str += "  "}
             else if isLetter { str += " "}
             return initializer + str
         }
     }
     
+    enum ScalarType {
+        case dotDash
+        case blank
+        case other
+        
+        init(_ scalar: Character) {
+            if "•-".characters.contains(scalar) {
+                self = .dotDash
+            } else if scalar == " " {
+                self = .blank
+            } else {
+                self = .other
+            }
+        }
+    }
+    
+    
     static func decrypt(message: String, withKey key: String) throws -> String {
-        return ""
+        if morseCodeMapReverse.isEmpty {
+            morseCodeMap.forEach{morseCodeMapReverse[$1] = $0}
+        }
+        
+        var words:[String] = []
+        var word:[Character] = []
+        var previousScalar: Character = message[message.startIndex]
+        word.append(previousScalar)
+        for (idx, scalar) in message.characters.enumerated() {
+            guard idx != 0 else { continue}
+            if ScalarType(previousScalar) == ScalarType(scalar) {
+                word.append(scalar)
+            } else {
+                words.append(word.map{String($0)}.joined())
+                word.removeAll(keepingCapacity: true)
+                word.append(scalar)
+            }
+            previousScalar = scalar
+        }
+        words.append(word.map{String($0)}.joined())
+
+        let translatedSplits = words.map { (morseCodeStr) -> String in
+            if let mapped = morseCodeMapReverse[morseCodeStr] {
+                return mapped
+            } else if morseCodeStr.contains(" ") {
+                if morseCodeStr.characters.count == 1 {
+                    return ""
+                } else {
+                    return " "
+                }
+            } else {
+                return morseCodeStr
+            }
+            
+//            let notDotDashIdx = morseCodeStr.unicodeScalars.index{"•-".unicodeScalars.contains($0) == false}
+//            if notDotDashIdx == nil {
+//                guard let mapped = morseCodeMapReverse[morseCodeStr] else { return morseCodeStr }
+//                return mapped
+//            } else {
+//                let morse = String(morseCodeStr.unicodeScalars[morseCodeStr.unicodeScalars.startIndex..<notDotDashIdx!])
+//                if let mapped = morseCodeMapReverse[morse] {
+//                    if notDotDashIdx == morseCodeStr.unicodeScalars.endIndex {
+//                        return mapped
+//                    } else {
+//                        return mapped + String(morseCodeStr.unicodeScalars[notDotDashIdx!..<morseCodeStr.unicodeScalars.startIndex])
+//                    }
+//                } else {
+//                    return morseCodeStr
+//                }
+//            }
+        }
+        
+        return translatedSplits.joined()
     }
 }
 
