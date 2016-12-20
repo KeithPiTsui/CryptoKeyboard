@@ -50,6 +50,17 @@
 		0E6B6A391DFA4ABD00712C0A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E6B6A381DFA4ABD00712C0A /* Assets.xcassets */; };
 		0E6B6A3C1DFA4ABD00712C0A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E6B6A3A1DFA4ABD00712C0A /* LaunchScreen.storyboard */; };
 		0E6B6A4E1DFA4AE400712C0A /* CryptoKB.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 0E6B6A471DFA4AE400712C0A /* CryptoKB.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		0E8A3C2E1E08DE7400274D32 /* AlphabetKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5DE9271E0122AD00FAEF09 /* AlphabetKeyboard.swift */; };
+		0E8A3C2F1E08DE7400274D32 /* KeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA85D191DFD2E9500AFB546 /* KeyboardView.swift */; };
+		0E8A3C301E08DE7400274D32 /* KeyboardView+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA85D1C1DFD2E9500AFB546 /* KeyboardView+Layout.swift */; };
+		0E8A3C311E08DE7400274D32 /* KeyboardView+Touch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E28CCD31DFE3C3900BCAC75 /* KeyboardView+Touch.swift */; };
+		0E8A3C321E08DE7400274D32 /* KeyboardViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E3C9F201DFD943300D44E51 /* KeyboardViewDelegate.swift */; };
+		0E8A3C331E08DE7400274D32 /* KeyboardViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA85D1A1DFD2E9500AFB546 /* KeyboardViewItem.swift */; };
+		0E8A3C341E08DE7400274D32 /* KeyboardViewItemPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA85D1B1DFD2E9500AFB546 /* KeyboardViewItemPopup.swift */; };
+		0E8A3C351E08DE7400274D32 /* IconDrawingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1261491DFD762200E7EFE4 /* IconDrawingView.swift */; };
+		0E8A3C361E08DE7400274D32 /* NumericPadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E3F18721E001FF200E80D0C /* NumericPadView.swift */; };
+		0E8A3C371E08DE7400274D32 /* Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA85D131DFD2E3700AFB546 /* Keyboard.swift */; };
+		0E8A3C381E08DE7400274D32 /* DefaultKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA85D111DFD2E3700AFB546 /* DefaultKeyboard.swift */; };
 		0EA85D141DFD2E3700AFB546 /* DefaultKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA85D111DFD2E3700AFB546 /* DefaultKeyboard.swift */; };
 		0EA85D161DFD2E3700AFB546 /* Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA85D131DFD2E3700AFB546 /* Keyboard.swift */; };
 		0EA85D1D1DFD2E9500AFB546 /* KeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA85D191DFD2E9500AFB546 /* KeyboardView.swift */; };
@@ -462,6 +473,17 @@
 				0E420C131E07F96600F41640 /* PDLiteAboutTableViewController.m in Sources */,
 				0E420BFF1E07C63700F41640 /* SettingInstructionPageViewController.swift in Sources */,
 				0E420C1B1E080A4F00F41640 /* CipherSettingTopBarView.swift in Sources */,
+				0E8A3C2E1E08DE7400274D32 /* AlphabetKeyboard.swift in Sources */,
+				0E8A3C2F1E08DE7400274D32 /* KeyboardView.swift in Sources */,
+				0E8A3C301E08DE7400274D32 /* KeyboardView+Layout.swift in Sources */,
+				0E8A3C311E08DE7400274D32 /* KeyboardView+Touch.swift in Sources */,
+				0E8A3C321E08DE7400274D32 /* KeyboardViewDelegate.swift in Sources */,
+				0E8A3C331E08DE7400274D32 /* KeyboardViewItem.swift in Sources */,
+				0E8A3C341E08DE7400274D32 /* KeyboardViewItemPopup.swift in Sources */,
+				0E8A3C351E08DE7400274D32 /* IconDrawingView.swift in Sources */,
+				0E8A3C361E08DE7400274D32 /* NumericPadView.swift in Sources */,
+				0E8A3C371E08DE7400274D32 /* Keyboard.swift in Sources */,
+				0E8A3C381E08DE7400274D32 /* DefaultKeyboard.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

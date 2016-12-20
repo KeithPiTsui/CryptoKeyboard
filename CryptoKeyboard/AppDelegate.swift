@@ -8,6 +8,8 @@
 
 import UIKit
 
+var GloabalKeyboardShiftState: ShiftState = .disabled
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -17,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 //        let v = KeyboardSettingInstructionViewController()
 //        v.delegate = self
-        let v = CipherTranslatorViewController()
+        let v = CipherTranslatorViewController(cipherType: .caesar, cipherKey: "03")
         window = UIWindow()
         window?.backgroundColor = UIColor.white
         window!.rootViewController = v

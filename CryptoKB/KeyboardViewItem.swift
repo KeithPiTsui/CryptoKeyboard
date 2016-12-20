@@ -96,7 +96,7 @@ final class KeyboardViewItem: UIView {
                 inscriptLabel.text = nil
                 inscriptLabel.backgroundColor = UIColor.spaceColor
             } else {
-                inscriptLabel.text = (GlobalKeyboardViewController.shiftState.isUppercase ? key.uppercaseKeyCap : key.lowercaseKeyCap) ?? "\(key.hashValue)"
+                inscriptLabel.text = (GloabalKeyboardShiftState.isUppercase ? key.uppercaseKeyCap : key.lowercaseKeyCap) ?? "\(key.hashValue)"
                 inscriptLabel.backgroundColor = UIColor.clear
             }
         }
@@ -115,7 +115,7 @@ final class KeyboardViewItem: UIView {
             NotificationCenter.default.removeObserver(self)
             NotificationCenter.default.addObserver(self,
                                                    selector: #selector(KeyboardViewItem.handleShiftStateChangedNotification(_:)),
-                                                   name: KeyboardViewController.shiftStateChangedNotification,
+                                                   name: Notification.Name("ShiftStateChanged"),
                                                    object: nil)
         } else {
             NotificationCenter.default.removeObserver(self)
@@ -124,10 +124,10 @@ final class KeyboardViewItem: UIView {
     
     func handleShiftStateChangedNotification(_ notification: Notification) {
         if key.withIcon == false {
-            inscriptLabel.text = (GlobalKeyboardViewController.shiftState.isUppercase ? key.uppercaseKeyCap : key.lowercaseKeyCap) ?? "\(key.hashValue)"
+            inscriptLabel.text = (GloabalKeyboardShiftState.isUppercase ? key.uppercaseKeyCap : key.lowercaseKeyCap) ?? "\(key.hashValue)"
         }
         if key.type == .shift {
-            switch GlobalKeyboardViewController.shiftState {
+            switch GloabalKeyboardShiftState {
             case .enabled:
                 UIView.animate(withDuration: 0.1) {
                     self.iconView.color = UIColor.shiftIconHighlightDrawingColor

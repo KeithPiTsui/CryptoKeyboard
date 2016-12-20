@@ -8,7 +8,8 @@
 
 import UIKit
 
-weak var GlobalKeyboardViewController: KeyboardViewController! = nil
+//weak var GlobalKeyboardViewController: KeyboardViewController! = nil
+var GloabalKeyboardShiftState: ShiftState = .disabled
 
 final class KeyboardViewController: UIInputViewController {
     
@@ -44,7 +45,12 @@ final class KeyboardViewController: UIInputViewController {
     var keyboradViewLayoutConstraints: [NSLayoutConstraint] = []
     
     var shiftState: ShiftState = .disabled {
-        didSet { if (oldValue != shiftState) {NotificationCenter.default.post(name: KeyboardViewController.shiftStateChangedNotification, object: nil)}}
+        didSet {
+            if (oldValue != shiftState) {
+                NotificationCenter.default.post(name: KeyboardViewController.shiftStateChangedNotification, object: nil)
+                GloabalKeyboardShiftState = shiftState
+            }
+        }
     }
     
     var autoPeriodState: AutoPeriodState = .noSpace
@@ -149,7 +155,7 @@ final class KeyboardViewController: UIInputViewController {
     override func viewDidLoad(){
         super.viewDidLoad()
         loadCipherSetting()
-        GlobalKeyboardViewController = self
+        //GlobalKeyboardViewController = self
         view.addSubview(topBar)
         view.addSubview(keyboardView)
     }

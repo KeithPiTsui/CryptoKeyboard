@@ -11,12 +11,18 @@ import UIKit
 class CipherTranslatorViewController: UIViewController {
     
     private var cipherType: CipherType = .caesar
-    fileprivate var cipherKey: String = "03"
+    fileprivate var cipherKey: String {return cipherKeys.joined()}
     private var cipherName: String { return CipherManager.ciphers[cipherType]!.name }
     fileprivate var lastFocusTextView: Int = 0
     
     private var layoutConstraints: [NSLayoutConstraint] = []
     private var keyAreaLayoutConstraints: [NSLayoutConstraint] = []
+    
+    fileprivate var cipherKeys:[String]
+    
+    private let checkedImage = UIImage(named: "Checked")!
+    
+    private var editingKey: Bool = false
     
     private lazy var wholeArea: UIView = {
         let v = UIView()
@@ -62,7 +68,7 @@ class CipherTranslatorViewController: UIViewController {
         return tv
     }()
     
-    private lazy var tranlateBtn: UIButton = {
+    private lazy var translateBtn: UIButton = {
         let btn = UIButton(type: UIButtonType.roundedRect)
         btn.translatesAutoresizingMaskIntoConstraints = false
         btn.setTitle("⇅", for: .normal)
@@ -87,6 +93,16 @@ class CipherTranslatorViewController: UIViewController {
         return v
     }()
     
+    init(cipherType: CipherType, cipherKey: String) {
+        self.cipherType = cipherType
+        self.cipherKeys = cipherKey.chars
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -97,7 +113,7 @@ class CipherTranslatorViewController: UIViewController {
         originalArea.addSubview(originalTextView)
         wholeArea.addSubview(translatedArea)
         translatedArea.addSubview(translatedTextView)
-        wholeArea.addSubview(tranlateBtn)
+        wholeArea.addSubview(translateBtn)
         wholeArea.addSubview(keyArea)
         
         assembleConstraints()
@@ -137,8 +153,8 @@ class CipherTranslatorViewController: UIViewController {
         layoutConstraints.append(translatedTextView.topAnchor.constraint(equalTo: translatedArea.topAnchor, constant: 8))
         layoutConstraints.append(translatedTextView.bottomAnchor.constraint(equalTo: translatedArea.bottomAnchor, constant: -8))
         
-        layoutConstraints.append(tranlateBtn.rightAnchor.constraint(equalTo: wholeArea.rightAnchor, constant:-12))
-        layoutConstraints.append(tranlateBtn.centerYAnchor.constraint(equalTo: wholeArea.centerYAnchor))
+        layoutConstraints.append(translateBtn.rightAnchor.constraint(equalTo: wholeArea.rightAnchor, constant:-12))
+        layoutConstraints.append(translateBtn.centerYAnchor.constraint(equalTo: wholeArea.centerYAnchor))
         
         if cipherKey.chars.count > 0 {
             keyAreaLayoutConstraints.append(keyArea.heightAnchor.constraint(equalToConstant: 30))
@@ -154,8 +170,23 @@ class CipherTranslatorViewController: UIViewController {
     }
     
     func tranlateButtonGetClick() {
-        originalTextView.resignFirstResponder()
-        translatedTextView.resignFirstResponder()
+        if editingKey {
+            if cipherKeys.count > 0 {
+                translateBtn.setImage(nil, for: .normal)
+                translateBtn.setTitle("⇅", for: .normal)
+                if alphabetkeyboard.superview != nil {
+                    alphabetKeyboardSlideOut()
+                } else if numericKeyboardSlideIned {
+                    numericKeyboardSlideOut()
+                }
+                editingKey = false
+            } else {
+                return
+            }
+        } else {
+            originalTextView.resignFirstResponder()
+            translatedTextView.resignFirstResponder()
+        }
         translateMessage()
     }
     
@@ -206,15 +237,109 @@ class CipherTranslatorViewController: UIViewController {
         }
     }
     
+    
+    fileprivate func slideInKeyboard() {
+        editingKey = true
+        originalTextView.resignFirstResponder()
+        translatedTextView.resignFirstResponder()
+        delay(0.2){
+            switch CipherManager.ciphers[self.cipherType]!.keyType {
+            case .letter:
+                self.alphabetKeyboardSlideIn()
+                self.translateBtn.setTitle(nil, for: .normal)
+                self.translateBtn.setImage(self.checkedImage, for: .normal)
+            case .number:
+                self.numericKeyboardSlideIn()
+                self.translateBtn.setTitle(nil, for: .normal)
+                self.translateBtn.setImage(self.checkedImage, for: .normal)
+            case .none: // no need a key
+                break
+            }
+        }
+    }
+    
+    
+    // MARK: -
+    // MARK: Slide in Numerics Keyboard
+    private lazy var numericKeyboard: NumericKeyboard = {
+        let v  = NumericKeyboard(withDelegate: self)
+        return v}()
+    private var numericKeyboardSlideIned: Bool = false
+    private lazy var numericKeyboardConstraints: [NSLayoutConstraint] = {
+        var constraints = [NSLayoutConstraint]()
+        constraints.append(self.numericKeyboard.leftAnchor.constraint(equalTo: self.view.leftAnchor))
+        constraints.append(self.numericKeyboard.rightAnchor.constraint(equalTo: self.view.rightAnchor))
+        
+        constraints.append(self.numericKeyboard.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 0.3))
+        //constraints.append(self.numericKeyboard.topAnchor.constraint(equalTo: self.topLayoutGuide.bottomAnchor))
+        constraints.append(self.numericKeyboard.bottomAnchor.constraint(equalTo: self.bottomLayoutGuide.topAnchor))
+        return constraints
+    }()
+    
+    fileprivate func numericKeyboardSlideIn(){
+        view.addSubview(numericKeyboard)
+        NSLayoutConstraint.activate(numericKeyboardConstraints)
+        numericKeyboardSlideIned = true
+    }
+    
+    private func numericKeyboardSlideOut(){
+        NSLayoutConstraint.deactivate(numericKeyboardConstraints)
+        numericKeyboard.removeFromSuperview()
+        numericKeyboardSlideIned = false
+    }
+    
+    
+    
+    // MARK: -
+    // MARK: Slide in Alphabet Keyboard
+    private lazy var alphabetkeyboard: AlphabetKeyboard = {
+        let v  = AlphabetKeyboard(withDelegate: self)
+        return v}()
+    private var alphabetKeyboardSlideIned: Bool = false
+    private lazy var alphabetKeyboardConstraints: [NSLayoutConstraint] = {
+        var constraints = [NSLayoutConstraint]()
+        constraints.append(self.alphabetkeyboard.leftAnchor.constraint(equalTo: self.view.leftAnchor))
+        constraints.append(self.alphabetkeyboard.rightAnchor.constraint(equalTo: self.view.rightAnchor))
+        constraints.append(self.alphabetkeyboard.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 0.3))
+        //constraints.append(self.alphabetkeyboard.topAnchor.constraint(equalTo: self.topLayoutGuide.bottomAnchor))
+        constraints.append(self.alphabetkeyboard.bottomAnchor.constraint(equalTo: self.bottomLayoutGuide.topAnchor))
+        return constraints
+    }()
+    
+    fileprivate func alphabetKeyboardSlideIn(){
+        view.addSubview(alphabetkeyboard)
+        NSLayoutConstraint.activate(alphabetKeyboardConstraints)
+        alphabetKeyboardSlideIned = true
+    }
+    
+    private func alphabetKeyboardSlideOut(){
+        NSLayoutConstraint.deactivate(alphabetKeyboardConstraints)
+        alphabetkeyboard.removeFromSuperview()
+        alphabetKeyboardSlideIned = false
+    }
+    
+    fileprivate func handleKeyPressDown(_ key: Key) {
+        if key.type == .alphabet || key.type == .number {
+            guard cipherKeys.count < Int(CipherManager.ciphers[cipherType]!.digits) else { return }
+            let letter = key.outputForCase(false)
+            cipherKeys.append(letter)
+        } else if key.type == .backspace {
+            guard cipherKeys.isEmpty == false else { return }
+            cipherKeys.removeLast()
+        }
+        keyArea.reloadValues()
+    }
 }
 
 
 extension CipherTranslatorViewController: CipherSettingTopBarViewDelegate {
     func valuesForDisplay() -> [String] {
-        return cipherKey.chars
+        return cipherKeys
     }
     func getTouched() {
         print("\(#function)")
+        slideInKeyboard()
+        
     }
 }
 
@@ -229,19 +354,39 @@ extension CipherTranslatorViewController: UITextViewDelegate{
             tv = originalTextView
         }
         translateMessage()
-        
-        
-        
-        let start = tv.text.index(before: tv.text.endIndex)
-        let startLocation = tv.text.distance(from: tv.text.startIndex, to: start)
-        let length = tv.text.distance(from: start, to: tv.text.endIndex)
-        tv.scrollRangeToVisible(NSMakeRange(startLocation, length))
-        
+        if tv.text.characters.count > 1 {
+            let start = tv.text.index(before: tv.text.endIndex)
+            let startLocation = tv.text.distance(from: tv.text.startIndex, to: start)
+            let length = tv.text.distance(from: start, to: tv.text.endIndex)
+            tv.scrollRangeToVisible(NSMakeRange(startLocation, length))
+        }
     }
 }
 
 
 
+extension CipherTranslatorViewController: AlphabetKeyboardDelegate {
+    func keyboardViewItem(_ item: KeyboardViewItem, receivedEvent event: UIControlEvents, inKeyboard keyboard: AlphabetKeyboard) {
+        print("\(#function)")
+        
+        if event == .touchUpInside {
+            handleKeyPressDown(item.key)
+        }
+    }
+    
+    
+}
+
+//NumericKeyboardDelegate
+extension CipherTranslatorViewController: NumericKeyboardDelegate {
+    func nKeyboardViewItem(_ item: KeyboardViewItem, receivedEvent event: UIControlEvents, inKeyboard keyboard: NumericKeyboard) {
+        print("\(#function)")
+        if event == .touchUpInside {
+            handleKeyPressDown(item.key)
+        }
+        
+    }
+}
 
 
 

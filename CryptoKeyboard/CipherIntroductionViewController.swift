@@ -35,7 +35,7 @@ final class CipherIntroductionViewController: UIViewController {
     
     
     func gotoTranslator() {
-        let vc = CipherTranslatorViewController()
+        let vc = CipherTranslatorViewController(cipherType: .caesar, cipherKey: "03")
         navigationController?.pushViewController(vc, animated: true)
         
     }
