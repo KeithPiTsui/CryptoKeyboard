@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window!.rootViewController = v
         window!.makeKeyAndVisible()
         
-        testMorseCodeTranslation()
+        //testMorseCodeTranslation()
         
         
         return true
@@ -54,7 +54,7 @@ func testMorseCodeTranslation() {
         let backMessage = try? CipherManager.decrypt(message: morseCode, withKey: "", andCipherType: .morse)
         print(message)
         print(morseCode)
-        print(backMessage)
+        print("\(backMessage)")
     }
     
 }

@@ -52,7 +52,6 @@ class CipherTranslatorViewController: UIViewController {
         tv.backgroundColor = UIColor.clear
         tv.text = "Hola"
         tv.textColor = UIColor(43,181,255)
-        tv.isEditable = false
         tv.font = UIFont.translatorOriginalTextFont
         return tv
     }()
@@ -135,6 +134,7 @@ class CipherTranslatorViewController: UIViewController {
 
     func tranlateButtonGetClick() {
         originalTextView.resignFirstResponder()
+        translatedTextView.resignFirstResponder()
         translateMessage()
     }
     
@@ -142,6 +142,41 @@ class CipherTranslatorViewController: UIViewController {
         guard let message = originalTextView.text else { return }
         guard let translatedMsg = try? CipherManager.decrypt(message: message, withKey: cipherKey, andCipherType: cipherType) else { return }
         translatedTextView.text = translatedMsg
+    }
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        NotificationCenter.default.addObserver(self, selector: #selector(CipherTranslatorViewController.keyboardDidShow(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(CipherTranslatorViewController.KeyboardWillHide(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    func keyboardDidShow(_ notification: Notification){
+        guard view.frame.origin.y == 0 else { return }
+        guard let info = notification.userInfo else { return }
+        guard let kbSizeValue = info[UIKeyboardFrameBeginUserInfoKey] as? NSValue else { return }
+        let kbSize = kbSizeValue.cgRectValue.size
+        var rect = view.frame
+        rect.origin.y -= kbSize.height
+        UIView.animate(withDuration: 0.3) {
+            self.view.frame = rect
+            self.view.setNeedsLayout()
+        }
+    }
+    
+    func KeyboardWillHide(_ notification: Notification){
+        guard view.frame.origin.y < 0 else { return }
+        var rect = view.frame
+        rect.origin.y = 0
+        UIView.animate(withDuration: 0.3) {
+            self.view.frame = rect
+            self.view.setNeedsLayout()
+        }
     }
     
 }
