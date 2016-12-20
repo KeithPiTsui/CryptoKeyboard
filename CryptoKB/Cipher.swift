@@ -98,14 +98,15 @@ struct MorseCode: Endecryting {
     static let name: String = "Morse"
     static let digits: UInt = 0
     static let keyType: CipherKeyType = .none
+    
     static func encrypt(message: String, withKey key: String) throws -> String {
         return message.uppercased().chars.reduce("") { (initializer: String, element: String) -> String in
             var str = element; let isLetter = letters.contains(element)
             if let mappedStr = morseCodeMap[element] {
                 str = mappedStr
             }
-            if element == " " { str += "    "}
-            else if isLetter { str += "  "}
+            if element == " " { str += "   "}
+            else if isLetter { str += " "}
             return initializer + str
         }
     }

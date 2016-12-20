@@ -42,6 +42,7 @@ struct KeyboardAppearanceScheme {
 }
 
 extension UIFont {
+    static let translatorOriginalTextFont = UIFont(name: "ChalkboardSE-Light", size: 30)!
     static let keyboardViewItemInscriptFont = UIFont(name: "ChalkboardSE-Light", size: 25)!
     static let keyboardViewItemInscriptFontSmall = UIFont(name: "ChalkboardSE-Light", size: 18)!
     static let topBarInscriptFont = UIFont(name: "ChalkboardSE-Light", size: 18)!

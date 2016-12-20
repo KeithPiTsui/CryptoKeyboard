@@ -233,7 +233,7 @@ final class CipherSettingViewController: UIViewController {
         v.backgroundColor = UIColor.clear
         let leftTrack = UIImage(named:"brightnessBar")!
         let rightTrack = leftTrack
-        let cursor = UIImage(named: "cursorThumb")!
+        //let cursor = UIImage(named: "cursorThumb")!
         v.minimumValue = 0
         v.maximumValue = 100
         v.setMinimumTrackImage(leftTrack, for: .normal)

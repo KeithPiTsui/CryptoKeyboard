@@ -21,7 +21,7 @@ class CipherTranslatorViewController: UIViewController {
     private lazy var originalArea: UIView = {
         let v = UIView()
         v.translatesAutoresizingMaskIntoConstraints = false
-        v.backgroundColor = UIColor(109,183,253)
+        v.backgroundColor = UIColor(43,181,255)
         return v
     }()
     
@@ -31,6 +31,7 @@ class CipherTranslatorViewController: UIViewController {
         tv.backgroundColor = UIColor.clear
         tv.text = "Hello"
         tv.textColor = UIColor(249,252,255)
+        tv.font = UIFont.translatorOriginalTextFont
         return tv
     }()
     
@@ -46,8 +47,9 @@ class CipherTranslatorViewController: UIViewController {
         tv.translatesAutoresizingMaskIntoConstraints = false
         tv.backgroundColor = UIColor.clear
         tv.text = "Hola"
-        tv.textColor = UIColor(109,183,253)
+        tv.textColor = UIColor(43,181,255)
         tv.isEditable = false
+        tv.font = UIFont.translatorOriginalTextFont
         return tv
     }()
     
@@ -55,12 +57,25 @@ class CipherTranslatorViewController: UIViewController {
         let btn = UIButton(type: UIButtonType.roundedRect)
         btn.translatesAutoresizingMaskIntoConstraints = false
         btn.setTitle("Trans", for: .normal)
+        btn.backgroundColor = UIColor.white
+        btn.alpha = 0.8
+        btn.layer.cornerRadius = 6
+//        btn.clipsToBounds = true
+        btn.layer.shadowOpacity = 1
+        btn.layer.shadowOffset = CGSize(1,1)
+        
         return btn
     }()
     
     private lazy var keyArea: CipherSettingTopBarView = {
         let v = CipherSettingTopBarView(withDelegate: self)
         v.translatesAutoresizingMaskIntoConstraints = false
+        v.backgroundColor = UIColor.white
+        v.alpha = 0.8
+        v.layer.cornerRadius = 6
+        v.layer.shadowOpacity = 1
+        v.layer.shadowOffset = CGSize(1,1)
+        
         return v
     }()
     
@@ -94,21 +109,21 @@ class CipherTranslatorViewController: UIViewController {
         translatedArea.bottomAnchor.constraint(equalTo: wholeArea.bottomAnchor).isActive = true
         translatedArea.topAnchor.constraint(equalTo: originalArea.bottomAnchor).isActive = true
         
-        originalTextView.leftAnchor.constraint(equalTo: originalArea.leftAnchor, constant: 8).isActive = true
-        originalTextView.rightAnchor.constraint(equalTo: originalArea.rightAnchor, constant: -8).isActive = true
-        originalTextView.topAnchor.constraint(equalTo: originalArea.topAnchor, constant: 8).isActive = true
-        originalTextView.bottomAnchor.constraint(equalTo: originalArea.bottomAnchor, constant: -8).isActive = true
+        originalTextView.leftAnchor.constraint(equalTo: originalArea.leftAnchor, constant: 16).isActive = true
+        originalTextView.rightAnchor.constraint(equalTo: originalArea.rightAnchor, constant: -16).isActive = true
+        originalTextView.topAnchor.constraint(equalTo: originalArea.topAnchor, constant: 32).isActive = true
+        originalTextView.bottomAnchor.constraint(equalTo: originalArea.bottomAnchor, constant: -32).isActive = true
         
-        translatedTextView.leftAnchor.constraint(equalTo: translatedArea.leftAnchor, constant: 8).isActive = true
-        translatedTextView.rightAnchor.constraint(equalTo: translatedArea.rightAnchor, constant: -8).isActive = true
+        translatedTextView.leftAnchor.constraint(equalTo: translatedArea.leftAnchor, constant: 16).isActive = true
+        translatedTextView.rightAnchor.constraint(equalTo: translatedArea.rightAnchor, constant: -16).isActive = true
         translatedTextView.topAnchor.constraint(equalTo: translatedArea.topAnchor, constant: 8).isActive = true
         translatedTextView.bottomAnchor.constraint(equalTo: translatedArea.bottomAnchor, constant: -8).isActive = true
         
         tranlateBtn.rightAnchor.constraint(equalTo: wholeArea.rightAnchor, constant:-12).isActive = true
         tranlateBtn.centerYAnchor.constraint(equalTo: wholeArea.centerYAnchor).isActive = true
         
-        keyArea.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        keyArea.widthAnchor.constraint(equalTo: wholeArea.widthAnchor, multiplier: 0.5).isActive = true
+        keyArea.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        keyArea.widthAnchor.constraint(equalTo: wholeArea.widthAnchor, multiplier: 0.4).isActive = true
         keyArea.leftAnchor.constraint(equalTo: wholeArea.leftAnchor, constant:12).isActive = true
         keyArea.centerYAnchor.constraint(equalTo: wholeArea.centerYAnchor).isActive = true
         
@@ -120,7 +135,7 @@ class CipherTranslatorViewController: UIViewController {
 
 extension CipherTranslatorViewController: CipherSettingTopBarViewDelegate {
     func valuesForDisplay() -> [String] {
-        return ["1","2"]
+        return ["1","2","3","4","5"]
     }
     func getTouched() {
         print("\(#function)")

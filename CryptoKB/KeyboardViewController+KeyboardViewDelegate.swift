@@ -190,6 +190,9 @@ extension KeyboardViewController: KeyboardViewDelegate {
                 let characterCount = textInterpreter.receivedCharacters.count
                 for _ in 0...characterCount {textDocumentProxy.deleteBackward()}
                 textDocumentProxy.insertText(text+outputCharacter)
+//                if outputCharacter ==  " " && cipherType == .morse {
+//                    textDocumentProxy.insertText(" ")
+//                }
                 textInterpreter.resetState()
                 topBar.resetLabels()
             }

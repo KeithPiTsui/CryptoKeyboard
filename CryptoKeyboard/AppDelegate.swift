@@ -15,8 +15,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        let v = KeyboardSettingInstructionViewController()
-        v.delegate = self
+//        let v = KeyboardSettingInstructionViewController()
+//        v.delegate = self
+        let v = CipherTranslatorViewController()
         window = UIWindow()
         window?.backgroundColor = UIColor.white
         window!.rootViewController = v
@@ -33,6 +34,7 @@ extension AppDelegate: KeyboardSettingInstructionViewControllerDelegate {
             
             let vc = CipherIntroductionViewController()
             let nvc = UINavigationController(rootViewController: vc)
+            nvc.isNavigationBarHidden = true
             self.window!.rootViewController = nvc
             self.window!.rootViewController!.view.alpha = 0
             UIView.animate(withDuration: 0.2) {
