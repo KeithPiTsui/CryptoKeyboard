@@ -52,6 +52,10 @@ extension AppDelegate: KeyboardSettingInstructionViewControllerDelegate {
 
 func testMorseCodeTranslation() {
     let message = "I am Kei.th ."
+    let msg =  markdownToHTML(input: message)
+    print(msg)
+    
+    
     if let morseCode = try? CipherManager.encrypt(message: message, withKey: "", andCipherType: .morse) {
         let backMessage = try? CipherManager.decrypt(message: morseCode, withKey: "", andCipherType: .morse)
         print(message)
