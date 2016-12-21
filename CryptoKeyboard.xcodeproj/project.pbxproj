@@ -50,6 +50,35 @@
 		0E6B6A391DFA4ABD00712C0A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E6B6A381DFA4ABD00712C0A /* Assets.xcassets */; };
 		0E6B6A3C1DFA4ABD00712C0A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E6B6A3A1DFA4ABD00712C0A /* LaunchScreen.storyboard */; };
 		0E6B6A4E1DFA4AE400712C0A /* CryptoKB.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 0E6B6A471DFA4AE400712C0A /* CryptoKB.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		0E892BA41E0ACC7000B0A716 /* blocks.c in Sources */ = {isa = PBXBuildFile; fileRef = 0E892B7A1E0ACC7000B0A716 /* blocks.c */; };
+		0E892BA51E0ACC7000B0A716 /* buffer.c in Sources */ = {isa = PBXBuildFile; fileRef = 0E892B7B1E0ACC7000B0A716 /* buffer.c */; };
+		0E892BA61E0ACC7000B0A716 /* case_fold_switch.inc in Sources */ = {isa = PBXBuildFile; fileRef = 0E892B7D1E0ACC7000B0A716 /* case_fold_switch.inc */; };
+		0E892BA71E0ACC7000B0A716 /* CMakeLists.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0E892B7F1E0ACC7000B0A716 /* CMakeLists.txt */; };
+		0E892BA81E0ACC7000B0A716 /* cmark.c in Sources */ = {isa = PBXBuildFile; fileRef = 0E892B801E0ACC7000B0A716 /* cmark.c */; };
+		0E892BA91E0ACC7000B0A716 /* cmark_ctype.c in Sources */ = {isa = PBXBuildFile; fileRef = 0E892B821E0ACC7000B0A716 /* cmark_ctype.c */; };
+		0E892BAA1E0ACC7000B0A716 /* cmark_version.h.in in Resources */ = {isa = PBXBuildFile; fileRef = 0E892B841E0ACC7000B0A716 /* cmark_version.h.in */; };
+		0E892BAB1E0ACC7000B0A716 /* commonmark.c in Sources */ = {isa = PBXBuildFile; fileRef = 0E892B851E0ACC7000B0A716 /* commonmark.c */; };
+		0E892BAC1E0ACC7000B0A716 /* config.h.in in Resources */ = {isa = PBXBuildFile; fileRef = 0E892B861E0ACC7000B0A716 /* config.h.in */; };
+		0E892BAD1E0ACC7000B0A716 /* entities.inc in Sources */ = {isa = PBXBuildFile; fileRef = 0E892B871E0ACC7000B0A716 /* entities.inc */; };
+		0E892BAE1E0ACC7000B0A716 /* houdini_href_e.c in Sources */ = {isa = PBXBuildFile; fileRef = 0E892B891E0ACC7000B0A716 /* houdini_href_e.c */; };
+		0E892BAF1E0ACC7000B0A716 /* houdini_html_e.c in Sources */ = {isa = PBXBuildFile; fileRef = 0E892B8A1E0ACC7000B0A716 /* houdini_html_e.c */; };
+		0E892BB01E0ACC7000B0A716 /* houdini_html_u.c in Sources */ = {isa = PBXBuildFile; fileRef = 0E892B8B1E0ACC7000B0A716 /* houdini_html_u.c */; };
+		0E892BB11E0ACC7000B0A716 /* html.c in Sources */ = {isa = PBXBuildFile; fileRef = 0E892B8C1E0ACC7000B0A716 /* html.c */; };
+		0E892BB21E0ACC7000B0A716 /* inlines.c in Sources */ = {isa = PBXBuildFile; fileRef = 0E892B8D1E0ACC7000B0A716 /* inlines.c */; };
+		0E892BB31E0ACC7000B0A716 /* iterator.c in Sources */ = {isa = PBXBuildFile; fileRef = 0E892B8F1E0ACC7000B0A716 /* iterator.c */; };
+		0E892BB41E0ACC7000B0A716 /* latex.c in Sources */ = {isa = PBXBuildFile; fileRef = 0E892B911E0ACC7000B0A716 /* latex.c */; };
+		0E892BB51E0ACC7000B0A716 /* libcmark.pc.in in Resources */ = {isa = PBXBuildFile; fileRef = 0E892B921E0ACC7000B0A716 /* libcmark.pc.in */; };
+		0E892BB61E0ACC7000B0A716 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 0E892B931E0ACC7000B0A716 /* main.c */; };
+		0E892BB71E0ACC7000B0A716 /* man.c in Sources */ = {isa = PBXBuildFile; fileRef = 0E892B941E0ACC7000B0A716 /* man.c */; };
+		0E892BB81E0ACC7000B0A716 /* node.c in Sources */ = {isa = PBXBuildFile; fileRef = 0E892B951E0ACC7000B0A716 /* node.c */; };
+		0E892BB91E0ACC7000B0A716 /* references.c in Sources */ = {isa = PBXBuildFile; fileRef = 0E892B981E0ACC7000B0A716 /* references.c */; };
+		0E892BBA1E0ACC7000B0A716 /* render.c in Sources */ = {isa = PBXBuildFile; fileRef = 0E892B9A1E0ACC7000B0A716 /* render.c */; };
+		0E892BBB1E0ACC7000B0A716 /* scanners.c in Sources */ = {isa = PBXBuildFile; fileRef = 0E892B9C1E0ACC7000B0A716 /* scanners.c */; };
+		0E892BBC1E0ACC7000B0A716 /* scanners.re in Resources */ = {isa = PBXBuildFile; fileRef = 0E892B9E1E0ACC7000B0A716 /* scanners.re */; };
+		0E892BBD1E0ACC7000B0A716 /* source_map.c in Sources */ = {isa = PBXBuildFile; fileRef = 0E892B9F1E0ACC7000B0A716 /* source_map.c */; };
+		0E892BBE1E0ACC7000B0A716 /* utf8.c in Sources */ = {isa = PBXBuildFile; fileRef = 0E892BA11E0ACC7000B0A716 /* utf8.c */; };
+		0E892BBF1E0ACC7000B0A716 /* xml.c in Sources */ = {isa = PBXBuildFile; fileRef = 0E892BA31E0ACC7000B0A716 /* xml.c */; };
+		0E892BC41E0ACD3B00B0A716 /* CMarkWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E892BC31E0ACD3B00B0A716 /* CMarkWrapper.swift */; };
 		0E8A3C2E1E08DE7400274D32 /* AlphabetKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5DE9271E0122AD00FAEF09 /* AlphabetKeyboard.swift */; };
 		0E8A3C2F1E08DE7400274D32 /* KeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA85D191DFD2E9500AFB546 /* KeyboardView.swift */; };
 		0E8A3C301E08DE7400274D32 /* KeyboardView+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA85D1C1DFD2E9500AFB546 /* KeyboardView+Layout.swift */; };
@@ -138,6 +167,52 @@
 		0E6B6A3D1DFA4ABD00712C0A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0E6B6A471DFA4AE400712C0A /* CryptoKB.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = CryptoKB.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E6B6A4B1DFA4AE400712C0A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0E892B7A1E0ACC7000B0A716 /* blocks.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = blocks.c; sourceTree = "<group>"; };
+		0E892B7B1E0ACC7000B0A716 /* buffer.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = buffer.c; sourceTree = "<group>"; };
+		0E892B7C1E0ACC7000B0A716 /* buffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = buffer.h; sourceTree = "<group>"; };
+		0E892B7D1E0ACC7000B0A716 /* case_fold_switch.inc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.pascal; path = case_fold_switch.inc; sourceTree = "<group>"; };
+		0E892B7E1E0ACC7000B0A716 /* chunk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = chunk.h; sourceTree = "<group>"; };
+		0E892B7F1E0ACC7000B0A716 /* CMakeLists.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CMakeLists.txt; sourceTree = "<group>"; };
+		0E892B801E0ACC7000B0A716 /* cmark.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cmark.c; sourceTree = "<group>"; };
+		0E892B811E0ACC7000B0A716 /* cmark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cmark.h; sourceTree = "<group>"; };
+		0E892B821E0ACC7000B0A716 /* cmark_ctype.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cmark_ctype.c; sourceTree = "<group>"; };
+		0E892B831E0ACC7000B0A716 /* cmark_ctype.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cmark_ctype.h; sourceTree = "<group>"; };
+		0E892B841E0ACC7000B0A716 /* cmark_version.h.in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = cmark_version.h.in; sourceTree = "<group>"; };
+		0E892B851E0ACC7000B0A716 /* commonmark.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = commonmark.c; sourceTree = "<group>"; };
+		0E892B861E0ACC7000B0A716 /* config.h.in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = config.h.in; sourceTree = "<group>"; };
+		0E892B871E0ACC7000B0A716 /* entities.inc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.pascal; path = entities.inc; sourceTree = "<group>"; };
+		0E892B881E0ACC7000B0A716 /* houdini.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = houdini.h; sourceTree = "<group>"; };
+		0E892B891E0ACC7000B0A716 /* houdini_href_e.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = houdini_href_e.c; sourceTree = "<group>"; };
+		0E892B8A1E0ACC7000B0A716 /* houdini_html_e.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = houdini_html_e.c; sourceTree = "<group>"; };
+		0E892B8B1E0ACC7000B0A716 /* houdini_html_u.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = houdini_html_u.c; sourceTree = "<group>"; };
+		0E892B8C1E0ACC7000B0A716 /* html.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = html.c; sourceTree = "<group>"; };
+		0E892B8D1E0ACC7000B0A716 /* inlines.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = inlines.c; sourceTree = "<group>"; };
+		0E892B8E1E0ACC7000B0A716 /* inlines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = inlines.h; sourceTree = "<group>"; };
+		0E892B8F1E0ACC7000B0A716 /* iterator.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = iterator.c; sourceTree = "<group>"; };
+		0E892B901E0ACC7000B0A716 /* iterator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iterator.h; sourceTree = "<group>"; };
+		0E892B911E0ACC7000B0A716 /* latex.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = latex.c; sourceTree = "<group>"; };
+		0E892B921E0ACC7000B0A716 /* libcmark.pc.in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = libcmark.pc.in; sourceTree = "<group>"; };
+		0E892B931E0ACC7000B0A716 /* main.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
+		0E892B941E0ACC7000B0A716 /* man.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = man.c; sourceTree = "<group>"; };
+		0E892B951E0ACC7000B0A716 /* node.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = node.c; sourceTree = "<group>"; };
+		0E892B961E0ACC7000B0A716 /* node.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = node.h; sourceTree = "<group>"; };
+		0E892B971E0ACC7000B0A716 /* parser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = parser.h; sourceTree = "<group>"; };
+		0E892B981E0ACC7000B0A716 /* references.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = references.c; sourceTree = "<group>"; };
+		0E892B991E0ACC7000B0A716 /* references.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = references.h; sourceTree = "<group>"; };
+		0E892B9A1E0ACC7000B0A716 /* render.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = render.c; sourceTree = "<group>"; };
+		0E892B9B1E0ACC7000B0A716 /* render.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = render.h; sourceTree = "<group>"; };
+		0E892B9C1E0ACC7000B0A716 /* scanners.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = scanners.c; sourceTree = "<group>"; };
+		0E892B9D1E0ACC7000B0A716 /* scanners.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = scanners.h; sourceTree = "<group>"; };
+		0E892B9E1E0ACC7000B0A716 /* scanners.re */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = scanners.re; sourceTree = "<group>"; };
+		0E892B9F1E0ACC7000B0A716 /* source_map.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = source_map.c; sourceTree = "<group>"; };
+		0E892BA01E0ACC7000B0A716 /* source_map.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = source_map.h; sourceTree = "<group>"; };
+		0E892BA11E0ACC7000B0A716 /* utf8.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = utf8.c; sourceTree = "<group>"; };
+		0E892BA21E0ACC7000B0A716 /* utf8.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = utf8.h; sourceTree = "<group>"; };
+		0E892BA31E0ACC7000B0A716 /* xml.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = xml.c; sourceTree = "<group>"; };
+		0E892BC01E0ACCB800B0A716 /* config.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = config.h; sourceTree = "<group>"; };
+		0E892BC11E0ACCCB00B0A716 /* cmark_export.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = cmark_export.h; sourceTree = "<group>"; };
+		0E892BC21E0ACCCB00B0A716 /* cmark_version.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = cmark_version.h; sourceTree = "<group>"; };
+		0E892BC31E0ACD3B00B0A716 /* CMarkWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CMarkWrapper.swift; sourceTree = "<group>"; };
 		0EA85D111DFD2E3700AFB546 /* DefaultKeyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultKeyboard.swift; sourceTree = "<group>"; };
 		0EA85D131DFD2E3700AFB546 /* Keyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keyboard.swift; sourceTree = "<group>"; };
 		0EA85D191DFD2E9500AFB546 /* KeyboardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardView.swift; sourceTree = "<group>"; };
@@ -294,6 +369,7 @@
 		0E6B6A301DFA4ABD00712C0A /* CryptoKeyboard */ = {
 			isa = PBXGroup;
 			children = (
+				0E892B761E0ACBF300B0A716 /* cmark */,
 				0E420C171E07F9AF00F41640 /* About */,
 				0E420C071E07F81900F41640 /* CipherTranslatorViewController.swift */,
 				0E420C041E07F7D800F41640 /* CipherIntroductionViewController.swift */,
@@ -325,6 +401,67 @@
 				0E3F18641DFF9AC900E80D0C /* Media.xcassets */,
 			);
 			name = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		0E892B761E0ACBF300B0A716 /* cmark */ = {
+			isa = PBXGroup;
+			children = (
+				0E892B791E0ACC7000B0A716 /* src */,
+				0E892BC31E0ACD3B00B0A716 /* CMarkWrapper.swift */,
+			);
+			name = cmark;
+			sourceTree = "<group>";
+		};
+		0E892B791E0ACC7000B0A716 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				0E892BC11E0ACCCB00B0A716 /* cmark_export.h */,
+				0E892BC21E0ACCCB00B0A716 /* cmark_version.h */,
+				0E892BC01E0ACCB800B0A716 /* config.h */,
+				0E892B7A1E0ACC7000B0A716 /* blocks.c */,
+				0E892B7B1E0ACC7000B0A716 /* buffer.c */,
+				0E892B7C1E0ACC7000B0A716 /* buffer.h */,
+				0E892B7D1E0ACC7000B0A716 /* case_fold_switch.inc */,
+				0E892B7E1E0ACC7000B0A716 /* chunk.h */,
+				0E892B7F1E0ACC7000B0A716 /* CMakeLists.txt */,
+				0E892B801E0ACC7000B0A716 /* cmark.c */,
+				0E892B811E0ACC7000B0A716 /* cmark.h */,
+				0E892B821E0ACC7000B0A716 /* cmark_ctype.c */,
+				0E892B831E0ACC7000B0A716 /* cmark_ctype.h */,
+				0E892B841E0ACC7000B0A716 /* cmark_version.h.in */,
+				0E892B851E0ACC7000B0A716 /* commonmark.c */,
+				0E892B861E0ACC7000B0A716 /* config.h.in */,
+				0E892B871E0ACC7000B0A716 /* entities.inc */,
+				0E892B881E0ACC7000B0A716 /* houdini.h */,
+				0E892B891E0ACC7000B0A716 /* houdini_href_e.c */,
+				0E892B8A1E0ACC7000B0A716 /* houdini_html_e.c */,
+				0E892B8B1E0ACC7000B0A716 /* houdini_html_u.c */,
+				0E892B8C1E0ACC7000B0A716 /* html.c */,
+				0E892B8D1E0ACC7000B0A716 /* inlines.c */,
+				0E892B8E1E0ACC7000B0A716 /* inlines.h */,
+				0E892B8F1E0ACC7000B0A716 /* iterator.c */,
+				0E892B901E0ACC7000B0A716 /* iterator.h */,
+				0E892B911E0ACC7000B0A716 /* latex.c */,
+				0E892B921E0ACC7000B0A716 /* libcmark.pc.in */,
+				0E892B931E0ACC7000B0A716 /* main.c */,
+				0E892B941E0ACC7000B0A716 /* man.c */,
+				0E892B951E0ACC7000B0A716 /* node.c */,
+				0E892B961E0ACC7000B0A716 /* node.h */,
+				0E892B971E0ACC7000B0A716 /* parser.h */,
+				0E892B981E0ACC7000B0A716 /* references.c */,
+				0E892B991E0ACC7000B0A716 /* references.h */,
+				0E892B9A1E0ACC7000B0A716 /* render.c */,
+				0E892B9B1E0ACC7000B0A716 /* render.h */,
+				0E892B9C1E0ACC7000B0A716 /* scanners.c */,
+				0E892B9D1E0ACC7000B0A716 /* scanners.h */,
+				0E892B9E1E0ACC7000B0A716 /* scanners.re */,
+				0E892B9F1E0ACC7000B0A716 /* source_map.c */,
+				0E892BA01E0ACC7000B0A716 /* source_map.h */,
+				0E892BA11E0ACC7000B0A716 /* utf8.c */,
+				0E892BA21E0ACC7000B0A716 /* utf8.h */,
+				0E892BA31E0ACC7000B0A716 /* xml.c */,
+			);
+			path = src;
 			sourceTree = "<group>";
 		};
 		0EA85D171DFD2E3900AFB546 /* Model */ = {
@@ -436,7 +573,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0E892BB51E0ACC7000B0A716 /* libcmark.pc.in in Resources */,
+				0E892BAA1E0ACC7000B0A716 /* cmark_version.h.in in Resources */,
+				0E892BA71E0ACC7000B0A716 /* CMakeLists.txt in Resources */,
+				0E892BAC1E0ACC7000B0A716 /* config.h.in in Resources */,
 				0E420C0D1E07F8FB00F41640 /* MorseCodeMapping.json in Resources */,
+				0E892BBC1E0ACC7000B0A716 /* scanners.re in Resources */,
 				0E6B6A3C1DFA4ABD00712C0A /* LaunchScreen.storyboard in Resources */,
 				0E6B6A391DFA4ABD00712C0A /* Assets.xcassets in Resources */,
 			);
@@ -460,30 +602,54 @@
 			buildActionMask = 2147483647;
 			files = (
 				0E420C0B1E07F8F300F41640 /* CipherManager.swift in Sources */,
+				0E892BBD1E0ACC7000B0A716 /* source_map.c in Sources */,
+				0E892BC41E0ACD3B00B0A716 /* CMarkWrapper.swift in Sources */,
+				0E892BA41E0ACC7000B0A716 /* blocks.c in Sources */,
 				0E420C0C1E07F8F300F41640 /* Cipher.swift in Sources */,
 				0E6B6A321DFA4ABD00712C0A /* AppDelegate.swift in Sources */,
+				0E892BB01E0ACC7000B0A716 /* houdini_html_u.c in Sources */,
 				0E420C1A1E07FB5C00F41640 /* AppHelper.m in Sources */,
 				0E420C161E07F9AD00F41640 /* SDiOSVersion.m in Sources */,
 				0E420BFD1E0790D300F41640 /* KeyboardSettingInstructionViewController.swift in Sources */,
 				0E420BF91E078C0800F41640 /* UIColor+ColorScheme.swift in Sources */,
+				0E892BB31E0ACC7000B0A716 /* iterator.c in Sources */,
 				0E420BFA1E078C0800F41640 /* LayoutConstraints.swift in Sources */,
+				0E892BB91E0ACC7000B0A716 /* references.c in Sources */,
 				0E420C081E07F81900F41640 /* CipherTranslatorViewController.swift in Sources */,
+				0E892BAB1E0ACC7000B0A716 /* commonmark.c in Sources */,
+				0E892BBE1E0ACC7000B0A716 /* utf8.c in Sources */,
 				0E420BFB1E078C0800F41640 /* UsefulFunctions.swift in Sources */,
+				0E892BB71E0ACC7000B0A716 /* man.c in Sources */,
 				0E420C051E07F7D800F41640 /* CipherIntroductionViewController.swift in Sources */,
+				0E892BB21E0ACC7000B0A716 /* inlines.c in Sources */,
 				0E420C131E07F96600F41640 /* PDLiteAboutTableViewController.m in Sources */,
+				0E892BA51E0ACC7000B0A716 /* buffer.c in Sources */,
 				0E420BFF1E07C63700F41640 /* SettingInstructionPageViewController.swift in Sources */,
 				0E420C1B1E080A4F00F41640 /* CipherSettingTopBarView.swift in Sources */,
+				0E892BB61E0ACC7000B0A716 /* main.c in Sources */,
 				0E8A3C2E1E08DE7400274D32 /* AlphabetKeyboard.swift in Sources */,
+				0E892BA81E0ACC7000B0A716 /* cmark.c in Sources */,
+				0E892BB11E0ACC7000B0A716 /* html.c in Sources */,
 				0E8A3C2F1E08DE7400274D32 /* KeyboardView.swift in Sources */,
+				0E892BAE1E0ACC7000B0A716 /* houdini_href_e.c in Sources */,
 				0E8A3C301E08DE7400274D32 /* KeyboardView+Layout.swift in Sources */,
+				0E892BBA1E0ACC7000B0A716 /* render.c in Sources */,
 				0E8A3C311E08DE7400274D32 /* KeyboardView+Touch.swift in Sources */,
 				0E8A3C321E08DE7400274D32 /* KeyboardViewDelegate.swift in Sources */,
+				0E892BA61E0ACC7000B0A716 /* case_fold_switch.inc in Sources */,
 				0E8A3C331E08DE7400274D32 /* KeyboardViewItem.swift in Sources */,
+				0E892BAD1E0ACC7000B0A716 /* entities.inc in Sources */,
+				0E892BA91E0ACC7000B0A716 /* cmark_ctype.c in Sources */,
 				0E8A3C341E08DE7400274D32 /* KeyboardViewItemPopup.swift in Sources */,
+				0E892BBF1E0ACC7000B0A716 /* xml.c in Sources */,
+				0E892BBB1E0ACC7000B0A716 /* scanners.c in Sources */,
+				0E892BB41E0ACC7000B0A716 /* latex.c in Sources */,
 				0E8A3C351E08DE7400274D32 /* IconDrawingView.swift in Sources */,
 				0E8A3C361E08DE7400274D32 /* NumericPadView.swift in Sources */,
+				0E892BAF1E0ACC7000B0A716 /* houdini_html_e.c in Sources */,
 				0E8A3C371E08DE7400274D32 /* Keyboard.swift in Sources */,
 				0E8A3C381E08DE7400274D32 /* DefaultKeyboard.swift in Sources */,
+				0E892BB81E0ACC7000B0A716 /* node.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -648,6 +814,10 @@
 				INFOPLIST_FILE = CryptoKeyboard/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/CryptoKeyboard",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = Keith.Pi.Tsui.CryptoKeyboard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "CryptoKeyboard/CryptoKeyboard-Bridging-Header.h";
@@ -666,6 +836,10 @@
 				INFOPLIST_FILE = CryptoKeyboard/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/CryptoKeyboard",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = Keith.Pi.Tsui.CryptoKeyboard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "CryptoKeyboard/CryptoKeyboard-Bridging-Header.h";
