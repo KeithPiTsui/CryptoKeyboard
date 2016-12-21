@@ -92,17 +92,17 @@ final class CipherSettingViewController: UIViewController {
         UIView.animate(withDuration: 0.2) {
             switch self.cipherType {
             case .caesar:
-                self.caesarLabel.textColor = UIColor.red
-                self.caesarLine.backgroundColor = UIColor.red
+                self.caesarLabel.textColor = UIColor.shiftIconHighlightDrawingColor
+                self.caesarLine.backgroundColor = UIColor.shiftIconHighlightDrawingColor
             case .keyword:
-                self.keywordLabel.textColor = UIColor.red
-                self.keywordLine.backgroundColor = UIColor.red
+                self.keywordLabel.textColor = UIColor.shiftIconHighlightDrawingColor
+                self.keywordLine.backgroundColor = UIColor.shiftIconHighlightDrawingColor
             case .morse:
-                self.morseLabel.textColor = UIColor.red
-                self.morseLine.backgroundColor = UIColor.red
+                self.morseLabel.textColor = UIColor.shiftIconHighlightDrawingColor
+                self.morseLine.backgroundColor = UIColor.shiftIconHighlightDrawingColor
             case .vigenere:
-                self.vigenereLabel.textColor = UIColor.red
-                self.vigenereLine.backgroundColor = UIColor.red
+                self.vigenereLabel.textColor = UIColor.shiftIconHighlightDrawingColor
+                self.vigenereLine.backgroundColor = UIColor.shiftIconHighlightDrawingColor
             }
         }
     }
@@ -231,13 +231,15 @@ final class CipherSettingViewController: UIViewController {
         let v = UISlider()
         v.translatesAutoresizingMaskIntoConstraints = false
         v.backgroundColor = UIColor.clear
-        let leftTrack = UIImage(named:"brightnessBar")!
-        let rightTrack = leftTrack
+        //let leftTrack = UIImage(named:"brightnessBar")!
+        //let rightTrack = leftTrack
         //let cursor = UIImage(named: "cursorThumb")!
         v.minimumValue = 0
         v.maximumValue = 100
-        v.setMinimumTrackImage(leftTrack, for: .normal)
-        v.setMaximumTrackImage(rightTrack, for: .normal)
+        v.minimumTrackTintColor = UIColor.white
+        v.maximumTrackTintColor = UIColor.white
+        //v.setMinimumTrackImage(leftTrack, for: .normal)
+        //v.setMaximumTrackImage(rightTrack, for: .normal)
         //v.setThumbImage(cursor, for: .normal)
         return v
     }()

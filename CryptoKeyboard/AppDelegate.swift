@@ -25,7 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window!.rootViewController = v
         window!.makeKeyAndVisible()
         
-        //testMorseCodeTranslation()
+        testMorseCodeTranslation()
         
         
         return true

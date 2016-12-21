@@ -164,23 +164,6 @@ struct MorseCode: Endecryting {
             } else {
                 return morseCodeStr
             }
-            
-//            let notDotDashIdx = morseCodeStr.unicodeScalars.index{"•-".unicodeScalars.contains($0) == false}
-//            if notDotDashIdx == nil {
-//                guard let mapped = morseCodeMapReverse[morseCodeStr] else { return morseCodeStr }
-//                return mapped
-//            } else {
-//                let morse = String(morseCodeStr.unicodeScalars[morseCodeStr.unicodeScalars.startIndex..<notDotDashIdx!])
-//                if let mapped = morseCodeMapReverse[morse] {
-//                    if notDotDashIdx == morseCodeStr.unicodeScalars.endIndex {
-//                        return mapped
-//                    } else {
-//                        return mapped + String(morseCodeStr.unicodeScalars[notDotDashIdx!..<morseCodeStr.unicodeScalars.startIndex])
-//                    }
-//                } else {
-//                    return morseCodeStr
-//                }
-//            }
         }
         
         return translatedSplits.joined()
