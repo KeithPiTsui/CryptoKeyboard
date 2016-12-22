@@ -38,6 +38,7 @@ final class CipherIntroductionViewController: UIViewController {
 
     override func setEditing(_ editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
+        frontCVC.isEditing = editing
         NotificationCenter.default.post(name: CipherIntroductionViewController.editingNotification, object: self)
     }
     
@@ -95,8 +96,6 @@ extension CipherIntroductionViewController: UICollectionViewDataSource {
         cell.contentView.backgroundColor = UIColor.lightGray
         return cell
     }
-    
-    
     
     public func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1

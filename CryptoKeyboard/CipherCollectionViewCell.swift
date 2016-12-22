@@ -11,6 +11,25 @@ import UIKit
 final class CipherCollectionViewCell: UICollectionViewCell {
     static let classID = NSStringFromClass(CipherCollectionViewCell.self)
     
+    var getSelected: Bool =  false {
+        didSet {actionPostSelected()}
+    }
+    
+    private func actionPostSelected() {
+        if getSelected {
+            stopShaking()
+            UIView.animate(withDuration: 0.5) {
+                self.displayConstranits.forEach{
+                    let x: CGFloat = $0.firstAnchor == self.displayView.topAnchor || $0.firstAnchor == self.displayView.leftAnchor ? 1 : -1
+                    $0.constant = 10 * x
+                }
+                self.contentView.layoutIfNeeded()
+            }
+        } else {
+            actionPostEditing(true)
+        }
+    }
+    
     lazy var displayView: UIView = {
         let v = UIView()
         v.translatesAutoresizingMaskIntoConstraints = false
@@ -49,9 +68,12 @@ final class CipherCollectionViewCell: UICollectionViewCell {
     
     func vcEditing(notification: Notification) {
         guard let vc = notification.object as? CipherIntroductionViewController else { return }
-
+        actionPostEditing(vc.isEditing)
+    }
+    
+    private func actionPostEditing(_ editing: Bool) {
         UIView.animate(withDuration: 0.5) {
-            if vc.isEditing {
+            if editing {
                 self.displayConstranits.forEach{
                     let x: CGFloat = $0.firstAnchor == self.displayView.topAnchor || $0.firstAnchor == self.displayView.leftAnchor ? 1 : -1
                     $0.constant = 20 * x
@@ -61,7 +83,7 @@ final class CipherCollectionViewCell: UICollectionViewCell {
             }
             self.contentView.layoutIfNeeded()
         }
-        if vc.isEditing {
+        if editing {
             rotativeShaking()
         } else {
             stopShaking()

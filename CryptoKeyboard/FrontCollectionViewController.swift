@@ -8,10 +8,9 @@
 
 import UIKit
 
-class FrontCollectionViewController: UICollectionViewController {
+final class FrontCollectionViewController: UICollectionViewController {
 
     var tags: [Int] = [1,2,3,4,5,6]
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.collectionView!.register(CipherCollectionViewCell.self, forCellWithReuseIdentifier: CipherCollectionViewCell.classID)
@@ -19,26 +18,33 @@ class FrontCollectionViewController: UICollectionViewController {
         layout.minimumInteritemSpacing = 1
         layout.minimumLineSpacing = 1
         
-        let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(FrontCollectionViewController.handleLongGesture(gesture:)))
+        let longPressGesture = UILongPressGestureRecognizer(target: self,
+                                                            action: #selector(FrontCollectionViewController.handleLongGesture(gesture:)))
         self.collectionView!.addGestureRecognizer(longPressGesture)
         
     }
     
+    private var selectedCell: CipherCollectionViewCell?
+    
     func handleLongGesture(gesture: UILongPressGestureRecognizer) {
-        
+        guard isEditing else { return }
         switch(gesture.state) {
-            
         case .began:
-            guard let selectedIndexPath = self.collectionView!.indexPathForItem(at: gesture.location(in: self.collectionView)) else {
-                break
-            }
+            guard let selectedIndexPath = collectionView!.indexPathForItem(at: gesture.location(in: collectionView)) else { break }
             collectionView!.beginInteractiveMovementForItem(at: selectedIndexPath)
+            guard let cell = collectionView!.cellForItem(at: selectedIndexPath) as? CipherCollectionViewCell else { break }
+            selectedCell = cell
+            selectedCell?.getSelected = true
         case .changed:
             collectionView!.updateInteractiveMovementTargetPosition(gesture.location(in: gesture.view!))
         case .ended:
             collectionView!.endInteractiveMovement()
+            selectedCell?.getSelected = false
+            selectedCell = nil
         default:
             collectionView!.cancelInteractiveMovement()
+            selectedCell?.getSelected = false
+            selectedCell = nil
         }
     }
     
@@ -61,7 +67,6 @@ class FrontCollectionViewController: UICollectionViewController {
         cell.tag = tags[indexPath.item]
         return cell
     }
-    
     
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
