@@ -8,8 +8,21 @@
 
 import UIKit
 
+enum CipherCollectionViewCellMode {
+    case cipher(type: CipherType)
+    case setting(text: String)
+    case feedback(text: String)
+}
+
 final class CipherCollectionViewCell: UICollectionViewCell {
     static let classID = NSStringFromClass(CipherCollectionViewCell.self)
+    
+    var cellModel: CipherCollectionViewCellMode?
+    
+    lazy var cipherNameLabel: UILabel = {let l = UILabel(); l.translatesAutoresizingMaskIntoConstraints = false; return l}()
+    lazy var encryptedCipherNameLabel: UILabel = {let l = UILabel(); l.translatesAutoresizingMaskIntoConstraints = false; return l}()
+    lazy var titleLabel: UILabel = {let l = UILabel(); l.translatesAutoresizingMaskIntoConstraints = false; return l}()
+    
     
     var getSelected: Bool =  false {
         didSet {actionPostSelected()}
@@ -34,6 +47,7 @@ final class CipherCollectionViewCell: UICollectionViewCell {
         let v = UIView()
         v.translatesAutoresizingMaskIntoConstraints = false
         v.backgroundColor = UIColor.white
+        
         return v
     }()
     
@@ -57,6 +71,21 @@ final class CipherCollectionViewCell: UICollectionViewCell {
         NSLayoutConstraint.activate(displayConstranits)
     }
     
+    private func assembelLabels() {
+        guard let model = cellModel else { return }
+        
+        switch model {
+        case .cipher(let type):
+            break
+        case .feedback(let text):
+            break
+        case .setting(let text):
+            break
+        default:
+            break
+        }
+    }
+    
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -78,8 +107,10 @@ final class CipherCollectionViewCell: UICollectionViewCell {
                     let x: CGFloat = $0.firstAnchor == self.displayView.topAnchor || $0.firstAnchor == self.displayView.leftAnchor ? 1 : -1
                     $0.constant = 20 * x
                 }
+                self.displayView.layer.shadowOpacity = 1
             } else {
                 self.displayConstranits.forEach{$0.constant = 0}
+                self.displayView.layer.shadowOpacity = 0
             }
             self.contentView.layoutIfNeeded()
         }
