@@ -19,13 +19,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 //        let v = KeyboardSettingInstructionViewController()
 //        v.delegate = self
-        let v = CipherTranslatorViewController(cipherType: .caesar, cipherKey: "03")
+        //let v = CipherTranslatorViewController(cipherType: .caesar, cipherKey: "03")
+        let vc = CipherIntroductionViewController()
+        let nvc = UINavigationController(rootViewController: vc)
         window = UIWindow()
         window?.backgroundColor = UIColor.white
-        window!.rootViewController = v
+        window!.rootViewController = nvc
         window!.makeKeyAndVisible()
         
-        testMorseCodeTranslation()
+        //testMorseCodeTranslation()
         
         
         return true
@@ -40,7 +42,7 @@ extension AppDelegate: KeyboardSettingInstructionViewControllerDelegate {
             
             let vc = CipherIntroductionViewController()
             let nvc = UINavigationController(rootViewController: vc)
-            nvc.isNavigationBarHidden = true
+            //nvc.isNavigationBarHidden = true
             self.window!.rootViewController = nvc
             self.window!.rootViewController!.view.alpha = 0
             UIView.animate(withDuration: 0.2) {

@@ -22,6 +22,7 @@ final class KeyboardSettingInstructionViewController: UIViewController {
         l.text = "2 steps to Use CryptoKeyboard"
         l.font = UIFont.topBarInscriptFont
         l.textColor = UIColor.keyboardViewBackgroundColor
+        l.textAlignment = .center
         return l
     }()
     

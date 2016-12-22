@@ -40,6 +40,11 @@
 		0E420C161E07F9AD00F41640 /* SDiOSVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E420C151E07F9AD00F41640 /* SDiOSVersion.m */; };
 		0E420C1A1E07FB5C00F41640 /* AppHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E420C191E07FB5C00F41640 /* AppHelper.m */; };
 		0E420C1B1E080A4F00F41640 /* CipherSettingTopBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E3F18701E001F7700E80D0C /* CipherSettingTopBarView.swift */; };
+		0E4AB8BA1E0B86B500F85D44 /* ASTOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4AB8B71E0B86B500F85D44 /* ASTOperations.swift */; };
+		0E4AB8BB1E0B86B500F85D44 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4AB8B81E0B86B500F85D44 /* Node.swift */; };
+		0E4AB8BC1E0B86B500F85D44 /* SwiftAST.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4AB8B91E0B86B500F85D44 /* SwiftAST.swift */; };
+		0E4AB8BE1E0BA35200F85D44 /* CipherCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4AB8BD1E0BA35200F85D44 /* CipherCollectionViewCell.swift */; };
+		0E4ABB621E0BF44200F85D44 /* ForwardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4ABB611E0BF44200F85D44 /* ForwardingView.swift */; };
 		0E5DE9231E00E82600FAEF09 /* CipherSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5DE9221E00E82600FAEF09 /* CipherSettingViewController.swift */; };
 		0E5DE9251E00E88300FAEF09 /* KeyboardViewController+CipherSettingViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5DE9241E00E88300FAEF09 /* KeyboardViewController+CipherSettingViewControllerDelegate.swift */; };
 		0E5DE9281E0122AD00FAEF09 /* AlphabetKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5DE9271E0122AD00FAEF09 /* AlphabetKeyboard.swift */; };
@@ -154,6 +159,11 @@
 		0E420C151E07F9AD00F41640 /* SDiOSVersion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDiOSVersion.m; sourceTree = "<group>"; };
 		0E420C181E07FB5C00F41640 /* AppHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppHelper.h; sourceTree = "<group>"; };
 		0E420C191E07FB5C00F41640 /* AppHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppHelper.m; sourceTree = "<group>"; };
+		0E4AB8B71E0B86B500F85D44 /* ASTOperations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ASTOperations.swift; path = src/ASTOperations.swift; sourceTree = "<group>"; };
+		0E4AB8B81E0B86B500F85D44 /* Node.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Node.swift; path = src/Node.swift; sourceTree = "<group>"; };
+		0E4AB8B91E0B86B500F85D44 /* SwiftAST.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftAST.swift; path = src/SwiftAST.swift; sourceTree = "<group>"; };
+		0E4AB8BD1E0BA35200F85D44 /* CipherCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CipherCollectionViewCell.swift; sourceTree = "<group>"; };
+		0E4ABB611E0BF44200F85D44 /* ForwardingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForwardingView.swift; sourceTree = "<group>"; };
 		0E5DE9221E00E82600FAEF09 /* CipherSettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CipherSettingViewController.swift; sourceTree = "<group>"; };
 		0E5DE9241E00E88300FAEF09 /* KeyboardViewController+CipherSettingViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "KeyboardViewController+CipherSettingViewControllerDelegate.swift"; sourceTree = "<group>"; };
 		0E5DE9271E0122AD00FAEF09 /* AlphabetKeyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlphabetKeyboard.swift; sourceTree = "<group>"; };
@@ -371,10 +381,12 @@
 			children = (
 				0E892B761E0ACBF300B0A716 /* cmark */,
 				0E420C171E07F9AF00F41640 /* About */,
-				0E420C071E07F81900F41640 /* CipherTranslatorViewController.swift */,
 				0E420C041E07F7D800F41640 /* CipherIntroductionViewController.swift */,
+				0E4AB8BD1E0BA35200F85D44 /* CipherCollectionViewCell.swift */,
+				0E420C071E07F81900F41640 /* CipherTranslatorViewController.swift */,
 				0E420BFC1E0790D300F41640 /* KeyboardSettingInstructionViewController.swift */,
 				0E420BFE1E07C63700F41640 /* SettingInstructionPageViewController.swift */,
+				0E4ABB611E0BF44200F85D44 /* ForwardingView.swift */,
 				0E420C061E07F7DE00F41640 /* supportingFiles */,
 			);
 			path = CryptoKeyboard;
@@ -406,8 +418,11 @@
 		0E892B761E0ACBF300B0A716 /* cmark */ = {
 			isa = PBXGroup;
 			children = (
-				0E892B791E0ACC7000B0A716 /* src */,
+				0E4AB8B71E0B86B500F85D44 /* ASTOperations.swift */,
+				0E4AB8B81E0B86B500F85D44 /* Node.swift */,
+				0E4AB8B91E0B86B500F85D44 /* SwiftAST.swift */,
 				0E892BC31E0ACD3B00B0A716 /* CMarkWrapper.swift */,
+				0E892B791E0ACC7000B0A716 /* src */,
 			);
 			name = cmark;
 			sourceTree = "<group>";
@@ -617,6 +632,7 @@
 				0E892BB91E0ACC7000B0A716 /* references.c in Sources */,
 				0E420C081E07F81900F41640 /* CipherTranslatorViewController.swift in Sources */,
 				0E892BAB1E0ACC7000B0A716 /* commonmark.c in Sources */,
+				0E4AB8BA1E0B86B500F85D44 /* ASTOperations.swift in Sources */,
 				0E892BBE1E0ACC7000B0A716 /* utf8.c in Sources */,
 				0E420BFB1E078C0800F41640 /* UsefulFunctions.swift in Sources */,
 				0E892BB71E0ACC7000B0A716 /* man.c in Sources */,
@@ -627,8 +643,11 @@
 				0E420BFF1E07C63700F41640 /* SettingInstructionPageViewController.swift in Sources */,
 				0E420C1B1E080A4F00F41640 /* CipherSettingTopBarView.swift in Sources */,
 				0E892BB61E0ACC7000B0A716 /* main.c in Sources */,
+				0E4AB8BB1E0B86B500F85D44 /* Node.swift in Sources */,
 				0E8A3C2E1E08DE7400274D32 /* AlphabetKeyboard.swift in Sources */,
+				0E4ABB621E0BF44200F85D44 /* ForwardingView.swift in Sources */,
 				0E892BA81E0ACC7000B0A716 /* cmark.c in Sources */,
+				0E4AB8BC1E0B86B500F85D44 /* SwiftAST.swift in Sources */,
 				0E892BB11E0ACC7000B0A716 /* html.c in Sources */,
 				0E8A3C2F1E08DE7400274D32 /* KeyboardView.swift in Sources */,
 				0E892BAE1E0ACC7000B0A716 /* houdini_href_e.c in Sources */,
@@ -636,6 +655,7 @@
 				0E892BBA1E0ACC7000B0A716 /* render.c in Sources */,
 				0E8A3C311E08DE7400274D32 /* KeyboardView+Touch.swift in Sources */,
 				0E8A3C321E08DE7400274D32 /* KeyboardViewDelegate.swift in Sources */,
+				0E4AB8BE1E0BA35200F85D44 /* CipherCollectionViewCell.swift in Sources */,
 				0E892BA61E0ACC7000B0A716 /* case_fold_switch.inc in Sources */,
 				0E8A3C331E08DE7400274D32 /* KeyboardViewItem.swift in Sources */,
 				0E892BAD1E0ACC7000B0A716 /* entities.inc in Sources */,
@@ -812,7 +832,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 6T5NK4S24M;
 				INFOPLIST_FILE = CryptoKeyboard/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -834,7 +854,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 6T5NK4S24M;
 				INFOPLIST_FILE = CryptoKeyboard/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",

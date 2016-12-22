@@ -81,6 +81,20 @@ class CipherTranslatorViewController: UIViewController {
         return btn
     }()
     
+    private lazy var closeBtn: UIButton = {
+        let btn = UIButton(type: UIButtonType.roundedRect)
+        btn.translatesAutoresizingMaskIntoConstraints = false
+        btn.setTitle("X", for: .normal)
+        btn.backgroundColor = UIColor.white
+        btn.alpha = 0.8
+        btn.layer.cornerRadius = 6
+        btn.layer.shadowOpacity = 1
+        btn.layer.shadowOffset = CGSize(1,1)
+        btn.addTarget(self, action: #selector(CipherTranslatorViewController.closeTranslator), for: .touchUpInside)
+        return btn
+    }()
+    
+    
     private lazy var keyArea: CipherSettingTopBarView = {
         let v = CipherSettingTopBarView(withDelegate: self)
         v.translatesAutoresizingMaskIntoConstraints = false
@@ -107,6 +121,7 @@ class CipherTranslatorViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor(236,248,255)
+        navigationController?.isNavigationBarHidden = true
         
         view.addSubview(wholeArea)
         wholeArea.addSubview(originalArea)
@@ -115,6 +130,7 @@ class CipherTranslatorViewController: UIViewController {
         translatedArea.addSubview(translatedTextView)
         wholeArea.addSubview(translateBtn)
         wholeArea.addSubview(keyArea)
+        view.addSubview(closeBtn)
         
         assembleConstraints()
         NSLayoutConstraint.activate(layoutConstraints)
@@ -156,6 +172,9 @@ class CipherTranslatorViewController: UIViewController {
         layoutConstraints.append(translateBtn.rightAnchor.constraint(equalTo: wholeArea.rightAnchor, constant:-12))
         layoutConstraints.append(translateBtn.centerYAnchor.constraint(equalTo: wholeArea.centerYAnchor))
         
+        layoutConstraints.append(closeBtn.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor, constant:8))
+        layoutConstraints.append(closeBtn.leftAnchor.constraint(equalTo: view.leftAnchor, constant:8))
+        
         if cipherKey.chars.count > 0 {
             keyAreaLayoutConstraints.append(keyArea.heightAnchor.constraint(equalToConstant: 30))
             keyAreaLayoutConstraints.append(keyArea.widthAnchor.constraint(equalTo: wholeArea.widthAnchor, multiplier: 0.4))
@@ -167,6 +186,11 @@ class CipherTranslatorViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         translateMessage()
+    }
+    
+    func closeTranslator() {
+        dismiss(animated: true, completion: nil)
+        
     }
     
     func tranlateButtonGetClick() {
