@@ -24,7 +24,6 @@ final class CipherCollectionViewCell: UICollectionViewCell {
         super.init(frame: frame)
         contentView.backgroundColor = UIColor.lightGray
         assembleUIElements()
-        
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(CipherCollectionViewCell.vcEditing(notification:)),
                                                name: CipherIntroductionViewController.editingNotification,

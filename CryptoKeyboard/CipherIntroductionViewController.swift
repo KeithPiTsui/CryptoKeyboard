@@ -12,9 +12,11 @@ import UIKit
 
 final class CipherIntroductionViewController: UIViewController {
 
-    var touchToView: [UITouch:UIView] = [:]
+    var tags: [Int] = [1,2,3,4,5,6]
     
     static let editingNotification = Notification.Name("editingNotification")
+    
+    private var selectedCell: CipherCollectionViewCell?
     
     lazy var itemGridView: UICollectionView = {
         let collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: UICollectionViewFlowLayout.init())
@@ -42,9 +44,77 @@ final class CipherIntroductionViewController: UIViewController {
         automaticallyAdjustsScrollViewInsets =  false
         assembleUIElements()
         
+        let drag = UIPanGestureRecognizer(target: self, action: #selector(CipherIntroductionViewController.gestureHandler(_:)))
+        view.addGestureRecognizer(drag)
         
+//        let longPress = UILongPressGestureRecognizer(target: self, action: #selector(CipherIntroductionViewController.gestureHandler(_:)))
+//        view.addGestureRecognizer(longPress)
         
     }
+    
+    func longPresse(_ gestureRecognizer: UIGestureRecognizer) {
+        print("Long Press")
+    }
+    
+    func gestureHandler(_ gestureRecognizer: UIGestureRecognizer) {
+        guard isEditing else { return }
+        
+        switch gestureRecognizer.state {
+        case .began:
+            let loc = gestureRecognizer.location(in: itemGridView)
+            if selectedCell == nil {
+                selectedCell = selectingCell(onPosition: loc)
+                guard selectedCell != nil else { return }
+                itemGridView.beginInteractiveMovementForItem(at: IndexPath(item: selectedCell!.tag, section: 0))
+            } else {
+                itemGridView.updateInteractiveMovementTargetPosition(loc)
+            }
+        case .cancelled:
+            itemGridView.cancelInteractiveMovement()
+        case .ended:
+            itemGridView.endInteractiveMovement()
+        default:
+            break
+        }
+    }
+    
+    private func selectingCell(onPosition position: CGPoint) -> CipherCollectionViewCell? {
+        guard itemGridView.bounds.contains(position) && !itemGridView.subviews.isEmpty else { return nil}
+        var closest: (CipherCollectionViewCell?, CGFloat) = (nil, CGFloat.greatestFiniteMagnitude)
+        for view in itemGridView.subviews {
+            guard !view.isHidden else { continue }
+            view.alpha = 1
+            let distance = distanceBetween(view.frame, point: position)
+            if distance < closest.1 {
+                guard let view = view as? CipherCollectionViewCell else { continue }
+                closest = (view, distance)
+            }
+        }
+        return closest.0!
+
+    }
+    
+    private func distanceBetween(_ rect: CGRect, point: CGPoint) -> CGFloat {
+        if rect.contains(point) {return 0 }
+        
+        var closest = rect.origin
+        
+        if (rect.origin.x + rect.size.width < point.x) {
+            closest.x += rect.size.width
+        } else if (point.x > rect.origin.x) {
+            closest.x = point.x
+        }
+        if (rect.origin.y + rect.size.height < point.y) {
+            closest.y += rect.size.height
+        } else if (point.y > rect.origin.y) {
+            closest.y = point.y
+        }
+        
+        let a = pow(Double(closest.y - point.y), 2)
+        let b = pow(Double(closest.x - point.x), 2)
+        return CGFloat(sqrt(a + b));
+    }
+
     
     private func assembleUIElements () {
         view.addSubview(itemGridView)
@@ -83,7 +153,7 @@ extension CipherIntroductionViewController: UICollectionViewDataSource {
     }
     
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 6
+        return tags.count
     }
     
     
@@ -91,7 +161,7 @@ extension CipherIntroductionViewController: UICollectionViewDataSource {
     
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CipherCollectionViewCell.classID, for: indexPath)
-        
+        cell.tag = tags[indexPath.item]
         return cell
     }
     
