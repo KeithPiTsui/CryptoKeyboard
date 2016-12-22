@@ -17,19 +17,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-//        let v = KeyboardSettingInstructionViewController()
-//        v.delegate = self
-        //let v = CipherTranslatorViewController(cipherType: .caesar, cipherKey: "03")
         let vc = CipherIntroductionViewController()
         let nvc = UINavigationController(rootViewController: vc)
         window = UIWindow()
-        window?.backgroundColor = UIColor.white
         window!.rootViewController = nvc
         window!.makeKeyAndVisible()
-        
-        //testMorseCodeTranslation()
-        
-        
         return true
     }
 }

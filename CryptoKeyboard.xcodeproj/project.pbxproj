@@ -45,6 +45,7 @@
 		0E4AB8BC1E0B86B500F85D44 /* SwiftAST.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4AB8B91E0B86B500F85D44 /* SwiftAST.swift */; };
 		0E4AB8BE1E0BA35200F85D44 /* CipherCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4AB8BD1E0BA35200F85D44 /* CipherCollectionViewCell.swift */; };
 		0E4ABB621E0BF44200F85D44 /* ForwardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4ABB611E0BF44200F85D44 /* ForwardingView.swift */; };
+		0E4ABB641E0C068600F85D44 /* FrontCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4ABB631E0C068600F85D44 /* FrontCollectionViewController.swift */; };
 		0E5DE9231E00E82600FAEF09 /* CipherSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5DE9221E00E82600FAEF09 /* CipherSettingViewController.swift */; };
 		0E5DE9251E00E88300FAEF09 /* KeyboardViewController+CipherSettingViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5DE9241E00E88300FAEF09 /* KeyboardViewController+CipherSettingViewControllerDelegate.swift */; };
 		0E5DE9281E0122AD00FAEF09 /* AlphabetKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5DE9271E0122AD00FAEF09 /* AlphabetKeyboard.swift */; };
@@ -164,6 +165,7 @@
 		0E4AB8B91E0B86B500F85D44 /* SwiftAST.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftAST.swift; path = src/SwiftAST.swift; sourceTree = "<group>"; };
 		0E4AB8BD1E0BA35200F85D44 /* CipherCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CipherCollectionViewCell.swift; sourceTree = "<group>"; };
 		0E4ABB611E0BF44200F85D44 /* ForwardingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForwardingView.swift; sourceTree = "<group>"; };
+		0E4ABB631E0C068600F85D44 /* FrontCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FrontCollectionViewController.swift; sourceTree = "<group>"; };
 		0E5DE9221E00E82600FAEF09 /* CipherSettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CipherSettingViewController.swift; sourceTree = "<group>"; };
 		0E5DE9241E00E88300FAEF09 /* KeyboardViewController+CipherSettingViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "KeyboardViewController+CipherSettingViewControllerDelegate.swift"; sourceTree = "<group>"; };
 		0E5DE9271E0122AD00FAEF09 /* AlphabetKeyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlphabetKeyboard.swift; sourceTree = "<group>"; };
@@ -382,6 +384,7 @@
 				0E892B761E0ACBF300B0A716 /* cmark */,
 				0E420C171E07F9AF00F41640 /* About */,
 				0E420C041E07F7D800F41640 /* CipherIntroductionViewController.swift */,
+				0E4ABB631E0C068600F85D44 /* FrontCollectionViewController.swift */,
 				0E4AB8BD1E0BA35200F85D44 /* CipherCollectionViewCell.swift */,
 				0E420C071E07F81900F41640 /* CipherTranslatorViewController.swift */,
 				0E420BFC1E0790D300F41640 /* KeyboardSettingInstructionViewController.swift */,
@@ -641,6 +644,7 @@
 				0E420C131E07F96600F41640 /* PDLiteAboutTableViewController.m in Sources */,
 				0E892BA51E0ACC7000B0A716 /* buffer.c in Sources */,
 				0E420BFF1E07C63700F41640 /* SettingInstructionPageViewController.swift in Sources */,
+				0E4ABB641E0C068600F85D44 /* FrontCollectionViewController.swift in Sources */,
 				0E420C1B1E080A4F00F41640 /* CipherSettingTopBarView.swift in Sources */,
 				0E892BB61E0ACC7000B0A716 /* main.c in Sources */,
 				0E4AB8BB1E0B86B500F85D44 /* Node.swift in Sources */,
