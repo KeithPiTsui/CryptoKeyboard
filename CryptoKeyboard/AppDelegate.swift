@@ -19,6 +19,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         let vc = CipherIntroductionViewController()
         let nvc = UINavigationController(rootViewController: vc)
+        nvc.navigationBar.tintColor = UIColor.white
+        nvc.navigationBar.barTintColor = UIColor(100,65,165)
+        nvc.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.white]
         window = UIWindow()
         window!.rootViewController = nvc
         window!.makeKeyAndVisible()
@@ -34,7 +37,9 @@ extension AppDelegate: KeyboardSettingInstructionViewControllerDelegate {
             
             let vc = CipherIntroductionViewController()
             let nvc = UINavigationController(rootViewController: vc)
-            //nvc.isNavigationBarHidden = true
+            nvc.navigationBar.tintColor = UIColor.white
+            nvc.navigationBar.barTintColor = UIColor(100,65,165)
+            
             self.window!.rootViewController = nvc
             self.window!.rootViewController!.view.alpha = 0
             UIView.animate(withDuration: 0.2) {
@@ -46,8 +51,7 @@ extension AppDelegate: KeyboardSettingInstructionViewControllerDelegate {
 
 func testMorseCodeTranslation() {
     let message = "I am Kei.th ."
-    let msg =  markdownToHTML(input: message)
-    print(msg)
+    
     
     
     if let morseCode = try? CipherManager.encrypt(message: message, withKey: "", andCipherType: .morse) {
