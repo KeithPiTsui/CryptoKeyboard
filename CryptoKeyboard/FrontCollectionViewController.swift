@@ -88,7 +88,7 @@ final class FrontCollectionViewController: UICollectionViewController {
             present(vc, animated: true, completion: nil)
         case .feedback(_, _):
             sendFeedbackEmail()
-        case.setting(_, _): 
+        case.setting(_, _):
             let aboutVC = PDLiteAboutTableViewController()
             navigationController?.pushViewController(aboutVC, animated: true)
             

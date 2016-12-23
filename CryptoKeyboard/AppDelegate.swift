@@ -17,12 +17,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        let vc = CipherIntroductionViewController()
-        let nvc = UINavigationController(rootViewController: vc)
-        nvc.navigationBar.tintColor = UIColor.white
-        nvc.navigationBar.barTintColor = UIColor(100,65,165)
-        nvc.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.white]
+        let nvc = KeyboardSettingInstructionViewController()
+        nvc.delegate = self
         window = UIWindow()
+        window?.backgroundColor = UIColor.white
         window!.rootViewController = nvc
         window!.makeKeyAndVisible()
         return true
@@ -39,7 +37,7 @@ extension AppDelegate: KeyboardSettingInstructionViewControllerDelegate {
             let nvc = UINavigationController(rootViewController: vc)
             nvc.navigationBar.tintColor = UIColor.white
             nvc.navigationBar.barTintColor = UIColor(100,65,165)
-            
+            nvc.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.white]
             self.window!.rootViewController = nvc
             self.window!.rootViewController!.view.alpha = 0
             UIView.animate(withDuration: 0.2) {
