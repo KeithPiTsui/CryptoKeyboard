@@ -9,19 +9,69 @@
 import UIKit
 
 enum CipherCollectionViewCellMode {
-    case cipher(type: CipherType)
-    case setting(text: String)
-    case feedback(text: String)
+    case cipher(type: CipherType, iconName: String?)
+    case setting(text: String, iconName: String?)
+    case feedback(text: String, iconName: String?)
 }
 
 final class CipherCollectionViewCell: UICollectionViewCell {
     static let classID = NSStringFromClass(CipherCollectionViewCell.self)
     
-    var cellModel: CipherCollectionViewCellMode?
+    var cellModel: CipherCollectionViewCellMode? {didSet{installModel()}}
+    private var modelLayoutConstraints: [NSLayoutConstraint] = []
     
-    lazy var cipherNameLabel: UILabel = {let l = UILabel(); l.translatesAutoresizingMaskIntoConstraints = false; return l}()
-    lazy var encryptedCipherNameLabel: UILabel = {let l = UILabel(); l.translatesAutoresizingMaskIntoConstraints = false; return l}()
-    lazy var titleLabel: UILabel = {let l = UILabel(); l.translatesAutoresizingMaskIntoConstraints = false; return l}()
+    var cellTitle: String? {
+        guard let cellModel = cellModel else { return nil}
+        switch cellModel {
+        case .cipher(_, _):
+            return self.cipherName
+        case .setting(let title, _):
+            return title
+        case .feedback(let title, _):
+            return title
+        }
+    }
+    
+    var cellSubtitle: String? {
+        guard let cellModel = cellModel else { return nil}
+        guard let title = cellTitle else { return nil}
+        switch cellModel {
+        case .cipher(let type, _):
+            return try? CipherManager.encrypt(message: title, andCipherType: type)
+        case .setting(let title, _):
+            return title
+        case .feedback(let title, _):
+            return title
+        }
+    }
+    
+    var cipherName: String? {
+        guard let cellModel = cellModel else { return nil}
+        guard case .cipher(let cipherType, _) = cellModel else { return nil }
+        return CipherManager.ciphers[cipherType]!.name
+    }
+    
+    lazy var iconImageView: UIImageView = {
+        let iv = UIImageView()
+        iv.translatesAutoresizingMaskIntoConstraints = false
+        return iv
+    }()
+
+    lazy var subTitleLabel: UILabel = {
+        let l = UILabel();
+        l.translatesAutoresizingMaskIntoConstraints = false;
+        l.font = UIFont.keyboardViewItemInscriptFontSmall
+        l.adjustsFontSizeToFitWidth = true
+        return l
+    }()
+    
+    lazy var titleLabel: UILabel = {
+        let l = UILabel();
+        l.translatesAutoresizingMaskIntoConstraints = false;
+        l.font = UIFont.keyboardViewItemInscriptFont
+        l.adjustsFontSizeToFitWidth = true
+        return l
+    }()
     
     
     var getSelected: Bool =  false {
@@ -71,19 +121,51 @@ final class CipherCollectionViewCell: UICollectionViewCell {
         NSLayoutConstraint.activate(displayConstranits)
     }
     
-    private func assembelLabels() {
+    private func uninstallModel() {
+        NSLayoutConstraint.deactivate(modelLayoutConstraints)
+        let views: [UIView] = [iconImageView, titleLabel, subTitleLabel]
+        views.forEach { $0.removeFromSuperview()}
+    }
+    
+    private func installModel() {
         guard let model = cellModel else { return }
+        uninstallModel()
         
+        displayView.addSubview(titleLabel)
+        titleLabel.text = cellTitle
+        modelLayoutConstraints.append(titleLabel.centerXAnchor.constraint(equalTo: displayView.centerXAnchor))
+        modelLayoutConstraints.append(titleLabel.bottomAnchor.constraint(equalTo: displayView.bottomAnchor, constant: -8))
+        modelLayoutConstraints.append(titleLabel.widthAnchor.constraint(lessThanOrEqualTo: displayView.widthAnchor))
+        
+        
+        var iconName: String? = nil
         switch model {
-        case .cipher(let type):
-            break
-        case .feedback(let text):
-            break
-        case .setting(let text):
-            break
-        default:
-            break
+        case .cipher(_, let icon):
+            iconName = icon
+        case .feedback(_, let icon):
+            iconName = icon
+        case .setting(_, let icon):
+            iconName = icon
         }
+        
+        if iconName != nil, let img = UIImage(named: iconName!) {
+            displayView.addSubview(iconImageView)
+            iconImageView.image = img
+            modelLayoutConstraints.append(iconImageView.centerXAnchor.constraint(equalTo: displayView.centerXAnchor))
+            modelLayoutConstraints.append(iconImageView.centerYAnchor.constraint(equalTo: displayView.centerYAnchor))
+            modelLayoutConstraints.append(iconImageView.bottomAnchor.constraint(equalTo: titleLabel.topAnchor, constant: -8))
+            modelLayoutConstraints.append(iconImageView.widthAnchor.constraint(lessThanOrEqualTo: displayView.widthAnchor))
+            
+        } else {
+            displayView.addSubview(subTitleLabel)
+            subTitleLabel.text = cellSubtitle
+            modelLayoutConstraints.append(subTitleLabel.centerXAnchor.constraint(equalTo: displayView.centerXAnchor))
+            modelLayoutConstraints.append(subTitleLabel.centerYAnchor.constraint(equalTo: displayView.centerYAnchor))
+            modelLayoutConstraints.append(subTitleLabel.bottomAnchor.constraint(equalTo: titleLabel.topAnchor, constant: -8))
+            modelLayoutConstraints.append(subTitleLabel.widthAnchor.constraint(lessThanOrEqualTo: displayView.widthAnchor))
+        }
+        
+        NSLayoutConstraint.activate(modelLayoutConstraints)
     }
     
     

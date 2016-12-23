@@ -33,6 +33,7 @@ protocol Endecryting {
     static var name: String {get}
     static var digits: UInt {get}
     static var keyType: CipherKeyType {get}
+    static var defaultKey: String {get}
     static func encrypt(message: String, withKey key: String) throws -> String;
     static func decrypt(message: String, withKey key: String) throws -> String;
 }
@@ -50,6 +51,7 @@ extension String {
 fileprivate let letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ".chars;
 
 struct CaesarCipher: Endecryting {
+    static let defaultKey: String = "3"
     static let digits: UInt = 2
     static let name: String = "Caesar"
     static let keyType: CipherKeyType = .number
@@ -97,6 +99,7 @@ fileprivate var morseCodeMapReverse: [String:String] = [:]
 
 
 struct MorseCode: Endecryting {
+    static let defaultKey: String = ""
     static let name: String = "Morse"
     static let digits: UInt = 0
     static let keyType: CipherKeyType = .none
@@ -178,7 +181,7 @@ extension CharacterSet {
 fileprivate let uppercaseLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".chars
 
 struct VigenereCipher: Endecryting {
-    
+    static let defaultKey: String = "Hello"
     static let name: String = "Vigenere"
     static let digits: UInt = 5
     static let keyType: CipherKeyType = .letter
@@ -225,6 +228,7 @@ struct VigenereCipher: Endecryting {
 
 
 struct KeywordCipher: Endecryting {
+    static let defaultKey: String = "Hello"
     static let name: String = "Keyword"
     static let digits: UInt = 5
     static let keyType: CipherKeyType = .letter
