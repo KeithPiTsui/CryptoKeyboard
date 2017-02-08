@@ -6,8 +6,6 @@
 //  Copyright © 2016 Keith. All rights reserved.
 //
 
-import Swift
-
 import Foundation
 
 enum EndecError: Error {

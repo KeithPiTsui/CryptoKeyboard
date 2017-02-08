@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Darwin
 
 var GloabalKeyboardShiftState: ShiftState = .disabled
 
@@ -57,4 +58,44 @@ func testMorseCodeTranslation() {
         print("\(backMessage)")
     }
     
+    var age: Int = 0
+    print("Type your age:")
+    
+    withUnsafePointer(to: &age) {
+        vscanf("%ld", getVaList([OpaquePointer($0)]))
+    }
+    
+    print("Your typed age is \(age)")
 }
+
+
+func scanInt() -> Int? {
+    let tmpNumPointer = UnsafeMutablePointer<CInt>.allocate(capacity: 1)
+    let valist = getVaList([OpaquePointer(tmpNumPointer)])
+    let rtn = vscanf("%d", valist)
+    if rtn == -1 {
+        // examine the errno global variable to get the error as defined in errno.h
+        // if you want to handle or report the error
+        return nil
+    }
+    let returnVal = Int(tmpNumPointer.pointee)
+    tmpNumPointer.deallocate(capacity: 1)
+    return returnVal
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

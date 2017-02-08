@@ -29,12 +29,6 @@ extension UIColor {
 }
 
 struct KeyboardAppearanceScheme {
-    /*Family:Chalkboard SE
-     Font:ChalkboardSE-Bold
-     Family:Chalkboard SE
-     Font:ChalkboardSE-Light
-     Family:Chalkboard SE
-     Font:ChalkboardSE-Regular*/
     static let keyboardViewItemInscriptFont = UIFont(name: "ChalkboardSE-Light", size: 25)!
     static let keyboardViewItemInscriptFontSmall = UIFont(name: "ChalkboardSE-Light", size: 18)!
     static let topBarInscriptFont = UIFont(name: "ChalkboardSE-Light", size: 18)!

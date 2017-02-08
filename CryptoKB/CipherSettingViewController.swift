@@ -154,8 +154,8 @@ final class CipherSettingViewController: UIViewController {
     
     // MARK: -
     // MARK: Slide in Numerics Keyboard
-    private lazy var numericKeyboard: NumericKeyboard = {
-        let v  = NumericKeyboard(withDelegate: self)
+    private lazy var numericKeyboard: NumericKeyboardView = {
+        let v  = NumericKeyboardView(withDelegate: self)
         return v}()
     private var numericKeyboardSlideIned: Bool = false
     private lazy var numericKeyboardConstraints: [NSLayoutConstraint] = {
@@ -385,7 +385,7 @@ extension CipherSettingViewController: AlphabetKeyboardDelegate {
 
 //NumericKeyboardDelegate
 extension CipherSettingViewController: NumericKeyboardDelegate {
-    func nKeyboardViewItem(_ item: KeyboardViewItem, receivedEvent event: UIControlEvents, inKeyboard keyboard: NumericKeyboard) {
+    func nKeyboardViewItem(_ item: KeyboardViewItem, receivedEvent event: UIControlEvents, inKeyboard keyboard: NumericKeyboardView) {
         print("\(#function)")
         if event == .touchUpInside {
             handleKeyPressDown(item.key)

@@ -12,10 +12,10 @@ import UIKit
 
 
 protocol NumericKeyboardDelegate: class {
-    func nKeyboardViewItem(_ item: KeyboardViewItem, receivedEvent event: UIControlEvents, inKeyboard keyboard: NumericKeyboard)
+    func nKeyboardViewItem(_ item: KeyboardViewItem, receivedEvent event: UIControlEvents, inKeyboard keyboard: NumericKeyboardView)
 }
 
-class NumericKeyboard: UIView {
+class NumericKeyboardView: UIView {
     /// a delegate to recieve keyboard event, like which key is pressed
     weak var delegate: NumericKeyboardDelegate?
     

@@ -46,6 +46,7 @@ final class KeyboardViewController: UIInputViewController {
     
     var shiftState: ShiftState = .disabled {
         didSet {
+            
             GloabalKeyboardShiftState = shiftState
             if (oldValue != shiftState) {
                 NotificationCenter.default.post(name: KeyboardViewController.shiftStateChangedNotification, object: nil)

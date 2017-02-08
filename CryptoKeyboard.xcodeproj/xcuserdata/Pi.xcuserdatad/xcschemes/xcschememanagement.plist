@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>CKB.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
 		<key>CryptoKB.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -17,6 +22,21 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>0E56FE0B1E0E188E00BF4377</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>0E56FE1E1E0E1A2C00BF4377</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>0E56FE2F1E0E1A4C00BF4377</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>0E6B6A2D1DFA4ABD00712C0A</key>
 		<dict>
 			<key>primary</key>
