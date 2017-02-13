@@ -19,6 +19,8 @@ indirect enum Diagram {
     case below(Diagram, CGFloat, Diagram)
     case attributed(Attribute, Diagram)
     case align(CGPoint, Diagram)
+    
+    init() { self = .primitive(CGSize(width: 0, height: 0), .empty) }
 }
 
 enum Attribute {
@@ -44,7 +46,6 @@ extension Diagram {
             return r.size
         }
     }
-    init() { self = .primitive(CGSize(width: 0, height: 0), .empty) }
     
     func filled(_ color: UIColor) -> Diagram {
         return .attributed(.fillColor(color), self)
@@ -91,19 +92,14 @@ extension CGPoint {
     static let bottomLeft = CGPoint(x: 0, y: 1)
     static let bottomCenter = CGPoint(x: 0.5, y: 1)
     static let bottomRight = CGPoint(x: 1, y: 1)
-}
-
-func + (l: CGPoint, r: CGPoint) -> CGPoint {
-    return CGPoint(x:l.x + r.x, y: l.y + r.y)
+    
+    static func + (l: CGPoint, r: CGPoint) -> CGPoint {
+        return CGPoint(x:l.x + r.x, y: l.y + r.y)
+    }
 }
 
 
 extension CGRect {
-    func split(ratio: CGFloat, edge: CGRectEdge) -> (CGRect, CGRect) {
-        let length = edge.isHorizontal ? width: height
-        return divided(atDistance: length * ratio, from: edge)
-    }
-    
     func splitThree(firstFraction: CGFloat, lastFraction: CGFloat, isHorizontal: Bool) ->(CGRect, CGRect) {
         if isHorizontal {
             let w1 = self.width * firstFraction
@@ -119,13 +115,7 @@ extension CGRect {
             return (c1, c2)
         }
     }
-    
 }
-
-extension CGRectEdge {
-    var isHorizontal: Bool { return self == .maxXEdge || self == .minXEdge}
-}
-
 
 
 extension KeyboardView {

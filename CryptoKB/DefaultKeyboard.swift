@@ -9,8 +9,7 @@
 
 import UIKit
 
-extension Keyboard {
-    
+struct Keyboard {
     static let symbols = "[]{}#%^*+=-\\|~<>€£¥•"
     static let letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
     static let puncutations = ".,?!'"
@@ -37,9 +36,7 @@ extension Keyboard {
 
 extension String {
     
-    var diagram: Diagram {
-        return chars.map{Diagram(stringLiteral: $0)}.hcat
-    }
+    var diagram: Diagram { return chars.map{Diagram(stringLiteral: $0)}.hcat}
     
     var keyType: Key.KeyType {
         let text = self

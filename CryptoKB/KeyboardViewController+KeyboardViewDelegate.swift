@@ -116,8 +116,7 @@ extension KeyboardViewController: KeyboardViewDelegate {
     }
     
     private func nextKeyboardPage(_ sender: KeyboardViewItem) {
-        guard let page = sender.key.toMode else {return}
-        keyboardView.keyboardPage = page
+//        guard let page = sender.key.toMode else {return}
     }
     
     private func pressSettings(_ sender: KeyboardViewItem) {
@@ -190,9 +189,6 @@ extension KeyboardViewController: KeyboardViewDelegate {
                 let characterCount = textInterpreter.receivedCharacters.count
                 for _ in 0...characterCount {textDocumentProxy.deleteBackward()}
                 textDocumentProxy.insertText(text+outputCharacter)
-//                if outputCharacter ==  " " && cipherType == .morse {
-//                    textDocumentProxy.insertText(" ")
-//                }
                 textInterpreter.resetState()
                 topBar.resetLabels()
             }
@@ -200,7 +196,7 @@ extension KeyboardViewController: KeyboardViewDelegate {
         
         if key.type == .punctuation {
             delay(0.2) {
-                self.keyboardView.keyboardPage = 0
+//                self.keyboardView.keyboardPage = 0
             }
         }
         

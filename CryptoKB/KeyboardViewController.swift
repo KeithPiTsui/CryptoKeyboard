@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import Result
+import ReactiveCocoa
+import ReactiveSwift
 
 //weak var GlobalKeyboardViewController: KeyboardViewController! = nil
 var GloabalKeyboardShiftState: ShiftState = .disabled
@@ -161,9 +164,14 @@ final class KeyboardViewController: UIInputViewController {
     override func viewDidLoad(){
         super.viewDidLoad()
         loadCipherSetting()
-        //GlobalKeyboardViewController = self
         view.addSubview(topBar)
         view.addSubview(keyboardView)
+        
+        keyboardView.reactive.continuousKeyPressed.observeValues { (keyboardViewItem) in
+            let key = keyboardViewItem.key
+            print(key)
+        }
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {

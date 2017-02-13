@@ -23,47 +23,26 @@ enum ShiftState {
     }
 }
 
-struct Keyboard {
-    var keys: [[[Key?]]]
-    init(columns: Int, rows: Int, pages: Int) {
-        var pageArr = Array<[[Key?]]>()
-        for _ in 1...pages {
-            var rowArr = Array<[Key?]>()
-            for _ in 1...rows {
-                let columnArr = Array<Key?>(repeating: nil, count: columns)
-                rowArr.append(columnArr)
-            }
-            pageArr.append(rowArr)
-        }
-        keys = pageArr
-    }
-}
-
 struct Key: Hashable, CustomStringConvertible {
     private static var counter = sequence(first: 0) { $0 + 1 }
     let hashValue: Int = Key.counter.next()!
     var description: String { return "\(self.hashValue)"}
     
     enum KeyType: UInt {
-        case character = 0
-        case specialCharacter
         case shift
         case backspace
         case modeChange
         case keyboardChange
-        case period
         case space
         case `return`
         case settings
-        
         case alphabet
         case number
         case symbol
         case punctuation
-        
     }
     
-    static let highlightableKeyTypes:[KeyType] = [.character, .specialCharacter, .period]
+    static let highlightableKeyTypes:[KeyType] = [.alphabet, .number, .symbol, .punctuation, .space]
     static let iconKeyType:[KeyType] = [.shift, .backspace, .keyboardChange, .settings, .return]
     
     let type: KeyType

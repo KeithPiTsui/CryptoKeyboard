@@ -11,17 +11,18 @@ import ReactiveCocoa
 import ReactiveSwift
 import Result
 
-class KeyboardView: UIView {
+protocol KeyboardViewEventHanlder: class {
+    func event(_ e: UIControlEvents, on item: KeyboardViewItem, at Keyboard: KeyboardView)
+}
+
+
+final class KeyboardView: UIView {
     /// a delegate to recieve keyboard event, like which key is pressed
     weak var delegate: KeyboardViewDelegate?
-    var listeners: NSMutableArray = NSMutableArray()
     
-    /// to record which page it is now, when page change, re-organize keyboard
-    ///
-    /// value must be correspoding to data model keyboard
-    var keyboardPage: Int = 0
-    
-    var keyboardDiagram: Diagram = Keyboard.defaultKeyboardDiagram
+    var keyboardDiagram: Diagram = Keyboard.defaultKeyboardDiagram {
+        didSet {self.setNeedsLayout()}
+    }
     
     /// To record bound change
     private var boundSize: CGSize?
@@ -47,49 +48,65 @@ class KeyboardView: UIView {
         if (bounds.width != 0 && bounds.height != 0)
             && (boundSize == nil || (bounds.size.equalTo(boundSize!) == false)) {
             boundSize = bounds.size
-            self.subviews.forEach({ (subview) in
-                subview.removeFromSuperview()
-            })
-            self.layout(keyboardDiagram, in: bounds)
-            
+            subviews.forEach{ $0.removeFromSuperview() }
+            layout(keyboardDiagram, in: bounds)
         }
     }
+    
+    var eventHanlders = [UInt: [KeyboardViewEventHanlder]]()
+    
+    func addEventHandler(_ handler: KeyboardViewEventHanlder, for controlEvents: UIControlEvents) {
+        if eventHanlders[controlEvents.rawValue] == nil {
+            eventHanlders[controlEvents.rawValue] = [handler]
+        } else {
+            eventHanlders[controlEvents.rawValue]!.append(handler)
+        }
+    }
+    
+    func removeEventHandler(_ handler: KeyboardViewEventHanlder, for controlEvents: UIControlEvents) {
+        let idx = eventHanlders[controlEvents.rawValue]?.index{ $0 === handler }
+        if idx != nil {
+            eventHanlders[controlEvents.rawValue]?.remove(at: idx!)
+        }
+    }
+    
 }
 
-internal final class KeyboardViewDefaultDelegate: KeyboardViewDelegate {
-    
-    let ob: Observer<KeyboardViewItem, NoError>
-    
+final class ObserverWrapper {
+    let observer: Observer<KeyboardViewItem, NoError>
     init(ob: Observer<KeyboardViewItem, NoError>) {
-        self.ob = ob
-    }
-    
-    func keyboardViewItem(_ item: KeyboardViewItem,
-                          receivedEvent event: UIControlEvents,
-                          inKeyboard keyboard: KeyboardView){
-        ob.send(value: item)
+        observer = ob
     }
 }
+
+extension ObserverWrapper: KeyboardViewEventHanlder {
+    func event(_ e: UIControlEvents, on item: KeyboardViewItem, at Keyboard: KeyboardView) {
+        observer.send(value: item)
+    }
+}
+
 
 extension Reactive where Base: KeyboardView {
-    var continuousKeyItems: Signal<KeyboardViewItem, NoError> {
+    func controlEvents(_ event: UIControlEvents) -> Signal<KeyboardViewItem, NoError> {
         return Signal { observer in
-            
-            let delegate = KeyboardViewDefaultDelegate(ob: observer)
-            base.listeners.add(delegate)
-
-            
+            let obWrapper = ObserverWrapper(ob: observer)
+            base.addEventHandler(obWrapper, for: event)
             let disposable = lifetime.ended.observeCompleted(observer.sendCompleted)
-            
             return ActionDisposable { [weak base = self.base] in
                 disposable?.dispose()
-                base?.listeners.remove(delegate)
-
+                base?.removeEventHandler(obWrapper, for: event)
             }
         }
     }
+    
+    var continuousKeyPressed: Signal<KeyboardViewItem, NoError> {
+        return controlEvents(.touchUpInside)
+    }
+    
+    var continuousKeyDoubleClicked: Signal<KeyboardViewItem, NoError> {
+        return controlEvents(.touchDownRepeat)
+    }
 }
-
 
 
 
