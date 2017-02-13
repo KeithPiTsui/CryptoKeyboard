@@ -21,6 +21,7 @@
 		0E28CCFB1DFE854800BCAC75 /* TopBarView+Touch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E28CCFA1DFE854800BCAC75 /* TopBarView+Touch.swift */; };
 		0E28CCFD1DFE85EE00BCAC75 /* KeyboardViewController+TopBarViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E28CCFC1DFE85EE00BCAC75 /* KeyboardViewController+TopBarViewDelegate.swift */; };
 		0E2972031E51682700F098D9 /* KeyboardDiagram.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E2972021E51682700F098D9 /* KeyboardDiagram.swift */; };
+		0E2972041E516A0600F098D9 /* KeyboardDiagram.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E2972021E51682700F098D9 /* KeyboardDiagram.swift */; };
 		0E3C9F211DFD943300D44E51 /* KeyboardViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E3C9F201DFD943300D44E51 /* KeyboardViewDelegate.swift */; };
 		0E3F18651DFF9AC900E80D0C /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E3F18641DFF9AC900E80D0C /* Media.xcassets */; };
 		0E3F18681DFFE24100E80D0C /* SpellingAutoCorretor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E3F18671DFFE24100E80D0C /* SpellingAutoCorretor.swift */; };
@@ -44,9 +45,6 @@
 		0E4AB8BE1E0BA35200F85D44 /* CipherCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4AB8BD1E0BA35200F85D44 /* CipherCollectionViewCell.swift */; };
 		0E4ABB621E0BF44200F85D44 /* ForwardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4ABB611E0BF44200F85D44 /* ForwardingView.swift */; };
 		0E4ABB641E0C068600F85D44 /* FrontCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4ABB631E0C068600F85D44 /* FrontCollectionViewController.swift */; };
-		0E56FE341E0E1A4C00BF4377 /* CKB.h in Headers */ = {isa = PBXBuildFile; fileRef = 0E56FE321E0E1A4C00BF4377 /* CKB.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0E56FE371E0E1A4C00BF4377 /* CKB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E56FE301E0E1A4C00BF4377 /* CKB.framework */; };
-		0E56FE381E0E1A4C00BF4377 /* CKB.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0E56FE301E0E1A4C00BF4377 /* CKB.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0E56FE411E0E1C7D00BF4377 /* KeyboardBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E56FE401E0E1C7D00BF4377 /* KeyboardBaseView.swift */; };
 		0E56FE431E0E1E0A00BF4377 /* KeyboardViewPrototyping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E56FE421E0E1E0A00BF4377 /* KeyboardViewPrototyping.swift */; };
 		0E5DE9231E00E82600FAEF09 /* CipherSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5DE9221E00E82600FAEF09 /* CipherSettingViewController.swift */; };
@@ -84,13 +82,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		0E56FE351E0E1A4C00BF4377 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0E6B6A261DFA4ABD00712C0A /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 0E56FE2F1E0E1A4C00BF4377;
-			remoteInfo = CKB;
-		};
 		0E6B6A4C1DFA4AE400712C0A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 0E6B6A261DFA4ABD00712C0A /* Project object */;
@@ -282,7 +273,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				0E56FE381E0E1A4C00BF4377 /* CKB.framework in Embed Frameworks */,
 				0EAEACE01E50762300AAA7B0 /* Result.framework in Embed Frameworks */,
 				0EAEACE41E50762300AAA7B0 /* ReactiveSwift.framework in Embed Frameworks */,
 				0EAEACE81E50762300AAA7B0 /* ReactiveCocoa.framework in Embed Frameworks */,
@@ -339,7 +329,6 @@
 		0E4AB8BD1E0BA35200F85D44 /* CipherCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CipherCollectionViewCell.swift; sourceTree = "<group>"; };
 		0E4ABB611E0BF44200F85D44 /* ForwardingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForwardingView.swift; sourceTree = "<group>"; };
 		0E4ABB631E0C068600F85D44 /* FrontCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FrontCollectionViewController.swift; sourceTree = "<group>"; };
-		0E56FE301E0E1A4C00BF4377 /* CKB.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CKB.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E56FE321E0E1A4C00BF4377 /* CKB.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CKB.h; sourceTree = "<group>"; };
 		0E56FE331E0E1A4C00BF4377 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0E56FE401E0E1C7D00BF4377 /* KeyboardBaseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardBaseView.swift; sourceTree = "<group>"; };
@@ -369,18 +358,10 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		0E56FE2C1E0E1A4C00BF4377 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		0E6B6A2B1DFA4ABD00712C0A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0E56FE371E0E1A4C00BF4377 /* CKB.framework in Frameworks */,
 				0EAEACDF1E50762300AAA7B0 /* Result.framework in Frameworks */,
 				0EAEACE31E50762300AAA7B0 /* ReactiveSwift.framework in Frameworks */,
 				0EAEACE71E50762300AAA7B0 /* ReactiveCocoa.framework in Frameworks */,
@@ -558,7 +539,6 @@
 			children = (
 				0E6B6A2E1DFA4ABD00712C0A /* CryptoKeyboard.app */,
 				0E6B6A471DFA4AE400712C0A /* CryptoKB.appex */,
-				0E56FE301E0E1A4C00BF4377 /* CKB.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -670,36 +650,7 @@
 		};
 /* End PBXGroup section */
 
-/* Begin PBXHeadersBuildPhase section */
-		0E56FE2D1E0E1A4C00BF4377 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				0E56FE341E0E1A4C00BF4377 /* CKB.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXHeadersBuildPhase section */
-
 /* Begin PBXNativeTarget section */
-		0E56FE2F1E0E1A4C00BF4377 /* CKB */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 0E56FE391E0E1A4C00BF4377 /* Build configuration list for PBXNativeTarget "CKB" */;
-			buildPhases = (
-				0E56FE2B1E0E1A4C00BF4377 /* Sources */,
-				0E56FE2C1E0E1A4C00BF4377 /* Frameworks */,
-				0E56FE2D1E0E1A4C00BF4377 /* Headers */,
-				0E56FE2E1E0E1A4C00BF4377 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = CKB;
-			productName = CKB;
-			productReference = 0E56FE301E0E1A4C00BF4377 /* CKB.framework */;
-			productType = "com.apple.product-type.framework";
-		};
 		0E6B6A2D1DFA4ABD00712C0A /* CryptoKeyboard */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0E6B6A401DFA4ABD00712C0A /* Build configuration list for PBXNativeTarget "CryptoKeyboard" */;
@@ -714,7 +665,6 @@
 			);
 			dependencies = (
 				0E6B6A4D1DFA4AE400712C0A /* PBXTargetDependency */,
-				0E56FE361E0E1A4C00BF4377 /* PBXTargetDependency */,
 				0EAEACE21E50762300AAA7B0 /* PBXTargetDependency */,
 				0EAEACE61E50762300AAA7B0 /* PBXTargetDependency */,
 				0EAEACEA1E50762300AAA7B0 /* PBXTargetDependency */,
@@ -751,12 +701,6 @@
 				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = Keith;
 				TargetAttributes = {
-					0E56FE2F1E0E1A4C00BF4377 = {
-						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 6T5NK4S24M;
-						LastSwiftMigration = 0820;
-						ProvisioningStyle = Automatic;
-					};
 					0E6B6A2D1DFA4ABD00712C0A = {
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = 6T5NK4S24M;
@@ -800,7 +744,6 @@
 			targets = (
 				0E6B6A2D1DFA4ABD00712C0A /* CryptoKeyboard */,
 				0E6B6A461DFA4AE400712C0A /* CryptoKB */,
-				0E56FE2F1E0E1A4C00BF4377 /* CKB */,
 			);
 		};
 /* End PBXProject section */
@@ -963,13 +906,6 @@
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
-		0E56FE2E1E0E1A4C00BF4377 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		0E6B6A2C1DFA4ABD00712C0A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -993,13 +929,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		0E56FE2B1E0E1A4C00BF4377 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		0E6B6A2A1DFA4ABD00712C0A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1026,6 +955,7 @@
 				0E8A3C311E08DE7400274D32 /* KeyboardView+Touch.swift in Sources */,
 				0E8A3C321E08DE7400274D32 /* KeyboardViewDelegate.swift in Sources */,
 				0E4AB8BE1E0BA35200F85D44 /* CipherCollectionViewCell.swift in Sources */,
+				0E2972041E516A0600F098D9 /* KeyboardDiagram.swift in Sources */,
 				0E8A3C331E08DE7400274D32 /* KeyboardViewItem.swift in Sources */,
 				0E8A3C351E08DE7400274D32 /* IconDrawingView.swift in Sources */,
 				0E8A3C361E08DE7400274D32 /* NumericKeyboardView.swift in Sources */,
@@ -1075,11 +1005,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		0E56FE361E0E1A4C00BF4377 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 0E56FE2F1E0E1A4C00BF4377 /* CKB */;
-			targetProxy = 0E56FE351E0E1A4C00BF4377 /* PBXContainerItemProxy */;
-		};
 		0E6B6A4D1DFA4AE400712C0A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 0E6B6A461DFA4AE400712C0A /* CryptoKB */;
@@ -1114,57 +1039,6 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		0E56FE3A1E0E1A4C00BF4377 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 6T5NK4S24M;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = CKB/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = Keith.Pi.Tsui.CKB;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		0E56FE3B1E0E1A4C00BF4377 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 6T5NK4S24M;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = CKB/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = Keith.Pi.Tsui.CKB;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
 		0E6B6A3E1DFA4ABD00712C0A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1337,15 +1211,6 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		0E56FE391E0E1A4C00BF4377 /* Build configuration list for PBXNativeTarget "CKB" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				0E56FE3A1E0E1A4C00BF4377 /* Debug */,
-				0E56FE3B1E0E1A4C00BF4377 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		0E6B6A291DFA4ABD00712C0A /* Build configuration list for PBXProject "CryptoKeyboard" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

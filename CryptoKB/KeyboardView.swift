@@ -28,6 +28,7 @@ class KeyboardView: UIView {
         }
     }
     
+    let keyboardDiagram: Diagram = Keyboard.defaultKeyboardDiagram
     
     
     /// To record bound change
@@ -60,20 +61,10 @@ class KeyboardView: UIView {
             self.subviews.forEach({ (subview) in
                 subview.removeFromSuperview()
             })
-            let dia = generateKeyboardDiagram()
-            self.layout(dia, in: bounds)
+            
+            self.layout(keyboardDiagram, in: bounds)
             
         }
-    }
-    
-    private func generateKeyboardDiagram() -> Diagram {
-        let a = Primitive.key(Key(type: .character, meaning: "A", inscript: "A", mode: 0))
-        let b = Primitive.key(Key(type: .character, meaning: "B", inscript: "B", mode: 0))
-        return Diagram.primitive(CGSize(width: 1, height: 1), a) ||| Diagram.primitive(CGSize(width: 1, height: 1), b)
-    }
-    
-    private func generateKeyPrimitive(_ t: String) -> Primitive {
-        return Primitive.key(Key(type: .character, meaning: t, inscript: t, mode: 0))
     }
 }
 
