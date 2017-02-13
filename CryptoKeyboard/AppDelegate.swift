@@ -61,14 +61,14 @@ func testMorseCodeTranslation() {
         print("\(backMessage)")
     }
     
-    var age: Int = 0
-    print("Type your age:")
-    
-    withUnsafePointer(to: &age) {
-        vscanf("%ld", getVaList([OpaquePointer($0)]))
-    }
-    
-    print("Your typed age is \(age)")
+//    var age: Int = 0
+//    print("Type your age:")
+//    
+////    withUnsafePointer(to: &age) {
+////        vscanf("%ld", getVaList([OpaquePointer($0)]))
+////    }
+//    
+//    print("Your typed age is \(age)")
 }
 
 
@@ -88,7 +88,7 @@ func scanInt() -> Int? {
 
 func test() {
     
-    [1,2,3].map{$0*$0}
+//    [1,2,3].map{$0*$0}
 }
 
 

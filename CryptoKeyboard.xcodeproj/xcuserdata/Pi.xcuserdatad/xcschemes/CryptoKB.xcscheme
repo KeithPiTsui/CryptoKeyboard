@@ -67,8 +67,12 @@
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES"
       launchAutomaticallySubstyle = "2">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <RemoteRunnable
+         runnableDebuggingMode = "0"
+         BundleIdentifier = "Archagon.HostingApp"
+         RemotePath = "/Users/Pi/Library/Developer/CoreSimulator/Devices/A3507F9D-5540-4743-BD6F-18BD61B553B2/data/Containers/Bundle/Application/9BBBE81C-BDC2-4DC1-8634-3BFC4420135A/HostingApp.app">
+      </RemoteRunnable>
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "0E6B6A2D1DFA4ABD00712C0A"
@@ -76,7 +80,7 @@
             BlueprintName = "CryptoKeyboard"
             ReferencedContainer = "container:CryptoKeyboard.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>

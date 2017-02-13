@@ -20,9 +20,7 @@
 		0E28CCF91DFE7BE000BCAC75 /* KeyboardViewController+InputInterpreterOutputReceiverDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E28CCF81DFE7BE000BCAC75 /* KeyboardViewController+InputInterpreterOutputReceiverDelegate.swift */; };
 		0E28CCFB1DFE854800BCAC75 /* TopBarView+Touch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E28CCFA1DFE854800BCAC75 /* TopBarView+Touch.swift */; };
 		0E28CCFD1DFE85EE00BCAC75 /* KeyboardViewController+TopBarViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E28CCFC1DFE85EE00BCAC75 /* KeyboardViewController+TopBarViewDelegate.swift */; };
-		0E2971E91E51640100F098D9 /* KeyboardDiagram.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E2971E81E51640100F098D9 /* KeyboardDiagram.swift */; };
-		0E2971EA1E51640100F098D9 /* KeyboardDiagram.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E2971E81E51640100F098D9 /* KeyboardDiagram.swift */; };
-		0E2971EB1E51640100F098D9 /* KeyboardDiagram.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E2971E81E51640100F098D9 /* KeyboardDiagram.swift */; };
+		0E2972031E51682700F098D9 /* KeyboardDiagram.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E2972021E51682700F098D9 /* KeyboardDiagram.swift */; };
 		0E3C9F211DFD943300D44E51 /* KeyboardViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E3C9F201DFD943300D44E51 /* KeyboardViewDelegate.swift */; };
 		0E3F18651DFF9AC900E80D0C /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E3F18641DFF9AC900E80D0C /* Media.xcassets */; };
 		0E3F18681DFFE24100E80D0C /* SpellingAutoCorretor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E3F18671DFFE24100E80D0C /* SpellingAutoCorretor.swift */; };
@@ -320,7 +318,7 @@
 		0E28CCFA1DFE854800BCAC75 /* TopBarView+Touch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TopBarView+Touch.swift"; sourceTree = "<group>"; };
 		0E28CCFC1DFE85EE00BCAC75 /* KeyboardViewController+TopBarViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "KeyboardViewController+TopBarViewDelegate.swift"; sourceTree = "<group>"; };
 		0E2971CF1E51403100F098D9 /* FunctionalDiagram.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = FunctionalDiagram.playground; sourceTree = "<group>"; };
-		0E2971E81E51640100F098D9 /* KeyboardDiagram.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardDiagram.swift; sourceTree = "<group>"; };
+		0E2972021E51682700F098D9 /* KeyboardDiagram.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardDiagram.swift; sourceTree = "<group>"; };
 		0E3C9F201DFD943300D44E51 /* KeyboardViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardViewDelegate.swift; sourceTree = "<group>"; };
 		0E3F18641DFF9AC900E80D0C /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		0E3F18671DFFE24100E80D0C /* SpellingAutoCorretor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpellingAutoCorretor.swift; sourceTree = "<group>"; };
@@ -612,7 +610,7 @@
 				0E28CCE11DFE748C00BCAC75 /* InputInterpreter.swift */,
 				0EA85D131DFD2E3700AFB546 /* Keyboard.swift */,
 				0EA85D111DFD2E3700AFB546 /* DefaultKeyboard.swift */,
-				0E2971E81E51640100F098D9 /* KeyboardDiagram.swift */,
+				0E2972021E51682700F098D9 /* KeyboardDiagram.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -999,7 +997,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0E2971EB1E51640100F098D9 /* KeyboardDiagram.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1029,7 +1026,6 @@
 				0E8A3C311E08DE7400274D32 /* KeyboardView+Touch.swift in Sources */,
 				0E8A3C321E08DE7400274D32 /* KeyboardViewDelegate.swift in Sources */,
 				0E4AB8BE1E0BA35200F85D44 /* CipherCollectionViewCell.swift in Sources */,
-				0E2971E91E51640100F098D9 /* KeyboardDiagram.swift in Sources */,
 				0E8A3C331E08DE7400274D32 /* KeyboardViewItem.swift in Sources */,
 				0E8A3C351E08DE7400274D32 /* IconDrawingView.swift in Sources */,
 				0E8A3C361E08DE7400274D32 /* NumericKeyboardView.swift in Sources */,
@@ -1042,6 +1038,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0E2972031E51682700F098D9 /* KeyboardDiagram.swift in Sources */,
 				0E3F18711E001F7700E80D0C /* CipherSettingTopBarView.swift in Sources */,
 				0EA85D241DFD318700AFB546 /* UIColor+ColorScheme.swift in Sources */,
 				0E28CCDF1DFE6D7A00BCAC75 /* TopBarView.swift in Sources */,
@@ -1064,7 +1061,6 @@
 				0E56FE431E0E1E0A00BF4377 /* KeyboardViewPrototyping.swift in Sources */,
 				0E3C9F211DFD943300D44E51 /* KeyboardViewDelegate.swift in Sources */,
 				0E28CCF91DFE7BE000BCAC75 /* KeyboardViewController+InputInterpreterOutputReceiverDelegate.swift in Sources */,
-				0E2971EA1E51640100F098D9 /* KeyboardDiagram.swift in Sources */,
 				0E5DE9331E01656200FAEF09 /* Cipher.swift in Sources */,
 				0EA85D1E1DFD2E9500AFB546 /* KeyboardViewItem.swift in Sources */,
 				0EA85D161DFD2E3700AFB546 /* Keyboard.swift in Sources */,

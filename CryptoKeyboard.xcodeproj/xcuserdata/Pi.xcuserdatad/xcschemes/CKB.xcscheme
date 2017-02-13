@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "0E56FE0B1E0E188E00BF4377"
+               BlueprintIdentifier = "0E56FE2F1E0E1A4C00BF4377"
                BuildableName = "CKB.framework"
                BlueprintName = "CKB"
                ReferencedContainer = "container:CryptoKeyboard.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "0E56FE0B1E0E188E00BF4377"
+            BlueprintIdentifier = "0E56FE2F1E0E1A4C00BF4377"
             BuildableName = "CKB.framework"
             BlueprintName = "CKB"
             ReferencedContainer = "container:CryptoKeyboard.xcodeproj">
@@ -63,7 +63,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "0E56FE0B1E0E188E00BF4377"
+            BlueprintIdentifier = "0E56FE2F1E0E1A4C00BF4377"
             BuildableName = "CKB.framework"
             BlueprintName = "CKB"
             ReferencedContainer = "container:CryptoKeyboard.xcodeproj">

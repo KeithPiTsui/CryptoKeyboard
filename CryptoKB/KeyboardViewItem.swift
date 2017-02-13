@@ -62,6 +62,9 @@ final class KeyboardViewItem: UIView {
         backgroundColor = UIColor.keyboardViewItemBackgroundColor
         clipsToBounds = true
         layer.cornerRadius = 6
+        if key != nil {
+            installKey()
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {

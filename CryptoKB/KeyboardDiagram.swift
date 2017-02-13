@@ -8,4 +8,10 @@
 
 import UIKit
 
-
+struct KeyboardDiagram {
+    var xx: KeyboardView
+    
+    func test() {
+        xx.addSubview(UIView())
+    }
+}
