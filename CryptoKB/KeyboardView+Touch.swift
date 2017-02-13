@@ -20,6 +20,9 @@ extension KeyboardView {
     private func handleControl(_ view: UIView?, controlEvent: UIControlEvents) {
         guard let control = view as? KeyboardViewItem, let delegate = delegate else { return }
         delegate.keyboardViewItem(control, receivedEvent: controlEvent, inKeyboard: self)
+        for x in listeners where ((x as? KeyboardViewDelegate) != nil) {
+            (x as! KeyboardViewDelegate).keyboardViewItem(control, receivedEvent: controlEvent, inKeyboard: self)
+        }
     }
     
     private func findNearestView(_ position: CGPoint) -> UIView? {

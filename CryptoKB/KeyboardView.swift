@@ -7,29 +7,21 @@
 //
 
 import UIKit
+import ReactiveCocoa
+import ReactiveSwift
+import Result
 
 class KeyboardView: UIView {
     /// a delegate to recieve keyboard event, like which key is pressed
     weak var delegate: KeyboardViewDelegate?
-    
-    /// keyboard view data model, contains every item's information
-    let keyboard: Keyboard = Keyboard.defaultKeyboard
-    
-    /// a array to store reuse keyboard view item
-    var itemPool: [KeyboardViewItem] = []
+    var listeners: NSMutableArray = NSMutableArray()
     
     /// to record which page it is now, when page change, re-organize keyboard
     ///
     /// value must be correspoding to data model keyboard
-    var keyboardPage: Int = 0 {
-        didSet {
-//            assembleKeyboardItems()
-//            layoutKeyboard()
-        }
-    }
+    var keyboardPage: Int = 0
     
-    let keyboardDiagram: Diagram = Keyboard.defaultKeyboardDiagram
-    
+    var keyboardDiagram: Diagram = Keyboard.defaultKeyboardDiagram
     
     /// To record bound change
     private var boundSize: CGSize?
@@ -64,7 +56,39 @@ class KeyboardView: UIView {
     }
 }
 
+internal final class KeyboardViewDefaultDelegate: KeyboardViewDelegate {
+    
+    let ob: Observer<KeyboardViewItem, NoError>
+    
+    init(ob: Observer<KeyboardViewItem, NoError>) {
+        self.ob = ob
+    }
+    
+    func keyboardViewItem(_ item: KeyboardViewItem,
+                          receivedEvent event: UIControlEvents,
+                          inKeyboard keyboard: KeyboardView){
+        ob.send(value: item)
+    }
+}
 
+extension Reactive where Base: KeyboardView {
+    var continuousKeyItems: Signal<KeyboardViewItem, NoError> {
+        return Signal { observer in
+            
+            let delegate = KeyboardViewDefaultDelegate(ob: observer)
+            base.listeners.add(delegate)
+
+            
+            let disposable = lifetime.ended.observeCompleted(observer.sendCompleted)
+            
+            return ActionDisposable { [weak base = self.base] in
+                disposable?.dispose()
+                base?.listeners.remove(delegate)
+
+            }
+        }
+    }
+}
 
 
 

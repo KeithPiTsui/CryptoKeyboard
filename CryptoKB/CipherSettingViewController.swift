@@ -154,9 +154,13 @@ final class CipherSettingViewController: UIViewController {
     
     // MARK: -
     // MARK: Slide in Numerics Keyboard
-    private lazy var numericKeyboard: NumericKeyboardView = {
-        let v  = NumericKeyboardView(withDelegate: self)
-        return v}()
+    private lazy var numericKeyboard: KeyboardView = {
+        let v = KeyboardView(frame: .zero, withDelegate: self)
+        v.keyboardDiagram = Keyboard.numberKeyboardDiagram
+        return v
+    }()
+    
+    
     private var numericKeyboardSlideIned: Bool = false
     private lazy var numericKeyboardConstraints: [NSLayoutConstraint] = {
         var constraints = [NSLayoutConstraint]()
@@ -183,8 +187,9 @@ final class CipherSettingViewController: UIViewController {
     
     // MARK: -
     // MARK: Slide in Alphabet Keyboard
-    private lazy var alphabetkeyboard: AlphabetKeyboard = {
-        let v  = AlphabetKeyboard(withDelegate: self)
+    private lazy var alphabetkeyboard: KeyboardView = {
+        let v = KeyboardView(frame: .zero, withDelegate: self)
+        v.keyboardDiagram = Keyboard.alphaKeyboardDiagram
         return v}()
     private var alphabetKeyboardSlideIned: Bool = false
     private lazy var alphabetKeyboardConstraints: [NSLayoutConstraint] = {
@@ -231,16 +236,10 @@ final class CipherSettingViewController: UIViewController {
         let v = UISlider()
         v.translatesAutoresizingMaskIntoConstraints = false
         v.backgroundColor = UIColor.clear
-        //let leftTrack = UIImage(named:"brightnessBar")!
-        //let rightTrack = leftTrack
-        //let cursor = UIImage(named: "cursorThumb")!
         v.minimumValue = 0
         v.maximumValue = 100
         v.minimumTrackTintColor = UIColor.white
         v.maximumTrackTintColor = UIColor.white
-        //v.setMinimumTrackImage(leftTrack, for: .normal)
-        //v.setMaximumTrackImage(rightTrack, for: .normal)
-        //v.setThumbImage(cursor, for: .normal)
         return v
     }()
     
@@ -371,21 +370,23 @@ extension CipherSettingViewController: CipherSettingTopBarViewDelegate {
     }
 }
 
-extension CipherSettingViewController: AlphabetKeyboardDelegate {
-    func keyboardViewItem(_ item: KeyboardViewItem, receivedEvent event: UIControlEvents, inKeyboard keyboard: AlphabetKeyboard) {
-        print("\(#function)")
-        
-        if event == .touchUpInside {
-            handleKeyPressDown(item.key)
-        }
-    }
-    
-    
-}
+//extension CipherSettingViewController: AlphabetKeyboardDelegate {
+//    func keyboardViewItem(_ item: KeyboardViewItem, receivedEvent event: UIControlEvents, inKeyboard keyboard: AlphabetKeyboard) {
+//        print("\(#function)")
+//        
+//        if event == .touchUpInside {
+//            handleKeyPressDown(item.key)
+//        }
+//    }
+//    
+//    
+//}
 
 //NumericKeyboardDelegate
-extension CipherSettingViewController: NumericKeyboardDelegate {
-    func nKeyboardViewItem(_ item: KeyboardViewItem, receivedEvent event: UIControlEvents, inKeyboard keyboard: NumericKeyboardView) {
+extension CipherSettingViewController: KeyboardViewDelegate {
+    func keyboardViewItem(_ item: KeyboardViewItem,
+                          receivedEvent event: UIControlEvents,
+                          inKeyboard keyboard: KeyboardView){
         print("\(#function)")
         if event == .touchUpInside {
             handleKeyPressDown(item.key)
