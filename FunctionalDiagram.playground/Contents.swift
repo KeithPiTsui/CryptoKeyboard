@@ -11,7 +11,7 @@ enum Primitive {
 indirect enum Diagram {
     case primitive(CGSize, Primitive)
     case beside(Diagram, CGFloat, Diagram)
-    case below(Diagram, Diagram)
+    case below(Diagram, CGFloat, Diagram)
     case attributed(Attribute, Diagram)
     case align(CGPoint, Diagram)
 }
@@ -31,10 +31,10 @@ extension Diagram {
             let sizeL = l.size
             let sizeR = r.size
             return CGSize(width: sizeL.width + sizeR.width + gap, height: max(sizeL.height, sizeR.height))
-        case let .below(l, r):
+        case let .below(l, gap, r):
             let sizeL = l.size
             let sizeR = r.size
-            return CGSize(width: max(sizeL.width, sizeR.width), height: sizeL.height + sizeR.height)
+            return CGSize(width: max(sizeL.width, sizeR.width), height: sizeL.height + sizeR.height + gap)
         case .align(_, let r):
             return r.size
         }
@@ -66,9 +66,17 @@ extension CGSize {
 
 extension CGPoint {
     var size: CGSize { return CGSize(width: x, height: y) }
+    static let topCenter = CGPoint(x: 0.5, y: 0)
+    static let topLeft = CGPoint(x: 0, y: 0)
+    static let topRight = CGPoint(x: 1, y: 0)
+    
     static let center = CGPoint(x: 0.5, y: 0.5)
-    static let bottom = CGPoint(x: 0.5, y: 1)
-    static let top = CGPoint(x: 0.5, y: 0)
+    static let centerLeft = CGPoint(x: 0, y: 0.5)
+    static let centerRight = CGPoint(x: 1, y: 0.5)
+    
+    static let bottomLeft = CGPoint(x: 0, y: 1)
+    static let bottomCenter = CGPoint(x: 0.5, y: 1)
+    static let bottomRight = CGPoint(x: 1, y: 1)
 }
 
 func + (l: CGPoint, r: CGPoint) -> CGPoint {
@@ -97,9 +105,9 @@ extension CGRect {
             return (c1, c2)
         } else {
             let h1 = self.height * firstFraction
-            let c1 = CGRect(x: 0, y: 0, width: self.width, height: h1)
+            let c1 = CGRect(x: 0, y: self.origin.y, width: self.width, height: h1)
             let h2 = self.height * lastFraction
-            let c2 = CGRect(x: 0, y: 0, width: self.width, height: h2)
+            let c2 = CGRect(x: 0, y: self.origin.y + self.height - h2, width: self.width, height: h2)
             return (c1, c2)
         }
     }
@@ -136,13 +144,16 @@ extension CGContext {
             draw(diagram, in: bounds)
             
         case let .beside(l, _, r):
-//            let (lBounds, rBounds) = bounds.split(ratio: l.size.width/(diagram.size.width - gap), edge: .minXEdge)
-            let (lBounds, rBounds) = bounds.splitThree(firstFraction: l.size.width / diagram.size.width, lastFraction: r.size.width / diagram.size.width, isHorizontal: true)
+            let (lBounds, rBounds) = bounds.splitThree(firstFraction: l.size.width / diagram.size.width,
+                                                       lastFraction: r.size.width / diagram.size.width,
+                                                       isHorizontal: true)
             draw(l, in: lBounds)
             draw(r, in: rBounds)
             
-        case .below(let top, let bottom):
-            let (tBounds, bBounds) = bounds.split(ratio: top.size.height/diagram.size.height, edge: .minYEdge)
+        case .below(let top, _, let bottom):
+            let (tBounds, bBounds) = bounds.splitThree(firstFraction: top.size.height / diagram.size.height,
+                                                       lastFraction: bottom.size.height / diagram.size.height,
+                                                       isHorizontal: false)
             draw(top, in: tBounds)
             draw(bottom, in: bBounds)
             
@@ -196,7 +207,7 @@ func ||| (g: CGFloat, r: Diagram) -> Diagram {
 
 infix operator --- : VerticalCombination
 func --- (l: Diagram, r: Diagram) -> Diagram {
-    return .below(l, r)
+    return .below(l, 0, r)
 }
 
 extension Diagram {
@@ -226,15 +237,15 @@ extension Diagram {
 let blueSquare = square(side: 1).filled(.blue)
 let redSquare = square(side: 2).filled(.red)
 let greenCircle = circle(diameter: 1).filled(.green)
-let x1 = 1 ||| blueSquare ||| 1 ||| redSquare ||| greenCircle
+let x1 = blueSquare ||| redSquare ||| greenCircle
 
 let imgX1 = x1.image(of: CGSize(width: 1000, height: 1000))
 
-let cyanCircle = circle(diameter: 1).filled(.cyan)
+let cyanCircle = circle(diameter: 2).filled(.cyan)
 
-let x2 = x1 ||| cyanCircle
+let x2 = x1 --- cyanCircle
 
-let imgX2 = x2.image(of: CGSize(width: 100, height: 100))
+let imgX2 = x2.image(of: CGSize(width: 1000, height: 1000))
 
 
 
