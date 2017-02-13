@@ -23,10 +23,12 @@ class KeyboardView: UIView {
     /// value must be correspoding to data model keyboard
     var keyboardPage: Int = 0 {
         didSet {
-            assembleKeyboardItems()
-            layoutKeyboard()
+//            assembleKeyboardItems()
+//            layoutKeyboard()
         }
     }
+    
+    
     
     /// To record bound change
     private var boundSize: CGSize?
@@ -41,7 +43,8 @@ class KeyboardView: UIView {
         isMultipleTouchEnabled = true
         isUserInteractionEnabled = true
         isOpaque = false
-        assembleKeyboardItems()
+        
+//        assembleKeyboardItems()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -53,8 +56,24 @@ class KeyboardView: UIView {
         if (bounds.width != 0 && bounds.height != 0)
             && (boundSize == nil || (bounds.size.equalTo(boundSize!) == false)) {
             boundSize = bounds.size
-            layoutKeyboard()
+//            layoutKeyboard()
+            self.subviews.forEach({ (subview) in
+                subview.removeFromSuperview()
+            })
+            let dia = generateKeyboardDiagram()
+            self.layout(dia, in: bounds)
+            
         }
+    }
+    
+    private func generateKeyboardDiagram() -> Diagram {
+        let a = Primitive.key(Key(type: .character, meaning: "A", inscript: "A", mode: 0))
+        let b = Primitive.key(Key(type: .character, meaning: "B", inscript: "B", mode: 0))
+        return Diagram.primitive(CGSize(width: 1, height: 1), a) ||| Diagram.primitive(CGSize(width: 1, height: 1), b)
+    }
+    
+    private func generateKeyPrimitive(_ t: String) -> Primitive {
+        return Primitive.key(Key(type: .character, meaning: t, inscript: t, mode: 0))
     }
 }
 

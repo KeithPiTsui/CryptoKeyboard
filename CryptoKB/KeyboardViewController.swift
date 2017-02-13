@@ -24,7 +24,12 @@ final class KeyboardViewController: UIInputViewController {
     var cipherType: CipherType = .caesar {didSet{textInterpreter.cipherType = cipherType}}
     var cipherKey: String = "03" {didSet{textInterpreter.cipherKey = cipherKey}}
     
-    lazy var keyboardView: KeyboardView = { return KeyboardView(withDelegate:self); }()
+    lazy var keyboardView: KeyboardView = {
+
+        return KeyboardView(withDelegate:self);
+    
+    
+    }()
     
     lazy var topBar: TopBarView = {
         let tbv = TopBarView(delegate:self)
