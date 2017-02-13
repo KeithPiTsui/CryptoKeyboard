@@ -8,6 +8,9 @@
 
 import UIKit
 import Darwin
+import ReactiveSwift
+import ReactiveCocoa
+import Result
 
 var GloabalKeyboardShiftState: ShiftState = .disabled
 
@@ -83,7 +86,10 @@ func scanInt() -> Int? {
     return returnVal
 }
 
-
+func test() {
+    
+    [1,2,3].map{$0*$0}
+}
 
 
 

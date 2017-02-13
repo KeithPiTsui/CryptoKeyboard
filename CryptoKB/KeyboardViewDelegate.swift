@@ -9,7 +9,9 @@
 import UIKit
 
 protocol KeyboardViewDelegate: class {
-    func keyboardViewItem(_ item: KeyboardViewItem, receivedEvent event: UIControlEvents, inKeyboard keyboard: KeyboardView)
+    func keyboardViewItem(_ item: KeyboardViewItem,
+                          receivedEvent event: UIControlEvents,
+                          inKeyboard keyboard: KeyboardView)
 }
 
 
