@@ -28,7 +28,7 @@ class KeyboardView: UIView {
         }
     }
     
-    let keyboardDiagram: Diagram = Keyboard.alphaKeyboardDiagram //Keyboard.defaultKeyboardDiagram
+    let keyboardDiagram: Diagram = Keyboard.defaultKeyboardDiagram
     
     
     /// To record bound change

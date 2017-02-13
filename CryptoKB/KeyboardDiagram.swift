@@ -276,6 +276,7 @@ func --- (l: Diagram, g: CGFloat) -> Diagram {
 }
 
 
+
 extension Sequence where Iterator.Element == Diagram {
     var hcat: Diagram { return reduce(Diagram(), |||) }
 }
@@ -299,11 +300,35 @@ extension Diagram : ExpressibleByStringLiteral {
     }
     
     init(extendedGraphemeClusterLiteral value: String) {
-        self = .primitive(CGSize(width: 1, height: 1), .key(value.key))
+        let values = value.components(separatedBy: "><")
+        if values.count == 1 {
+            self = .primitive(CGSize(width: 1, height: 1), .key(values[0].key))
+        } else if values.count == 2 {
+            guard let w = Double(values[1]) else { fatalError("keyboard layout syntax error") }
+            self = .primitive(CGSize(width: w, height: 1), .key(values[0].key))
+        } else if values.count == 3 {
+            guard let w = Double(values[1]) else { fatalError("keyboard layout syntax error") }
+            guard let h = Double(values[2]) else { fatalError("keyboard layout syntax error") }
+            self = .primitive(CGSize(width: w, height: h), .key(values[0].key))
+        } else {
+            fatalError("keyboard layout syntax error")
+        }
     }
 
     init(unicodeScalarLiteral value: String) {
-        self = .primitive(CGSize(width: 1, height: 1), .key(value.key))
+        let values = value.components(separatedBy: "><")
+        if values.count == 1 {
+            self = .primitive(CGSize(width: 1, height: 1), .key(values[0].key))
+        } else if values.count == 2 {
+            guard let w = Double(values[1]) else { fatalError("keyboard layout syntax error") }
+            self = .primitive(CGSize(width: w, height: 1), .key(values[0].key))
+        } else if values.count == 3 {
+            guard let w = Double(values[1]) else { fatalError("keyboard layout syntax error") }
+            guard let h = Double(values[2]) else { fatalError("keyboard layout syntax error") }
+            self = .primitive(CGSize(width: w, height: h), .key(values[0].key))
+        } else {
+            fatalError("keyboard layout syntax error")
+        }
     }
 }
 
