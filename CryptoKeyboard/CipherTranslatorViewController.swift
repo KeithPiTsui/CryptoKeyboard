@@ -285,8 +285,10 @@ class CipherTranslatorViewController: UIViewController {
     
     // MARK: -
     // MARK: Slide in Numerics Keyboard
-    private lazy var numericKeyboard: NumericKeyboardView = {
-        let v  = NumericKeyboardView(withDelegate: self)
+    private lazy var numericKeyboard: KeyboardView = {
+//        let v  = NumericKeyboardView(withDelegate: self)
+        let v = KeyboardView(frame: .zero, withDelegate: self)
+        v.keyboardDiagram = Keyboard.numberKeyboardDiagram
         return v}()
     private var numericKeyboardSlideIned: Bool = false
     private lazy var numericKeyboardConstraints: [NSLayoutConstraint] = {
@@ -316,8 +318,9 @@ class CipherTranslatorViewController: UIViewController {
     
     // MARK: -
     // MARK: Slide in Alphabet Keyboard
-    private lazy var alphabetkeyboard: AlphabetKeyboard = {
-        let v  = AlphabetKeyboard(withDelegate: self)
+    private lazy var alphabetkeyboard: KeyboardView = {
+        let v = KeyboardView(frame: .zero, withDelegate: self)
+        v.keyboardDiagram = Keyboard.alphaKeyboardDiagram
         return v}()
     private var alphabetKeyboardSlideIned: Bool = false
     private lazy var alphabetKeyboardConstraints: [NSLayoutConstraint] = {
@@ -389,8 +392,8 @@ extension CipherTranslatorViewController: UITextViewDelegate{
 
 
 
-extension CipherTranslatorViewController: AlphabetKeyboardDelegate {
-    func keyboardViewItem(_ item: KeyboardViewItem, receivedEvent event: UIControlEvents, inKeyboard keyboard: AlphabetKeyboard) {
+extension CipherTranslatorViewController: KeyboardViewDelegate {
+    func keyboardViewItem(_ item: KeyboardViewItem, receivedEvent event: UIControlEvents, inKeyboard keyboard: KeyboardView) {
         print("\(#function)")
         
         if event == .touchUpInside {
@@ -400,19 +403,6 @@ extension CipherTranslatorViewController: AlphabetKeyboardDelegate {
     
     
 }
-
-//NumericKeyboardDelegate
-extension CipherTranslatorViewController: NumericKeyboardDelegate {
-    func nKeyboardViewItem(_ item: KeyboardViewItem, receivedEvent event: UIControlEvents, inKeyboard keyboard: NumericKeyboardView) {
-        print("\(#function)")
-        if event == .touchUpInside {
-            handleKeyPressDown(item.key)
-        }
-        
-    }
-}
-
-
 
 
 

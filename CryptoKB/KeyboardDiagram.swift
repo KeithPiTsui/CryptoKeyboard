@@ -9,9 +9,7 @@
 import UIKit
 
 enum Primitive {
-    case ellipse
-    case rectangle
-    case text(String)
+    case empty
     case key(Key)
 }
 
@@ -46,7 +44,7 @@ extension Diagram {
             return r.size
         }
     }
-    init() { self = rect(width: 0, height: 0) }
+    init() { self = .primitive(CGSize(width: 0, height: 0), .empty) }
     
     func filled(_ color: UIColor) -> Diagram {
         return .attributed(.fillColor(color), self)
@@ -55,11 +53,6 @@ extension Diagram {
     func aligned(to position: CGPoint) -> Diagram {
         return .align(position, self)
     }
-    func image(of size: CGSize) -> UIImage {
-        let render = UIGraphicsImageRenderer(size: size)
-        return render.image {$0.cgContext.draw(self, in: CGRect(origin: .zero, size: size))}
-    }
-    
 }
 
 extension CGSize {
@@ -174,71 +167,6 @@ extension KeyboardView {
 }
 
 
-extension CGContext {
-    func draw(_ primitive: Primitive, in frame: CGRect) {
-        switch primitive {
-        case .rectangle:
-            fill(frame)
-        case .ellipse:
-            fillEllipse(in: frame)
-        case .text(let text):
-            let font = UIFont.systemFont(ofSize: 12)
-            let attributes = [NSFontAttributeName: font]
-            let attributedText = NSAttributedString(string: text, attributes: attributes)
-            attributedText.draw(in: frame)
-        default: break
-        }
-    }
-    
-    func draw(_ diagram: Diagram, in bounds: CGRect) {
-        switch diagram {
-        case let .primitive(size, primitive):
-            let bounds = size.fit(into: bounds, alignment: .center)
-            draw(primitive, in: bounds)
-            
-        case .align(let alignment, let diagram):
-            let bounds = diagram.size.fit(into: bounds, alignment: alignment)
-            draw(diagram, in: bounds)
-            
-        case let .beside(l, _, r):
-            let (lBounds, rBounds) = bounds.splitThree(firstFraction: l.size.width / diagram.size.width,
-                                                       lastFraction: r.size.width / diagram.size.width,
-                                                       isHorizontal: true)
-            draw(l, in: lBounds)
-            draw(r, in: rBounds)
-            
-        case .below(let top, _, let bottom):
-            let (tBounds, bBounds) = bounds.splitThree(firstFraction: top.size.height / diagram.size.height,
-                                                       lastFraction: bottom.size.height / diagram.size.height,
-                                                       isHorizontal: false)
-            draw(top, in: tBounds)
-            draw(bottom, in: bBounds)
-            
-        case let .attributed(.fillColor(color), diagram):
-            saveGState()
-            color.set()
-            draw(diagram, in: bounds)
-            restoreGState()
-        }
-    }
-}
-
-func rect(width: CGFloat, height: CGFloat) -> Diagram {
-    return .primitive(CGSize(width: width, height: height), .rectangle)
-}
-
-func circle(diameter: CGFloat) -> Diagram {
-    return .primitive(CGSize(width: diameter, height: diameter), .ellipse)
-}
-
-func text(_ theText: String, width: CGFloat, height: CGFloat) -> Diagram {
-    return .primitive(CGSize(width: width, height: height), .text(theText))
-}
-
-func square(side: CGFloat) -> Diagram {
-    return rect(width: side, height: side)
-}
-
 precedencegroup HorizontalCombination {
     higherThan: VerticalCombination
     associativity: left
@@ -300,35 +228,11 @@ extension Diagram : ExpressibleByStringLiteral {
     }
     
     init(extendedGraphemeClusterLiteral value: String) {
-        let values = value.components(separatedBy: "><")
-        if values.count == 1 {
-            self = .primitive(CGSize(width: 1, height: 1), .key(values[0].key))
-        } else if values.count == 2 {
-            guard let w = Double(values[1]) else { fatalError("keyboard layout syntax error") }
-            self = .primitive(CGSize(width: w, height: 1), .key(values[0].key))
-        } else if values.count == 3 {
-            guard let w = Double(values[1]) else { fatalError("keyboard layout syntax error") }
-            guard let h = Double(values[2]) else { fatalError("keyboard layout syntax error") }
-            self = .primitive(CGSize(width: w, height: h), .key(values[0].key))
-        } else {
-            fatalError("keyboard layout syntax error")
-        }
+        self.init(stringLiteral: value)
     }
 
     init(unicodeScalarLiteral value: String) {
-        let values = value.components(separatedBy: "><")
-        if values.count == 1 {
-            self = .primitive(CGSize(width: 1, height: 1), .key(values[0].key))
-        } else if values.count == 2 {
-            guard let w = Double(values[1]) else { fatalError("keyboard layout syntax error") }
-            self = .primitive(CGSize(width: w, height: 1), .key(values[0].key))
-        } else if values.count == 3 {
-            guard let w = Double(values[1]) else { fatalError("keyboard layout syntax error") }
-            guard let h = Double(values[2]) else { fatalError("keyboard layout syntax error") }
-            self = .primitive(CGSize(width: w, height: h), .key(values[0].key))
-        } else {
-            fatalError("keyboard layout syntax error")
-        }
+        self.init(stringLiteral: value)
     }
 }
 

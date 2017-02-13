@@ -27,7 +27,6 @@
 		0E3F18681DFFE24100E80D0C /* SpellingAutoCorretor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E3F18671DFFE24100E80D0C /* SpellingAutoCorretor.swift */; };
 		0E3F186A1DFFEE8300E80D0C /* words.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0E3F18691DFFEE8300E80D0C /* words.txt */; };
 		0E3F18711E001F7700E80D0C /* CipherSettingTopBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E3F18701E001F7700E80D0C /* CipherSettingTopBarView.swift */; };
-		0E3F18731E001FF200E80D0C /* NumericKeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E3F18721E001FF200E80D0C /* NumericKeyboardView.swift */; };
 		0E420BF91E078C0800F41640 /* UIColor+ColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA85D231DFD318700AFB546 /* UIColor+ColorScheme.swift */; };
 		0E420BFA1E078C0800F41640 /* LayoutConstraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1261451DFD680900E7EFE4 /* LayoutConstraints.swift */; };
 		0E420BFB1E078C0800F41640 /* UsefulFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E28CCDC1DFE643A00BCAC75 /* UsefulFunctions.swift */; };
@@ -43,11 +42,9 @@
 		0E420C1A1E07FB5C00F41640 /* AppHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E420C191E07FB5C00F41640 /* AppHelper.m */; };
 		0E420C1B1E080A4F00F41640 /* CipherSettingTopBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E3F18701E001F7700E80D0C /* CipherSettingTopBarView.swift */; };
 		0E4AB8BE1E0BA35200F85D44 /* CipherCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4AB8BD1E0BA35200F85D44 /* CipherCollectionViewCell.swift */; };
-		0E4ABB621E0BF44200F85D44 /* ForwardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4ABB611E0BF44200F85D44 /* ForwardingView.swift */; };
 		0E4ABB641E0C068600F85D44 /* FrontCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4ABB631E0C068600F85D44 /* FrontCollectionViewController.swift */; };
 		0E5DE9231E00E82600FAEF09 /* CipherSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5DE9221E00E82600FAEF09 /* CipherSettingViewController.swift */; };
 		0E5DE9251E00E88300FAEF09 /* KeyboardViewController+CipherSettingViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5DE9241E00E88300FAEF09 /* KeyboardViewController+CipherSettingViewControllerDelegate.swift */; };
-		0E5DE9281E0122AD00FAEF09 /* AlphabetKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5DE9271E0122AD00FAEF09 /* AlphabetKeyboard.swift */; };
 		0E5DE92D1E0134A100FAEF09 /* MorseCodeMapping.json in Resources */ = {isa = PBXBuildFile; fileRef = 0E5DE92C1E0134A100FAEF09 /* MorseCodeMapping.json */; };
 		0E5DE9311E01650800FAEF09 /* CipherManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5DE9301E01650800FAEF09 /* CipherManager.swift */; };
 		0E5DE9331E01656200FAEF09 /* Cipher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5DE9321E01656200FAEF09 /* Cipher.swift */; };
@@ -55,13 +52,11 @@
 		0E6B6A391DFA4ABD00712C0A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E6B6A381DFA4ABD00712C0A /* Assets.xcassets */; };
 		0E6B6A3C1DFA4ABD00712C0A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E6B6A3A1DFA4ABD00712C0A /* LaunchScreen.storyboard */; };
 		0E6B6A4E1DFA4AE400712C0A /* CryptoKB.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 0E6B6A471DFA4AE400712C0A /* CryptoKB.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		0E8A3C2E1E08DE7400274D32 /* AlphabetKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5DE9271E0122AD00FAEF09 /* AlphabetKeyboard.swift */; };
 		0E8A3C2F1E08DE7400274D32 /* KeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA85D191DFD2E9500AFB546 /* KeyboardView.swift */; };
 		0E8A3C311E08DE7400274D32 /* KeyboardView+Touch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E28CCD31DFE3C3900BCAC75 /* KeyboardView+Touch.swift */; };
 		0E8A3C321E08DE7400274D32 /* KeyboardViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E3C9F201DFD943300D44E51 /* KeyboardViewDelegate.swift */; };
 		0E8A3C331E08DE7400274D32 /* KeyboardViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA85D1A1DFD2E9500AFB546 /* KeyboardViewItem.swift */; };
 		0E8A3C351E08DE7400274D32 /* IconDrawingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1261491DFD762200E7EFE4 /* IconDrawingView.swift */; };
-		0E8A3C361E08DE7400274D32 /* NumericKeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E3F18721E001FF200E80D0C /* NumericKeyboardView.swift */; };
 		0E8A3C371E08DE7400274D32 /* Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA85D131DFD2E3700AFB546 /* Keyboard.swift */; };
 		0E8A3C381E08DE7400274D32 /* DefaultKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA85D111DFD2E3700AFB546 /* DefaultKeyboard.swift */; };
 		0EA85D141DFD2E3700AFB546 /* DefaultKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA85D111DFD2E3700AFB546 /* DefaultKeyboard.swift */; };
@@ -310,7 +305,6 @@
 		0E3F18671DFFE24100E80D0C /* SpellingAutoCorretor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpellingAutoCorretor.swift; sourceTree = "<group>"; };
 		0E3F18691DFFEE8300E80D0C /* words.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = words.txt; sourceTree = "<group>"; };
 		0E3F18701E001F7700E80D0C /* CipherSettingTopBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CipherSettingTopBarView.swift; sourceTree = "<group>"; };
-		0E3F18721E001FF200E80D0C /* NumericKeyboardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumericKeyboardView.swift; sourceTree = "<group>"; };
 		0E420BFC1E0790D300F41640 /* KeyboardSettingInstructionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardSettingInstructionViewController.swift; sourceTree = "<group>"; };
 		0E420BFE1E07C63700F41640 /* SettingInstructionPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingInstructionPageViewController.swift; sourceTree = "<group>"; };
 		0E420C001E07D5CB00F41640 /* CryptoKeyboard-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CryptoKeyboard-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -323,13 +317,11 @@
 		0E420C181E07FB5C00F41640 /* AppHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppHelper.h; sourceTree = "<group>"; };
 		0E420C191E07FB5C00F41640 /* AppHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppHelper.m; sourceTree = "<group>"; };
 		0E4AB8BD1E0BA35200F85D44 /* CipherCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CipherCollectionViewCell.swift; sourceTree = "<group>"; };
-		0E4ABB611E0BF44200F85D44 /* ForwardingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForwardingView.swift; sourceTree = "<group>"; };
 		0E4ABB631E0C068600F85D44 /* FrontCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FrontCollectionViewController.swift; sourceTree = "<group>"; };
 		0E56FE321E0E1A4C00BF4377 /* CKB.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CKB.h; sourceTree = "<group>"; };
 		0E56FE331E0E1A4C00BF4377 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0E5DE9221E00E82600FAEF09 /* CipherSettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CipherSettingViewController.swift; sourceTree = "<group>"; };
 		0E5DE9241E00E88300FAEF09 /* KeyboardViewController+CipherSettingViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "KeyboardViewController+CipherSettingViewControllerDelegate.swift"; sourceTree = "<group>"; };
-		0E5DE9271E0122AD00FAEF09 /* AlphabetKeyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlphabetKeyboard.swift; sourceTree = "<group>"; };
 		0E5DE92C1E0134A100FAEF09 /* MorseCodeMapping.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = MorseCodeMapping.json; sourceTree = "<group>"; };
 		0E5DE9301E01650800FAEF09 /* CipherManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CipherManager.swift; sourceTree = "<group>"; };
 		0E5DE9321E01656200FAEF09 /* Cipher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cipher.swift; sourceTree = "<group>"; };
@@ -405,13 +397,6 @@
 			name = Cyphers;
 			sourceTree = "<group>";
 		};
-		0E2971E31E5150FD00F098D9 /* FunctionalKB */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = FunctionalKB;
-			sourceTree = "<group>";
-		};
 		0E3F18661DFFE22400E80D0C /* SpellingAutoCorrector */ = {
 			isa = PBXGroup;
 			children = (
@@ -475,8 +460,6 @@
 		0E56FE3D1E0E1AE000BF4377 /* KeyboardView */ = {
 			isa = PBXGroup;
 			children = (
-				0E56FE3F1E0E1B2B00BF4377 /* NumericKeyboardView */,
-				0E5DE9261E01228900FAEF09 /* AlphabetKeyboardView */,
 				0E56FE3E1E0E1B1700BF4377 /* FullFeatureKeyboardView */,
 			);
 			name = KeyboardView;
@@ -492,22 +475,6 @@
 				0E1261491DFD762200E7EFE4 /* IconDrawingView.swift */,
 			);
 			name = FullFeatureKeyboardView;
-			sourceTree = "<group>";
-		};
-		0E56FE3F1E0E1B2B00BF4377 /* NumericKeyboardView */ = {
-			isa = PBXGroup;
-			children = (
-				0E3F18721E001FF200E80D0C /* NumericKeyboardView.swift */,
-			);
-			name = NumericKeyboardView;
-			sourceTree = "<group>";
-		};
-		0E5DE9261E01228900FAEF09 /* AlphabetKeyboardView */ = {
-			isa = PBXGroup;
-			children = (
-				0E5DE9271E0122AD00FAEF09 /* AlphabetKeyboard.swift */,
-			);
-			name = AlphabetKeyboardView;
 			sourceTree = "<group>";
 		};
 		0E6B6A251DFA4ABD00712C0A = {
@@ -543,7 +510,6 @@
 				0E420C071E07F81900F41640 /* CipherTranslatorViewController.swift */,
 				0E420BFC1E0790D300F41640 /* KeyboardSettingInstructionViewController.swift */,
 				0E420BFE1E07C63700F41640 /* SettingInstructionPageViewController.swift */,
-				0E4ABB611E0BF44200F85D44 /* ForwardingView.swift */,
 				0E420C061E07F7DE00F41640 /* supportingFiles */,
 			);
 			path = CryptoKeyboard;
@@ -552,7 +518,6 @@
 		0E6B6A481DFA4AE400712C0A /* CryptoKB */ = {
 			isa = PBXGroup;
 			children = (
-				0E2971E31E5150FD00F098D9 /* FunctionalKB */,
 				0E3F18661DFFE22400E80D0C /* SpellingAutoCorrector */,
 				0E28CCE01DFE73E900BCAC75 /* controller */,
 				0EA85D181DFD2E7A00AFB546 /* View */,
@@ -938,8 +903,6 @@
 				0E420BFF1E07C63700F41640 /* SettingInstructionPageViewController.swift in Sources */,
 				0E4ABB641E0C068600F85D44 /* FrontCollectionViewController.swift in Sources */,
 				0E420C1B1E080A4F00F41640 /* CipherSettingTopBarView.swift in Sources */,
-				0E8A3C2E1E08DE7400274D32 /* AlphabetKeyboard.swift in Sources */,
-				0E4ABB621E0BF44200F85D44 /* ForwardingView.swift in Sources */,
 				0E8A3C2F1E08DE7400274D32 /* KeyboardView.swift in Sources */,
 				0E8A3C311E08DE7400274D32 /* KeyboardView+Touch.swift in Sources */,
 				0E8A3C321E08DE7400274D32 /* KeyboardViewDelegate.swift in Sources */,
@@ -947,7 +910,6 @@
 				0E2972041E516A0600F098D9 /* KeyboardDiagram.swift in Sources */,
 				0E8A3C331E08DE7400274D32 /* KeyboardViewItem.swift in Sources */,
 				0E8A3C351E08DE7400274D32 /* IconDrawingView.swift in Sources */,
-				0E8A3C361E08DE7400274D32 /* NumericKeyboardView.swift in Sources */,
 				0E8A3C371E08DE7400274D32 /* Keyboard.swift in Sources */,
 				0E8A3C381E08DE7400274D32 /* DefaultKeyboard.swift in Sources */,
 			);
@@ -961,7 +923,6 @@
 				0E3F18711E001F7700E80D0C /* CipherSettingTopBarView.swift in Sources */,
 				0EA85D241DFD318700AFB546 /* UIColor+ColorScheme.swift in Sources */,
 				0E28CCDF1DFE6D7A00BCAC75 /* TopBarView.swift in Sources */,
-				0E5DE9281E0122AD00FAEF09 /* AlphabetKeyboard.swift in Sources */,
 				0E1261481DFD75EE00E7EFE4 /* KeyboardViewController.swift in Sources */,
 				0EA85D141DFD2E3700AFB546 /* DefaultKeyboard.swift in Sources */,
 				0EA85D1D1DFD2E9500AFB546 /* KeyboardView.swift in Sources */,
@@ -973,7 +934,6 @@
 				0E28CCFB1DFE854800BCAC75 /* TopBarView+Touch.swift in Sources */,
 				0E28CCDA1DFE551000BCAC75 /* KeyboardViewController+AutoSuffixPeriod.swift in Sources */,
 				0E28CCFD1DFE85EE00BCAC75 /* KeyboardViewController+TopBarViewDelegate.swift in Sources */,
-				0E3F18731E001FF200E80D0C /* NumericKeyboardView.swift in Sources */,
 				0E5DE9251E00E88300FAEF09 /* KeyboardViewController+CipherSettingViewControllerDelegate.swift in Sources */,
 				0E28CCDD1DFE643A00BCAC75 /* UsefulFunctions.swift in Sources */,
 				0E3C9F211DFD943300D44E51 /* KeyboardViewDelegate.swift in Sources */,
