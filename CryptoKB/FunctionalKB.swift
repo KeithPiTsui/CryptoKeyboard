@@ -20,13 +20,7 @@ indirect enum Diagram {
     case below(Diagram, Diagram)
     case attributed(Attribute, Diagram)
     case align(CGPoint, Diagram)
-}
-
-enum Attribute {
-    case fillColor(UIColor)
-}
-
-extension Diagram {
+    
     var size: CGSize {
         switch self {
         case .primitive(let size, _):
@@ -60,7 +54,13 @@ extension Diagram {
         let render = UIGraphicsImageRenderer(size: size)
         return render.image {$0.cgContext.draw(self, in: CGRect(origin: .zero, size: size))}
     }
+
 }
+
+enum Attribute {
+    case fillColor(UIColor)
+}
+
 
 extension CGSize {
     func fit(into rect: CGRect, alignment: CGPoint) -> CGRect {

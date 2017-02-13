@@ -2,17 +2,6 @@
 
 import UIKit
 
-let bounds = CGRect(origin: .zero, size: CGSize(width: 300, height: 200))
-let render = UIGraphicsImageRenderer(bounds: bounds)
-let img = render.image { (context) in
-    UIColor.blue.setFill()
-    context.fill(CGRect(x: 0.0, y: 37.5, width: 75.0, height: 75.0))
-    UIColor.red.setFill()
-    context.fill(CGRect(x: 75.0, y: 0.0, width: 150.0, height: 150.0))
-    UIColor.green.setFill()
-    context.cgContext.fillEllipse(in: CGRect(x: 225.0, y: 37.5, width: 75.0, height: 75.0))
-}
-
 enum Primitive {
     case ellipse
     case rectangle
@@ -21,7 +10,7 @@ enum Primitive {
 
 indirect enum Diagram {
     case primitive(CGSize, Primitive)
-    case beside(Diagram, Diagram)
+    case beside(Diagram, CGFloat, Diagram)
     case below(Diagram, Diagram)
     case attributed(Attribute, Diagram)
     case align(CGPoint, Diagram)
@@ -38,10 +27,10 @@ extension Diagram {
             return size
         case .attributed(_, let x):
             return x.size
-        case let .beside(l, r):
+        case let .beside(l, gap, r):
             let sizeL = l.size
             let sizeR = r.size
-            return CGSize(width: sizeL.width + sizeR.width, height: max(sizeL.height, sizeR.height))
+            return CGSize(width: sizeL.width + sizeR.width + gap, height: max(sizeL.height, sizeR.height))
         case let .below(l, r):
             let sizeL = l.size
             let sizeR = r.size
@@ -98,6 +87,23 @@ extension CGRect {
         let length = edge.isHorizontal ? width: height
         return divided(atDistance: length * ratio, from: edge)
     }
+    
+    func splitThree(firstFraction: CGFloat, lastFraction: CGFloat, isHorizontal: Bool) ->(CGRect, CGRect) {
+        if isHorizontal {
+            let w1 = self.width * firstFraction
+            let c1 = CGRect(x: self.origin.x, y: 0, width: w1, height: self.height)
+            let w2 = self.width * lastFraction
+            let c2 = CGRect(x: self.origin.x + self.width - w2, y: 0, width: w2, height: self.height)
+            return (c1, c2)
+        } else {
+            let h1 = self.height * firstFraction
+            let c1 = CGRect(x: 0, y: 0, width: self.width, height: h1)
+            let h2 = self.height * lastFraction
+            let c2 = CGRect(x: 0, y: 0, width: self.width, height: h2)
+            return (c1, c2)
+        }
+    }
+    
 }
 
 extension CGRectEdge {
@@ -129,8 +135,9 @@ extension CGContext {
             let bounds = diagram.size.fit(into: bounds, alignment: alignment)
             draw(diagram, in: bounds)
             
-        case let .beside(l, r):
-            let (lBounds, rBounds) = bounds.split(ratio: l.size.width/diagram.size.width, edge: .minXEdge)
+        case let .beside(l, _, r):
+//            let (lBounds, rBounds) = bounds.split(ratio: l.size.width/(diagram.size.width - gap), edge: .minXEdge)
+            let (lBounds, rBounds) = bounds.splitThree(firstFraction: l.size.width / diagram.size.width, lastFraction: r.size.width / diagram.size.width, isHorizontal: true)
             draw(l, in: lBounds)
             draw(r, in: rBounds)
             
@@ -175,8 +182,17 @@ precedencegroup VerticalCombination {
 
 infix operator ||| : HorizontalCombination
 func ||| (l: Diagram, r: Diagram) -> Diagram {
-    return .beside(l, r)
+    return .beside(l, 0, r)
 }
+
+func ||| (l: Diagram, g: CGFloat) -> Diagram {
+    return .beside(l, g, Diagram())
+}
+
+func ||| (g: CGFloat, r: Diagram) -> Diagram {
+    return .beside(Diagram(), g, r)
+}
+
 
 infix operator --- : VerticalCombination
 func --- (l: Diagram, r: Diagram) -> Diagram {
@@ -210,9 +226,9 @@ extension Diagram {
 let blueSquare = square(side: 1).filled(.blue)
 let redSquare = square(side: 2).filled(.red)
 let greenCircle = circle(diameter: 1).filled(.green)
-let x1 = blueSquare ||| redSquare ||| greenCircle
+let x1 = 1 ||| blueSquare ||| 1 ||| redSquare ||| greenCircle
 
-let imgX1 = x1.image(of: CGSize(width: 100, height: 100))
+let imgX1 = x1.image(of: CGSize(width: 1000, height: 1000))
 
 let cyanCircle = circle(diameter: 1).filled(.cyan)
 
