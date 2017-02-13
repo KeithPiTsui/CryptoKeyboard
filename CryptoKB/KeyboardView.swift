@@ -28,7 +28,7 @@ class KeyboardView: UIView {
         }
     }
     
-    let keyboardDiagram: Diagram = Keyboard.defaultKeyboardDiagram
+    let keyboardDiagram: Diagram = Keyboard.alphaKeyboardDiagram //Keyboard.defaultKeyboardDiagram
     
     
     /// To record bound change
@@ -44,8 +44,6 @@ class KeyboardView: UIView {
         isMultipleTouchEnabled = true
         isUserInteractionEnabled = true
         isOpaque = false
-        
-//        assembleKeyboardItems()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -57,11 +55,9 @@ class KeyboardView: UIView {
         if (bounds.width != 0 && bounds.height != 0)
             && (boundSize == nil || (bounds.size.equalTo(boundSize!) == false)) {
             boundSize = bounds.size
-//            layoutKeyboard()
             self.subviews.forEach({ (subview) in
                 subview.removeFromSuperview()
             })
-            
             self.layout(keyboardDiagram, in: bounds)
             
         }

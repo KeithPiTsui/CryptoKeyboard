@@ -209,14 +209,22 @@ extension Keyboard {
     }()
 
     static let defaultKeyboardDiagram: Diagram = {
-        
-        let kbDiagram: Diagram = "Q"|||"W"|||"E"|||"R"|||"T"|||"Y"|||"U"|||"I"|||"O"|||"P"
-                                --- "A"|||"S"|||"D"|||"F"|||"G"|||"H"|||"J"|||"K"|||"L"
-                                --- "Z"|||"X"|||"C"|||"V"|||"B"|||"N"|||"M"
-        
-        return kbDiagram
+        return "Q"|||"W"|||"E"|||"R"|||"T"|||"Y"|||"U"|||"I"|||"O"|||"P"
+                --- 0.5 ||| "A"|||"S"|||"D"|||"F"|||"G"|||"H"|||"J"|||"K"|||"L" ||| 0.5
+                --- "shift><1.2" ||| 0.1 ||| "Z"|||"X"|||"C"|||"V"|||"B"|||"N"|||"M" ||| 0.1 ||| "backspace><1.2"
+                --- "modechange" ||| "keyboardchange" ||| "settings" ||| "space><4" ||| "return><2"
+    }()
+ 
+    static let numberKeyboardDiagram: Diagram = {
+        return "1" ||| "2" ||| "3" --- "4" ||| "5" ||| "6" --- "7" ||| "8" ||| "9" --- 1 ||| "0" ||| "backspace"
     }()
     
+    static let alphaKeyboardDiagram: Diagram = {
+        return "Q"|||"W"|||"E"|||"R"|||"T"|||"Y"|||"U"|||"I"|||"O"|||"P"
+            --- 0.5 ||| "A"|||"S"|||"D"|||"F"|||"G"|||"H"|||"J"|||"K"|||"L" ||| 0.5
+            --- "shift><1.2" ||| 0.1 ||| "Z"|||"X"|||"C"|||"V"|||"B"|||"N"|||"M" ||| 0.1 ||| "backspace><1.2"
+            --- 1
+    }()
 }
 
 extension String {

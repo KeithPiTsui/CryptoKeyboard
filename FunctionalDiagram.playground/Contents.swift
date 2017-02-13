@@ -251,7 +251,7 @@ let imgX2 = x2.image(of: CGSize(width: 1000, height: 1000))
 
 
 
-
+let strs = "<><1><2".components(separatedBy: "><")
 
 
 
