@@ -78,7 +78,8 @@ extension KeyboardViewController {
     }
     
     private func nextKeyboardPage(_ sender: KeyboardViewItem) {
-//        guard let page = sender.key.toMode else {return}
+        guard let mode = sender.key.toMode else {return}
+        self.keyboardView.keyboardMode = mode
     }
     
     private func pressSettings(_ sender: KeyboardViewItem) {
@@ -158,7 +159,7 @@ extension KeyboardViewController {
         
         if key.type == .punctuation {
             delay(0.2) {
-//                self.keyboardView.keyboardPage = 0
+                self.keyboardView.keyboardMode = 0
             }
         }
         

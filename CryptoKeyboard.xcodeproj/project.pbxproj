@@ -340,6 +340,7 @@
 		0EAEAC941E5075CD00AAA7B0 /* ReactiveCocoa.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ReactiveCocoa.xcodeproj; path = ReactiveCocoa/ReactiveCocoa.xcodeproj; sourceTree = "<group>"; };
 		0EAEACAC1E5075DF00AAA7B0 /* ReactiveSwift.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ReactiveSwift.xcodeproj; path = ReactiveCocoa/Carthage/Checkouts/ReactiveSwift/ReactiveSwift.xcodeproj; sourceTree = "<group>"; };
 		0EAEACC41E5075E800AAA7B0 /* Result.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Result.xcodeproj; path = ReactiveCocoa/Carthage/Checkouts/Result/Result.xcodeproj; sourceTree = "<group>"; };
+		0EFCAF741E5289D100F2B99A /* Experiment.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Experiment.playground; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -480,6 +481,7 @@
 		0E6B6A251DFA4ABD00712C0A = {
 			isa = PBXGroup;
 			children = (
+				0EFCAF741E5289D100F2B99A /* Experiment.playground */,
 				0E2971CF1E51403100F098D9 /* FunctionalDiagram.playground */,
 				0EAEACC41E5075E800AAA7B0 /* Result.xcodeproj */,
 				0EAEACAC1E5075DF00AAA7B0 /* ReactiveSwift.xcodeproj */,

@@ -19,22 +19,22 @@ struct Keyboard {
     static let numberPunctuationKeyboardDiagram: Diagram = {
         return "123456789".diagram
             --- ("-/:;()$&@\"").diagram
-            --- "modechange" ||| 0.1 ||| ".,?!'".diagram ||| 0.1 ||| "backspace><1.2"
-            --- ["modechange", "keyboardchange", "settings", "space><4", "return><2"].hcat
+            --- "modechangeSym" ||| 0.1 ||| ".,?!'".diagram ||| 0.1 ||| "backspace><1.2"
+            --- ["modechangeABC", "keyboardchange", "settings", "space><4", "return><2"].hcat
     }()
     
     static let symbolKeyboardDiagram: Diagram = {
         return "[]{}#%^*+=".diagram
             --- "_\\|~<>€£¥•".diagram
-            --- "modechange" ||| 0.1 ||| ".,?!'".diagram ||| 0.1 ||| "backspace><1.2"
-            --- ["modechange", "keyboardchange", "settings", "space><4", "return><2"].hcat
+            --- "modechange123" ||| 0.1 ||| ".,?!'".diagram ||| 0.1 ||| "backspace><1.2"
+            --- ["modechangeABC", "keyboardchange", "settings", "space><4", "return><2"].hcat
     }()
     
     static let defaultKeyboardDiagram: Diagram = {
         return "QWERTYUIOP".diagram
             --- 0.5 ||| "ASDFGHJKL".diagram ||| 0.5
             --- "shift><1.2" ||| 0.1 ||| "ZXCVBNM".diagram ||| 0.1 ||| "backspace><1.2"
-            --- ["modechange", "keyboardchange", "settings", "space><4", "return><2"].hcat
+            --- ["modechange123", "keyboardchange", "settings", "space><4", "return><2"].hcat
     }()
  
     static let numberKeyboardDiagram: Diagram = {
@@ -67,7 +67,7 @@ extension String {
             return .shift
         } else if text == "backspace" {
             return .backspace
-        } else if text == "modechange" {
+        } else if text == "modechange123" || text == "modechangeABC" || text == "modechangeSym" {
             return .modeChange
         } else if text == "keyboardchange" {
             return  .keyboardChange
@@ -96,9 +96,15 @@ extension String {
     }
     
     var keyInscript: String? {
-        switch self.keyType {
-        case .modeChange:
+        if self == "modechange123" {
             return "123"
+        } else if self == "modechangeABC" {
+            return "ABC"
+        } else if self == "modechangeSym" {
+            return "#+="
+        }
+        
+        switch self.keyType {
         case .return:
             return "Ret"
         default:
@@ -107,7 +113,16 @@ extension String {
     }
     
     var key: Key {
-        return Key(type: self.keyType, meaning: self.keyMeaning, inscript: self.keyInscript, mode: nil)
+        var mode: Int? = nil
+        if self == "modechange123" {
+            mode = 1
+        } else if self == "modechangeABC" {
+            mode = 0
+        } else if self == "modechangeSym" {
+            mode = 2
+        }
+        return Key(type: self.keyType, meaning: self.keyMeaning, inscript: self.keyInscript, mode: mode)
+
     }
 }
 
