@@ -18,8 +18,8 @@ extension KeyboardView {
     }
     
     private func handleControl(_ view: UIView?, controlEvent: UIControlEvents) {
-        guard let control = view as? KeyboardViewItem, let delegate = delegate else { return }
-        delegate.keyboardViewItem(control, receivedEvent: controlEvent, inKeyboard: self)
+        guard let control = view as? KeyboardViewItem else { return }
+        delegate?.keyboardViewItem(control, receivedEvent: controlEvent, inKeyboard: self)
         
         guard let handlers = eventHanlders[controlEvent.rawValue] else { return }
         handlers.forEach { handler in

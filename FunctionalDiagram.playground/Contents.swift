@@ -2,6 +2,9 @@
 
 import UIKit
 
+
+let s = "-/:;()$&@\""
+
 enum Primitive {
     case ellipse
     case rectangle

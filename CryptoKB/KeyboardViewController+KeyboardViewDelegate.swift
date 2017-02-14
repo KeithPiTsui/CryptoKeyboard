@@ -8,84 +8,46 @@
 
 import UIKit
 import AudioToolbox
+import ReactiveSwift
+import ReactiveCocoa
+import Result
+
 
 // MARK: -
 // MARK: Keyboard View Delegate Extension
-extension KeyboardViewController: KeyboardViewDelegate {
+extension KeyboardViewController {
     
-    func keyboardViewItem(_ item: KeyboardViewItem, receivedEvent event: UIControlEvents, inKeyboard keyboard: KeyboardView) {
-        print("\(#function)")
-        handlEvent(event, withKeyboardViewItem: item)
+    func keyboardViewEventBinding() {
+        bind(.touchUpInside, to: .keyboardChange, with: self.changeKeyboard)
+        
+        bind(.touchDown, to: .backspace, with: self.pressBackspace)
+        bind(.touchDragExit, to: .backspace, with: self.pressBackspaceCancel)
+        bind(.touchUpOutside, to: .backspace, with: self.pressBackspaceCancel)
+        bind(.touchCancel, to: .backspace, with: self.pressBackspaceCancel)
+        bind(.touchDragOutside, to: .backspace, with: self.pressBackspaceCancel)
+        bind(.touchUpInside, to: .backspace, with: self.pressBackspaceCancel)
+        
+        bind(.touchDown, to: .shift, with: self.pressShiftDown)
+        bind(.touchDownRepeat, to: .shift, with: self.doubleTapShift)
+        bind(.touchUpInside, to: .modeChange, with: self.nextKeyboardPage)
+        bind(.touchUpInside, to: .settings, with: self.pressSettings)
+        
+        keyboardView.reactive.controlEvents(.touchDown).filter{$0.key.isHighlightable}.observeValues{self.highlightItem($0)}
+        keyboardView.reactive.controlEvents(.touchDragInside).filter{$0.key.isHighlightable}.observeValues{self.highlightItem($0)}
+        keyboardView.reactive.controlEvents(.touchDragEnter).filter{$0.key.isHighlightable}.observeValues{self.highlightItem($0)}
+        
+        keyboardView.reactive.controlEvents(.touchUpInside).filter{$0.key.isHighlightable}.observeValues{self.unhighlightItem($0)}
+        keyboardView.reactive.controlEvents(.touchUpOutside).filter{$0.key.isHighlightable}.observeValues{self.unhighlightItem($0)}
+        keyboardView.reactive.controlEvents(.touchDragOutside).filter{$0.key.isHighlightable}.observeValues{self.unhighlightItem($0)}
+        
+        keyboardView.reactive.controlEvents(.touchUpInside).filter{$0.key.hasOutput}.observeValues{self.pressAnOutputItem($0)}
+        keyboardView.reactive.controlEvents(.touchDown).observeValues{self.playClickSound($0)}
     }
     
-    // MARK -
-    // MARK - Touch Event Hanlder
-    private func handlEvent(_ event: UIControlEvents, withKeyboardViewItem item: KeyboardViewItem) {
-        guard let key = item.key else { return }
-        
-        switch key.type {
-            case .keyboardChange:
-                if event == .touchUpInside {
-                    changeKeyboard(item)
-                }
-                
-            case .backspace:
-                if event == .touchDown {
-                    pressBackspace(item)
-                }
-                if [.touchDragExit,.touchUpInside, .touchUpOutside, .touchCancel, .touchDragOutside].contains(event) {
-                    pressBackspaceCancel(item)
-                }
-                
-            case .shift:
-                if event == .touchDown {
-                    pressShiftDown(item)
-                }
-                if event == .touchDownRepeat {
-                    doubleTapShift(item)
-                }
-                
-            case .modeChange:
-                if event == .touchUpInside {
-                    nextKeyboardPage(item)
-                }
-            case .settings:
-                if event == .touchUpInside {
-                    pressSettings(item)
-                }
-            default:
-                break
-        }
-        
-        if key.isHighlightable {
-            if UIDevice.current.userInterfaceIdiom != UIUserInterfaceIdiom.pad {
-                if [.touchDown, .touchDragInside, .touchDragEnter].contains(event) {
-                    highlightItem(item)
-                }
-                if [.touchUpInside, .touchUpOutside, .touchDragOutside].contains(event) {
-                    unhighlightItem(item)
-                }
-            }
-        }
-        
-        
-        if key.hasOutput && event == .touchUpInside {
-            pressAnOutputItem(item)
-        }
-        
-        if key.type != .shift && key.type != .modeChange {
-            if [.touchDown, .touchDragInside, .touchDragEnter].contains(event) {
-                highlightItem(item)
-            }
-            if [.touchUpInside, .touchUpOutside, .touchDragOutside, .touchDragExit, .touchCancel].contains(event) {
-                unhighlightItem(item)
-            }
-        }
-        
-        if event == .touchDown {
-            playClickSound(item)
-        }
+    func bind(_ event: UIControlEvents, to keyType: Key.KeyType, with action: @escaping (KeyboardViewItem) -> Void) {
+        keyboardView.reactive.controlEvents(event).filter{$0.key.type == keyType}.observeValues{action($0)}
     }
+    
     
     private func changeKeyboard(_ sender: KeyboardViewItem) {
         advanceToNextInputMode()

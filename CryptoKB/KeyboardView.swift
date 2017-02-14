@@ -20,8 +20,15 @@ final class KeyboardView: UIView {
     /// a delegate to recieve keyboard event, like which key is pressed
     weak var delegate: KeyboardViewDelegate?
     
-    var keyboardDiagram: Diagram = Keyboard.defaultKeyboardDiagram {
-        didSet {self.setNeedsLayout()}
+    var keyboardDiagram: Diagram = Keyboard.symbolKeyboardDiagram { didSet {self.setNeedsLayout()}}
+    
+    var shiftState: ShiftState = .disabled {
+        didSet {
+            self.subviews.forEach{
+                guard let i = $0 as? KeyboardViewItem else { return }
+                i.shiftState = self.shiftState
+            }
+        }
     }
     
     /// To record bound change
@@ -37,6 +44,7 @@ final class KeyboardView: UIView {
         isMultipleTouchEnabled = true
         isUserInteractionEnabled = true
         isOpaque = false
+        
     }
     
     required init?(coder aDecoder: NSCoder) {

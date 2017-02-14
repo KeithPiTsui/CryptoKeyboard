@@ -11,15 +11,10 @@ import Result
 import ReactiveCocoa
 import ReactiveSwift
 
-//weak var GlobalKeyboardViewController: KeyboardViewController! = nil
-var GloabalKeyboardShiftState: ShiftState = .disabled
 
 final class KeyboardViewController: UIInputViewController {
     
-    // MARK: -
-    // MARK: Class or Static Properties
-    static let shiftStateChangedNotification = Notification.Name("ShiftStateChanged")
-    
+
     // MARK: -
     // MARK: Instance Properties
     
@@ -27,12 +22,7 @@ final class KeyboardViewController: UIInputViewController {
     var cipherType: CipherType = .caesar {didSet{textInterpreter.cipherType = cipherType}}
     var cipherKey: String = "03" {didSet{textInterpreter.cipherKey = cipherKey}}
     
-    lazy var keyboardView: KeyboardView = {
-
-        return KeyboardView(withDelegate:self);
-    
-    
-    }()
+    lazy var keyboardView: KeyboardView = KeyboardView(frame: .zero, withDelegate: nil)
     
     lazy var topBar: TopBarView = {
         let tbv = TopBarView(delegate:self)
@@ -54,11 +44,7 @@ final class KeyboardViewController: UIInputViewController {
     
     var shiftState: ShiftState = .disabled {
         didSet {
-            
-            GloabalKeyboardShiftState = shiftState
-            if (oldValue != shiftState) {
-                NotificationCenter.default.post(name: KeyboardViewController.shiftStateChangedNotification, object: nil)
-            }
+            keyboardView.shiftState = shiftState
         }
     }
     
@@ -167,11 +153,7 @@ final class KeyboardViewController: UIInputViewController {
         view.addSubview(topBar)
         view.addSubview(keyboardView)
         
-        keyboardView.reactive.continuousKeyPressed.observeValues { (keyboardViewItem) in
-            let key = keyboardViewItem.key
-            print(key)
-        }
-        
+        keyboardViewEventBinding()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -210,24 +192,6 @@ final class KeyboardViewController: UIInputViewController {
         UserDefaults.standard.synchronize()
     }
 }
-
-func printFontNames() {
-    for familyName in UIFont.familyNames {
-        for fontname in UIFont.fontNames(forFamilyName: familyName) {
-            print("Family:\(familyName)\nFont:\(fontname)")
-        }
-    }
-}
-
-func testSpellingAutoCorrector() {
-    
-    let checkedWord = SpellChecker.defaultChecker.correct(word: "Helol")
-    print(checkedWord)
-}
-
-
-
-
 
 
 

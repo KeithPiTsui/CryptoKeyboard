@@ -122,6 +122,7 @@ extension KeyboardView {
     func layout(_ primitive: Primitive, in frame: CGRect) {
         if case let .key(k) = primitive {
             let kv = KeyboardViewItem(frame: frame, key: k)
+            kv.shiftState = self.shiftState
             self.addSubview(kv)
         }
     }

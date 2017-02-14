@@ -10,11 +10,26 @@
 import UIKit
 
 struct Keyboard {
-    static let symbols = "[]{}#%^*+=-\\|~<>€£¥•"
+    static let symbols = "()[]{}#%^*+=-\\|~<>€£¥•/:&$@_"
     static let letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-    static let puncutations = ".,?!'"
+    static let puncutations = ".,?!';\""
     static let numbers = "1234567890"
 
+    
+    static let numberPunctuationKeyboardDiagram: Diagram = {
+        return "123456789".diagram
+            --- ("-/:;()$&@\"").diagram
+            --- "modechange" ||| 0.1 ||| ".,?!'".diagram ||| 0.1 ||| "backspace><1.2"
+            --- ["modechange", "keyboardchange", "settings", "space><4", "return><2"].hcat
+    }()
+    
+    static let symbolKeyboardDiagram: Diagram = {
+        return "[]{}#%^*+=".diagram
+            --- "_\\|~<>€£¥•".diagram
+            --- "modechange" ||| 0.1 ||| ".,?!'".diagram ||| 0.1 ||| "backspace><1.2"
+            --- ["modechange", "keyboardchange", "settings", "space><4", "return><2"].hcat
+    }()
+    
     static let defaultKeyboardDiagram: Diagram = {
         return "QWERTYUIOP".diagram
             --- 0.5 ||| "ASDFGHJKL".diagram ||| 0.5
@@ -40,13 +55,13 @@ extension String {
     
     var keyType: Key.KeyType {
         let text = self
-        if Keyboard.symbols.contains(text) && text.lengthOfBytes(using: .utf8) == 1 {
+        if Keyboard.symbols.contains(text) && text.characters.count == 1{
             return .symbol
-        } else if Keyboard.letters.contains(text) && text.lengthOfBytes(using: .utf8) == 1 {
+        } else if Keyboard.letters.contains(text) && text.characters.count == 1 {
             return .alphabet
-        } else if Keyboard.puncutations.contains(text) && text.lengthOfBytes(using: .utf8) == 1 {
+        } else if Keyboard.puncutations.contains(text) && text.characters.count == 1{
             return .punctuation
-        } else if Keyboard.numbers.contains(text) && text.lengthOfBytes(using: .utf8) == 1 {
+        } else if Keyboard.numbers.contains(text) && text.characters.count == 1{
             return .number
         } else if text == "shift" {
             return .shift
@@ -63,7 +78,7 @@ extension String {
         } else if text == "return" {
             return .return
         } else {
-            fatalError("Not a key type representation")
+            fatalError("Not a key type representation \(text)")
         }
     }
     
