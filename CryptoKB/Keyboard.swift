@@ -8,12 +8,12 @@
 
 import Foundation
 
-enum ShiftState {
+public enum ShiftState {
     case disabled
     case enabled
     case locked
     
-    var isUppercase: Bool {
+    public var isUppercase: Bool {
         switch self {
         case .disabled:
             return false
@@ -23,10 +23,10 @@ enum ShiftState {
     }
 }
 
-struct Key: Hashable, CustomStringConvertible {
+public struct Key: Hashable, CustomStringConvertible {
     private static var counter = sequence(first: 0) { $0 + 1 }
-    let hashValue: Int = Key.counter.next()!
-    var description: String { return "\(self.hashValue)"}
+    public let hashValue: Int = Key.counter.next()!
+    public var description: String { return "\(self.hashValue)"}
     
     enum KeyType: UInt {
         case shift
@@ -79,7 +79,7 @@ struct Key: Hashable, CustomStringConvertible {
                          : (self.lowercaseKeyCap ?? self.uppercaseKeyCap ?? "")
     }
     
-    static func == (lhs: Key, rhs: Key) -> Bool { return lhs.hashValue == rhs.hashValue }
+    public static func == (lhs: Key, rhs: Key) -> Bool { return lhs.hashValue == rhs.hashValue }
 }
 
 

@@ -19,6 +19,11 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>KTKeyboard.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>27</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
@@ -43,6 +48,11 @@
 			<true/>
 		</dict>
 		<key>0E6B6A461DFA4AE400712C0A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>0EFCAFF81E52AAA800F2B99A</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -36,16 +36,6 @@ protocol Endecryting {
     static func decrypt(message: String, withKey key: String) throws -> String;
 }
 
-extension String {
-    var chars: [String] {
-        return self.characters.reduce([]) {(initializer:[String], element: Character) -> [String] in
-            var strings = initializer
-            strings.append("\(element)")
-            return strings
-        }
-    }
-}
-
 fileprivate let letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ".chars;
 
 struct CaesarCipher: Endecryting {

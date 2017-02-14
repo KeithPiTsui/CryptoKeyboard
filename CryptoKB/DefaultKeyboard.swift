@@ -8,40 +8,41 @@
 //
 
 import UIKit
+import Runes
 
-struct Keyboard {
-    static let symbols = "()[]{}#%^*+=-\\|~<>€£¥•/:&$@_"
-    static let letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-    static let puncutations = ".,?!';\""
-    static let numbers = "1234567890"
+public struct Keyboard {
+    public static let symbols = "()[]{}#%^*+=-\\|~<>€£¥•/:&$@_"
+    public static let letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    public static let puncutations = ".,?!';\""
+    public static let numbers = "1234567890"
 
     
-    static let numberPunctuationKeyboardDiagram: Diagram = {
+    public static let numberPunctuationKeyboardDiagram: Diagram = {
         return "123456789".diagram
             --- ("-/:;()$&@\"").diagram
             --- "modechangeSym" ||| 0.1 ||| ".,?!'".diagram ||| 0.1 ||| "backspace><1.2"
             --- ["modechangeABC", "keyboardchange", "settings", "space><4", "return><2"].hcat
     }()
     
-    static let symbolKeyboardDiagram: Diagram = {
+    public static let symbolKeyboardDiagram: Diagram = {
         return "[]{}#%^*+=".diagram
             --- "_\\|~<>€£¥•".diagram
             --- "modechange123" ||| 0.1 ||| ".,?!'".diagram ||| 0.1 ||| "backspace><1.2"
             --- ["modechangeABC", "keyboardchange", "settings", "space><4", "return><2"].hcat
     }()
     
-    static let defaultKeyboardDiagram: Diagram = {
+    public static let defaultKeyboardDiagram: Diagram = {
         return "QWERTYUIOP".diagram
             --- 0.5 ||| "ASDFGHJKL".diagram ||| 0.5
             --- "shift><1.2" ||| 0.1 ||| "ZXCVBNM".diagram ||| 0.1 ||| "backspace><1.2"
             --- ["modechange123", "keyboardchange", "settings", "space><4", "return><2"].hcat
     }()
  
-    static let numberKeyboardDiagram: Diagram = {
+    public static let numberKeyboardDiagram: Diagram = {
         return "123".diagram --- "456".diagram --- "789".diagram --- 1 ||| "0" ||| "backspace"
     }()
     
-    static let alphaKeyboardDiagram: Diagram = {
+    public static let alphaKeyboardDiagram: Diagram = {
         return "QWERTYUIOP".diagram
             --- 0.5 ||| "ASDFGHJKL".diagram ||| 0.5
             --- "shift><1.2" ||| 0.1 ||| "ZXCVBNM".diagram ||| 0.1 ||| "backspace><1.2"

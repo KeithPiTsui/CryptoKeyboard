@@ -42,9 +42,3 @@ extension UIFont {
     static let topBarInscriptFont = UIFont(name: "ChalkboardSE-Light", size: 18)!
     static let topBarTagInscriptFont = UIFont(name: "ChalkboardSE-Light", size: 12)!
 }
-
-
-struct KeyboardConstants {
-    
-}
-

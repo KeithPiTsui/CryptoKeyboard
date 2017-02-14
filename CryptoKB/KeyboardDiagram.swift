@@ -8,12 +8,12 @@
 
 import UIKit
 
-enum Primitive {
+public enum Primitive {
     case empty
     case key(Key)
 }
 
-indirect enum Diagram {
+public indirect enum Diagram {
     case primitive(CGSize, Primitive)
     case beside(Diagram, CGFloat, Diagram)
     case below(Diagram, CGFloat, Diagram)
@@ -23,7 +23,7 @@ indirect enum Diagram {
     init() { self = .primitive(CGSize(width: 0, height: 0), .empty) }
 }
 
-enum Attribute {
+public enum Attribute {
     case fillColor(UIColor)
 }
 
@@ -202,7 +202,7 @@ extension Sequence where Iterator.Element == Diagram {
 
 
 extension Diagram : ExpressibleByStringLiteral {
-    init(stringLiteral value: String) {
+    public init(stringLiteral value: String) {
         let values = value.components(separatedBy: "><")
         if values.count == 1 {
             self = .primitive(CGSize(width: 1, height: 1), .key(values[0].key))
@@ -218,11 +218,11 @@ extension Diagram : ExpressibleByStringLiteral {
         }
     }
     
-    init(extendedGraphemeClusterLiteral value: String) {
+    public init(extendedGraphemeClusterLiteral value: String) {
         self.init(stringLiteral: value)
     }
 
-    init(unicodeScalarLiteral value: String) {
+    public init(unicodeScalarLiteral value: String) {
         self.init(stringLiteral: value)
     }
 }

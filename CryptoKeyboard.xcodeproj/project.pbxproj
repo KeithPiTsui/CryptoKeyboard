@@ -70,6 +70,40 @@
 		0EAEACE41E50762300AAA7B0 /* ReactiveSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0EAEACBB1E5075E000AAA7B0 /* ReactiveSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0EAEACE71E50762300AAA7B0 /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EAEACA31E5075CD00AAA7B0 /* ReactiveCocoa.framework */; };
 		0EAEACE81E50762300AAA7B0 /* ReactiveCocoa.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0EAEACA31E5075CD00AAA7B0 /* ReactiveCocoa.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		0EFCAFB31E52A71D00F2B99A /* Runes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EFCAFA61E52A6EC00F2B99A /* Runes.framework */; };
+		0EFCAFB41E52A71D00F2B99A /* Runes.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0EFCAFA61E52A6EC00F2B99A /* Runes.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		0EFCAFB71E52A73F00F2B99A /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EAEACA31E5075CD00AAA7B0 /* ReactiveCocoa.framework */; };
+		0EFCAFB81E52A73F00F2B99A /* ReactiveSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EAEACBB1E5075E000AAA7B0 /* ReactiveSwift.framework */; };
+		0EFCAFB91E52A73F00F2B99A /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EAEACD41E5075E800AAA7B0 /* Result.framework */; };
+		0EFCAFBA1E52A73F00F2B99A /* Runes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EFCAFA61E52A6EC00F2B99A /* Runes.framework */; };
+		0EFCAFE51E52AA2C00F2B99A /* Curry.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EFCAFDE1E52AA0900F2B99A /* Curry.framework */; };
+		0EFCAFE61E52AA2C00F2B99A /* Prelude_UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EFCAFCF1E52A9FF00F2B99A /* Prelude_UIKit.framework */; };
+		0EFCAFE71E52AA2C00F2B99A /* Prelude.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EFCAFC71E52A9FF00F2B99A /* Prelude.framework */; };
+		0EFCAFE81E52AA3E00F2B99A /* Curry.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EFCAFDE1E52AA0900F2B99A /* Curry.framework */; };
+		0EFCAFE91E52AA3E00F2B99A /* Curry.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0EFCAFDE1E52AA0900F2B99A /* Curry.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		0EFCAFEC1E52AA3E00F2B99A /* Prelude.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EFCAFC71E52A9FF00F2B99A /* Prelude.framework */; };
+		0EFCAFED1E52AA3E00F2B99A /* Prelude.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0EFCAFC71E52A9FF00F2B99A /* Prelude.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		0EFCAFF01E52AA3E00F2B99A /* Prelude_UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EFCAFCF1E52A9FF00F2B99A /* Prelude_UIKit.framework */; };
+		0EFCAFF11E52AA3E00F2B99A /* Prelude_UIKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0EFCAFCF1E52A9FF00F2B99A /* Prelude_UIKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		0EFCAFFD1E52AAA800F2B99A /* KTKeyboard.h in Headers */ = {isa = PBXBuildFile; fileRef = 0EFCAFFB1E52AAA800F2B99A /* KTKeyboard.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0EFCB0001E52AAA800F2B99A /* KTKeyboard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EFCAFF91E52AAA800F2B99A /* KTKeyboard.framework */; };
+		0EFCB0011E52AAA800F2B99A /* KTKeyboard.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0EFCAFF91E52AAA800F2B99A /* KTKeyboard.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		0EFCB0051E52AAF700F2B99A /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EAEACA31E5075CD00AAA7B0 /* ReactiveCocoa.framework */; };
+		0EFCB0061E52AAF700F2B99A /* ReactiveSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EAEACBB1E5075E000AAA7B0 /* ReactiveSwift.framework */; };
+		0EFCB0071E52AAF700F2B99A /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EAEACD41E5075E800AAA7B0 /* Result.framework */; };
+		0EFCB0081E52AAF700F2B99A /* Runes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EFCAFA61E52A6EC00F2B99A /* Runes.framework */; };
+		0EFCB0091E52AB7C00F2B99A /* KeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA85D191DFD2E9500AFB546 /* KeyboardView.swift */; };
+		0EFCB00A1E52AB7C00F2B99A /* KeyboardView+Touch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E28CCD31DFE3C3900BCAC75 /* KeyboardView+Touch.swift */; };
+		0EFCB00B1E52AB7C00F2B99A /* KeyboardViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E3C9F201DFD943300D44E51 /* KeyboardViewDelegate.swift */; };
+		0EFCB00C1E52AB7C00F2B99A /* KeyboardViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA85D1A1DFD2E9500AFB546 /* KeyboardViewItem.swift */; };
+		0EFCB00D1E52AB7C00F2B99A /* IconDrawingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1261491DFD762200E7EFE4 /* IconDrawingView.swift */; };
+		0EFCB00E1E52AB7C00F2B99A /* Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA85D131DFD2E3700AFB546 /* Keyboard.swift */; };
+		0EFCB00F1E52AB7C00F2B99A /* DefaultKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA85D111DFD2E3700AFB546 /* DefaultKeyboard.swift */; };
+		0EFCB0101E52AB7C00F2B99A /* KeyboardDiagram.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E2972021E51682700F098D9 /* KeyboardDiagram.swift */; };
+		0EFCB0111E52AB7C00F2B99A /* UIColor+ColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA85D231DFD318700AFB546 /* UIColor+ColorScheme.swift */; };
+		0EFCB0121E52AB7C00F2B99A /* LayoutConstraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1261451DFD680900E7EFE4 /* LayoutConstraints.swift */; };
+		0EFCB0131E52AB7C00F2B99A /* UsefulFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E28CCDC1DFE643A00BCAC75 /* UsefulFunctions.swift */; };
+		0EFCB0141E52AB9800F2B99A /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E3F18641DFF9AC900E80D0C /* Media.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -255,6 +289,174 @@
 			remoteGlobalIDString = D047260B19E49F82006002AA;
 			remoteInfo = "ReactiveCocoa-iOS";
 		};
+		0EFCAFA51E52A6EC00F2B99A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0EFCAF9B1E52A6EC00F2B99A /* Runes.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F802D4D21A5F218E005E236C;
+			remoteInfo = "Runes-iOS";
+		};
+		0EFCAFA71E52A6EC00F2B99A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0EFCAF9B1E52A6EC00F2B99A /* Runes.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F86B2E0B1A5F2B8D00C3B8BD;
+			remoteInfo = "Runes-Mac";
+		};
+		0EFCAFA91E52A6EC00F2B99A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0EFCAF9B1E52A6EC00F2B99A /* Runes.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 51DE8A121BAB363500124320;
+			remoteInfo = "Runes-tvOS";
+		};
+		0EFCAFAB1E52A6EC00F2B99A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0EFCAF9B1E52A6EC00F2B99A /* Runes.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F8624C261A645A9600C883B3;
+			remoteInfo = "Runes-iOS Tests";
+		};
+		0EFCAFAD1E52A6EC00F2B99A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0EFCAF9B1E52A6EC00F2B99A /* Runes.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F8624C451A645C9500C883B3;
+			remoteInfo = "Runes-Mac Tests";
+		};
+		0EFCAFAF1E52A6EC00F2B99A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0EFCAF9B1E52A6EC00F2B99A /* Runes.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 51DE8A211BAB36E600124320;
+			remoteInfo = "Runes-tvOS Tests";
+		};
+		0EFCAFB11E52A6EC00F2B99A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0EFCAF9B1E52A6EC00F2B99A /* Runes.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = EAA6A5101B2F154D0058E9A8;
+			remoteInfo = "Runes-watchOS";
+		};
+		0EFCAFB51E52A71D00F2B99A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0EFCAF9B1E52A6EC00F2B99A /* Runes.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = F802D4D11A5F218E005E236C;
+			remoteInfo = "Runes-iOS";
+		};
+		0EFCAFC61E52A9FF00F2B99A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0EFCAFBB1E52A9FF00F2B99A /* Prelude.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = A7FD08641C81E1DA00332CCB;
+			remoteInfo = "Prelude-iOS";
+		};
+		0EFCAFC81E52A9FF00F2B99A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0EFCAFBB1E52A9FF00F2B99A /* Prelude.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = A7FD087B1C81E24A00332CCB;
+			remoteInfo = "Prelude-iOSTests";
+		};
+		0EFCAFCA1E52A9FF00F2B99A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0EFCAFBB1E52A9FF00F2B99A /* Prelude.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = CA0923F81BB6291900C9EC88;
+			remoteInfo = "Prelude-tvOS";
+		};
+		0EFCAFCC1E52A9FF00F2B99A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0EFCAFBB1E52A9FF00F2B99A /* Prelude.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = CA0924021BB6291900C9EC88;
+			remoteInfo = "Prelude-tvOSTests";
+		};
+		0EFCAFCE1E52A9FF00F2B99A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0EFCAFBB1E52A9FF00F2B99A /* Prelude.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = A727E0221D0796D600D8FE43;
+			remoteInfo = "Prelude-UIKit-iOS";
+		};
+		0EFCAFD01E52A9FF00F2B99A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0EFCAFBB1E52A9FF00F2B99A /* Prelude.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = A727E02B1D0796D600D8FE43;
+			remoteInfo = "Prelude-UIKit-iOSTests";
+		};
+		0EFCAFD21E52A9FF00F2B99A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0EFCAFBB1E52A9FF00F2B99A /* Prelude.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = A70969081D14373400DB39D3;
+			remoteInfo = "Prelude-UIKit-tvOS";
+		};
+		0EFCAFD41E52A9FF00F2B99A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0EFCAFBB1E52A9FF00F2B99A /* Prelude.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = A70969111D14373400DB39D3;
+			remoteInfo = "Prelude-UIKit-tvOSTests";
+		};
+		0EFCAFDD1E52AA0900F2B99A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0EFCAFD61E52AA0800F2B99A /* Curry.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F88630561B4EF96200F53969;
+			remoteInfo = "Curry-iOS";
+		};
+		0EFCAFDF1E52AA0900F2B99A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0EFCAFD61E52AA0800F2B99A /* Curry.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F886307D1B4EF9F800F53969;
+			remoteInfo = "Curry-Mac";
+		};
+		0EFCAFE11E52AA0900F2B99A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0EFCAFD61E52AA0800F2B99A /* Curry.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 804D01F31BA3684C0005BBC4;
+			remoteInfo = "Curry-watchOS";
+		};
+		0EFCAFE31E52AA0900F2B99A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0EFCAFD61E52AA0800F2B99A /* Curry.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 80E059071BA9FA7F0077CBA7;
+			remoteInfo = "Curry-tvOS";
+		};
+		0EFCAFEA1E52AA3E00F2B99A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0EFCAFD61E52AA0800F2B99A /* Curry.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = F88630551B4EF96200F53969;
+			remoteInfo = "Curry-iOS";
+		};
+		0EFCAFEE1E52AA3E00F2B99A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0EFCAFBB1E52A9FF00F2B99A /* Prelude.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = A7FD084C1C81E1DA00332CCB;
+			remoteInfo = "Prelude-iOS";
+		};
+		0EFCAFF21E52AA3E00F2B99A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0EFCAFBB1E52A9FF00F2B99A /* Prelude.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = A727E0211D0796D600D8FE43;
+			remoteInfo = "Prelude-UIKit-iOS";
+		};
+		0EFCAFFE1E52AAA800F2B99A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0E6B6A261DFA4ABD00712C0A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0EFCAFF81E52AAA800F2B99A;
+			remoteInfo = KTKeyboard;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -264,9 +466,14 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				0EFCB0011E52AAA800F2B99A /* KTKeyboard.framework in Embed Frameworks */,
+				0EFCAFB41E52A71D00F2B99A /* Runes.framework in Embed Frameworks */,
 				0EAEACE01E50762300AAA7B0 /* Result.framework in Embed Frameworks */,
 				0EAEACE41E50762300AAA7B0 /* ReactiveSwift.framework in Embed Frameworks */,
+				0EFCAFF11E52AA3E00F2B99A /* Prelude_UIKit.framework in Embed Frameworks */,
 				0EAEACE81E50762300AAA7B0 /* ReactiveCocoa.framework in Embed Frameworks */,
+				0EFCAFED1E52AA3E00F2B99A /* Prelude.framework in Embed Frameworks */,
+				0EFCAFE91E52AA3E00F2B99A /* Curry.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -318,8 +525,6 @@
 		0E420C191E07FB5C00F41640 /* AppHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppHelper.m; sourceTree = "<group>"; };
 		0E4AB8BD1E0BA35200F85D44 /* CipherCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CipherCollectionViewCell.swift; sourceTree = "<group>"; };
 		0E4ABB631E0C068600F85D44 /* FrontCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FrontCollectionViewController.swift; sourceTree = "<group>"; };
-		0E56FE321E0E1A4C00BF4377 /* CKB.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CKB.h; sourceTree = "<group>"; };
-		0E56FE331E0E1A4C00BF4377 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0E5DE9221E00E82600FAEF09 /* CipherSettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CipherSettingViewController.swift; sourceTree = "<group>"; };
 		0E5DE9241E00E88300FAEF09 /* KeyboardViewController+CipherSettingViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "KeyboardViewController+CipherSettingViewControllerDelegate.swift"; sourceTree = "<group>"; };
 		0E5DE92C1E0134A100FAEF09 /* MorseCodeMapping.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = MorseCodeMapping.json; sourceTree = "<group>"; };
@@ -341,6 +546,12 @@
 		0EAEACAC1E5075DF00AAA7B0 /* ReactiveSwift.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ReactiveSwift.xcodeproj; path = ReactiveCocoa/Carthage/Checkouts/ReactiveSwift/ReactiveSwift.xcodeproj; sourceTree = "<group>"; };
 		0EAEACC41E5075E800AAA7B0 /* Result.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Result.xcodeproj; path = ReactiveCocoa/Carthage/Checkouts/Result/Result.xcodeproj; sourceTree = "<group>"; };
 		0EFCAF741E5289D100F2B99A /* Experiment.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Experiment.playground; sourceTree = "<group>"; };
+		0EFCAF9B1E52A6EC00F2B99A /* Runes.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Runes.xcodeproj; path = Runes/Runes.xcodeproj; sourceTree = "<group>"; };
+		0EFCAFBB1E52A9FF00F2B99A /* Prelude.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Prelude.xcodeproj; path = "Kickstarter-Prelude/Prelude.xcodeproj"; sourceTree = "<group>"; };
+		0EFCAFD61E52AA0800F2B99A /* Curry.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Curry.xcodeproj; path = Curry/Curry.xcodeproj; sourceTree = "<group>"; };
+		0EFCAFF91E52AAA800F2B99A /* KTKeyboard.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KTKeyboard.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0EFCAFFB1E52AAA800F2B99A /* KTKeyboard.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KTKeyboard.h; sourceTree = "<group>"; };
+		0EFCAFFC1E52AAA800F2B99A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -348,9 +559,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0EFCB0001E52AAA800F2B99A /* KTKeyboard.framework in Frameworks */,
+				0EFCAFB31E52A71D00F2B99A /* Runes.framework in Frameworks */,
 				0EAEACDF1E50762300AAA7B0 /* Result.framework in Frameworks */,
 				0EAEACE31E50762300AAA7B0 /* ReactiveSwift.framework in Frameworks */,
+				0EFCAFF01E52AA3E00F2B99A /* Prelude_UIKit.framework in Frameworks */,
 				0EAEACE71E50762300AAA7B0 /* ReactiveCocoa.framework in Frameworks */,
+				0EFCAFEC1E52AA3E00F2B99A /* Prelude.framework in Frameworks */,
+				0EFCAFE81E52AA3E00F2B99A /* Curry.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -358,6 +574,24 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0EFCAFE51E52AA2C00F2B99A /* Curry.framework in Frameworks */,
+				0EFCAFE61E52AA2C00F2B99A /* Prelude_UIKit.framework in Frameworks */,
+				0EFCAFE71E52AA2C00F2B99A /* Prelude.framework in Frameworks */,
+				0EFCAFB71E52A73F00F2B99A /* ReactiveCocoa.framework in Frameworks */,
+				0EFCAFB81E52A73F00F2B99A /* ReactiveSwift.framework in Frameworks */,
+				0EFCAFB91E52A73F00F2B99A /* Result.framework in Frameworks */,
+				0EFCAFBA1E52A73F00F2B99A /* Runes.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0EFCAFF51E52AAA800F2B99A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0EFCB0051E52AAF700F2B99A /* ReactiveCocoa.framework in Frameworks */,
+				0EFCB0061E52AAF700F2B99A /* ReactiveSwift.framework in Frameworks */,
+				0EFCB0071E52AAF700F2B99A /* Result.framework in Frameworks */,
+				0EFCB0081E52AAF700F2B99A /* Runes.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -449,24 +683,7 @@
 			name = About;
 			sourceTree = "<group>";
 		};
-		0E56FE311E0E1A4C00BF4377 /* CKB */ = {
-			isa = PBXGroup;
-			children = (
-				0E56FE321E0E1A4C00BF4377 /* CKB.h */,
-				0E56FE331E0E1A4C00BF4377 /* Info.plist */,
-			);
-			path = CKB;
-			sourceTree = "<group>";
-		};
 		0E56FE3D1E0E1AE000BF4377 /* KeyboardView */ = {
-			isa = PBXGroup;
-			children = (
-				0E56FE3E1E0E1B1700BF4377 /* FullFeatureKeyboardView */,
-			);
-			name = KeyboardView;
-			sourceTree = "<group>";
-		};
-		0E56FE3E1E0E1B1700BF4377 /* FullFeatureKeyboardView */ = {
 			isa = PBXGroup;
 			children = (
 				0EA85D191DFD2E9500AFB546 /* KeyboardView.swift */,
@@ -475,7 +692,7 @@
 				0EA85D1A1DFD2E9500AFB546 /* KeyboardViewItem.swift */,
 				0E1261491DFD762200E7EFE4 /* IconDrawingView.swift */,
 			);
-			name = FullFeatureKeyboardView;
+			name = KeyboardView;
 			sourceTree = "<group>";
 		};
 		0E6B6A251DFA4ABD00712C0A = {
@@ -483,12 +700,15 @@
 			children = (
 				0EFCAF741E5289D100F2B99A /* Experiment.playground */,
 				0E2971CF1E51403100F098D9 /* FunctionalDiagram.playground */,
+				0EFCAFD61E52AA0800F2B99A /* Curry.xcodeproj */,
+				0EFCAFBB1E52A9FF00F2B99A /* Prelude.xcodeproj */,
+				0EFCAF9B1E52A6EC00F2B99A /* Runes.xcodeproj */,
 				0EAEACC41E5075E800AAA7B0 /* Result.xcodeproj */,
 				0EAEACAC1E5075DF00AAA7B0 /* ReactiveSwift.xcodeproj */,
 				0EAEAC941E5075CD00AAA7B0 /* ReactiveCocoa.xcodeproj */,
 				0E6B6A301DFA4ABD00712C0A /* CryptoKeyboard */,
 				0E6B6A481DFA4AE400712C0A /* CryptoKB */,
-				0E56FE311E0E1A4C00BF4377 /* CKB */,
+				0EFCAFFA1E52AAA800F2B99A /* KTKeyboard */,
 				0E6B6A2F1DFA4ABD00712C0A /* Products */,
 			);
 			sourceTree = "<group>";
@@ -498,6 +718,7 @@
 			children = (
 				0E6B6A2E1DFA4ABD00712C0A /* CryptoKeyboard.app */,
 				0E6B6A471DFA4AE400712C0A /* CryptoKB.appex */,
+				0EFCAFF91E52AAA800F2B99A /* KTKeyboard.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -605,7 +826,67 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		0EFCAF9C1E52A6EC00F2B99A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0EFCAFA61E52A6EC00F2B99A /* Runes.framework */,
+				0EFCAFA81E52A6EC00F2B99A /* Runes.framework */,
+				0EFCAFAA1E52A6EC00F2B99A /* Runes.framework */,
+				0EFCAFAC1E52A6EC00F2B99A /* Runes-iOS Tests.xctest */,
+				0EFCAFAE1E52A6EC00F2B99A /* Runes-Mac Tests.xctest */,
+				0EFCAFB01E52A6EC00F2B99A /* Runes-tvOS Tests.xctest */,
+				0EFCAFB21E52A6EC00F2B99A /* Runes.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		0EFCAFBC1E52A9FF00F2B99A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0EFCAFC71E52A9FF00F2B99A /* Prelude.framework */,
+				0EFCAFC91E52A9FF00F2B99A /* Prelude-iOSTests.xctest */,
+				0EFCAFCB1E52A9FF00F2B99A /* Prelude.framework */,
+				0EFCAFCD1E52A9FF00F2B99A /* Prelude-tvOSTests.xctest */,
+				0EFCAFCF1E52A9FF00F2B99A /* Prelude_UIKit.framework */,
+				0EFCAFD11E52A9FF00F2B99A /* Prelude-UIKit-iOSTests.xctest */,
+				0EFCAFD31E52A9FF00F2B99A /* Prelude_UIKit.framework */,
+				0EFCAFD51E52A9FF00F2B99A /* Prelude-UIKit-tvOSTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		0EFCAFD71E52AA0800F2B99A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0EFCAFDE1E52AA0900F2B99A /* Curry.framework */,
+				0EFCAFE01E52AA0900F2B99A /* Curry.framework */,
+				0EFCAFE21E52AA0900F2B99A /* Curry.framework */,
+				0EFCAFE41E52AA0900F2B99A /* Curry.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		0EFCAFFA1E52AAA800F2B99A /* KTKeyboard */ = {
+			isa = PBXGroup;
+			children = (
+				0EFCAFFB1E52AAA800F2B99A /* KTKeyboard.h */,
+				0EFCAFFC1E52AAA800F2B99A /* Info.plist */,
+			);
+			path = KTKeyboard;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		0EFCAFF61E52AAA800F2B99A /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0EFCAFFD1E52AAA800F2B99A /* KTKeyboard.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
 		0E6B6A2D1DFA4ABD00712C0A /* CryptoKeyboard */ = {
@@ -625,6 +906,11 @@
 				0EAEACE21E50762300AAA7B0 /* PBXTargetDependency */,
 				0EAEACE61E50762300AAA7B0 /* PBXTargetDependency */,
 				0EAEACEA1E50762300AAA7B0 /* PBXTargetDependency */,
+				0EFCAFB61E52A71D00F2B99A /* PBXTargetDependency */,
+				0EFCAFEB1E52AA3E00F2B99A /* PBXTargetDependency */,
+				0EFCAFEF1E52AA3E00F2B99A /* PBXTargetDependency */,
+				0EFCAFF31E52AA3E00F2B99A /* PBXTargetDependency */,
+				0EFCAFFF1E52AAA800F2B99A /* PBXTargetDependency */,
 			);
 			name = CryptoKeyboard;
 			productName = CryptoKeyboard;
@@ -648,6 +934,24 @@
 			productReference = 0E6B6A471DFA4AE400712C0A /* CryptoKB.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
+		0EFCAFF81E52AAA800F2B99A /* KTKeyboard */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0EFCB0021E52AAA800F2B99A /* Build configuration list for PBXNativeTarget "KTKeyboard" */;
+			buildPhases = (
+				0EFCAFF41E52AAA800F2B99A /* Sources */,
+				0EFCAFF51E52AAA800F2B99A /* Frameworks */,
+				0EFCAFF61E52AAA800F2B99A /* Headers */,
+				0EFCAFF71E52AAA800F2B99A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = KTKeyboard;
+			productName = KTKeyboard;
+			productReference = 0EFCAFF91E52AAA800F2B99A /* KTKeyboard.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -670,6 +974,11 @@
 						LastSwiftMigration = 0810;
 						ProvisioningStyle = Automatic;
 					};
+					0EFCAFF81E52AAA800F2B99A = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 6T5NK4S24M;
+						ProvisioningStyle = Automatic;
+					};
 				};
 			};
 			buildConfigurationList = 0E6B6A291DFA4ABD00712C0A /* Build configuration list for PBXProject "CryptoKeyboard" */;
@@ -685,6 +994,14 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
+					ProductGroup = 0EFCAFD71E52AA0800F2B99A /* Products */;
+					ProjectRef = 0EFCAFD61E52AA0800F2B99A /* Curry.xcodeproj */;
+				},
+				{
+					ProductGroup = 0EFCAFBC1E52A9FF00F2B99A /* Products */;
+					ProjectRef = 0EFCAFBB1E52A9FF00F2B99A /* Prelude.xcodeproj */;
+				},
+				{
 					ProductGroup = 0EAEAC951E5075CD00AAA7B0 /* Products */;
 					ProjectRef = 0EAEAC941E5075CD00AAA7B0 /* ReactiveCocoa.xcodeproj */;
 				},
@@ -696,11 +1013,16 @@
 					ProductGroup = 0EAEACC51E5075E800AAA7B0 /* Products */;
 					ProjectRef = 0EAEACC41E5075E800AAA7B0 /* Result.xcodeproj */;
 				},
+				{
+					ProductGroup = 0EFCAF9C1E52A6EC00F2B99A /* Products */;
+					ProjectRef = 0EFCAF9B1E52A6EC00F2B99A /* Runes.xcodeproj */;
+				},
 			);
 			projectRoot = "";
 			targets = (
 				0E6B6A2D1DFA4ABD00712C0A /* CryptoKeyboard */,
 				0E6B6A461DFA4AE400712C0A /* CryptoKB */,
+				0EFCAFF81E52AAA800F2B99A /* KTKeyboard */,
 			);
 		};
 /* End PBXProject section */
@@ -860,6 +1182,139 @@
 			remoteRef = 0EAEACDD1E5075E800AAA7B0 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		0EFCAFA61E52A6EC00F2B99A /* Runes.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Runes.framework;
+			remoteRef = 0EFCAFA51E52A6EC00F2B99A /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0EFCAFA81E52A6EC00F2B99A /* Runes.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Runes.framework;
+			remoteRef = 0EFCAFA71E52A6EC00F2B99A /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0EFCAFAA1E52A6EC00F2B99A /* Runes.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Runes.framework;
+			remoteRef = 0EFCAFA91E52A6EC00F2B99A /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0EFCAFAC1E52A6EC00F2B99A /* Runes-iOS Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "Runes-iOS Tests.xctest";
+			remoteRef = 0EFCAFAB1E52A6EC00F2B99A /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0EFCAFAE1E52A6EC00F2B99A /* Runes-Mac Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "Runes-Mac Tests.xctest";
+			remoteRef = 0EFCAFAD1E52A6EC00F2B99A /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0EFCAFB01E52A6EC00F2B99A /* Runes-tvOS Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "Runes-tvOS Tests.xctest";
+			remoteRef = 0EFCAFAF1E52A6EC00F2B99A /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0EFCAFB21E52A6EC00F2B99A /* Runes.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Runes.framework;
+			remoteRef = 0EFCAFB11E52A6EC00F2B99A /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0EFCAFC71E52A9FF00F2B99A /* Prelude.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Prelude.framework;
+			remoteRef = 0EFCAFC61E52A9FF00F2B99A /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0EFCAFC91E52A9FF00F2B99A /* Prelude-iOSTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "Prelude-iOSTests.xctest";
+			remoteRef = 0EFCAFC81E52A9FF00F2B99A /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0EFCAFCB1E52A9FF00F2B99A /* Prelude.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Prelude.framework;
+			remoteRef = 0EFCAFCA1E52A9FF00F2B99A /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0EFCAFCD1E52A9FF00F2B99A /* Prelude-tvOSTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "Prelude-tvOSTests.xctest";
+			remoteRef = 0EFCAFCC1E52A9FF00F2B99A /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0EFCAFCF1E52A9FF00F2B99A /* Prelude_UIKit.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Prelude_UIKit.framework;
+			remoteRef = 0EFCAFCE1E52A9FF00F2B99A /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0EFCAFD11E52A9FF00F2B99A /* Prelude-UIKit-iOSTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "Prelude-UIKit-iOSTests.xctest";
+			remoteRef = 0EFCAFD01E52A9FF00F2B99A /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0EFCAFD31E52A9FF00F2B99A /* Prelude_UIKit.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Prelude_UIKit.framework;
+			remoteRef = 0EFCAFD21E52A9FF00F2B99A /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0EFCAFD51E52A9FF00F2B99A /* Prelude-UIKit-tvOSTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "Prelude-UIKit-tvOSTests.xctest";
+			remoteRef = 0EFCAFD41E52A9FF00F2B99A /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0EFCAFDE1E52AA0900F2B99A /* Curry.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Curry.framework;
+			remoteRef = 0EFCAFDD1E52AA0900F2B99A /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0EFCAFE01E52AA0900F2B99A /* Curry.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Curry.framework;
+			remoteRef = 0EFCAFDF1E52AA0900F2B99A /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0EFCAFE21E52AA0900F2B99A /* Curry.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Curry.framework;
+			remoteRef = 0EFCAFE11E52AA0900F2B99A /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0EFCAFE41E52AA0900F2B99A /* Curry.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Curry.framework;
+			remoteRef = 0EFCAFE31E52AA0900F2B99A /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
@@ -880,6 +1335,14 @@
 				0E3F18651DFF9AC900E80D0C /* Media.xcassets in Resources */,
 				0E5DE92D1E0134A100FAEF09 /* MorseCodeMapping.json in Resources */,
 				0E3F186A1DFFEE8300E80D0C /* words.txt in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0EFCAFF71E52AAA800F2B99A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0EFCB0141E52AB9800F2B99A /* Media.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -950,6 +1413,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		0EFCAFF41E52AAA800F2B99A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0EFCB0091E52AB7C00F2B99A /* KeyboardView.swift in Sources */,
+				0EFCB00A1E52AB7C00F2B99A /* KeyboardView+Touch.swift in Sources */,
+				0EFCB00B1E52AB7C00F2B99A /* KeyboardViewDelegate.swift in Sources */,
+				0EFCB00C1E52AB7C00F2B99A /* KeyboardViewItem.swift in Sources */,
+				0EFCB00D1E52AB7C00F2B99A /* IconDrawingView.swift in Sources */,
+				0EFCB00E1E52AB7C00F2B99A /* Keyboard.swift in Sources */,
+				0EFCB00F1E52AB7C00F2B99A /* DefaultKeyboard.swift in Sources */,
+				0EFCB0101E52AB7C00F2B99A /* KeyboardDiagram.swift in Sources */,
+				0EFCB0111E52AB7C00F2B99A /* UIColor+ColorScheme.swift in Sources */,
+				0EFCB0121E52AB7C00F2B99A /* LayoutConstraints.swift in Sources */,
+				0EFCB0131E52AB7C00F2B99A /* UsefulFunctions.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -972,6 +1453,31 @@
 			isa = PBXTargetDependency;
 			name = "ReactiveCocoa-iOS";
 			targetProxy = 0EAEACE91E50762300AAA7B0 /* PBXContainerItemProxy */;
+		};
+		0EFCAFB61E52A71D00F2B99A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Runes-iOS";
+			targetProxy = 0EFCAFB51E52A71D00F2B99A /* PBXContainerItemProxy */;
+		};
+		0EFCAFEB1E52AA3E00F2B99A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Curry-iOS";
+			targetProxy = 0EFCAFEA1E52AA3E00F2B99A /* PBXContainerItemProxy */;
+		};
+		0EFCAFEF1E52AA3E00F2B99A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Prelude-iOS";
+			targetProxy = 0EFCAFEE1E52AA3E00F2B99A /* PBXContainerItemProxy */;
+		};
+		0EFCAFF31E52AA3E00F2B99A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Prelude-UIKit-iOS";
+			targetProxy = 0EFCAFF21E52AA3E00F2B99A /* PBXContainerItemProxy */;
+		};
+		0EFCAFFF1E52AAA800F2B99A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0EFCAFF81E52AAA800F2B99A /* KTKeyboard */;
+			targetProxy = 0EFCAFFE1E52AAA800F2B99A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1156,6 +1662,54 @@
 			};
 			name = Release;
 		};
+		0EFCB0031E52AAA800F2B99A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 6T5NK4S24M;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = KTKeyboard/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Keith.Pi.Tsui.KTKeyboard;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		0EFCB0041E52AAA800F2B99A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 6T5NK4S24M;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = KTKeyboard/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Keith.Pi.Tsui.KTKeyboard;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1185,6 +1739,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		0EFCB0021E52AAA800F2B99A /* Build configuration list for PBXNativeTarget "KTKeyboard" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0EFCB0031E52AAA800F2B99A /* Debug */,
+				0EFCB0041E52AAA800F2B99A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
