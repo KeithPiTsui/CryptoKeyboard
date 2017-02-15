@@ -1747,6 +1747,7 @@
 				0EFCB0041E52AAA800F2B99A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
