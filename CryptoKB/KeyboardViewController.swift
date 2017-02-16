@@ -10,10 +10,15 @@ import UIKit
 import Result
 import ReactiveCocoa
 import ReactiveSwift
+import Prelude
 
 
 final class KeyboardViewController: UIInputViewController {
     
+    @IBOutlet weak var rightViewLeftTag: UILabel!
+    @IBOutlet weak var leftViewLeftTag: UILabel!
+    @IBOutlet weak var topBarRightView: UIView!
+    @IBOutlet weak var topBarLeftView: UIView!
     @IBOutlet weak var heuristicLabel: UILabel!
     @IBOutlet weak var encryptedLabel: UILabel!
     @IBOutlet weak var cipherLabel: UILabel!
@@ -88,7 +93,55 @@ final class KeyboardViewController: UIInputViewController {
         }
         UserDefaults.standard.synchronize()
     }
+    
+    
+    // MARK: -
+    // MARK: Magic happen
+    
+    internal override func bindStyles() {
+        super.bindStyles()
+        
+        _ = self.topBarLeftView |> UIView.lens.backgroundColor %~ {_ in UIColor.topBarBackgroundColor}
+        _ = self.topBarRightView |> UIView.lens.backgroundColor %~ {_ in UIColor.topBarBackgroundColor}
+        _ = self.heuristicLabel |> UILabel.lens.textColor %~ {_ in UIColor.topBarInscriptColor}
+        _ = self.encryptedLabel |> UILabel.lens.textColor %~ {_ in UIColor.topBarInscriptColor}
+        _ = self.leftViewLeftTag |> UILabel.lens.textColor %~ {_ in UIColor.topBarInscriptColor}
+        _ = self.rightViewLeftTag |> UILabel.lens.textColor %~ {_ in UIColor.topBarInscriptColor}
+        _ = self.cipherLabel |> UILabel.lens.textColor %~ {_ in UIColor.topBarInscriptColor}
+    }
+    
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

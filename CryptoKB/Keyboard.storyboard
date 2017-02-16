@@ -141,6 +141,10 @@
                         <outlet property="heuristicBtn" destination="kDg-V9-Zve" id="V6k-er-Szk"/>
                         <outlet property="heuristicLabel" destination="Ieb-b6-S7K" id="DJx-r0-leq"/>
                         <outlet property="keyboardView" destination="ZYF-W9-xXC" id="bJr-KI-mlF"/>
+                        <outlet property="leftViewLeftTag" destination="hys-Cv-svN" id="3JW-EL-Cm9"/>
+                        <outlet property="rightViewLeftTag" destination="qCb-k3-tRw" id="uJq-ML-SAD"/>
+                        <outlet property="topBarLeftView" destination="ieR-Cn-y0X" id="93q-KY-8Ao"/>
+                        <outlet property="topBarRightView" destination="yxA-Gh-lgY" id="eXP-9R-C5W"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sKI-At-8xO" userLabel="First Responder" sceneMemberID="firstResponder"/>

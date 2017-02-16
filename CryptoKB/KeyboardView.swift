@@ -72,13 +72,13 @@ final class KeyboardView: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        if (bounds.width != 0 && bounds.height != 0)
-            && (boundSize == nil || (bounds.size.equalTo(boundSize!) == false)) {
-            boundSize = bounds.size
-            subviews.forEach{ $0.removeFromSuperview() }
-            layout(keyboardDiagram, in: bounds)
-            
-        }
+        guard bounds.width != 0 && bounds.height != 0 else { return }
+        guard boundSize == nil || bounds.size.equalTo(boundSize!) == false else { return }
+        
+        boundSize = bounds.size
+        subviews.forEach{ $0.removeFromSuperview() }
+        layout(keyboardDiagram, in: bounds)
+
     }
     
     var eventHanlders = [UInt: [KeyboardViewEventHanlder]]()

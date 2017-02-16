@@ -153,7 +153,6 @@ extension KeyboardViewController {
                 for _ in 0...characterCount {textDocumentProxy.deleteBackward()}
                 textDocumentProxy.insertText(text+outputCharacter)
                 textInterpreter.resetState()
-//                topBar.resetLabels()
             }
         }
         
@@ -169,7 +168,7 @@ extension KeyboardViewController {
     
     func discardAllInput() {
         textInterpreter.resetState()
-//        topBar.resetLabels()
+
     }
     
     private func highlightItem(_ sender: KeyboardViewItem) {
