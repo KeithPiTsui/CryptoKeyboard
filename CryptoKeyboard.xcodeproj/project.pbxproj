@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E0D87B21E553D64007432C8 /* AboutCryptoKeyboardTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0D87B11E553D64007432C8 /* AboutCryptoKeyboardTableViewController.swift */; };
+		0E0D87D61E553DD1007432C8 /* AboutCryptoKeyboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0D87D51E553DD1007432C8 /* AboutCryptoKeyboardViewModel.swift */; };
+		0E0D87D81E554380007432C8 /* Storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0D87D71E554380007432C8 /* Storyboard.swift */; };
+		0E0D87DA1E554439007432C8 /* NSBundleType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0D87D91E554439007432C8 /* NSBundleType.swift */; };
+		0E0D87DC1E55447A007432C8 /* UIViewController-Preparation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0D87DB1E55447A007432C8 /* UIViewController-Preparation.swift */; };
+		0E0D87DE1E554712007432C8 /* AboutCryptoKeyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E0D87DD1E554712007432C8 /* AboutCryptoKeyboard.storyboard */; };
 		0E1261461DFD680900E7EFE4 /* LayoutConstraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1261451DFD680900E7EFE4 /* LayoutConstraints.swift */; };
 		0E1261481DFD75EE00E7EFE4 /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1261471DFD75EE00E7EFE4 /* KeyboardViewController.swift */; };
 		0E12614A1DFD762200E7EFE4 /* IconDrawingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1261491DFD762200E7EFE4 /* IconDrawingView.swift */; };
@@ -492,6 +498,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0E0D87B11E553D64007432C8 /* AboutCryptoKeyboardTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutCryptoKeyboardTableViewController.swift; sourceTree = "<group>"; };
+		0E0D87D51E553DD1007432C8 /* AboutCryptoKeyboardViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutCryptoKeyboardViewModel.swift; sourceTree = "<group>"; };
+		0E0D87D71E554380007432C8 /* Storyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Storyboard.swift; sourceTree = "<group>"; };
+		0E0D87D91E554439007432C8 /* NSBundleType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSBundleType.swift; sourceTree = "<group>"; };
+		0E0D87DB1E55447A007432C8 /* UIViewController-Preparation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController-Preparation.swift"; sourceTree = "<group>"; };
+		0E0D87DD1E554712007432C8 /* AboutCryptoKeyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AboutCryptoKeyboard.storyboard; sourceTree = "<group>"; };
 		0E1261451DFD680900E7EFE4 /* LayoutConstraints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayoutConstraints.swift; sourceTree = "<group>"; };
 		0E1261471DFD75EE00E7EFE4 /* KeyboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
 		0E1261491DFD762200E7EFE4 /* IconDrawingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IconDrawingView.swift; sourceTree = "<group>"; };
@@ -673,6 +685,8 @@
 		0E420C171E07F9AF00F41640 /* About */ = {
 			isa = PBXGroup;
 			children = (
+				0E0D87B11E553D64007432C8 /* AboutCryptoKeyboardTableViewController.swift */,
+				0E0D87D51E553DD1007432C8 /* AboutCryptoKeyboardViewModel.swift */,
 				0E420C181E07FB5C00F41640 /* AppHelper.h */,
 				0E420C191E07FB5C00F41640 /* AppHelper.m */,
 				0E420C141E07F9AD00F41640 /* SDiOSVersion.h */,
@@ -726,6 +740,10 @@
 		0E6B6A301DFA4ABD00712C0A /* CryptoKeyboard */ = {
 			isa = PBXGroup;
 			children = (
+				0E0D87DD1E554712007432C8 /* AboutCryptoKeyboard.storyboard */,
+				0E0D87DB1E55447A007432C8 /* UIViewController-Preparation.swift */,
+				0E0D87D91E554439007432C8 /* NSBundleType.swift */,
+				0E0D87D71E554380007432C8 /* Storyboard.swift */,
 				0E420C171E07F9AF00F41640 /* About */,
 				0E420C041E07F7D800F41640 /* CipherIntroductionViewController.swift */,
 				0E4ABB631E0C068600F85D44 /* FrontCollectionViewController.swift */,
@@ -1324,6 +1342,7 @@
 			files = (
 				0E420C0D1E07F8FB00F41640 /* MorseCodeMapping.json in Resources */,
 				0E6B6A3C1DFA4ABD00712C0A /* LaunchScreen.storyboard in Resources */,
+				0E0D87DE1E554712007432C8 /* AboutCryptoKeyboard.storyboard in Resources */,
 				0E6B6A391DFA4ABD00712C0A /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1358,9 +1377,13 @@
 				0E6B6A321DFA4ABD00712C0A /* AppDelegate.swift in Sources */,
 				0E420C1A1E07FB5C00F41640 /* AppHelper.m in Sources */,
 				0E420C161E07F9AD00F41640 /* SDiOSVersion.m in Sources */,
+				0E0D87D61E553DD1007432C8 /* AboutCryptoKeyboardViewModel.swift in Sources */,
 				0E420BFD1E0790D300F41640 /* KeyboardSettingInstructionViewController.swift in Sources */,
+				0E0D87D81E554380007432C8 /* Storyboard.swift in Sources */,
 				0E420BF91E078C0800F41640 /* UIColor+ColorScheme.swift in Sources */,
 				0E420BFA1E078C0800F41640 /* LayoutConstraints.swift in Sources */,
+				0E0D87DC1E55447A007432C8 /* UIViewController-Preparation.swift in Sources */,
+				0E0D87DA1E554439007432C8 /* NSBundleType.swift in Sources */,
 				0E420C081E07F81900F41640 /* CipherTranslatorViewController.swift in Sources */,
 				0E420BFB1E078C0800F41640 /* UsefulFunctions.swift in Sources */,
 				0E420C051E07F7D800F41640 /* CipherIntroductionViewController.swift in Sources */,
@@ -1372,6 +1395,7 @@
 				0E8A3C311E08DE7400274D32 /* KeyboardView+Touch.swift in Sources */,
 				0E8A3C321E08DE7400274D32 /* KeyboardViewDelegate.swift in Sources */,
 				0E4AB8BE1E0BA35200F85D44 /* CipherCollectionViewCell.swift in Sources */,
+				0E0D87B21E553D64007432C8 /* AboutCryptoKeyboardTableViewController.swift in Sources */,
 				0E2972041E516A0600F098D9 /* KeyboardDiagram.swift in Sources */,
 				0E8A3C331E08DE7400274D32 /* KeyboardViewItem.swift in Sources */,
 				0E8A3C351E08DE7400274D32 /* IconDrawingView.swift in Sources */,
