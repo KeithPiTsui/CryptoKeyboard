@@ -114,7 +114,7 @@
                                     <constraint firstAttribute="height" constant="50" id="EXq-8Q-Iwb"/>
                                 </constraints>
                             </stackView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZYF-W9-xXC" customClass="KeyboardView" customModule="CryptoKB" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZYF-W9-xXC">
                                 <rect key="frame" x="0.0" y="70" width="375" height="216"/>
                                 <color key="backgroundColor" red="0.53085166215896606" green="0.69472062587738037" blue="0.91464543342590332" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -126,19 +126,20 @@
                         <constraints>
                             <constraint firstItem="ZYF-W9-xXC" firstAttribute="leading" secondItem="6Jh-8B-8Lp" secondAttribute="leading" id="212-wE-ifH"/>
                             <constraint firstAttribute="trailing" secondItem="6Jh-8B-8Lp" secondAttribute="trailing" id="7Qb-Pr-CrI"/>
+                            <constraint firstItem="ZYF-W9-xXC" firstAttribute="width" secondItem="c9V-wu-lwE" secondAttribute="width" id="EGP-9I-cHo"/>
                             <constraint firstItem="ZYF-W9-xXC" firstAttribute="top" secondItem="6Jh-8B-8Lp" secondAttribute="bottom" id="F2A-HK-rZG"/>
                             <constraint firstItem="6Jh-8B-8Lp" firstAttribute="top" secondItem="6vz-ya-xAy" secondAttribute="bottom" id="JCg-nQ-Oha"/>
-                            <constraint firstItem="ZYF-W9-xXC" firstAttribute="trailing" secondItem="6Jh-8B-8Lp" secondAttribute="trailing" id="Vnj-Xj-hcO"/>
                             <constraint firstItem="6Jh-8B-8Lp" firstAttribute="leading" secondItem="c9V-wu-lwE" secondAttribute="leading" id="d4x-ye-i03"/>
                         </constraints>
                     </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="375" height="667"/>
                     <connections>
                         <outlet property="cipherLabel" destination="cAA-9E-odX" id="mkb-cV-piR"/>
                         <outlet property="encryptedBtn" destination="ZnJ-A0-UyP" id="Sl2-Ft-usp"/>
                         <outlet property="encryptedLabel" destination="ch0-KY-mLq" id="d35-s8-O6a"/>
                         <outlet property="heuristicBtn" destination="kDg-V9-Zve" id="V6k-er-Szk"/>
                         <outlet property="heuristicLabel" destination="Ieb-b6-S7K" id="DJx-r0-leq"/>
-                        <outlet property="keyboardView" destination="ZYF-W9-xXC" id="mgP-ww-2z0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sKI-At-8xO" userLabel="First Responder" sceneMemberID="firstResponder"/>

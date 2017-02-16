@@ -21,11 +21,8 @@
 		0E28CCD81DFE532800BCAC75 /* KeyboardViewController+AutoCap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E28CCD71DFE532800BCAC75 /* KeyboardViewController+AutoCap.swift */; };
 		0E28CCDA1DFE551000BCAC75 /* KeyboardViewController+AutoSuffixPeriod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E28CCD91DFE551000BCAC75 /* KeyboardViewController+AutoSuffixPeriod.swift */; };
 		0E28CCDD1DFE643A00BCAC75 /* UsefulFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E28CCDC1DFE643A00BCAC75 /* UsefulFunctions.swift */; };
-		0E28CCDF1DFE6D7A00BCAC75 /* TopBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E28CCDE1DFE6D7A00BCAC75 /* TopBarView.swift */; };
 		0E28CCE21DFE748C00BCAC75 /* InputInterpreter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E28CCE11DFE748C00BCAC75 /* InputInterpreter.swift */; };
 		0E28CCF91DFE7BE000BCAC75 /* KeyboardViewController+InputInterpreterOutputReceiverDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E28CCF81DFE7BE000BCAC75 /* KeyboardViewController+InputInterpreterOutputReceiverDelegate.swift */; };
-		0E28CCFB1DFE854800BCAC75 /* TopBarView+Touch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E28CCFA1DFE854800BCAC75 /* TopBarView+Touch.swift */; };
-		0E28CCFD1DFE85EE00BCAC75 /* KeyboardViewController+TopBarViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E28CCFC1DFE85EE00BCAC75 /* KeyboardViewController+TopBarViewDelegate.swift */; };
 		0E2972031E51682700F098D9 /* KeyboardDiagram.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E2972021E51682700F098D9 /* KeyboardDiagram.swift */; };
 		0E2972041E516A0600F098D9 /* KeyboardDiagram.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E2972021E51682700F098D9 /* KeyboardDiagram.swift */; };
 		0E3C9F211DFD943300D44E51 /* KeyboardViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E3C9F201DFD943300D44E51 /* KeyboardViewDelegate.swift */; };
@@ -513,11 +510,8 @@
 		0E28CCD71DFE532800BCAC75 /* KeyboardViewController+AutoCap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "KeyboardViewController+AutoCap.swift"; sourceTree = "<group>"; };
 		0E28CCD91DFE551000BCAC75 /* KeyboardViewController+AutoSuffixPeriod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "KeyboardViewController+AutoSuffixPeriod.swift"; sourceTree = "<group>"; };
 		0E28CCDC1DFE643A00BCAC75 /* UsefulFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsefulFunctions.swift; sourceTree = "<group>"; };
-		0E28CCDE1DFE6D7A00BCAC75 /* TopBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopBarView.swift; sourceTree = "<group>"; };
 		0E28CCE11DFE748C00BCAC75 /* InputInterpreter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputInterpreter.swift; sourceTree = "<group>"; };
 		0E28CCF81DFE7BE000BCAC75 /* KeyboardViewController+InputInterpreterOutputReceiverDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "KeyboardViewController+InputInterpreterOutputReceiverDelegate.swift"; sourceTree = "<group>"; };
-		0E28CCFA1DFE854800BCAC75 /* TopBarView+Touch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TopBarView+Touch.swift"; sourceTree = "<group>"; };
-		0E28CCFC1DFE85EE00BCAC75 /* KeyboardViewController+TopBarViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "KeyboardViewController+TopBarViewDelegate.swift"; sourceTree = "<group>"; };
 		0E2971CF1E51403100F098D9 /* FunctionalDiagram.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = FunctionalDiagram.playground; sourceTree = "<group>"; };
 		0E2972021E51682700F098D9 /* KeyboardDiagram.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardDiagram.swift; sourceTree = "<group>"; };
 		0E3C9F201DFD943300D44E51 /* KeyboardViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardViewDelegate.swift; sourceTree = "<group>"; };
@@ -626,7 +620,6 @@
 			isa = PBXGroup;
 			children = (
 				0E1261471DFD75EE00E7EFE4 /* KeyboardViewController.swift */,
-				0E28CCFC1DFE85EE00BCAC75 /* KeyboardViewController+TopBarViewDelegate.swift */,
 				0E28CCD51DFE480200BCAC75 /* KeyboardViewController+KeyboardViewDelegate.swift */,
 				0E28CCF81DFE7BE000BCAC75 /* KeyboardViewController+InputInterpreterOutputReceiverDelegate.swift */,
 				0E5DE9241E00E88300FAEF09 /* KeyboardViewController+CipherSettingViewControllerDelegate.swift */,
@@ -661,15 +654,6 @@
 				0E3F18701E001F7700E80D0C /* CipherSettingTopBarView.swift */,
 			);
 			name = Setting;
-			sourceTree = "<group>";
-		};
-		0E3F186F1E001F5000E80D0C /* KeyboardTopBar */ = {
-			isa = PBXGroup;
-			children = (
-				0E28CCDE1DFE6D7A00BCAC75 /* TopBarView.swift */,
-				0E28CCFA1DFE854800BCAC75 /* TopBarView+Touch.swift */,
-			);
-			name = KeyboardTopBar;
 			sourceTree = "<group>";
 		};
 		0E420C061E07F7DE00F41640 /* supportingFiles */ = {
@@ -798,7 +782,6 @@
 			isa = PBXGroup;
 			children = (
 				0E56FE3D1E0E1AE000BF4377 /* KeyboardView */,
-				0E3F186F1E001F5000E80D0C /* KeyboardTopBar */,
 				0E3F186D1E001F3600E80D0C /* Setting */,
 			);
 			name = View;
@@ -1423,7 +1406,6 @@
 				0E2972031E51682700F098D9 /* KeyboardDiagram.swift in Sources */,
 				0E3F18711E001F7700E80D0C /* CipherSettingTopBarView.swift in Sources */,
 				0EA85D241DFD318700AFB546 /* UIColor+ColorScheme.swift in Sources */,
-				0E28CCDF1DFE6D7A00BCAC75 /* TopBarView.swift in Sources */,
 				0E1261481DFD75EE00E7EFE4 /* KeyboardViewController.swift in Sources */,
 				0EA85D141DFD2E3700AFB546 /* DefaultKeyboard.swift in Sources */,
 				0EA85D1D1DFD2E9500AFB546 /* KeyboardView.swift in Sources */,
@@ -1432,9 +1414,7 @@
 				0E1261461DFD680900E7EFE4 /* LayoutConstraints.swift in Sources */,
 				0E28CCD41DFE3C3900BCAC75 /* KeyboardView+Touch.swift in Sources */,
 				0E12614A1DFD762200E7EFE4 /* IconDrawingView.swift in Sources */,
-				0E28CCFB1DFE854800BCAC75 /* TopBarView+Touch.swift in Sources */,
 				0E28CCDA1DFE551000BCAC75 /* KeyboardViewController+AutoSuffixPeriod.swift in Sources */,
-				0E28CCFD1DFE85EE00BCAC75 /* KeyboardViewController+TopBarViewDelegate.swift in Sources */,
 				0E5DE9251E00E88300FAEF09 /* KeyboardViewController+CipherSettingViewControllerDelegate.swift in Sources */,
 				0E28CCDD1DFE643A00BCAC75 /* UsefulFunctions.swift in Sources */,
 				0E3C9F211DFD943300D44E51 /* KeyboardViewDelegate.swift in Sources */,

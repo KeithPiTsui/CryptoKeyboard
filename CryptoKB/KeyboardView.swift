@@ -56,18 +56,26 @@ final class KeyboardView: UIView {
     
     var touchToView: [UITouch:UIView] = [:]
     
+//    override func awakeFromNib() {
+//        translatesAutoresizingMaskIntoConstraints = false
+//        backgroundColor = UIColor.keyboardViewBackgroundColor
+//        isMultipleTouchEnabled = true
+//        isUserInteractionEnabled = true
+//        isOpaque = false
+//        print("Keyboard view initialized")
+//    }
     
     init(frame: CGRect = CGRect.zero, withDelegate delegate: KeyboardViewDelegate? = nil) {
         super.init(frame: frame)
-        translatesAutoresizingMaskIntoConstraints = false
         self.delegate = delegate
+        translatesAutoresizingMaskIntoConstraints = false
         backgroundColor = UIColor.keyboardViewBackgroundColor
         isMultipleTouchEnabled = true
         isUserInteractionEnabled = true
         isOpaque = false
-        
+        print("Keyboard view initialized")
     }
-    
+//
     required convenience init?(coder aDecoder: NSCoder) {
         self.init()
     }

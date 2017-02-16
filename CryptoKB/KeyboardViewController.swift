@@ -18,9 +18,7 @@ final class KeyboardViewController: UIInputViewController {
     @IBOutlet weak var encryptedLabel: UILabel!
     @IBOutlet weak var cipherLabel: UILabel!
     @IBOutlet weak var keyboardView: KeyboardView!
-
     @IBOutlet weak var heuristicBtn: UIButton!
-  
     @IBOutlet weak var encryptedBtn: UIButton!
     
     // MARK: -
@@ -29,38 +27,11 @@ final class KeyboardViewController: UIInputViewController {
     var cipherName: String = "Caesar" {didSet{cipherLabel.text = cipherName}}
     var cipherType: CipherType = .caesar {didSet{textInterpreter.cipherType = cipherType}}
     var cipherKey: String = "03" {didSet{textInterpreter.cipherKey = cipherKey}}
-    
-//    lazy var keyboardView: KeyboardView = KeyboardView(frame: .zero, withDelegate: nil)
-    
-//    lazy var topBar: TopBarView = {
-//        let tbv = TopBarView(delegate:self)
-//        tbv.translatesAutoresizingMaskIntoConstraints = false
-//        tbv.cipherName = self.cipherName
-//        return tbv
-//    }()
-//    
-//    var heuristicTextLabel: UILabel { return topBar.leftLabel}
-//    var encryptedTextLabel: UILabel { return topBar.rightLabel}
-    
-    
-    var heightConstraint: NSLayoutConstraint!
-    
-    lazy var inputViewHeight: CGFloat = self.topBarHeight + self.keyboardViewheight
-    var topBarHeight: CGFloat = LayoutConstraints.topBarHeight
-    var keyboardViewheight: CGFloat = LayoutConstraints.keyboardViewHeight
-    
-    
-//    lazy var dummyLabel: UILabel = {let b = UILabel(); b.translatesAutoresizingMaskIntoConstraints = false; return b}()
-//    var keyboradViewLayoutConstraints: [NSLayoutConstraint] = []
-    
-    var shiftState: ShiftState = .disabled {
-        didSet {
-            keyboardView.shiftState = shiftState
-        }
-    }
-    
+
+    var shiftState: ShiftState = .disabled { didSet {
+//        keyboardView.shiftState = shiftState
+        }}
     var autoPeriodState: AutoPeriodState = .noSpace
-    
     lazy var textInterpreter: InputInterpreter = { return InputInterpreter(delegate: self)}()
     
     
@@ -68,119 +39,36 @@ final class KeyboardViewController: UIInputViewController {
     let backspaceRepeat: TimeInterval = 0.07
     var backspaceDelayTimer: Timer?
     var backspaceRepeatTimer: Timer?
-    
-    
-    
-    // MARK: -
-    // MARK: Layout Keyboard
-    
-    override func updateViewConstraints() {
-        guard view.frame.width != 0 && view.frame.height != 0 else {return }
-        setUpHeightConstraint()
-//        setupKeyboardLayoutConstraints()
-        super.updateViewConstraints()
-    }
-    private func setUpHeightConstraint() {
-        guard heightConstraint == nil else { heightConstraint.constant = inputViewHeight; return }
-        heightConstraint = NSLayoutConstraint(item: view,
-                                              attribute: .height,
-                                              relatedBy: .equal,
-                                              toItem: nil,
-                                              attribute: .notAnAttribute,
-                                              multiplier: 1,
-                                              constant: inputViewHeight)
-        heightConstraint.priority = UILayoutPriority(UILayoutPriorityDefaultHigh)
-        view.addConstraint(heightConstraint)
-    }
-//    private func setupKeyboardLayoutConstraints() {
-//        guard keyboradViewLayoutConstraints.isEmpty else { return }
-//        
-//        keyboradViewLayoutConstraints.append( NSLayoutConstraint(item: topBar,
-//                                                                 attribute: .height,
-//                                                                 relatedBy: .equal,
-//                                                                 toItem: nil,
-//                                                                 attribute: .notAnAttribute,
-//                                                                 multiplier: 1,
-//                                                                 constant: topBarHeight))
-//        keyboradViewLayoutConstraints.append( NSLayoutConstraint(item: topBar,
-//                                                                 attribute: .width,
-//                                                                 relatedBy: .equal,
-//                                                                 toItem: view,
-//                                                                 attribute: .width,
-//                                                                 multiplier: 1,
-//                                                                 constant: 0))
-//        keyboradViewLayoutConstraints.append( NSLayoutConstraint(item: topBar,
-//                                                                 attribute: .top,
-//                                                                 relatedBy: .equal,
-//                                                                 toItem: view,
-//                                                                 attribute: .top,
-//                                                                 multiplier: 1,
-//                                                                 constant: 0))
-//        keyboradViewLayoutConstraints.append( NSLayoutConstraint(item: topBar,
-//                                                                 attribute: .left,
-//                                                                 relatedBy: .equal,
-//                                                                 toItem: view,
-//                                                                 attribute: .left,
-//                                                                 multiplier: 1,
-//                                                                 constant: 0))
-//        keyboradViewLayoutConstraints.append( NSLayoutConstraint(item: keyboardView,
-//                                                               attribute: .height,
-//                                                               relatedBy: .equal,
-//                                                               toItem: nil,
-//                                                               attribute: .notAnAttribute,
-//                                                               multiplier: 1,
-//                                                               constant: keyboardViewheight))
-//        keyboradViewLayoutConstraints.append( NSLayoutConstraint(item: keyboardView,
-//                                                                 attribute: .width,
-//                                                                 relatedBy: .equal,
-//                                                                 toItem: view,
-//                                                                 attribute: .width,
-//                                                                 multiplier: 1,
-//                                                                 constant: 0))
-//        keyboradViewLayoutConstraints.append( NSLayoutConstraint(item: keyboardView,
-//                                                                 attribute: .top,
-//                                                                 relatedBy: .equal,
-//                                                                 toItem: topBar,
-//                                                                 attribute: .bottom,
-//                                                                 multiplier: 1,
-//                                                                 constant: 0))
-//        keyboradViewLayoutConstraints.append( NSLayoutConstraint(item: keyboardView,
-//                                                                 attribute: .left,
-//                                                                 relatedBy: .equal,
-//                                                                 toItem: view,
-//                                                                 attribute: .left,
-//                                                                 multiplier: 1,
-//                                                                 constant: 0))
-//        view.addConstraints(keyboradViewLayoutConstraints)
-//        
-//    }
-    
+
     // MARK: -
     // MARK: View Controller Life Cycle
     
-    func click() {
-        print("clicked")
-    }
-    
     override func viewDidLoad(){
         super.viewDidLoad()
+        
         loadCipherSetting()
-
         
-        self.heuristicBtn.addTarget(self, action: #selector(click), for: .touchUpInside)
+        heuristicBtn.reactive.controlEvents(.touchUpInside).observe { (_) in print("Hello")}
         
-        keyboardViewEventBinding()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        view.setNeedsUpdateConstraints()
+//        keyboardViewEventBinding()
     }
     
     // MARK: -
     // MARK: Text Editing
     override func textDidChange(_ textInput: UITextInput?) {
         setCapsIfNeeded()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        let c = view.heightAnchor.constraint(equalToConstant: 266)
+        c.priority = 800
+        c.isActive = true
+        
+//        view.setNeedsUpdateConstraints()
+//        print(keyboardView.frame)
+        print(view.frame)
+        
     }
     
     
