@@ -46,6 +46,10 @@ final class KeyboardViewController: UIInputViewController {
     override func viewDidLoad(){
         super.viewDidLoad()
         
+        let c = view.heightAnchor.constraint(equalToConstant: LayoutConstraints.keyboardHeight)
+        c.priority = UILayoutPriorityDefaultHigh
+        c.isActive = true
+        
         loadCipherSetting()
         
         heuristicBtn.reactive.controlEvents(.touchUpInside).observe { (_) in print("Hello")}
@@ -61,9 +65,6 @@ final class KeyboardViewController: UIInputViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        let c = view.heightAnchor.constraint(equalToConstant: 266)
-        c.priority = 800
-        c.isActive = true
         
 //        view.setNeedsUpdateConstraints()
 //        print(keyboardView.frame)
