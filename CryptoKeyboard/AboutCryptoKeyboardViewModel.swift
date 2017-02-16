@@ -31,8 +31,8 @@ public protocol AboutCryptoKeyboardViewModelOutputs {
 }
 
 public protocol AboutCryptoKeyboardViewModelType {
-    var inputs: AboutCrytoKeyboardViewModelInputs {get}
-    var outputs: AboutCrytoKeyboardViewModelOutputs {get}
+    var inputs: AboutCryptoKeyboardViewModelInputs {get}
+    var outputs: AboutCryptoKeyboardViewModelOutputs {get}
 }
 
 public final class AboutCryptoKeyboardViewModel: AboutCryptoKeyboardViewModelType, AboutCryptoKeyboardViewModelInputs, AboutCryptoKeyboardViewModelOutputs {

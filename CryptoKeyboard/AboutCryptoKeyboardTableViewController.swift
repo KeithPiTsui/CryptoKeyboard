@@ -12,10 +12,6 @@ internal final class AboutCryptoKeyboardTableViewController: UITableViewControll
 
     fileprivate let viewMode: AboutCryptoKeyboardViewModel = AboutCryptoKeyboardViewModel()
     
-    internal static func instantiate() -> Self {
-        return Story
-    }
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -76,6 +76,7 @@
 		0EAEACE41E50762300AAA7B0 /* ReactiveSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0EAEACBB1E5075E000AAA7B0 /* ReactiveSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0EAEACE71E50762300AAA7B0 /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EAEACA31E5075CD00AAA7B0 /* ReactiveCocoa.framework */; };
 		0EAEACE81E50762300AAA7B0 /* ReactiveCocoa.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0EAEACA31E5075CD00AAA7B0 /* ReactiveCocoa.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		0EC280B51E555F7B0070712E /* Keyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0EC280B41E555F7B0070712E /* Keyboard.storyboard */; };
 		0EFCAFB31E52A71D00F2B99A /* Runes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EFCAFA61E52A6EC00F2B99A /* Runes.framework */; };
 		0EFCAFB41E52A71D00F2B99A /* Runes.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0EFCAFA61E52A6EC00F2B99A /* Runes.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0EFCAFB71E52A73F00F2B99A /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EAEACA31E5075CD00AAA7B0 /* ReactiveCocoa.framework */; };
@@ -557,6 +558,7 @@
 		0EAEAC941E5075CD00AAA7B0 /* ReactiveCocoa.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ReactiveCocoa.xcodeproj; path = ReactiveCocoa/ReactiveCocoa.xcodeproj; sourceTree = "<group>"; };
 		0EAEACAC1E5075DF00AAA7B0 /* ReactiveSwift.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ReactiveSwift.xcodeproj; path = ReactiveCocoa/Carthage/Checkouts/ReactiveSwift/ReactiveSwift.xcodeproj; sourceTree = "<group>"; };
 		0EAEACC41E5075E800AAA7B0 /* Result.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Result.xcodeproj; path = ReactiveCocoa/Carthage/Checkouts/Result/Result.xcodeproj; sourceTree = "<group>"; };
+		0EC280B41E555F7B0070712E /* Keyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Keyboard.storyboard; sourceTree = "<group>"; };
 		0EFCAF741E5289D100F2B99A /* Experiment.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Experiment.playground; sourceTree = "<group>"; };
 		0EFCAF9B1E52A6EC00F2B99A /* Runes.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Runes.xcodeproj; path = Runes/Runes.xcodeproj; sourceTree = "<group>"; };
 		0EFCAFBB1E52A9FF00F2B99A /* Prelude.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Prelude.xcodeproj; path = "Kickstarter-Prelude/Prelude.xcodeproj"; sourceTree = "<group>"; };
@@ -759,6 +761,7 @@
 		0E6B6A481DFA4AE400712C0A /* CryptoKB */ = {
 			isa = PBXGroup;
 			children = (
+				0EC280911E555F550070712E /* Storyboards */,
 				0E3F18661DFFE22400E80D0C /* SpellingAutoCorrector */,
 				0E28CCE01DFE73E900BCAC75 /* controller */,
 				0EA85D181DFD2E7A00AFB546 /* View */,
@@ -842,6 +845,14 @@
 				0EAEACDE1E5075E800AAA7B0 /* Result-watchOSTests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		0EC280911E555F550070712E /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				0EC280B41E555F7B0070712E /* Keyboard.storyboard */,
+			);
+			name = Storyboards;
 			sourceTree = "<group>";
 		};
 		0EFCAF9C1E52A6EC00F2B99A /* Products */ = {
@@ -1354,6 +1365,7 @@
 				0E3F18651DFF9AC900E80D0C /* Media.xcassets in Resources */,
 				0E5DE92D1E0134A100FAEF09 /* MorseCodeMapping.json in Resources */,
 				0E3F186A1DFFEE8300E80D0C /* words.txt in Resources */,
+				0EC280B51E555F7B0070712E /* Keyboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

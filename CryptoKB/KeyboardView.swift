@@ -56,6 +56,7 @@ final class KeyboardView: UIView {
     
     var touchToView: [UITouch:UIView] = [:]
     
+    
     init(frame: CGRect = CGRect.zero, withDelegate delegate: KeyboardViewDelegate? = nil) {
         super.init(frame: frame)
         translatesAutoresizingMaskIntoConstraints = false
@@ -67,8 +68,8 @@ final class KeyboardView: UIView {
         
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("Not implemented yet")
+    required convenience init?(coder aDecoder: NSCoder) {
+        self.init()
     }
     
     override func layoutSubviews() {

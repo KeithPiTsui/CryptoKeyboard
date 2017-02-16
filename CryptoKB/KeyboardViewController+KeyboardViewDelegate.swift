@@ -148,12 +148,12 @@ extension KeyboardViewController {
         if key.isAlphabet {
             textInterpreter.receiveACharacter(char: outputCharacter)
         } else {
-            if let text = encryptedTextLabel.text {
+            if let text = encryptedLabel.text {
                 let characterCount = textInterpreter.receivedCharacters.count
                 for _ in 0...characterCount {textDocumentProxy.deleteBackward()}
                 textDocumentProxy.insertText(text+outputCharacter)
                 textInterpreter.resetState()
-                topBar.resetLabels()
+//                topBar.resetLabels()
             }
         }
         
@@ -169,7 +169,7 @@ extension KeyboardViewController {
     
     func discardAllInput() {
         textInterpreter.resetState()
-        topBar.resetLabels()
+//        topBar.resetLabels()
     }
     
     private func highlightItem(_ sender: KeyboardViewItem) {
