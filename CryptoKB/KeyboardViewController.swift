@@ -29,7 +29,7 @@ final class KeyboardViewController: UIInputViewController {
     var cipherKey: String = "03" {didSet{textInterpreter.cipherKey = cipherKey}}
 
     var shiftState: ShiftState = .disabled { didSet {
-//        keyboardView.shiftState = shiftState
+        keyboardView.shiftState = shiftState
         }}
     var autoPeriodState: AutoPeriodState = .noSpace
     lazy var textInterpreter: InputInterpreter = { return InputInterpreter(delegate: self)}()
@@ -49,12 +49,14 @@ final class KeyboardViewController: UIInputViewController {
         let c = view.heightAnchor.constraint(equalToConstant: LayoutConstraints.keyboardHeight)
         c.priority = UILayoutPriorityDefaultHigh
         c.isActive = true
+        keyboardView.heightAnchor.constraint(equalToConstant: LayoutConstraints.keyboardViewHeight).isActive = true
+        
         
         loadCipherSetting()
         
         heuristicBtn.reactive.controlEvents(.touchUpInside).observe { (_) in print("Hello")}
         
-//        keyboardViewEventBinding()
+        keyboardViewEventBinding()
     }
     
     // MARK: -
@@ -62,16 +64,6 @@ final class KeyboardViewController: UIInputViewController {
     override func textDidChange(_ textInput: UITextInput?) {
         setCapsIfNeeded()
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-//        view.setNeedsUpdateConstraints()
-//        print(keyboardView.frame)
-        print(view.frame)
-        
-    }
-    
     
     // MARK: -
     // MARK: Cipher Setting

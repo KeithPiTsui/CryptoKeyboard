@@ -114,7 +114,7 @@
                                     <constraint firstAttribute="height" constant="50" id="EXq-8Q-Iwb"/>
                                 </constraints>
                             </stackView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZYF-W9-xXC">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZYF-W9-xXC" customClass="KeyboardView" customModule="CryptoKB" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="70" width="375" height="216"/>
                                 <color key="backgroundColor" red="0.53085166215896606" green="0.69472062587738037" blue="0.91464543342590332" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -140,6 +140,7 @@
                         <outlet property="encryptedLabel" destination="ch0-KY-mLq" id="d35-s8-O6a"/>
                         <outlet property="heuristicBtn" destination="kDg-V9-Zve" id="V6k-er-Szk"/>
                         <outlet property="heuristicLabel" destination="Ieb-b6-S7K" id="DJx-r0-leq"/>
+                        <outlet property="keyboardView" destination="ZYF-W9-xXC" id="bJr-KI-mlF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sKI-At-8xO" userLabel="First Responder" sceneMemberID="firstResponder"/>

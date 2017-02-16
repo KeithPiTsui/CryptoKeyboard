@@ -20,7 +20,7 @@ final class KeyboardView: UIView {
     /// a delegate to recieve keyboard event, like which key is pressed
     weak var delegate: KeyboardViewDelegate?
     
-    var keyboardDiagram: Diagram = Keyboard.symbolKeyboardDiagram {
+    var keyboardDiagram: Diagram = Keyboard.defaultKeyboardDiagram {
         didSet {
             boundSize = nil
             self.setNeedsLayout()
@@ -56,15 +56,6 @@ final class KeyboardView: UIView {
     
     var touchToView: [UITouch:UIView] = [:]
     
-//    override func awakeFromNib() {
-//        translatesAutoresizingMaskIntoConstraints = false
-//        backgroundColor = UIColor.keyboardViewBackgroundColor
-//        isMultipleTouchEnabled = true
-//        isUserInteractionEnabled = true
-//        isOpaque = false
-//        print("Keyboard view initialized")
-//    }
-    
     init(frame: CGRect = CGRect.zero, withDelegate delegate: KeyboardViewDelegate? = nil) {
         super.init(frame: frame)
         self.delegate = delegate
@@ -73,9 +64,8 @@ final class KeyboardView: UIView {
         isMultipleTouchEnabled = true
         isUserInteractionEnabled = true
         isOpaque = false
-        print("Keyboard view initialized")
     }
-//
+
     required convenience init?(coder aDecoder: NSCoder) {
         self.init()
     }
@@ -87,6 +77,7 @@ final class KeyboardView: UIView {
             boundSize = bounds.size
             subviews.forEach{ $0.removeFromSuperview() }
             layout(keyboardDiagram, in: bounds)
+            
         }
     }
     
