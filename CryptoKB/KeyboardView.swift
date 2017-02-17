@@ -20,7 +20,7 @@ final class KeyboardView: UIView {
     /// a delegate to recieve keyboard event, like which key is pressed
     weak var delegate: KeyboardViewDelegate?
     
-    var keyboardDiagram: Diagram = Keyboard.defaultKeyboardDiagram {
+    var keyboardDiagram: Diagram<Key> = Keyboard.defaultKeyboardDiagram {
         didSet {
             boundSize = nil
             self.setNeedsLayout()
@@ -137,6 +137,44 @@ extension Reactive where Base: KeyboardView {
 }
 
 
+extension KeyboardView {
+    func layout(_ primitive: Primitive<Key>, in frame: CGRect) {
+        if case let .element(k) = primitive {
+            let kv = KeyboardViewItem(frame: frame, key: k)
+            kv.shiftState = self.shiftState
+            self.addSubview(kv)
+        }
+    }
+    
+    func layout(_ diagram: Diagram<Key>, in bounds: CGRect) {
+        switch diagram {
+        case let .primitive(size, primitive):
+            let bounds = size.fit(into: bounds, alignment: .center)
+            layout(primitive, in: bounds)
+            
+        case .align(let alignment, let diagram):
+            let bounds = diagram.size.fit(into: bounds, alignment: alignment)
+            layout(diagram, in: bounds)
+            
+        case let .beside(l, _, r):
+            let (lBounds, rBounds) = bounds.splitThree(firstFraction: l.size.width / diagram.size.width,
+                                                       lastFraction: r.size.width / diagram.size.width,
+                                                       isHorizontal: true)
+            layout(l, in: lBounds)
+            layout(r, in: rBounds)
+            
+        case .below(let top, _, let bottom):
+            let (tBounds, bBounds) = bounds.splitThree(firstFraction: top.size.height / diagram.size.height,
+                                                       lastFraction: bottom.size.height / diagram.size.height,
+                                                       isHorizontal: false)
+            layout(top, in: tBounds)
+            layout(bottom, in: bBounds)
+            
+        case let .attributed(_, diagram):
+            layout(diagram, in: bounds)
+        }
+    }
+}
 
 
 

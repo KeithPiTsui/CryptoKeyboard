@@ -8,15 +8,6 @@
 
 import UIKit
 
-extension String {
-    var chars: [String] {
-        return self.characters.reduce([]) {(initializer:[String], element: Character) -> [String] in
-            var strings = initializer
-            strings.append("\(element)")
-            return strings
-        }
-    }
-}
 
 func delay(_ seconds:Double, closure:@escaping ()->()) {
     let when = DispatchTime.now() + seconds
