@@ -6,26 +6,29 @@ public struct Keyboard {
     public static let puncutations = ".,?!';\""
     public static let numbers = "1234567890"
     
-    
+    //
     public static let numberPunctuationKeyboardDiagram: Diagram<Key> = {
-        return "123456789"
-            --- "-/:;()$&@\""
-            --- "modechangeSym" ||| 0.1 ||| ".,?!'" ||| 0.1 ||| "backspace><1.2"
-            --- "modechangeABC" ||| "keyboardchange" ||| "settings" ||| "space><4" ||| "return><2"
+        let a = "123456789" --- "-/:;()$&@\""
+        let c = "modechangeSym" ||| 0.1 ||| ".,?!'" ||| 0.1 ||| "backspace><1.2"
+        let d = "modechangeABC" ||| "keyboardchange" ||| "settings" ||| "space><4" ||| "return><2"
+        return a --- c --- d
     }()
-//
+    //
     public static let symbolKeyboardDiagram: Diagram<Key> = {
-        return "[]{}#%^*+="
-            --- "_\\|~<>€£¥•"
-            --- "modechange123" ||| 0.1 ||| ".,?!'" ||| 0.1 ||| "backspace><1.2"
-            --- "modechangeABC" ||| "keyboardchange" ||| "settings" ||| "space><4" ||| "return><2"
+        
+        let a = "[]{}#%^*+=" --- "_\\|~<>€£¥•"
+        let c = "modechange123" ||| 0.1 ||| ".,?!'" ||| 0.1 ||| "backspace><1.2"
+        let d = "modechangeABC" ||| "keyboardchange" ||| "settings" ||| "space><4" ||| "return><2"
+        
+        return a --- c --- d
     }()
-//
+    ////
     public static let defaultKeyboardDiagram: Diagram<Key> = {
-        return "QWERTYUIOP"
-            --- 0.5 ||| "ASDFGHJKL" ||| 0.5
-            --- "shift><1.2" ||| 0.1 ||| "ZXCVBNM" ||| 0.1 ||| "backspace><1.2"
-            --- "modechange123" ||| "keyboardchange" ||| "settings" ||| "space><4" ||| "return><2"
+        let a = "QWERTYUIOP" --- 0.5 ||| "ASDFGHJKL" ||| 0.5
+        let c = "shift><1.2" ||| 0.1 ||| "ZXCVBNM" ||| 0.1 ||| "backspace><1.2"
+        let d = "modechange123" ||| "keyboardchange" ||| "settings" ||| "space><4" ||| "return><2"
+        
+        return a --- c --- d
     }()
     
     
@@ -40,7 +43,7 @@ public struct Keyboard {
         return "123" --- "456" --- "789" --- 1 ||| "0" ||| "backspace"
     }()
     
-    static let keywords: [String] = ["shift", "backspace","modechange123","modechangeABC","modechangeSym","keyboardchange","space","return"]
+    static let keywords: [String] = ["shift", "backspace","modechange123","modechangeABC","modechangeSym","keyboardchange","space","return", "settings"]
 }
 
 
