@@ -1,8 +1,8 @@
 import UIKit
 
-public enum Attribute {
-    case fillColor(UIColor)
-}
+//public enum Attribute {
+//    case fillColor(UIColor)
+//}
 
 public enum Primitive<Element> {
     case empty
@@ -13,7 +13,7 @@ public indirect enum Diagram<Element> {
     case primitive(CGSize, Primitive<Element>)
     case beside(Diagram<Element>, CGFloat, Diagram<Element>)
     case below(Diagram<Element>, CGFloat, Diagram<Element>)
-    case attributed(Attribute, Diagram<Element>)
+    //case attributed(Attribute, Diagram<Element>)
     case align(CGPoint, Diagram<Element>)
     
     init() { self = .primitive(CGSize(width: 0, height: 0), .empty) }
@@ -24,8 +24,8 @@ extension Diagram {
         switch self {
         case .primitive(let size, _):
             return size
-        case .attributed(_, let x):
-            return x.size
+//        case .attributed(_, let x):
+//            return x.size
         case let .beside(l, gap, r):
             let sizeL = l.size
             let sizeR = r.size
@@ -39,9 +39,9 @@ extension Diagram {
         }
     }
     
-    func filled(_ color: UIColor) -> Diagram {
-        return .attributed(.fillColor(color), self)
-    }
+//    func filled(_ color: UIColor) -> Diagram {
+//        return .attributed(.fillColor(color), self)
+//    }
     
     func aligned(to position: CGPoint) -> Diagram {
         return .align(position, self)

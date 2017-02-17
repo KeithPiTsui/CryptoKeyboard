@@ -169,9 +169,6 @@ extension KeyboardView {
                                                        isHorizontal: false)
             layout(top, in: tBounds)
             layout(bottom, in: bBounds)
-            
-        case let .attributed(_, diagram):
-            layout(diagram, in: bounds)
         }
     }
 }

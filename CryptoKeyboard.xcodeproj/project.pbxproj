@@ -96,6 +96,34 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		0E1E33071E56F57200750CF2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0E1E33001E56F57200750CF2 /* ExSwift.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 24D9BBE61AC54B30000FDBB8;
+			remoteInfo = "ExSwift-iOS";
+		};
+		0E1E33091E56F57200750CF2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0E1E33001E56F57200750CF2 /* ExSwift.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 24D9BBF01AC54B31000FDBB8;
+			remoteInfo = "ExSwiftTests-iOS";
+		};
+		0E1E330B1E56F57200750CF2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0E1E33001E56F57200750CF2 /* ExSwift.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 1E11AF841943222D006BCE48;
+			remoteInfo = "ExSwift-Mac";
+		};
+		0E1E330D1E56F57200750CF2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0E1E33001E56F57200750CF2 /* ExSwift.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 1E11AF8F1943222D006BCE48;
+			remoteInfo = "ExSwiftTests-Mac";
+		};
 		0E6B6A4C1DFA4AE400712C0A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 0E6B6A261DFA4ABD00712C0A /* Project object */;
@@ -486,6 +514,7 @@
 		0E1E32F31E56F29700750CF2 /* Key.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Key.swift; sourceTree = "<group>"; };
 		0E1E32F41E56F29700750CF2 /* Keyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keyboard.swift; sourceTree = "<group>"; };
 		0E1E32F51E56F29700750CF2 /* Others.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Others.swift; sourceTree = "<group>"; };
+		0E1E33001E56F57200750CF2 /* ExSwift.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ExSwift.xcodeproj; path = ExSwift/ExSwift.xcodeproj; sourceTree = "<group>"; };
 		0E28CCD31DFE3C3900BCAC75 /* KeyboardView+Touch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "KeyboardView+Touch.swift"; sourceTree = "<group>"; };
 		0E28CCD51DFE480200BCAC75 /* KeyboardViewController+KeyboardViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "KeyboardViewController+KeyboardViewDelegate.swift"; sourceTree = "<group>"; };
 		0E28CCD71DFE532800BCAC75 /* KeyboardViewController+AutoCap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "KeyboardViewController+AutoCap.swift"; sourceTree = "<group>"; };
@@ -537,8 +566,6 @@
 		0EFCAF9B1E52A6EC00F2B99A /* Runes.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Runes.xcodeproj; path = Runes/Runes.xcodeproj; sourceTree = "<group>"; };
 		0EFCAFBB1E52A9FF00F2B99A /* Prelude.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Prelude.xcodeproj; path = "Kickstarter-Prelude/Prelude.xcodeproj"; sourceTree = "<group>"; };
 		0EFCAFD61E52AA0800F2B99A /* Curry.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Curry.xcodeproj; path = Curry/Curry.xcodeproj; sourceTree = "<group>"; };
-		0EFCAFFB1E52AAA800F2B99A /* KTKeyboard.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KTKeyboard.h; sourceTree = "<group>"; };
-		0EFCAFFC1E52AAA800F2B99A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -584,17 +611,40 @@
 			name = Keyboard;
 			sourceTree = "<group>";
 		};
-		0E28CCDB1DFE640D00BCAC75 /* Utilities */ = {
+		0E1E33011E56F57200750CF2 /* Products */ = {
 			isa = PBXGroup;
 			children = (
+				0E1E33081E56F57200750CF2 /* ExSwift.framework */,
+				0E1E330A1E56F57200750CF2 /* ExSwiftTests.xctest */,
+				0E1E330C1E56F57200750CF2 /* ExSwift.framework */,
+				0E1E330E1E56F57200750CF2 /* ExSwiftTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		0E1E330F1E57253F00750CF2 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				0E3F18641DFF9AC900E80D0C /* Media.xcassets */,
+				0E3F18691DFFEE8300E80D0C /* words.txt */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		0E28CCDB1DFE640D00BCAC75 /* library */ = {
+			isa = PBXGroup;
+			children = (
+				0E28CCE31DFE76FF00BCAC75 /* Cyphers */,
+				0E3F18661DFFE22400E80D0C /* SpellingAutoCorrector */,
+				0E28CCE11DFE748C00BCAC75 /* InputInterpreter.swift */,
 				0EA85D231DFD318700AFB546 /* UIColor+ColorScheme.swift */,
 				0E1261451DFD680900E7EFE4 /* LayoutConstraints.swift */,
 				0E28CCDC1DFE643A00BCAC75 /* UsefulFunctions.swift */,
 			);
-			name = Utilities;
+			name = library;
 			sourceTree = "<group>";
 		};
-		0E28CCE01DFE73E900BCAC75 /* controller */ = {
+		0E28CCE01DFE73E900BCAC75 /* controllers */ = {
 			isa = PBXGroup;
 			children = (
 				0E1261471DFD75EE00E7EFE4 /* KeyboardViewController.swift */,
@@ -604,7 +654,7 @@
 				0E28CCD71DFE532800BCAC75 /* KeyboardViewController+AutoCap.swift */,
 				0E28CCD91DFE551000BCAC75 /* KeyboardViewController+AutoSuffixPeriod.swift */,
 			);
-			name = controller;
+			name = controllers;
 			sourceTree = "<group>";
 		};
 		0E28CCE31DFE76FF00BCAC75 /* Cyphers */ = {
@@ -678,6 +728,7 @@
 			children = (
 				0EFCAF741E5289D100F2B99A /* Experiment.playground */,
 				0E2971CF1E51403100F098D9 /* FunctionalDiagram.playground */,
+				0E1E33001E56F57200750CF2 /* ExSwift.xcodeproj */,
 				0EFCAFD61E52AA0800F2B99A /* Curry.xcodeproj */,
 				0EFCAFBB1E52A9FF00F2B99A /* Prelude.xcodeproj */,
 				0EFCAF9B1E52A6EC00F2B99A /* Runes.xcodeproj */,
@@ -686,7 +737,6 @@
 				0EAEAC941E5075CD00AAA7B0 /* ReactiveCocoa.xcodeproj */,
 				0E6B6A301DFA4ABD00712C0A /* CryptoKeyboard */,
 				0E6B6A481DFA4AE400712C0A /* CryptoKB */,
-				0EFCAFFA1E52AAA800F2B99A /* KTKeyboard */,
 				0E6B6A2F1DFA4ABD00712C0A /* Products */,
 			);
 			sourceTree = "<group>";
@@ -724,12 +774,12 @@
 			children = (
 				0E76732F1E558DD3008AA089 /* CryptoKB.entitlements */,
 				0EC280911E555F550070712E /* Storyboards */,
-				0E3F18661DFFE22400E80D0C /* SpellingAutoCorrector */,
-				0E28CCE01DFE73E900BCAC75 /* controller */,
-				0EA85D181DFD2E7A00AFB546 /* View */,
-				0E7673431E5590DA008AA089 /* ViewModel */,
-				0EA85D171DFD2E3900AFB546 /* Model */,
-				0E28CCDB1DFE640D00BCAC75 /* Utilities */,
+				0E28CCE01DFE73E900BCAC75 /* controllers */,
+				0EA85D181DFD2E7A00AFB546 /* Views */,
+				0E7673431E5590DA008AA089 /* ViewModels */,
+				0EA85D171DFD2E3900AFB546 /* BusinessModels */,
+				0E28CCDB1DFE640D00BCAC75 /* library */,
+				0E1E330F1E57253F00750CF2 /* Resources */,
 				0E6B6A551DFA4B5400712C0A /* SupportingFiles */,
 			);
 			path = CryptoKB;
@@ -738,38 +788,34 @@
 		0E6B6A551DFA4B5400712C0A /* SupportingFiles */ = {
 			isa = PBXGroup;
 			children = (
-				0E3F18691DFFEE8300E80D0C /* words.txt */,
 				0E6B6A4B1DFA4AE400712C0A /* Info.plist */,
-				0E3F18641DFF9AC900E80D0C /* Media.xcassets */,
 			);
 			name = SupportingFiles;
 			sourceTree = "<group>";
 		};
-		0E7673431E5590DA008AA089 /* ViewModel */ = {
+		0E7673431E5590DA008AA089 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
 				0E7673441E559122008AA089 /* KeyboardViewModel.swift */,
 			);
-			name = ViewModel;
+			name = ViewModels;
 			sourceTree = "<group>";
 		};
-		0EA85D171DFD2E3900AFB546 /* Model */ = {
+		0EA85D171DFD2E3900AFB546 /* BusinessModels */ = {
 			isa = PBXGroup;
 			children = (
 				0E1E32CF1E56F24A00750CF2 /* Keyboard */,
-				0E28CCE31DFE76FF00BCAC75 /* Cyphers */,
-				0E28CCE11DFE748C00BCAC75 /* InputInterpreter.swift */,
 			);
-			name = Model;
+			name = BusinessModels;
 			sourceTree = "<group>";
 		};
-		0EA85D181DFD2E7A00AFB546 /* View */ = {
+		0EA85D181DFD2E7A00AFB546 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				0E56FE3D1E0E1AE000BF4377 /* KeyboardView */,
 				0E3F186D1E001F3600E80D0C /* Setting */,
 			);
-			name = View;
+			name = Views;
 			sourceTree = "<group>";
 		};
 		0EAEAC951E5075CD00AAA7B0 /* Products */ = {
@@ -861,15 +907,6 @@
 				0EFCAFE41E52AA0900F2B99A /* Curry.framework */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		0EFCAFFA1E52AAA800F2B99A /* KTKeyboard */ = {
-			isa = PBXGroup;
-			children = (
-				0EFCAFFB1E52AAA800F2B99A /* KTKeyboard.h */,
-				0EFCAFFC1E52AAA800F2B99A /* Info.plist */,
-			);
-			path = KTKeyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -965,6 +1002,10 @@
 					ProjectRef = 0EFCAFD61E52AA0800F2B99A /* Curry.xcodeproj */;
 				},
 				{
+					ProductGroup = 0E1E33011E56F57200750CF2 /* Products */;
+					ProjectRef = 0E1E33001E56F57200750CF2 /* ExSwift.xcodeproj */;
+				},
+				{
 					ProductGroup = 0EFCAFBC1E52A9FF00F2B99A /* Products */;
 					ProjectRef = 0EFCAFBB1E52A9FF00F2B99A /* Prelude.xcodeproj */;
 				},
@@ -994,6 +1035,34 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		0E1E33081E56F57200750CF2 /* ExSwift.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = ExSwift.framework;
+			remoteRef = 0E1E33071E56F57200750CF2 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0E1E330A1E56F57200750CF2 /* ExSwiftTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = ExSwiftTests.xctest;
+			remoteRef = 0E1E33091E56F57200750CF2 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0E1E330C1E56F57200750CF2 /* ExSwift.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = ExSwift.framework;
+			remoteRef = 0E1E330B1E56F57200750CF2 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0E1E330E1E56F57200750CF2 /* ExSwiftTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = ExSwiftTests.xctest;
+			remoteRef = 0E1E330D1E56F57200750CF2 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		0EAEAC9F1E5075CD00AAA7B0 /* ReactiveCocoa.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
