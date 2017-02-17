@@ -110,6 +110,13 @@ final class KeyboardViewController: UIInputViewController {
         _ = self.cipherLabel |> UILabel.lens.textColor %~ {_ in UIColor.topBarInscriptColor}
     }
     
+    /// Handle view mode output signal
+    internal override func bindViewModel() {
+        super.bindViewModel()
+        
+        
+    }
+    
 }
 
 

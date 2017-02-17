@@ -10,7 +10,7 @@ import UIKit
 
 public enum Primitive {
     case empty
-    case key(Key)
+    case key(Key) // Key should be relpace by something else to let it become more generic. such as keyboardview item config data wrapper.
 }
 
 public indirect enum Diagram {
