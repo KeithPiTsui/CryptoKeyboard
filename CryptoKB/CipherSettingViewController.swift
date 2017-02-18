@@ -155,7 +155,7 @@ final class CipherSettingViewController: UIViewController {
     // MARK: -
     // MARK: Slide in Numerics Keyboard
     private lazy var numericKeyboard: KeyboardView = {
-        let v = KeyboardView(frame: .zero, withDelegate: self)
+        let v = KeyboardView()
         v.keyboardDiagram = Keyboard.numberKeyboardDiagram
         return v
     }()
@@ -188,7 +188,7 @@ final class CipherSettingViewController: UIViewController {
     // MARK: -
     // MARK: Slide in Alphabet Keyboard
     private lazy var alphabetkeyboard: KeyboardView = {
-        let v = KeyboardView(frame: .zero, withDelegate: self)
+        let v = KeyboardView()
         v.keyboardDiagram = Keyboard.alphaKeyboardDiagram
         return v}()
     private var alphabetKeyboardSlideIned: Bool = false
@@ -370,30 +370,18 @@ extension CipherSettingViewController: CipherSettingTopBarViewDelegate {
     }
 }
 
-//extension CipherSettingViewController: AlphabetKeyboardDelegate {
-//    func keyboardViewItem(_ item: KeyboardViewItem, receivedEvent event: UIControlEvents, inKeyboard keyboard: AlphabetKeyboard) {
+//NumericKeyboardDelegate
+//extension CipherSettingViewController: KeyboardViewDelegate {
+//    func keyboardViewItem(_ item: KeyboardViewItem,
+//                          receivedEvent event: UIControlEvents,
+//                          inKeyboard keyboard: KeyboardView){
 //        print("\(#function)")
-//        
 //        if event == .touchUpInside {
 //            handleKeyPressDown(item.key)
 //        }
+//        
 //    }
-//    
-//    
 //}
-
-//NumericKeyboardDelegate
-extension CipherSettingViewController: KeyboardViewDelegate {
-    func keyboardViewItem(_ item: KeyboardViewItem,
-                          receivedEvent event: UIControlEvents,
-                          inKeyboard keyboard: KeyboardView){
-        print("\(#function)")
-        if event == .touchUpInside {
-            handleKeyPressDown(item.key)
-        }
-        
-    }
-}
 
 
 

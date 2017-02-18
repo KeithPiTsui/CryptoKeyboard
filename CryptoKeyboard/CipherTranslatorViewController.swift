@@ -287,7 +287,7 @@ class CipherTranslatorViewController: UIViewController {
     // MARK: Slide in Numerics Keyboard
     private lazy var numericKeyboard: KeyboardView = {
 //        let v  = NumericKeyboardView(withDelegate: self)
-        let v = KeyboardView(frame: .zero, withDelegate: self)
+        let v = KeyboardView()
         v.keyboardDiagram = Keyboard.numberKeyboardDiagram
         return v}()
     private var numericKeyboardSlideIned: Bool = false
@@ -319,7 +319,7 @@ class CipherTranslatorViewController: UIViewController {
     // MARK: -
     // MARK: Slide in Alphabet Keyboard
     private lazy var alphabetkeyboard: KeyboardView = {
-        let v = KeyboardView(frame: .zero, withDelegate: self)
+        let v = KeyboardView()
         v.keyboardDiagram = Keyboard.alphaKeyboardDiagram
         return v}()
     private var alphabetKeyboardSlideIned: Bool = false
@@ -392,17 +392,17 @@ extension CipherTranslatorViewController: UITextViewDelegate{
 
 
 
-extension CipherTranslatorViewController: KeyboardViewDelegate {
-    func keyboardViewItem(_ item: KeyboardViewItem, receivedEvent event: UIControlEvents, inKeyboard keyboard: KeyboardView) {
-        print("\(#function)")
-        
-        if event == .touchUpInside {
-            handleKeyPressDown(item.key)
-        }
-    }
-    
-    
-}
+//extension CipherTranslatorViewController: KeyboardViewDelegate {
+//    func keyboardViewItem(_ item: KeyboardViewItem, receivedEvent event: UIControlEvents, inKeyboard keyboard: KeyboardView) {
+//        print("\(#function)")
+//        
+//        if event == .touchUpInside {
+//            handleKeyPressDown(item.key)
+//        }
+//    }
+//    
+//    
+//}
 
 
 

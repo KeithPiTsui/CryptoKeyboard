@@ -11,15 +11,9 @@ import ReactiveCocoa
 import ReactiveSwift
 import Result
 
-protocol KeyboardViewEventHanlder: class {
-    func event(_ e: UIControlEvents, on item: KeyboardViewItem, at Keyboard: KeyboardView)
-}
-
 
 final class KeyboardView: UIView {
-    /// a delegate to recieve keyboard event, like which key is pressed
-    weak var delegate: KeyboardViewDelegate?
-    
+
     var keyboardDiagram: Diagram<Key> = Keyboard.defaultKeyboardDiagram {
         didSet {
             boundSize = nil
@@ -54,11 +48,10 @@ final class KeyboardView: UIView {
     /// To record bound change
     private var boundSize: CGSize?
     
-    var touchToView: [UITouch:UIView] = [:]
+    fileprivate var touchToView: [UITouch:UIView] = [:]
     
-    init(frame: CGRect = CGRect.zero, withDelegate delegate: KeyboardViewDelegate? = nil) {
+    override init(frame: CGRect = CGRect.zero) {
         super.init(frame: frame)
-        self.delegate = delegate
         translatesAutoresizingMaskIntoConstraints = false
         backgroundColor = UIColor.keyboardViewBackgroundColor
         isMultipleTouchEnabled = true
@@ -81,7 +74,7 @@ final class KeyboardView: UIView {
 
     }
     
-    var eventHanlders = [UInt: [KeyboardViewEventHanlder]]()
+    fileprivate var eventHanlders = [UInt: [KeyboardViewEventHanlder]]()
     
     func addEventHandler(_ handler: KeyboardViewEventHanlder, for controlEvents: UIControlEvents) {
         if eventHanlders[controlEvents.rawValue] == nil {
@@ -100,17 +93,17 @@ final class KeyboardView: UIView {
     
 }
 
+protocol KeyboardViewEventHanlder: class {
+    func event(_ e: UIControlEvents, on item: KeyboardViewItem, at Keyboard: KeyboardView)
+}
+
 final class ObserverWrapper {
     let observer: Observer<KeyboardViewItem, NoError>
-    init(ob: Observer<KeyboardViewItem, NoError>) {
-        observer = ob
-    }
+    init(ob: Observer<KeyboardViewItem, NoError>) { observer = ob }
 }
 
 extension ObserverWrapper: KeyboardViewEventHanlder {
-    func event(_ e: UIControlEvents, on item: KeyboardViewItem, at Keyboard: KeyboardView) {
-        observer.send(value: item)
-    }
+    func event(_ e: UIControlEvents, on item: KeyboardViewItem, at Keyboard: KeyboardView) { observer.send(value: item)}
 }
 
 
@@ -127,13 +120,9 @@ extension Reactive where Base: KeyboardView {
         }
     }
     
-    var continuousKeyPressed: Signal<KeyboardViewItem, NoError> {
-        return controlEvents(.touchUpInside)
-    }
+    var continuousKeyPressed: Signal<KeyboardViewItem, NoError> { return controlEvents(.touchUpInside) }
     
-    var continuousKeyDoubleClicked: Signal<KeyboardViewItem, NoError> {
-        return controlEvents(.touchDownRepeat)
-    }
+    var continuousKeyDoubleClicked: Signal<KeyboardViewItem, NoError> { return controlEvents(.touchDownRepeat) }
 }
 
 
@@ -169,6 +158,109 @@ extension KeyboardView {
                                                        isHorizontal: false)
             layout(top, in: tBounds)
             layout(bottom, in: bBounds)
+        }
+    }
+}
+
+// MARK: -
+// MARK: Touch Detection
+
+extension KeyboardView {
+    private func handleControl(_ view: UIView?, controlEvent: UIControlEvents) {
+        guard let control = view as? KeyboardViewItem else { return }
+        guard let handlers = eventHanlders[controlEvent.rawValue] else { return }
+        handlers.forEach { $0.event(controlEvent, on: control, at: self) }
+    }
+    
+    private func findNearestView(_ position: CGPoint) -> UIView? {
+        guard self.bounds.contains(position) && !subviews.isEmpty else { return nil}
+        var closest: (UIView, CGFloat) = (self, CGFloat.greatestFiniteMagnitude)
+        for view in subviews {
+            guard !view.isHidden else { continue }
+            view.alpha = 1
+            let distance = distanceBetween(view.frame, point: position)
+            if distance < closest.1 {
+                closest = (view, distance)
+            }
+        }
+        return closest.0
+    }
+    
+    private func distanceBetween(_ rect: CGRect, point: CGPoint) -> CGFloat {
+        guard rect.contains(point) == false else { return 0 }
+        var closest = rect.origin
+        if (rect.origin.x + rect.size.width < point.x) {
+            closest.x += rect.size.width
+        } else if (point.x > rect.origin.x) {
+            closest.x = point.x
+        }
+        if (rect.origin.y + rect.size.height < point.y) {
+            closest.y += rect.size.height
+        } else if (point.y > rect.origin.y) {
+            closest.y = point.y
+        }
+        
+        let a = pow(Double(closest.y - point.y), 2)
+        let b = pow(Double(closest.x - point.x), 2)
+        return CGFloat(sqrt(a + b));
+    }
+    
+    private func ownView(_ newTouch: UITouch, viewToOwn: UIView?) -> Bool {
+        defer { touchToView[newTouch] = viewToOwn}
+        guard viewToOwn != nil else { return false }
+        var foundView = false
+        for (touch, view) in touchToView {
+            if viewToOwn == view {
+                if touch != newTouch {
+                    touchToView[touch] = nil
+                    foundView = true
+                }
+                break
+            }
+        }
+        return foundView
+    }
+    
+    override func hitTest(_ point: CGPoint, with event: UIEvent!) -> UIView? {
+        return (isHidden || alpha == 0 || !isUserInteractionEnabled || !bounds.contains(point)) ? nil : self
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        touches.forEach { touch in
+            let view = findNearestView(touch.location(in: self))
+            guard ownView(touch, viewToOwn: view) == false else { return }
+            handleControl(view, controlEvent: .touchDown)
+            guard touch.tapCount > 1 else { return }
+            handleControl(view, controlEvent: .touchDownRepeat)
+        }
+    }
+    
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        touches.forEach { touch in
+            let oldView = touchToView[touch]
+            let newView = findNearestView(touch.location(in: self))
+            guard oldView != newView else { handleControl(oldView, controlEvent: .touchDragInside); return }
+            handleControl(oldView, controlEvent: .touchDragExit)
+            ownView(touch, viewToOwn: newView)
+                ? handleControl(newView, controlEvent: .touchDragInside)
+                : handleControl(newView, controlEvent: .touchDragEnter)
+        }
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        touches.forEach { touch in
+            let view = touchToView[touch]
+            bounds.contains(touch.location(in: self))
+                ? handleControl(view, controlEvent: .touchUpInside)
+                : handleControl(view, controlEvent: .touchCancel)
+            touchToView[touch] = nil
+        }
+    }
+    
+    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+        touches.forEach{
+            handleControl(touchToView[$0], controlEvent: .touchCancel)
+            touchToView[$0] = nil
         }
     }
 }
