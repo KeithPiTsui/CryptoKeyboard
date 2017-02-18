@@ -88,3 +88,57 @@ extension Diagram {
         return .below(l, g, Diagram<Element>())
     }
 }
+
+extension Diagram {
+    func map<T>(_ transform: (Element) throws -> T) rethrows -> Diagram<T> {
+        switch self {
+        case .primitive(let size, let pmt):
+            if case let .element(e) = pmt {
+                let t = try transform(e)
+                return .primitive(size, .element(t))
+            } else {
+                return .primitive(size, .empty)
+            }
+        case let .beside(l, gap, r):
+            return .beside(try l.map(transform), gap, try r.map(transform))
+        case let .below(l, gap, r):
+            return .below(try l.map(transform), gap, try r.map(transform))
+        case .align(let p, let r):
+            return .align(p, try r.map(transform))
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
