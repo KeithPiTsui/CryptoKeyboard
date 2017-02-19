@@ -99,6 +99,67 @@ import UIKit
 //}
 
 
+
+//public struct KeyboardViewItemConfig: Hashable, CustomStringConvertible {
+//    private static var counter = sequence(first: 0) { $0 + 1 }
+//    public let hashValue: Int = KeyboardViewItemConfig.counter.next()!
+//    public var description: String { return "\(self.hashValue)"}
+//    
+//    enum KeyType: UInt {
+//        case shift
+//        case backspace
+//        case modeChange
+//        case keyboardChange
+//        case space
+//        case `return`
+//        case settings
+//        case alphabet
+//        case number
+//        case symbol
+//        case punctuation
+//    }
+//    
+//    static let highlightableKeyTypes:[KeyType] = [.alphabet, .number, .symbol, .punctuation, .space]
+//    static let iconKeyType:[KeyType] = [.shift, .backspace, .keyboardChange, .settings, .return]
+//    
+//    let type: KeyType
+//    let meaning: String?
+//    let inscript: String?
+//    let toMode: Int?
+//    
+//    var uppercaseKeyCap: String? {return self.inscript?.uppercased()}
+//    var lowercaseKeyCap: String? {return self.inscript?.lowercased()}
+//    var uppercaseOutput: String? {return self.meaning?.uppercased()}
+//    var lowercaseOutput: String? {return self.meaning?.lowercased()}
+//    
+//    var isAlphabet: Bool {return type == .alphabet}
+//    var isHighlightable: Bool { return Key.highlightableKeyTypes.contains(type) }
+//    
+//    var withIcon: Bool { return Key.iconKeyType.contains(type) }
+//    var hasOutput: Bool { return meaning != nil }
+//    
+//    
+//    init(type: KeyType, meaning: String? = nil,  inscript: String? = nil, mode: Int? = nil) {
+//        self.type = type
+//        self.meaning = meaning
+//        self.inscript = inscript ?? meaning
+//        self.toMode = mode
+//    }
+//    
+//    func outputForCase(_ uppercase: Bool) -> String {
+//        return uppercase ? (self.uppercaseOutput ?? self.lowercaseOutput ?? "")
+//            : (self.lowercaseOutput ?? self.uppercaseOutput ?? "")
+//    }
+//    
+//    func keyCapForCase(_ uppercase: Bool) -> String {
+//        return uppercase ? (self.uppercaseKeyCap ?? self.lowercaseKeyCap ?? "")
+//            : (self.lowercaseKeyCap ?? self.uppercaseKeyCap ?? "")
+//    }
+//    
+//    public static func == (lhs: KeyboardViewItemConfig, rhs: KeyboardViewItemConfig) -> Bool { return lhs.hashValue == rhs.hashValue }
+//}
+
+
 final class KeyboardViewItem: UIView {
     private static func iconDrawingView(keyType type: Key.KeyType) -> IconDrawingView {
         var iv: IconDrawingView! = nil

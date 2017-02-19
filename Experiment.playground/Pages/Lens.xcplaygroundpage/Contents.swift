@@ -4,6 +4,7 @@ import Foundation
 import Curry
 import Prelude
 
+
 let d = Keyboard.numberKeyboardDiagram
 let c = Keyboard.alphaKeyboardDiagram
 let b = Keyboard.defaultKeyboardDiagram

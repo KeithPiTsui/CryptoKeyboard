@@ -108,6 +108,7 @@ final class KeyboardViewController: UIInputViewController {
         _ = self.leftViewLeftTag |> UILabel.lens.textColor %~ {_ in UIColor.topBarInscriptColor}
         _ = self.rightViewLeftTag |> UILabel.lens.textColor %~ {_ in UIColor.topBarInscriptColor}
         _ = self.cipherLabel |> UILabel.lens.textColor %~ {_ in UIColor.topBarInscriptColor}
+        _ = self.keyboardView |> KeyboardView.lens.keyboardDiagram %~ {_ in Keyboard.defaultKeyboardDiagram}
     }
     
     /// Handle view mode output signal

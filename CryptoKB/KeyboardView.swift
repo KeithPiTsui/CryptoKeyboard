@@ -10,14 +10,23 @@ import UIKit
 import ReactiveCocoa
 import ReactiveSwift
 import Result
+import Prelude
+import Prelude_UIKit
 
-struct KeyboardViewItemConfig {
-    let icon: UIImage?
-    let iconColor: UIColor?
-    let inscript: String = ""
-    let inscriptFont: UIFont = UIFont.systemFont(ofSize: 12)
-    let inscriptTextColor: UIColor = UIColor.clear
-    let backgroundColor: UIColor = UIColor.clear
+public protocol KeyboardViewProtocol: UIViewProtocol {
+    var keyboardDiagram: Diagram<Key> {get set}
+}
+
+extension KeyboardView: KeyboardViewProtocol {}
+
+public extension LensHolder where Object: KeyboardViewProtocol {
+    
+    public var keyboardDiagram: Lens<Object, Diagram<Key>> {
+        return Lens(
+            view: { $0.keyboardDiagram },
+            set: { $1.keyboardDiagram = $0; return $1 }
+        )
+    }
 }
 
 final class KeyboardView: UIView {
