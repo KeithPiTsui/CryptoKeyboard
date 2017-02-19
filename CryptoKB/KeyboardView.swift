@@ -12,6 +12,7 @@ import ReactiveSwift
 import Result
 import Prelude
 import Prelude_UIKit
+import Library
 
 public protocol KeyboardViewProtocol: UIViewProtocol {
     var keyboardDiagram: Diagram<Key> {get set}

@@ -16,10 +16,8 @@
 		0E1261461DFD680900E7EFE4 /* LayoutConstraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1261451DFD680900E7EFE4 /* LayoutConstraints.swift */; };
 		0E1261481DFD75EE00E7EFE4 /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1261471DFD75EE00E7EFE4 /* KeyboardViewController.swift */; };
 		0E12614A1DFD762200E7EFE4 /* IconDrawingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1261491DFD762200E7EFE4 /* IconDrawingView.swift */; };
-		0E1E32F61E56F29700750CF2 /* Diagram.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1E32F21E56F29700750CF2 /* Diagram.swift */; };
 		0E1E32F71E56F29700750CF2 /* Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1E32F31E56F29700750CF2 /* Key.swift */; };
 		0E1E32F81E56F29700750CF2 /* Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1E32F41E56F29700750CF2 /* Keyboard.swift */; };
-		0E1E32FC1E56F34100750CF2 /* Diagram.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1E32F21E56F29700750CF2 /* Diagram.swift */; };
 		0E1E32FD1E56F34100750CF2 /* Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1E32F31E56F29700750CF2 /* Key.swift */; };
 		0E1E32FE1E56F34100750CF2 /* Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1E32F41E56F29700750CF2 /* Keyboard.swift */; };
 		0E28CCD61DFE480200BCAC75 /* KeyboardViewController+KeyboardViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E28CCD51DFE480200BCAC75 /* KeyboardViewController+KeyboardViewDelegate.swift */; };
@@ -47,6 +45,11 @@
 		0E48DDB31E595E52000F388F /* ExtSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E48DD931E595E3C000F388F /* ExtSwift.framework */; };
 		0E48DDC11E5960F8000F388F /* ExtSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E48DD931E595E3C000F388F /* ExtSwift.framework */; };
 		0E48DDC21E5960F8000F388F /* ExtSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0E48DD931E595E3C000F388F /* ExtSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		0E48DDD01E596410000F388F /* Library.h in Headers */ = {isa = PBXBuildFile; fileRef = 0E48DDCE1E596410000F388F /* Library.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0E48DDD31E596410000F388F /* Library.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E48DDCC1E596410000F388F /* Library.framework */; };
+		0E48DDD41E596410000F388F /* Library.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0E48DDCC1E596410000F388F /* Library.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		0E48DDD81E596438000F388F /* Diagram.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1E32F21E56F29700750CF2 /* Diagram.swift */; };
+		0E48DDD91E59645D000F388F /* Library.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E48DDCC1E596410000F388F /* Library.framework */; };
 		0E4AB8BE1E0BA35200F85D44 /* CipherCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4AB8BD1E0BA35200F85D44 /* CipherCollectionViewCell.swift */; };
 		0E4ABB641E0C068600F85D44 /* FrontCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4ABB631E0C068600F85D44 /* FrontCollectionViewController.swift */; };
 		0E5DE9231E00E82600FAEF09 /* CipherSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5DE9221E00E82600FAEF09 /* CipherSettingViewController.swift */; };
@@ -104,6 +107,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 0E48DD791E595DF1000F388F;
 			remoteInfo = ExtSwift;
+		};
+		0E48DDD11E596410000F388F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0E6B6A261DFA4ABD00712C0A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0E48DDCB1E596410000F388F;
+			remoteInfo = Library;
 		};
 		0E6B6A4C1DFA4AE400712C0A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -460,6 +470,7 @@
 				0EFCAFB41E52A71D00F2B99A /* Runes.framework in Embed Frameworks */,
 				0EAEACE01E50762300AAA7B0 /* Result.framework in Embed Frameworks */,
 				0EAEACE41E50762300AAA7B0 /* ReactiveSwift.framework in Embed Frameworks */,
+				0E48DDD41E596410000F388F /* Library.framework in Embed Frameworks */,
 				0EFCAFF11E52AA3E00F2B99A /* Prelude_UIKit.framework in Embed Frameworks */,
 				0E48DDC21E5960F8000F388F /* ExtSwift.framework in Embed Frameworks */,
 				0EAEACE81E50762300AAA7B0 /* ReactiveCocoa.framework in Embed Frameworks */,
@@ -517,6 +528,9 @@
 		0E420C181E07FB5C00F41640 /* AppHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppHelper.h; sourceTree = "<group>"; };
 		0E420C191E07FB5C00F41640 /* AppHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppHelper.m; sourceTree = "<group>"; };
 		0E48DD8B1E595E3B000F388F /* ExtSwift.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ExtSwift.xcodeproj; path = ExtSwift/ExtSwift.xcodeproj; sourceTree = "<group>"; };
+		0E48DDCC1E596410000F388F /* Library.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Library.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0E48DDCE1E596410000F388F /* Library.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Library.h; sourceTree = "<group>"; };
+		0E48DDCF1E596410000F388F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0E4AB8BD1E0BA35200F85D44 /* CipherCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CipherCollectionViewCell.swift; sourceTree = "<group>"; };
 		0E4ABB631E0C068600F85D44 /* FrontCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FrontCollectionViewController.swift; sourceTree = "<group>"; };
 		0E5DE9221E00E82600FAEF09 /* CipherSettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CipherSettingViewController.swift; sourceTree = "<group>"; };
@@ -547,6 +561,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		0E48DDC81E596410000F388F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		0E6B6A2B1DFA4ABD00712C0A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -554,6 +575,7 @@
 				0EFCAFB31E52A71D00F2B99A /* Runes.framework in Frameworks */,
 				0EAEACDF1E50762300AAA7B0 /* Result.framework in Frameworks */,
 				0EAEACE31E50762300AAA7B0 /* ReactiveSwift.framework in Frameworks */,
+				0E48DDD31E596410000F388F /* Library.framework in Frameworks */,
 				0EFCAFF01E52AA3E00F2B99A /* Prelude_UIKit.framework in Frameworks */,
 				0E48DDC11E5960F8000F388F /* ExtSwift.framework in Frameworks */,
 				0EAEACE71E50762300AAA7B0 /* ReactiveCocoa.framework in Frameworks */,
@@ -566,6 +588,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0E48DDD91E59645D000F388F /* Library.framework in Frameworks */,
 				0E48DDB31E595E52000F388F /* ExtSwift.framework in Frameworks */,
 				0EFCAFE51E52AA2C00F2B99A /* Curry.framework in Frameworks */,
 				0EFCAFE61E52AA2C00F2B99A /* Prelude_UIKit.framework in Frameworks */,
@@ -583,7 +606,6 @@
 		0E1E32CF1E56F24A00750CF2 /* Keyboard */ = {
 			isa = PBXGroup;
 			children = (
-				0E1E32F21E56F29700750CF2 /* Diagram.swift */,
 				0E1E32F31E56F29700750CF2 /* Key.swift */,
 				0E1E32F41E56F29700750CF2 /* Keyboard.swift */,
 			);
@@ -614,6 +636,7 @@
 				0E1E33101E57270800750CF2 /* Schemes */,
 				0E28CCE31DFE76FF00BCAC75 /* Cyphers */,
 				0E3F18661DFFE22400E80D0C /* SpellingAutoCorrector */,
+				0E1E32F21E56F29700750CF2 /* Diagram.swift */,
 				0E28CCE11DFE748C00BCAC75 /* InputInterpreter.swift */,
 			);
 			name = library;
@@ -694,6 +717,15 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		0E48DDCD1E596410000F388F /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				0E48DDCE1E596410000F388F /* Library.h */,
+				0E48DDCF1E596410000F388F /* Info.plist */,
+			);
+			path = Library;
+			sourceTree = "<group>";
+		};
 		0E56FE3D1E0E1AE000BF4377 /* KeyboardView */ = {
 			isa = PBXGroup;
 			children = (
@@ -718,6 +750,7 @@
 				0EAEAC941E5075CD00AAA7B0 /* ReactiveCocoa.xcodeproj */,
 				0E6B6A301DFA4ABD00712C0A /* CryptoKeyboard */,
 				0E6B6A481DFA4AE400712C0A /* CryptoKB */,
+				0E48DDCD1E596410000F388F /* Library */,
 				0E6B6A2F1DFA4ABD00712C0A /* Products */,
 			);
 			sourceTree = "<group>";
@@ -727,6 +760,7 @@
 			children = (
 				0E6B6A2E1DFA4ABD00712C0A /* CryptoKeyboard.app */,
 				0E6B6A471DFA4AE400712C0A /* CryptoKB.appex */,
+				0E48DDCC1E596410000F388F /* Library.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -754,9 +788,9 @@
 			isa = PBXGroup;
 			children = (
 				0E76732F1E558DD3008AA089 /* CryptoKB.entitlements */,
+				0EA85D181DFD2E7A00AFB546 /* Views */,
 				0EC280911E555F550070712E /* Storyboards */,
 				0E28CCE01DFE73E900BCAC75 /* controllers */,
-				0EA85D181DFD2E7A00AFB546 /* Views */,
 				0E7673431E5590DA008AA089 /* ViewModels */,
 				0EA85D171DFD2E3900AFB546 /* BusinessModels */,
 				0E28CCDB1DFE640D00BCAC75 /* library */,
@@ -892,7 +926,36 @@
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		0E48DDC91E596410000F388F /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0E48DDD01E596410000F388F /* Library.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
+		0E48DDCB1E596410000F388F /* Library */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0E48DDD51E596410000F388F /* Build configuration list for PBXNativeTarget "Library" */;
+			buildPhases = (
+				0E48DDC71E596410000F388F /* Sources */,
+				0E48DDC81E596410000F388F /* Frameworks */,
+				0E48DDC91E596410000F388F /* Headers */,
+				0E48DDCA1E596410000F388F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Library;
+			productName = Library;
+			productReference = 0E48DDCC1E596410000F388F /* Library.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 		0E6B6A2D1DFA4ABD00712C0A /* CryptoKeyboard */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0E6B6A401DFA4ABD00712C0A /* Build configuration list for PBXNativeTarget "CryptoKeyboard" */;
@@ -915,6 +978,7 @@
 				0EFCAFEF1E52AA3E00F2B99A /* PBXTargetDependency */,
 				0EFCAFF31E52AA3E00F2B99A /* PBXTargetDependency */,
 				0E48DDC41E5960F9000F388F /* PBXTargetDependency */,
+				0E48DDD21E596410000F388F /* PBXTargetDependency */,
 			);
 			name = CryptoKeyboard;
 			productName = CryptoKeyboard;
@@ -948,6 +1012,11 @@
 				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = Keith;
 				TargetAttributes = {
+					0E48DDCB1E596410000F388F = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 6T5NK4S24M;
+						ProvisioningStyle = Automatic;
+					};
 					0E6B6A2D1DFA4ABD00712C0A = {
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = 6T5NK4S24M;
@@ -1012,6 +1081,7 @@
 			targets = (
 				0E6B6A2D1DFA4ABD00712C0A /* CryptoKeyboard */,
 				0E6B6A461DFA4AE400712C0A /* CryptoKB */,
+				0E48DDCB1E596410000F388F /* Library */,
 			);
 		};
 /* End PBXProject section */
@@ -1314,6 +1384,13 @@
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
+		0E48DDCA1E596410000F388F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		0E6B6A2C1DFA4ABD00712C0A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1339,6 +1416,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		0E48DDC71E596410000F388F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0E48DDD81E596438000F388F /* Diagram.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		0E6B6A2A1DFA4ABD00712C0A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1365,7 +1450,6 @@
 				0E4AB8BE1E0BA35200F85D44 /* CipherCollectionViewCell.swift in Sources */,
 				0E0D87B21E553D64007432C8 /* AboutCryptoKeyboardTableViewController.swift in Sources */,
 				0E8A3C331E08DE7400274D32 /* KeyboardViewItem.swift in Sources */,
-				0E1E32FC1E56F34100750CF2 /* Diagram.swift in Sources */,
 				0E1E32FD1E56F34100750CF2 /* Key.swift in Sources */,
 				0E1E32FE1E56F34100750CF2 /* Keyboard.swift in Sources */,
 				0E8A3C351E08DE7400274D32 /* IconDrawingView.swift in Sources */,
@@ -1384,7 +1468,6 @@
 				0E1E32F71E56F29700750CF2 /* Key.swift in Sources */,
 				0E28CCD81DFE532800BCAC75 /* KeyboardViewController+AutoCap.swift in Sources */,
 				0E1261461DFD680900E7EFE4 /* LayoutConstraints.swift in Sources */,
-				0E1E32F61E56F29700750CF2 /* Diagram.swift in Sources */,
 				0E12614A1DFD762200E7EFE4 /* IconDrawingView.swift in Sources */,
 				0E28CCDA1DFE551000BCAC75 /* KeyboardViewController+AutoSuffixPeriod.swift in Sources */,
 				0E5DE9251E00E88300FAEF09 /* KeyboardViewController+CipherSettingViewControllerDelegate.swift in Sources */,
@@ -1408,6 +1491,11 @@
 			isa = PBXTargetDependency;
 			name = ExtSwift;
 			targetProxy = 0E48DDC31E5960F9000F388F /* PBXContainerItemProxy */;
+		};
+		0E48DDD21E596410000F388F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0E48DDCB1E596410000F388F /* Library */;
+			targetProxy = 0E48DDD11E596410000F388F /* PBXContainerItemProxy */;
 		};
 		0E6B6A4D1DFA4AE400712C0A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -1463,6 +1551,56 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		0E48DDD61E596410000F388F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_IDENTITY = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 6T5NK4S24M;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = Library/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Keith.Pi.Tsui.Library;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		0E48DDD71E596410000F388F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_IDENTITY = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 6T5NK4S24M;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = Library/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Keith.Pi.Tsui.Library;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 		0E6B6A3E1DFA4ABD00712C0A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1504,7 +1642,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -1548,7 +1686,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -1635,6 +1773,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		0E48DDD51E596410000F388F /* Build configuration list for PBXNativeTarget "Library" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0E48DDD61E596410000F388F /* Debug */,
+				0E48DDD71E596410000F388F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		0E6B6A291DFA4ABD00712C0A /* Build configuration list for PBXProject "CryptoKeyboard" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

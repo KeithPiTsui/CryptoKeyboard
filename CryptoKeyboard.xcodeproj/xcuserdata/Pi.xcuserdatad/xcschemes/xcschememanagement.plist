@@ -7,12 +7,12 @@
 		<key>CKB.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>2</integer>
+			<integer>3</integer>
 		</dict>
 		<key>CryptoKB.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>1</integer>
+			<integer>2</integer>
 		</dict>
 		<key>CryptoKeyboard.xcscheme</key>
 		<dict>
@@ -22,11 +22,21 @@
 		<key>KTKeyboard.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>27</integer>
+			<integer>28</integer>
+		</dict>
+		<key>Library.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>29</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>0E48DDCB1E596410000F388F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>0E56FE0B1E0E188E00BF4377</key>
 		<dict>
 			<key>primary</key>

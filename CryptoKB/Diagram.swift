@@ -16,11 +16,11 @@ public indirect enum Diagram<Element> {
     //case attributed(Attribute, Diagram<Element>)
     case align(CGPoint, Diagram<Element>)
     
-    init() { self = .primitive(CGSize(width: 0, height: 0), .empty) }
+    public init() { self = .primitive(CGSize(width: 0, height: 0), .empty) }
 }
 
 extension Diagram {
-    var size: CGSize {
+    public var size: CGSize {
         switch self {
         case .primitive(let size, _):
             return size
@@ -43,7 +43,7 @@ extension Diagram {
 //        return .attributed(.fillColor(color), self)
 //    }
     
-    func aligned(to position: CGPoint) -> Diagram {
+    public func aligned(to position: CGPoint) -> Diagram {
         return .align(position, self)
     }
 }
@@ -62,35 +62,35 @@ infix operator ||| : HorizontalCombination
 infix operator --- : VerticalCombination
 
 extension Diagram {
-    static func ||| (l: Diagram<Element>, r: Diagram<Element>) -> Diagram<Element> {
+    public static func ||| (l: Diagram<Element>, r: Diagram<Element>) -> Diagram<Element> {
         return .beside(l, 0, r)
     }
     
-    static func ||| (l: Diagram<Element>, g: CGFloat) -> Diagram<Element> {
+    public static func ||| (l: Diagram<Element>, g: CGFloat) -> Diagram<Element> {
         return .beside(l, g, Diagram<Element>())
     }
     
-    static func ||| (g: CGFloat, r: Diagram<Element>) -> Diagram<Element> {
+    public static func ||| (g: CGFloat, r: Diagram<Element>) -> Diagram<Element> {
         return .beside(Diagram<Element>(), g, r)
     }
     
     
     
-    static func --- (l: Diagram<Element>, r: Diagram<Element>) -> Diagram<Element> {
+    public static func --- (l: Diagram<Element>, r: Diagram<Element>) -> Diagram<Element> {
         return .below(l, 0, r)
     }
     
-    static func --- (g: CGFloat, r: Diagram<Element>) -> Diagram<Element> {
+    public static func --- (g: CGFloat, r: Diagram<Element>) -> Diagram<Element> {
         return .below(Diagram<Element>(), g, r)
     }
     
-    static func --- (l: Diagram<Element>, g: CGFloat) -> Diagram<Element> {
+    public static func --- (l: Diagram<Element>, g: CGFloat) -> Diagram<Element> {
         return .below(l, g, Diagram<Element>())
     }
 }
 
 extension Diagram {
-    func map<T>(_ transform: (Element) throws -> T) rethrows -> Diagram<T> {
+    public func map<T>(_ transform: (Element) throws -> T) rethrows -> Diagram<T> {
         switch self {
         case .primitive(let size, let pmt):
             if case let .element(e) = pmt {

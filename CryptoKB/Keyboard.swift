@@ -1,4 +1,5 @@
 import UIKit
+import Library
 
 public struct Keyboard {
     public static let symbols = "()[]{}#%^*+=-\\|~<>€£¥•/:&$@_"
