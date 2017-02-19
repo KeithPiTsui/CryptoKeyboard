@@ -45,6 +45,23 @@ final class KeyboardViewController: UIInputViewController {
     var backspaceDelayTimer: Timer?
     var backspaceRepeatTimer: Timer?
 
+    
+    var keyboardMode = 0 {
+        didSet {
+            switch keyboardMode {
+            case 0:
+                _ = self.keyboardView |> KeyboardView.lens.keyboardDiagram %~ {_ in Keyboard.defaultKeyboardDiagram}
+            case 1:
+                _ = self.keyboardView |> KeyboardView.lens.keyboardDiagram %~ {_ in Keyboard.numberPunctuationKeyboardDiagram}
+            case 2:
+                _ = self.keyboardView |> KeyboardView.lens.keyboardDiagram %~ {_ in Keyboard.symbolKeyboardDiagram}
+            default:
+                fatalError("No corresponding keyboard for mode \(keyboardMode)")
+            }
+        }
+    }
+    
+    
     // MARK: -
     // MARK: View Controller Life Cycle
     

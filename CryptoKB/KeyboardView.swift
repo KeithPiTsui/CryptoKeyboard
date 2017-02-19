@@ -38,21 +38,6 @@ final class KeyboardView: UIView {
         }
     }
     
-    var keyboardMode = 0 {
-        didSet {
-            switch keyboardMode {
-            case 0:
-                keyboardDiagram = Keyboard.defaultKeyboardDiagram
-            case 1:
-                keyboardDiagram = Keyboard.numberPunctuationKeyboardDiagram
-            case 2:
-                keyboardDiagram = Keyboard.symbolKeyboardDiagram
-            default:
-                fatalError("No corresponding keyboard for mode \(keyboardMode)")
-            }
-        }
-    }
-    
     var shiftState: ShiftState = .disabled {
         didSet {
             self.subviews.forEach{
