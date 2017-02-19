@@ -11,19 +11,19 @@ import ExtSwift
 import ReactiveCocoa
 import ReactiveSwift
 import Result
-import ReactiveExtensions
 
 class CipherTranslatorViewController: UIViewController {
     
     private var cipherType: CipherType = .caesar
     fileprivate var cipherKey: String {return cipherKeys.joined()}
     private var cipherName: String { return CipherManager.ciphers[cipherType]!.name }
+    fileprivate var cipherKeys:[String]
     fileprivate var lastFocusTextView: Int = 0
     
     private var layoutConstraints: [NSLayoutConstraint] = []
     private var keyAreaLayoutConstraints: [NSLayoutConstraint] = []
     
-    fileprivate var cipherKeys:[String]
+    
     
     private let checkedImage = UIImage(named: "Checked")!
     
@@ -234,8 +234,12 @@ class CipherTranslatorViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        NotificationCenter.default.addObserver(self, selector: #selector(CipherTranslatorViewController.keyboardDidShow(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(CipherTranslatorViewController.KeyboardWillHide(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(CipherTranslatorViewController.keyboardDidShow(_:)),
+                                               name: NSNotification.Name.UIKeyboardWillShow,
+                                               object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(CipherTranslatorViewController.KeyboardWillHide(_:)),
+                                               name: NSNotification.Name.UIKeyboardWillHide,
+                                               object: nil)
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -294,7 +298,7 @@ class CipherTranslatorViewController: UIViewController {
 //        let v  = NumericKeyboardView(withDelegate: self)
         let v = KeyboardView()
         v.keyboardDiagram = Keyboard.numberKeyboardDiagram
-        v.reactive.controlEvents(.touchUpInside).observeForUI().observeValues { [weak self] in
+        v.reactive.controlEvents(.touchUpInside).observeValues { [weak self] in
             self?.handleKeyPressDown($0.0.key)
         }
         return v}()
@@ -329,7 +333,7 @@ class CipherTranslatorViewController: UIViewController {
     private lazy var alphabetkeyboard: KeyboardView = {
         let v = KeyboardView()
         v.keyboardDiagram = Keyboard.alphaKeyboardDiagram
-        v.reactive.controlEvents(.touchUpInside).observeForUI().observeValues { [weak self] in
+        v.reactive.controlEvents(.touchUpInside).observeValues { [weak self] in
             self?.handleKeyPressDown($0.0.key)
         }
         return v}()
@@ -339,7 +343,6 @@ class CipherTranslatorViewController: UIViewController {
         constraints.append(self.alphabetkeyboard.leftAnchor.constraint(equalTo: self.view.leftAnchor))
         constraints.append(self.alphabetkeyboard.rightAnchor.constraint(equalTo: self.view.rightAnchor))
         constraints.append(self.alphabetkeyboard.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 0.3))
-        //constraints.append(self.alphabetkeyboard.topAnchor.constraint(equalTo: self.topLayoutGuide.bottomAnchor))
         constraints.append(self.alphabetkeyboard.bottomAnchor.constraint(equalTo: self.bottomLayoutGuide.topAnchor))
         return constraints
     }()

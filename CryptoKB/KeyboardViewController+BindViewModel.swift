@@ -12,7 +12,6 @@ import ReactiveSwift
 import ReactiveCocoa
 import Result
 import ExtSwift
-import ReactiveExtensions
 
 
 extension KeyboardViewController {
@@ -21,37 +20,26 @@ extension KeyboardViewController {
     internal override func bindViewModel() {
         super.bindViewModel()
         viewModel.outputs.keyboardDiagram
-            .observeForUI()
             .observeValues{[weak self] in self?.keyboardView.keyboardDiagram = $0 }
         viewModel.outputs.changeToSystemKeyboard
-            .observeForUI()
             .observeValues{[weak self] in self?.advanceToNextInputMode() }
         viewModel.outputs.deleteCharacterBackward
-            .observeForUI()
             .observeValues{[weak self] in self?.pressBackspace() }
         viewModel.outputs.stopDeletingCharacterBackward
-            .observeForUI()
             .observeValues{[weak self] in self?.pressBackspaceCancel()}
         viewModel.outputs.highlightKey
-            .observeForUI()
             .observeValues{[weak self] in self?.highlight(true, key: $0)}
         viewModel.outputs.unhighlightKey
-            .observeForUI()
             .observeValues{[weak self] in self?.highlight(false, key: $0)}
         viewModel.outputs.outputOneKey
-            .observeForUI()
             .observeValues{[weak self] in self?.pressAnOutputItem($0)}
         viewModel.outputs.clickSound
-            .observeForUI()
             .observeValues{[weak self] in self?.playKeySound()}
         viewModel.outputs.goToSetting
-            .observeForUI()
             .observeValues{[weak self] in self?.gotoSetting()}
         viewModel.outputs.shiftDown
-            .observeForUI()
             .observeValues{[weak self] in self?.pressShiftDown()}
         viewModel.outputs.shiftDoubletapped
-            .observeForUI()
             .observeValues{[weak self] in self?.doubleTapShift()}
         
         keyboardView.reactive.controlEvents(.allTouchEvents).observeValues{ [weak self] in self?.viewModel.inputs.event($0.1, on: $0.0.key)}

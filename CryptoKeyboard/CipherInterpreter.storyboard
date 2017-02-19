@@ -23,46 +23,46 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="efB-Td-fce">
-                                <rect key="frame" x="0.0" y="306" width="375" height="55"/>
+                                <rect key="frame" x="0.0" y="313.5" width="375" height="40"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3u4-Qv-boe">
-                                        <rect key="frame" x="328" y="14" width="39" height="27"/>
+                                        <rect key="frame" x="328" y="8" width="39" height="24"/>
                                         <state key="normal" title="Trans"/>
                                     </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y0a-Ee-cm1">
-                                        <rect key="frame" x="8" y="14" width="138" height="27"/>
+                                        <rect key="frame" x="8" y="8" width="138" height="24"/>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eoj-vv-6aT">
-                                        <rect key="frame" x="8" y="14" width="138" height="27"/>
+                                        <rect key="frame" x="8" y="8" width="138" height="24"/>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="3u4-Qv-boe" firstAttribute="top" secondItem="Y0a-Ee-cm1" secondAttribute="top" id="1zL-B0-QJy"/>
                                     <constraint firstItem="Y0a-Ee-cm1" firstAttribute="centerY" secondItem="efB-Td-fce" secondAttribute="centerY" id="5Qj-VK-Fdv"/>
-                                    <constraint firstAttribute="height" constant="55" id="8mI-EU-nQ9"/>
+                                    <constraint firstAttribute="height" constant="40" id="8mI-EU-nQ9"/>
                                     <constraint firstItem="eoj-vv-6aT" firstAttribute="trailing" secondItem="Y0a-Ee-cm1" secondAttribute="trailing" id="IYW-Da-Tkc"/>
                                     <constraint firstItem="eoj-vv-6aT" firstAttribute="bottom" secondItem="Y0a-Ee-cm1" secondAttribute="bottom" id="TTM-Kb-vAs"/>
                                     <constraint firstItem="3u4-Qv-boe" firstAttribute="trailing" secondItem="efB-Td-fce" secondAttribute="trailingMargin" id="VzM-D7-AHQ"/>
                                     <constraint firstItem="3u4-Qv-boe" firstAttribute="bottom" secondItem="Y0a-Ee-cm1" secondAttribute="bottom" id="fy6-ou-AJQ"/>
                                     <constraint firstItem="eoj-vv-6aT" firstAttribute="top" secondItem="Y0a-Ee-cm1" secondAttribute="top" id="hU9-s1-zyf"/>
-                                    <constraint firstItem="Y0a-Ee-cm1" firstAttribute="top" secondItem="efB-Td-fce" secondAttribute="top" constant="14" id="mrj-8o-fMB"/>
+                                    <constraint firstItem="Y0a-Ee-cm1" firstAttribute="top" secondItem="efB-Td-fce" secondAttribute="top" constant="8" id="mrj-8o-fMB"/>
                                     <constraint firstItem="eoj-vv-6aT" firstAttribute="leading" secondItem="Y0a-Ee-cm1" secondAttribute="leading" id="nlJ-ng-heq"/>
                                     <constraint firstAttribute="trailing" secondItem="Y0a-Ee-cm1" secondAttribute="trailing" constant="229" id="o3n-ax-aSu"/>
                                     <constraint firstItem="Y0a-Ee-cm1" firstAttribute="leading" secondItem="efB-Td-fce" secondAttribute="leadingMargin" id="pVG-8d-NPm"/>
                                 </constraints>
                             </view>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="EncryptedText" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="kkd-x2-Yq7">
-                                <rect key="frame" x="0.0" y="361" width="375" height="306"/>
+                                <rect key="frame" x="0.0" y="353.5" width="375" height="313.5"/>
                                 <color key="backgroundColor" red="0.96470594409999999" green="0.93333339689999995" blue="0.86666673419999996" alpha="1" colorSpace="deviceRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" spellCheckingType="no" returnKeyType="done"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" spellCheckingType="no"/>
                             </textView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Plaintext" translatesAutoresizingMaskIntoConstraints="NO" id="fLe-Zf-Bhe">
-                                <rect key="frame" x="0.0" y="20" width="375" height="286"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="293.5"/>
                                 <color key="backgroundColor" red="0.6549019814" green="0.99607849120000003" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="yes" spellCheckingType="yes" returnKeyType="done"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="yes" spellCheckingType="yes"/>
                             </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -85,6 +85,7 @@
                         <outlet property="encryptedTextView" destination="kkd-x2-Yq7" id="RHq-xt-Jdo"/>
                         <outlet property="keyEidtBtn" destination="eoj-vv-6aT" id="CMv-fy-8MZ"/>
                         <outlet property="keyStackView" destination="Y0a-Ee-cm1" id="BbH-dp-xvA"/>
+                        <outlet property="midBarView" destination="efB-Td-fce" id="lS6-8i-Fb8"/>
                         <outlet property="plaintextView" destination="fLe-Zf-Bhe" id="hZt-K6-g0i"/>
                         <outlet property="tranlateBtn" destination="3u4-Qv-boe" id="CHd-uL-Khb"/>
                     </connections>

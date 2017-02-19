@@ -156,7 +156,7 @@ final class CipherSettingViewController: UIViewController {
     private lazy var numericKeyboard: KeyboardView = {
         let v = KeyboardView()
         v.keyboardDiagram = Keyboard.numberKeyboardDiagram
-        v.reactive.controlEvents(.touchUpInside).observeForUI().observeValues { [weak self] in
+        v.reactive.controlEvents(.touchUpInside).observeValues { [weak self] in
             self?.handleKeyPressDown($0.0.key)
         }
         return v
@@ -192,7 +192,7 @@ final class CipherSettingViewController: UIViewController {
     private lazy var alphabetkeyboard: KeyboardView = {
         let v = KeyboardView()
         v.keyboardDiagram = Keyboard.alphaKeyboardDiagram
-        v.reactive.controlEvents(.touchUpInside).observeForUI().observeValues { [weak self] in
+        v.reactive.controlEvents(.touchUpInside).observeValues { [weak self] in
             self?.handleKeyPressDown($0.0.key)
         }
         return v}()
