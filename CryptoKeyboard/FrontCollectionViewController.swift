@@ -15,7 +15,7 @@ final class FrontCollectionViewController: UICollectionViewController {
                                                      .cipher(type: .caesar, iconName: nil),
                                                      .cipher(type: .vigenere, iconName: nil),
                                                      .cipher(type: .keyword, iconName: nil),
-                                                     .setting(text: "Setting", iconName: nil),
+                                                     .setting(text: "", iconName: nil),
                                                      .feedback(text: "Feedback", iconName: nil)]
     
     override func viewDidLoad() {
@@ -84,13 +84,16 @@ final class FrontCollectionViewController: UICollectionViewController {
         let cellModel = cellModes[indexPath.item]
         switch cellModel {
         case .cipher(let type, _):
-            let vc = CipherTranslatorViewController(cipherType: type, cipherKey: CipherManager.ciphers[type]!.defaultKey)
-            present(vc, animated: true, completion: nil)
+//            let vc = CipherTranslatorViewController(cipherType: type, cipherKey: CipherManager.ciphers[type]!.defaultKey)
+            let vc = CipherInterpreterViewController.instantiate()
+            navigationController?.pushViewController(vc, animated: true)
+//            present(vc, animated: true, completion: nil)
         case .feedback(_, _):
             sendFeedbackEmail()
         case.setting(_, _):
-            let aboutVC = PDLiteAboutTableViewController()
-            navigationController?.pushViewController(aboutVC, animated: true)
+            break
+//            let aboutVC = PDLiteAboutTableViewController()
+//            navigationController?.pushViewController(aboutVC, animated: true)
             
         }
         

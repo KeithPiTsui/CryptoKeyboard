@@ -44,8 +44,8 @@ final class CipherIntroductionViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "CryptoKeyboard"
-        navigationItem.rightBarButtonItem = editButtonItem
+        title = "CKB"
+//        navigationItem.rightBarButtonItem = editButtonItem
         view.backgroundColor = UIColor.darkGray
         automaticallyAdjustsScrollViewInsets =  false
         assembleUIElements()

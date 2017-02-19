@@ -50,6 +50,11 @@
 		0E48DDD41E596410000F388F /* Library.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0E48DDCC1E596410000F388F /* Library.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0E48DDD81E596438000F388F /* Diagram.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1E32F21E56F29700750CF2 /* Diagram.swift */; };
 		0E48DDD91E59645D000F388F /* Library.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E48DDCC1E596410000F388F /* Library.framework */; };
+		0E48DDF11E59B1BB000F388F /* ReactiveExtensions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E48DDE61E59B1A2000F388F /* ReactiveExtensions.framework */; };
+		0E48DDF21E59B1D5000F388F /* ReactiveExtensions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E48DDE61E59B1A2000F388F /* ReactiveExtensions.framework */; };
+		0E48DDF31E59B1D5000F388F /* ReactiveExtensions.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0E48DDE61E59B1A2000F388F /* ReactiveExtensions.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		0E48DDF81E59B4F1000F388F /* CipherInterpreter.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E48DDF71E59B4F1000F388F /* CipherInterpreter.storyboard */; };
+		0E48DDFC1E59BC11000F388F /* CipherInterpreterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E48DDFB1E59BC11000F388F /* CipherInterpreterViewController.swift */; };
 		0E4AB8BE1E0BA35200F85D44 /* CipherCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4AB8BD1E0BA35200F85D44 /* CipherCollectionViewCell.swift */; };
 		0E4ABB641E0C068600F85D44 /* FrontCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4ABB631E0C068600F85D44 /* FrontCollectionViewController.swift */; };
 		0E5DE9231E00E82600FAEF09 /* CipherSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5DE9221E00E82600FAEF09 /* CipherSettingViewController.swift */; };
@@ -114,6 +119,55 @@
 			proxyType = 1;
 			remoteGlobalIDString = 0E48DDCB1E596410000F388F;
 			remoteInfo = Library;
+		};
+		0E48DDE51E59B1A2000F388F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0E48DDDA1E59B1A2000F388F /* ReactiveExtensions.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = A7FD08B41C81EDBD00332CCB;
+			remoteInfo = "ReactiveExtensions-iOS";
+		};
+		0E48DDE71E59B1A2000F388F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0E48DDDA1E59B1A2000F388F /* ReactiveExtensions.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = A7FD08E11C81EEA100332CCB;
+			remoteInfo = "ReactiveExtensions-iOSTests";
+		};
+		0E48DDE91E59B1A2000F388F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0E48DDDA1E59B1A2000F388F /* ReactiveExtensions.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = CA43C6631BB35FCF00C180DA;
+			remoteInfo = "ReactiveExtensions-tvOS";
+		};
+		0E48DDEB1E59B1A2000F388F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0E48DDDA1E59B1A2000F388F /* ReactiveExtensions.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = A7983B881C2AFB1C003A1ABE;
+			remoteInfo = "ReactiveExtensions-tvOSTests";
+		};
+		0E48DDED1E59B1A2000F388F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0E48DDDA1E59B1A2000F388F /* ReactiveExtensions.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = A7DB1D3A1C9F355E008244DA;
+			remoteInfo = "ReactiveExtensions-TestHelpers-iOS";
+		};
+		0E48DDEF1E59B1A2000F388F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0E48DDDA1E59B1A2000F388F /* ReactiveExtensions.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = A7DB1D5A1C9F4FD7008244DA;
+			remoteInfo = "ReactiveExtensions-TestHelpers-tvOS";
+		};
+		0E48DDF41E59B1D5000F388F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0E48DDDA1E59B1A2000F388F /* ReactiveExtensions.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = A7FD08861C81EDBD00332CCB;
+			remoteInfo = "ReactiveExtensions-iOS";
 		};
 		0E6B6A4C1DFA4AE400712C0A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -470,6 +524,7 @@
 				0EFCAFB41E52A71D00F2B99A /* Runes.framework in Embed Frameworks */,
 				0EAEACE01E50762300AAA7B0 /* Result.framework in Embed Frameworks */,
 				0EAEACE41E50762300AAA7B0 /* ReactiveSwift.framework in Embed Frameworks */,
+				0E48DDF31E59B1D5000F388F /* ReactiveExtensions.framework in Embed Frameworks */,
 				0E48DDD41E596410000F388F /* Library.framework in Embed Frameworks */,
 				0EFCAFF11E52AA3E00F2B99A /* Prelude_UIKit.framework in Embed Frameworks */,
 				0E48DDC21E5960F8000F388F /* ExtSwift.framework in Embed Frameworks */,
@@ -531,6 +586,9 @@
 		0E48DDCC1E596410000F388F /* Library.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Library.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E48DDCE1E596410000F388F /* Library.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Library.h; sourceTree = "<group>"; };
 		0E48DDCF1E596410000F388F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0E48DDDA1E59B1A2000F388F /* ReactiveExtensions.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ReactiveExtensions.xcodeproj; path = ReactiveExtensions/ReactiveExtensions.xcodeproj; sourceTree = "<group>"; };
+		0E48DDF71E59B4F1000F388F /* CipherInterpreter.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CipherInterpreter.storyboard; sourceTree = "<group>"; };
+		0E48DDFB1E59BC11000F388F /* CipherInterpreterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CipherInterpreterViewController.swift; sourceTree = "<group>"; };
 		0E4AB8BD1E0BA35200F85D44 /* CipherCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CipherCollectionViewCell.swift; sourceTree = "<group>"; };
 		0E4ABB631E0C068600F85D44 /* FrontCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FrontCollectionViewController.swift; sourceTree = "<group>"; };
 		0E5DE9221E00E82600FAEF09 /* CipherSettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CipherSettingViewController.swift; sourceTree = "<group>"; };
@@ -575,6 +633,7 @@
 				0EFCAFB31E52A71D00F2B99A /* Runes.framework in Frameworks */,
 				0EAEACDF1E50762300AAA7B0 /* Result.framework in Frameworks */,
 				0EAEACE31E50762300AAA7B0 /* ReactiveSwift.framework in Frameworks */,
+				0E48DDF21E59B1D5000F388F /* ReactiveExtensions.framework in Frameworks */,
 				0E48DDD31E596410000F388F /* Library.framework in Frameworks */,
 				0EFCAFF01E52AA3E00F2B99A /* Prelude_UIKit.framework in Frameworks */,
 				0E48DDC11E5960F8000F388F /* ExtSwift.framework in Frameworks */,
@@ -588,6 +647,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0E48DDF11E59B1BB000F388F /* ReactiveExtensions.framework in Frameworks */,
 				0E48DDD91E59645D000F388F /* Library.framework in Frameworks */,
 				0E48DDB31E595E52000F388F /* ExtSwift.framework in Frameworks */,
 				0EFCAFE51E52AA2C00F2B99A /* Curry.framework in Frameworks */,
@@ -726,6 +786,49 @@
 			path = Library;
 			sourceTree = "<group>";
 		};
+		0E48DDDB1E59B1A2000F388F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0E48DDE61E59B1A2000F388F /* ReactiveExtensions.framework */,
+				0E48DDE81E59B1A2000F388F /* ReactiveExtensions-iOSTests.xctest */,
+				0E48DDEA1E59B1A2000F388F /* ReactiveExtensions.framework */,
+				0E48DDEC1E59B1A2000F388F /* ReactiveExtensions-tvOSTests.xctest */,
+				0E48DDEE1E59B1A2000F388F /* ReactiveExtensions_TestHelpers.framework */,
+				0E48DDF01E59B1A2000F388F /* ReactiveExtensions_TestHelpers.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		0E48DDF61E59B4BE000F388F /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				0E0D87DD1E554712007432C8 /* AboutCryptoKeyboard.storyboard */,
+				0E48DDF71E59B4F1000F388F /* CipherInterpreter.storyboard */,
+			);
+			name = Storyboards;
+			sourceTree = "<group>";
+		};
+		0E48DDF91E59BBB9000F388F /* controllers */ = {
+			isa = PBXGroup;
+			children = (
+				0E420BFE1E07C63700F41640 /* SettingInstructionPageViewController.swift */,
+				0E420BFC1E0790D300F41640 /* KeyboardSettingInstructionViewController.swift */,
+				0E420C071E07F81900F41640 /* CipherTranslatorViewController.swift */,
+				0E4ABB631E0C068600F85D44 /* FrontCollectionViewController.swift */,
+				0E420C041E07F7D800F41640 /* CipherIntroductionViewController.swift */,
+				0E48DDFB1E59BC11000F388F /* CipherInterpreterViewController.swift */,
+			);
+			name = controllers;
+			sourceTree = "<group>";
+		};
+		0E48DDFA1E59BBCA000F388F /* views */ = {
+			isa = PBXGroup;
+			children = (
+				0E4AB8BD1E0BA35200F85D44 /* CipherCollectionViewCell.swift */,
+			);
+			name = views;
+			sourceTree = "<group>";
+		};
 		0E56FE3D1E0E1AE000BF4377 /* KeyboardView */ = {
 			isa = PBXGroup;
 			children = (
@@ -739,8 +842,9 @@
 		0E6B6A251DFA4ABD00712C0A = {
 			isa = PBXGroup;
 			children = (
-				0EFCAF741E5289D100F2B99A /* Experiment.playground */,
 				0E2971CF1E51403100F098D9 /* FunctionalDiagram.playground */,
+				0EFCAF741E5289D100F2B99A /* Experiment.playground */,
+				0E48DDDA1E59B1A2000F388F /* ReactiveExtensions.xcodeproj */,
 				0E48DD8B1E595E3B000F388F /* ExtSwift.xcodeproj */,
 				0EFCAFD61E52AA0800F2B99A /* Curry.xcodeproj */,
 				0EFCAFBB1E52A9FF00F2B99A /* Prelude.xcodeproj */,
@@ -768,17 +872,13 @@
 		0E6B6A301DFA4ABD00712C0A /* CryptoKeyboard */ = {
 			isa = PBXGroup;
 			children = (
-				0E0D87DD1E554712007432C8 /* AboutCryptoKeyboard.storyboard */,
+				0E48DDFA1E59BBCA000F388F /* views */,
+				0E48DDF91E59BBB9000F388F /* controllers */,
+				0E48DDF61E59B4BE000F388F /* Storyboards */,
 				0E0D87DB1E55447A007432C8 /* UIViewController-Preparation.swift */,
 				0E0D87D91E554439007432C8 /* NSBundleType.swift */,
 				0E0D87D71E554380007432C8 /* Storyboard.swift */,
 				0E420C171E07F9AF00F41640 /* About */,
-				0E420C041E07F7D800F41640 /* CipherIntroductionViewController.swift */,
-				0E4ABB631E0C068600F85D44 /* FrontCollectionViewController.swift */,
-				0E4AB8BD1E0BA35200F85D44 /* CipherCollectionViewCell.swift */,
-				0E420C071E07F81900F41640 /* CipherTranslatorViewController.swift */,
-				0E420BFC1E0790D300F41640 /* KeyboardSettingInstructionViewController.swift */,
-				0E420BFE1E07C63700F41640 /* SettingInstructionPageViewController.swift */,
 				0E420C061E07F7DE00F41640 /* supportingFiles */,
 			);
 			path = CryptoKeyboard;
@@ -979,6 +1079,7 @@
 				0EFCAFF31E52AA3E00F2B99A /* PBXTargetDependency */,
 				0E48DDC41E5960F9000F388F /* PBXTargetDependency */,
 				0E48DDD21E596410000F388F /* PBXTargetDependency */,
+				0E48DDF51E59B1D5000F388F /* PBXTargetDependency */,
 			);
 			name = CryptoKeyboard;
 			productName = CryptoKeyboard;
@@ -1065,6 +1166,10 @@
 					ProjectRef = 0EAEAC941E5075CD00AAA7B0 /* ReactiveCocoa.xcodeproj */;
 				},
 				{
+					ProductGroup = 0E48DDDB1E59B1A2000F388F /* Products */;
+					ProjectRef = 0E48DDDA1E59B1A2000F388F /* ReactiveExtensions.xcodeproj */;
+				},
+				{
 					ProductGroup = 0EAEACAD1E5075DF00AAA7B0 /* Products */;
 					ProjectRef = 0EAEACAC1E5075DF00AAA7B0 /* ReactiveSwift.xcodeproj */;
 				},
@@ -1092,6 +1197,48 @@
 			fileType = wrapper.framework;
 			path = ExtSwift.framework;
 			remoteRef = 0E48DD921E595E3C000F388F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0E48DDE61E59B1A2000F388F /* ReactiveExtensions.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = ReactiveExtensions.framework;
+			remoteRef = 0E48DDE51E59B1A2000F388F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0E48DDE81E59B1A2000F388F /* ReactiveExtensions-iOSTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "ReactiveExtensions-iOSTests.xctest";
+			remoteRef = 0E48DDE71E59B1A2000F388F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0E48DDEA1E59B1A2000F388F /* ReactiveExtensions.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = ReactiveExtensions.framework;
+			remoteRef = 0E48DDE91E59B1A2000F388F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0E48DDEC1E59B1A2000F388F /* ReactiveExtensions-tvOSTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "ReactiveExtensions-tvOSTests.xctest";
+			remoteRef = 0E48DDEB1E59B1A2000F388F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0E48DDEE1E59B1A2000F388F /* ReactiveExtensions_TestHelpers.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = ReactiveExtensions_TestHelpers.framework;
+			remoteRef = 0E48DDED1E59B1A2000F388F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0E48DDF01E59B1A2000F388F /* ReactiveExtensions_TestHelpers.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = ReactiveExtensions_TestHelpers.framework;
+			remoteRef = 0E48DDEF1E59B1A2000F388F /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		0EAEAC9F1E5075CD00AAA7B0 /* ReactiveCocoa.framework */ = {
@@ -1395,6 +1542,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0E48DDF81E59B4F1000F388F /* CipherInterpreter.storyboard in Resources */,
 				0E420C0D1E07F8FB00F41640 /* MorseCodeMapping.json in Resources */,
 				0E6B6A3C1DFA4ABD00712C0A /* LaunchScreen.storyboard in Resources */,
 				0E0D87DE1E554712007432C8 /* AboutCryptoKeyboard.storyboard in Resources */,
@@ -1432,6 +1580,7 @@
 				0E420C0C1E07F8F300F41640 /* Cipher.swift in Sources */,
 				0E6B6A321DFA4ABD00712C0A /* AppDelegate.swift in Sources */,
 				0E420C1A1E07FB5C00F41640 /* AppHelper.m in Sources */,
+				0E48DDFC1E59BC11000F388F /* CipherInterpreterViewController.swift in Sources */,
 				0E420C161E07F9AD00F41640 /* SDiOSVersion.m in Sources */,
 				0E0D87D61E553DD1007432C8 /* AboutCryptoKeyboardViewModel.swift in Sources */,
 				0E420BFD1E0790D300F41640 /* KeyboardSettingInstructionViewController.swift in Sources */,
@@ -1496,6 +1645,11 @@
 			isa = PBXTargetDependency;
 			target = 0E48DDCB1E596410000F388F /* Library */;
 			targetProxy = 0E48DDD11E596410000F388F /* PBXContainerItemProxy */;
+		};
+		0E48DDF51E59B1D5000F388F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "ReactiveExtensions-iOS";
+			targetProxy = 0E48DDF41E59B1D5000F388F /* PBXContainerItemProxy */;
 		};
 		0E6B6A4D1DFA4AE400712C0A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -1780,6 +1934,7 @@
 				0E48DDD71E596410000F388F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0E6B6A291DFA4ABD00712C0A /* Build configuration list for PBXProject "CryptoKeyboard" */ = {
 			isa = XCConfigurationList;

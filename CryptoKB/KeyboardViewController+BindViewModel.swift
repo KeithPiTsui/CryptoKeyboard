@@ -12,12 +12,7 @@ import ReactiveSwift
 import ReactiveCocoa
 import Result
 import ExtSwift
-
-public extension SignalProtocol {
-    public func observeForUI() -> Signal<Value, Error> {
-        return self.signal.observe(on: UIScheduler())
-    }
-}
+import ReactiveExtensions
 
 
 extension KeyboardViewController {

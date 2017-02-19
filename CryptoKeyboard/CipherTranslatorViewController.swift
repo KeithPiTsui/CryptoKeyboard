@@ -8,6 +8,10 @@
 
 import UIKit
 import ExtSwift
+import ReactiveCocoa
+import ReactiveSwift
+import Result
+import ReactiveExtensions
 
 class CipherTranslatorViewController: UIViewController {
     
@@ -290,6 +294,9 @@ class CipherTranslatorViewController: UIViewController {
 //        let v  = NumericKeyboardView(withDelegate: self)
         let v = KeyboardView()
         v.keyboardDiagram = Keyboard.numberKeyboardDiagram
+        v.reactive.controlEvents(.touchUpInside).observeForUI().observeValues { [weak self] in
+            self?.handleKeyPressDown($0.0.key)
+        }
         return v}()
     private var numericKeyboardSlideIned: Bool = false
     private lazy var numericKeyboardConstraints: [NSLayoutConstraint] = {
@@ -322,6 +329,9 @@ class CipherTranslatorViewController: UIViewController {
     private lazy var alphabetkeyboard: KeyboardView = {
         let v = KeyboardView()
         v.keyboardDiagram = Keyboard.alphaKeyboardDiagram
+        v.reactive.controlEvents(.touchUpInside).observeForUI().observeValues { [weak self] in
+            self?.handleKeyPressDown($0.0.key)
+        }
         return v}()
     private var alphabetKeyboardSlideIned: Bool = false
     private lazy var alphabetKeyboardConstraints: [NSLayoutConstraint] = {
@@ -365,9 +375,7 @@ extension CipherTranslatorViewController: CipherSettingTopBarViewDelegate {
         return cipherKeys
     }
     func getTouched() {
-        print("\(#function)")
         slideInKeyboard()
-        
     }
 }
 
