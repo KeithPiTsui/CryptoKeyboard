@@ -20,7 +20,7 @@
 		0E1E32F81E56F29700750CF2 /* Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1E32F41E56F29700750CF2 /* Keyboard.swift */; };
 		0E1E32FD1E56F34100750CF2 /* Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1E32F31E56F29700750CF2 /* Key.swift */; };
 		0E1E32FE1E56F34100750CF2 /* Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1E32F41E56F29700750CF2 /* Keyboard.swift */; };
-		0E28CCD61DFE480200BCAC75 /* KeyboardViewController+KeyboardViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E28CCD51DFE480200BCAC75 /* KeyboardViewController+KeyboardViewDelegate.swift */; };
+		0E28CCD61DFE480200BCAC75 /* KeyboardViewController+BindViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E28CCD51DFE480200BCAC75 /* KeyboardViewController+BindViewModel.swift */; };
 		0E28CCD81DFE532800BCAC75 /* KeyboardViewController+AutoCap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E28CCD71DFE532800BCAC75 /* KeyboardViewController+AutoCap.swift */; };
 		0E28CCDA1DFE551000BCAC75 /* KeyboardViewController+AutoSuffixPeriod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E28CCD91DFE551000BCAC75 /* KeyboardViewController+AutoSuffixPeriod.swift */; };
 		0E28CCE21DFE748C00BCAC75 /* InputInterpreter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E28CCE11DFE748C00BCAC75 /* InputInterpreter.swift */; };
@@ -506,7 +506,7 @@
 		0E1E32F21E56F29700750CF2 /* Diagram.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Diagram.swift; sourceTree = "<group>"; };
 		0E1E32F31E56F29700750CF2 /* Key.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Key.swift; sourceTree = "<group>"; };
 		0E1E32F41E56F29700750CF2 /* Keyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keyboard.swift; sourceTree = "<group>"; };
-		0E28CCD51DFE480200BCAC75 /* KeyboardViewController+KeyboardViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "KeyboardViewController+KeyboardViewDelegate.swift"; sourceTree = "<group>"; };
+		0E28CCD51DFE480200BCAC75 /* KeyboardViewController+BindViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "KeyboardViewController+BindViewModel.swift"; sourceTree = "<group>"; };
 		0E28CCD71DFE532800BCAC75 /* KeyboardViewController+AutoCap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "KeyboardViewController+AutoCap.swift"; sourceTree = "<group>"; };
 		0E28CCD91DFE551000BCAC75 /* KeyboardViewController+AutoSuffixPeriod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "KeyboardViewController+AutoSuffixPeriod.swift"; sourceTree = "<group>"; };
 		0E28CCE11DFE748C00BCAC75 /* InputInterpreter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputInterpreter.swift; sourceTree = "<group>"; };
@@ -646,7 +646,7 @@
 			isa = PBXGroup;
 			children = (
 				0E1261471DFD75EE00E7EFE4 /* KeyboardViewController.swift */,
-				0E28CCD51DFE480200BCAC75 /* KeyboardViewController+KeyboardViewDelegate.swift */,
+				0E28CCD51DFE480200BCAC75 /* KeyboardViewController+BindViewModel.swift */,
 				0E28CCF81DFE7BE000BCAC75 /* KeyboardViewController+InputInterpreterOutputReceiverDelegate.swift */,
 				0E5DE9241E00E88300FAEF09 /* KeyboardViewController+CipherSettingViewControllerDelegate.swift */,
 				0E28CCD71DFE532800BCAC75 /* KeyboardViewController+AutoCap.swift */,
@@ -1477,7 +1477,7 @@
 				0E5DE9231E00E82600FAEF09 /* CipherSettingViewController.swift in Sources */,
 				0E28CCE21DFE748C00BCAC75 /* InputInterpreter.swift in Sources */,
 				0E3F18681DFFE24100E80D0C /* SpellingAutoCorretor.swift in Sources */,
-				0E28CCD61DFE480200BCAC75 /* KeyboardViewController+KeyboardViewDelegate.swift in Sources */,
+				0E28CCD61DFE480200BCAC75 /* KeyboardViewController+BindViewModel.swift in Sources */,
 				0E1E32F81E56F29700750CF2 /* Keyboard.swift in Sources */,
 				0E7673451E559122008AA089 /* KeyboardViewModel.swift in Sources */,
 				0E7673461E55D177008AA089 /* UIViewController-Preparation.swift in Sources */,

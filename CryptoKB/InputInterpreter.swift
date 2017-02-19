@@ -22,7 +22,7 @@ protocol InputInterpreterOutputReceiverDelegate: class {
     func removeLastOutputCharacter()
 }
 
-class InputInterpreter: InputInterpreterProtocol {
+final class InputInterpreter: InputInterpreterProtocol {
     
     weak var delegate: InputInterpreterOutputReceiverDelegate?
     var archivedCharacters: [[String]] = []

@@ -73,9 +73,6 @@ protocol KeyboardViewModelType {
 }
 
 internal final class KeyboardViewModel: KeyboardViewModelType, KeyboardViewModelInputs, KeyboardViewModelOutputs {
-    
-
-    
     public init() {
         keyboardDiagram = changeKeyboardProperty.signal.map{ (mode) -> Diagram<Key> in
             switch mode {

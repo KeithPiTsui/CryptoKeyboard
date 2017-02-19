@@ -21,6 +21,8 @@ struct KeyboardExtensionConstants {
 
 final class KeyboardViewController: UIInputViewController {
     
+    let viewModel: KeyboardViewModel =  KeyboardViewModel()
+    
     @IBOutlet weak var rightViewLeftTag: UILabel!
     @IBOutlet weak var leftViewLeftTag: UILabel!
     @IBOutlet weak var topBarRightView: UIView!
@@ -38,14 +40,12 @@ final class KeyboardViewController: UIInputViewController {
     var cipherName: String = "Caesar" {didSet{cipherLabel.text = cipherName}}
     var cipherType: CipherType = .caesar {didSet{textInterpreter.cipherType = cipherType}}
     var cipherKey: String = "03" {didSet{textInterpreter.cipherKey = cipherKey}}
-
-    var shiftState: ShiftState = .disabled { didSet {
-        keyboardView.shiftState = shiftState
-        }}
+    var shiftState: ShiftState = .disabled { didSet { keyboardView.shiftState = shiftState }}
     var autoPeriodState: AutoPeriodState = .noSpace
     lazy var textInterpreter: InputInterpreter = { return InputInterpreter(delegate: self)}()
     
-    let viewModel: KeyboardViewModel =  KeyboardViewModel()
+    var leftChars: [String] = [] {didSet{heuristicLabel.text = leftChars.reduce("", +)}}
+    var rightChars: [String] = [] {didSet{encryptedLabel.text = rightChars.reduce("", +)}}
     
     let backspaceDelay: TimeInterval = 0.5
     let backspaceRepeat: TimeInterval = 0.07
@@ -58,18 +58,9 @@ final class KeyboardViewController: UIInputViewController {
     override func viewDidLoad(){
         super.viewDidLoad()
         loadCipherSetting()
-        
-        let c = view.heightAnchor.constraint(equalToConstant: LayoutConstraints.keyboardHeight)
-        c.priority = UILayoutPriorityDefaultHigh
-        c.isActive = true
-        keyboardView.heightAnchor.constraint(equalToConstant: LayoutConstraints.keyboardViewHeight).isActive = true
-        
-        heuristicBtn.reactive.controlEvents(.touchUpInside).observe { (_) in print("Hello")}
-        
-        keyboardView.reactive.controlEvents(.allTouchEvents).observeValues{ [weak self] in self?.viewModel.inputs.event($0.1, on: $0.0.key)}
-        
         viewModel.viewDidLoad()
     }
+    
     
     // MARK: -
     // MARK: Text Editing
@@ -107,6 +98,11 @@ final class KeyboardViewController: UIInputViewController {
     
     internal override func bindStyles() {
         super.bindStyles()
+        let c = view.heightAnchor.constraint(equalToConstant: LayoutConstraints.keyboardHeight)
+        c.priority = UILayoutPriorityDefaultHigh
+        c.isActive = true
+        keyboardView.heightAnchor.constraint(equalToConstant: LayoutConstraints.keyboardViewHeight).isActive = true
+        
         _ = self.topBarLeftView |> UIView.lens.backgroundColor %~ {_ in UIColor.topBarBackgroundColor}
         _ = self.topBarRightView |> UIView.lens.backgroundColor %~ {_ in UIColor.topBarBackgroundColor}
         _ = self.heuristicLabel |> UILabel.lens.textColor %~ {_ in UIColor.topBarInscriptColor}

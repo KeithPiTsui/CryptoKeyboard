@@ -11,11 +11,11 @@ import Foundation
 extension KeyboardViewController: InputInterpreterOutputReceiverDelegate {
     
     func receiveHeuristicOutputCharacter(char: String) {
-//        topBar.leftCharacters.append(char)
+        leftChars.append(char)
     }
     
     func receiveEncryptedOutputCharacter(char: String) {
-//        topBar.rightCharacters.append(char)
+        rightChars.append(char)
     }
     
     func receiveDecryptedOutputCharacter(char: String) {
@@ -23,11 +23,56 @@ extension KeyboardViewController: InputInterpreterOutputReceiverDelegate {
     }
     
     func removeLastOutputCharacter() {
-//        if topBar.leftCharacters.isEmpty == false {
-//            topBar.leftCharacters.removeLast()
-//        }
-//        if topBar.rightCharacters.isEmpty == false {
-//            topBar.rightCharacters.removeLast()
-//        }
+        if leftChars.isEmpty == false { leftChars.removeLast() }
+        if rightChars.isEmpty == false { rightChars.removeLast() }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
