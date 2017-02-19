@@ -115,8 +115,6 @@ final class KeyboardViewController: UIInputViewController {
         _ = self.rightViewLeftTag |> UILabel.lens.textColor %~ {_ in UIColor.topBarInscriptColor}
         _ = self.cipherLabel |> UILabel.lens.textColor %~ {_ in UIColor.topBarInscriptColor}
     }
-    
-    
 }
 
 

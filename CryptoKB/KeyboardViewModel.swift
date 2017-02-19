@@ -142,11 +142,8 @@ internal final class KeyboardViewModel: KeyboardViewModelType, KeyboardViewModel
         
         eventOnKeyProperty.signal.skipNil()
             .filter{ $0.0 == .touchUpInside && $0.1.type == .modeChange }
-            .map{$0.1}
-            .observeValues { [weak self] key in
-                guard let mode = key.toMode else { return }
-                self?.changeKeyboardProperty.value = mode
-            }
+            .map{$0.1.toMode}.skipNil()
+            .observeValues { [weak self] in self?.changeKeyboardProperty.value = $0 }
         
         viewDidLoadProperty.signal
             .observeValues { [weak self] in self?.changeKeyboardProperty.value = .defaultKeyboard }
