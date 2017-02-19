@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ExtSwift
 
 protocol CipherSettingViewControllerDelegate: class {
     func didSelect(cipherName: String, cipherType: CipherType, cipherKey: String)

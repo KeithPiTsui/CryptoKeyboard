@@ -19,15 +19,12 @@
 		0E1E32F61E56F29700750CF2 /* Diagram.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1E32F21E56F29700750CF2 /* Diagram.swift */; };
 		0E1E32F71E56F29700750CF2 /* Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1E32F31E56F29700750CF2 /* Key.swift */; };
 		0E1E32F81E56F29700750CF2 /* Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1E32F41E56F29700750CF2 /* Keyboard.swift */; };
-		0E1E32F91E56F29700750CF2 /* Others.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1E32F51E56F29700750CF2 /* Others.swift */; };
 		0E1E32FC1E56F34100750CF2 /* Diagram.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1E32F21E56F29700750CF2 /* Diagram.swift */; };
 		0E1E32FD1E56F34100750CF2 /* Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1E32F31E56F29700750CF2 /* Key.swift */; };
 		0E1E32FE1E56F34100750CF2 /* Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1E32F41E56F29700750CF2 /* Keyboard.swift */; };
-		0E1E32FF1E56F34100750CF2 /* Others.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1E32F51E56F29700750CF2 /* Others.swift */; };
 		0E28CCD61DFE480200BCAC75 /* KeyboardViewController+KeyboardViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E28CCD51DFE480200BCAC75 /* KeyboardViewController+KeyboardViewDelegate.swift */; };
 		0E28CCD81DFE532800BCAC75 /* KeyboardViewController+AutoCap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E28CCD71DFE532800BCAC75 /* KeyboardViewController+AutoCap.swift */; };
 		0E28CCDA1DFE551000BCAC75 /* KeyboardViewController+AutoSuffixPeriod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E28CCD91DFE551000BCAC75 /* KeyboardViewController+AutoSuffixPeriod.swift */; };
-		0E28CCDD1DFE643A00BCAC75 /* UsefulFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E28CCDC1DFE643A00BCAC75 /* UsefulFunctions.swift */; };
 		0E28CCE21DFE748C00BCAC75 /* InputInterpreter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E28CCE11DFE748C00BCAC75 /* InputInterpreter.swift */; };
 		0E28CCF91DFE7BE000BCAC75 /* KeyboardViewController+InputInterpreterOutputReceiverDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E28CCF81DFE7BE000BCAC75 /* KeyboardViewController+InputInterpreterOutputReceiverDelegate.swift */; };
 		0E3F18651DFF9AC900E80D0C /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E3F18641DFF9AC900E80D0C /* Media.xcassets */; };
@@ -36,7 +33,6 @@
 		0E3F18711E001F7700E80D0C /* CipherSettingTopBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E3F18701E001F7700E80D0C /* CipherSettingTopBarView.swift */; };
 		0E420BF91E078C0800F41640 /* UIColor+ColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA85D231DFD318700AFB546 /* UIColor+ColorScheme.swift */; };
 		0E420BFA1E078C0800F41640 /* LayoutConstraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1261451DFD680900E7EFE4 /* LayoutConstraints.swift */; };
-		0E420BFB1E078C0800F41640 /* UsefulFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E28CCDC1DFE643A00BCAC75 /* UsefulFunctions.swift */; };
 		0E420BFD1E0790D300F41640 /* KeyboardSettingInstructionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E420BFC1E0790D300F41640 /* KeyboardSettingInstructionViewController.swift */; };
 		0E420BFF1E07C63700F41640 /* SettingInstructionPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E420BFE1E07C63700F41640 /* SettingInstructionPageViewController.swift */; };
 		0E420C051E07F7D800F41640 /* CipherIntroductionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E420C041E07F7D800F41640 /* CipherIntroductionViewController.swift */; };
@@ -48,6 +44,9 @@
 		0E420C161E07F9AD00F41640 /* SDiOSVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E420C151E07F9AD00F41640 /* SDiOSVersion.m */; };
 		0E420C1A1E07FB5C00F41640 /* AppHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E420C191E07FB5C00F41640 /* AppHelper.m */; };
 		0E420C1B1E080A4F00F41640 /* CipherSettingTopBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E3F18701E001F7700E80D0C /* CipherSettingTopBarView.swift */; };
+		0E48DDB31E595E52000F388F /* ExtSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E48DD931E595E3C000F388F /* ExtSwift.framework */; };
+		0E48DDC11E5960F8000F388F /* ExtSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E48DD931E595E3C000F388F /* ExtSwift.framework */; };
+		0E48DDC21E5960F8000F388F /* ExtSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0E48DD931E595E3C000F388F /* ExtSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0E4AB8BE1E0BA35200F85D44 /* CipherCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4AB8BD1E0BA35200F85D44 /* CipherCollectionViewCell.swift */; };
 		0E4ABB641E0C068600F85D44 /* FrontCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4ABB631E0C068600F85D44 /* FrontCollectionViewController.swift */; };
 		0E5DE9231E00E82600FAEF09 /* CipherSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5DE9221E00E82600FAEF09 /* CipherSettingViewController.swift */; };
@@ -92,6 +91,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		0E48DD921E595E3C000F388F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0E48DD8B1E595E3B000F388F /* ExtSwift.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 0E48DD7A1E595DF1000F388F;
+			remoteInfo = ExtSwift;
+		};
+		0E48DDC31E5960F9000F388F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0E48DD8B1E595E3B000F388F /* ExtSwift.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 0E48DD791E595DF1000F388F;
+			remoteInfo = ExtSwift;
+		};
 		0E6B6A4C1DFA4AE400712C0A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 0E6B6A261DFA4ABD00712C0A /* Project object */;
@@ -448,6 +461,7 @@
 				0EAEACE01E50762300AAA7B0 /* Result.framework in Embed Frameworks */,
 				0EAEACE41E50762300AAA7B0 /* ReactiveSwift.framework in Embed Frameworks */,
 				0EFCAFF11E52AA3E00F2B99A /* Prelude_UIKit.framework in Embed Frameworks */,
+				0E48DDC21E5960F8000F388F /* ExtSwift.framework in Embed Frameworks */,
 				0EAEACE81E50762300AAA7B0 /* ReactiveCocoa.framework in Embed Frameworks */,
 				0EFCAFED1E52AA3E00F2B99A /* Prelude.framework in Embed Frameworks */,
 				0EFCAFE91E52AA3E00F2B99A /* Curry.framework in Embed Frameworks */,
@@ -481,11 +495,9 @@
 		0E1E32F21E56F29700750CF2 /* Diagram.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Diagram.swift; sourceTree = "<group>"; };
 		0E1E32F31E56F29700750CF2 /* Key.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Key.swift; sourceTree = "<group>"; };
 		0E1E32F41E56F29700750CF2 /* Keyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keyboard.swift; sourceTree = "<group>"; };
-		0E1E32F51E56F29700750CF2 /* Others.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Others.swift; sourceTree = "<group>"; };
 		0E28CCD51DFE480200BCAC75 /* KeyboardViewController+KeyboardViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "KeyboardViewController+KeyboardViewDelegate.swift"; sourceTree = "<group>"; };
 		0E28CCD71DFE532800BCAC75 /* KeyboardViewController+AutoCap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "KeyboardViewController+AutoCap.swift"; sourceTree = "<group>"; };
 		0E28CCD91DFE551000BCAC75 /* KeyboardViewController+AutoSuffixPeriod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "KeyboardViewController+AutoSuffixPeriod.swift"; sourceTree = "<group>"; };
-		0E28CCDC1DFE643A00BCAC75 /* UsefulFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsefulFunctions.swift; sourceTree = "<group>"; };
 		0E28CCE11DFE748C00BCAC75 /* InputInterpreter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputInterpreter.swift; sourceTree = "<group>"; };
 		0E28CCF81DFE7BE000BCAC75 /* KeyboardViewController+InputInterpreterOutputReceiverDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "KeyboardViewController+InputInterpreterOutputReceiverDelegate.swift"; sourceTree = "<group>"; };
 		0E2971CF1E51403100F098D9 /* FunctionalDiagram.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = FunctionalDiagram.playground; sourceTree = "<group>"; };
@@ -504,6 +516,7 @@
 		0E420C151E07F9AD00F41640 /* SDiOSVersion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDiOSVersion.m; sourceTree = "<group>"; };
 		0E420C181E07FB5C00F41640 /* AppHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppHelper.h; sourceTree = "<group>"; };
 		0E420C191E07FB5C00F41640 /* AppHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppHelper.m; sourceTree = "<group>"; };
+		0E48DD8B1E595E3B000F388F /* ExtSwift.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ExtSwift.xcodeproj; path = ExtSwift/ExtSwift.xcodeproj; sourceTree = "<group>"; };
 		0E4AB8BD1E0BA35200F85D44 /* CipherCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CipherCollectionViewCell.swift; sourceTree = "<group>"; };
 		0E4ABB631E0C068600F85D44 /* FrontCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FrontCollectionViewController.swift; sourceTree = "<group>"; };
 		0E5DE9221E00E82600FAEF09 /* CipherSettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CipherSettingViewController.swift; sourceTree = "<group>"; };
@@ -542,6 +555,7 @@
 				0EAEACDF1E50762300AAA7B0 /* Result.framework in Frameworks */,
 				0EAEACE31E50762300AAA7B0 /* ReactiveSwift.framework in Frameworks */,
 				0EFCAFF01E52AA3E00F2B99A /* Prelude_UIKit.framework in Frameworks */,
+				0E48DDC11E5960F8000F388F /* ExtSwift.framework in Frameworks */,
 				0EAEACE71E50762300AAA7B0 /* ReactiveCocoa.framework in Frameworks */,
 				0EFCAFEC1E52AA3E00F2B99A /* Prelude.framework in Frameworks */,
 				0EFCAFE81E52AA3E00F2B99A /* Curry.framework in Frameworks */,
@@ -552,6 +566,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0E48DDB31E595E52000F388F /* ExtSwift.framework in Frameworks */,
 				0EFCAFE51E52AA2C00F2B99A /* Curry.framework in Frameworks */,
 				0EFCAFE61E52AA2C00F2B99A /* Prelude_UIKit.framework in Frameworks */,
 				0EFCAFE71E52AA2C00F2B99A /* Prelude.framework in Frameworks */,
@@ -571,7 +586,6 @@
 				0E1E32F21E56F29700750CF2 /* Diagram.swift */,
 				0E1E32F31E56F29700750CF2 /* Key.swift */,
 				0E1E32F41E56F29700750CF2 /* Keyboard.swift */,
-				0E1E32F51E56F29700750CF2 /* Others.swift */,
 			);
 			name = Keyboard;
 			sourceTree = "<group>";
@@ -601,7 +615,6 @@
 				0E28CCE31DFE76FF00BCAC75 /* Cyphers */,
 				0E3F18661DFFE22400E80D0C /* SpellingAutoCorrector */,
 				0E28CCE11DFE748C00BCAC75 /* InputInterpreter.swift */,
-				0E28CCDC1DFE643A00BCAC75 /* UsefulFunctions.swift */,
 			);
 			name = library;
 			sourceTree = "<group>";
@@ -673,6 +686,14 @@
 			name = About;
 			sourceTree = "<group>";
 		};
+		0E48DD8C1E595E3B000F388F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0E48DD931E595E3C000F388F /* ExtSwift.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		0E56FE3D1E0E1AE000BF4377 /* KeyboardView */ = {
 			isa = PBXGroup;
 			children = (
@@ -688,6 +709,7 @@
 			children = (
 				0EFCAF741E5289D100F2B99A /* Experiment.playground */,
 				0E2971CF1E51403100F098D9 /* FunctionalDiagram.playground */,
+				0E48DD8B1E595E3B000F388F /* ExtSwift.xcodeproj */,
 				0EFCAFD61E52AA0800F2B99A /* Curry.xcodeproj */,
 				0EFCAFBB1E52A9FF00F2B99A /* Prelude.xcodeproj */,
 				0EFCAF9B1E52A6EC00F2B99A /* Runes.xcodeproj */,
@@ -892,6 +914,7 @@
 				0EFCAFEB1E52AA3E00F2B99A /* PBXTargetDependency */,
 				0EFCAFEF1E52AA3E00F2B99A /* PBXTargetDependency */,
 				0EFCAFF31E52AA3E00F2B99A /* PBXTargetDependency */,
+				0E48DDC41E5960F9000F388F /* PBXTargetDependency */,
 			);
 			name = CryptoKeyboard;
 			productName = CryptoKeyboard;
@@ -961,6 +984,10 @@
 					ProjectRef = 0EFCAFD61E52AA0800F2B99A /* Curry.xcodeproj */;
 				},
 				{
+					ProductGroup = 0E48DD8C1E595E3B000F388F /* Products */;
+					ProjectRef = 0E48DD8B1E595E3B000F388F /* ExtSwift.xcodeproj */;
+				},
+				{
 					ProductGroup = 0EFCAFBC1E52A9FF00F2B99A /* Products */;
 					ProjectRef = 0EFCAFBB1E52A9FF00F2B99A /* Prelude.xcodeproj */;
 				},
@@ -990,6 +1017,13 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		0E48DD931E595E3C000F388F /* ExtSwift.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = ExtSwift.framework;
+			remoteRef = 0E48DD921E595E3C000F388F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		0EAEAC9F1E5075CD00AAA7B0 /* ReactiveCocoa.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
@@ -1322,7 +1356,6 @@
 				0E0D87DC1E55447A007432C8 /* UIViewController-Preparation.swift in Sources */,
 				0E0D87DA1E554439007432C8 /* NSBundleType.swift in Sources */,
 				0E420C081E07F81900F41640 /* CipherTranslatorViewController.swift in Sources */,
-				0E420BFB1E078C0800F41640 /* UsefulFunctions.swift in Sources */,
 				0E420C051E07F7D800F41640 /* CipherIntroductionViewController.swift in Sources */,
 				0E420C131E07F96600F41640 /* PDLiteAboutTableViewController.m in Sources */,
 				0E420BFF1E07C63700F41640 /* SettingInstructionPageViewController.swift in Sources */,
@@ -1335,7 +1368,6 @@
 				0E1E32FC1E56F34100750CF2 /* Diagram.swift in Sources */,
 				0E1E32FD1E56F34100750CF2 /* Key.swift in Sources */,
 				0E1E32FE1E56F34100750CF2 /* Keyboard.swift in Sources */,
-				0E1E32FF1E56F34100750CF2 /* Others.swift in Sources */,
 				0E8A3C351E08DE7400274D32 /* IconDrawingView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1356,11 +1388,9 @@
 				0E12614A1DFD762200E7EFE4 /* IconDrawingView.swift in Sources */,
 				0E28CCDA1DFE551000BCAC75 /* KeyboardViewController+AutoSuffixPeriod.swift in Sources */,
 				0E5DE9251E00E88300FAEF09 /* KeyboardViewController+CipherSettingViewControllerDelegate.swift in Sources */,
-				0E28CCDD1DFE643A00BCAC75 /* UsefulFunctions.swift in Sources */,
 				0E28CCF91DFE7BE000BCAC75 /* KeyboardViewController+InputInterpreterOutputReceiverDelegate.swift in Sources */,
 				0E5DE9331E01656200FAEF09 /* Cipher.swift in Sources */,
 				0EA85D1E1DFD2E9500AFB546 /* KeyboardViewItem.swift in Sources */,
-				0E1E32F91E56F29700750CF2 /* Others.swift in Sources */,
 				0E5DE9231E00E82600FAEF09 /* CipherSettingViewController.swift in Sources */,
 				0E28CCE21DFE748C00BCAC75 /* InputInterpreter.swift in Sources */,
 				0E3F18681DFFE24100E80D0C /* SpellingAutoCorretor.swift in Sources */,
@@ -1374,6 +1404,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		0E48DDC41E5960F9000F388F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = ExtSwift;
+			targetProxy = 0E48DDC31E5960F9000F388F /* PBXContainerItemProxy */;
+		};
 		0E6B6A4D1DFA4AE400712C0A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 0E6B6A461DFA4AE400712C0A /* CryptoKB */;

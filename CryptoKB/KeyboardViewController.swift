@@ -12,6 +12,12 @@ import ReactiveCocoa
 import ReactiveSwift
 import Prelude
 
+struct KeyboardExtensionConstants {
+    static let cipherType = "CipherType"
+    static let cipherKey = "CipherKey"
+    static let cipherName = "CipherName"
+}
+
 
 final class KeyboardViewController: UIInputViewController {
     
@@ -56,6 +62,7 @@ final class KeyboardViewController: UIInputViewController {
                 _ = self.keyboardView |> KeyboardView.lens.keyboardDiagram %~ {_ in Keyboard.numberPunctuationKeyboardDiagram}
             case 2:
                 _ = self.keyboardView |> KeyboardView.lens.keyboardDiagram %~ {_ in Keyboard.symbolKeyboardDiagram}
+
             default:
                 fatalError("No corresponding keyboard for mode \(keyboardMode)")
             }

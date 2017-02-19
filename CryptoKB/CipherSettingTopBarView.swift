@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ExtSwift
 
 protocol CipherSettingTopBarViewDelegate: class {
     func valuesForDisplay() -> [String]
