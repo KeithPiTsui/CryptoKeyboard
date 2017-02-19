@@ -1,135 +1,25 @@
-//
-//  IconDrawingView.swift
-//  CryptoKB
-//
-//  Created by Pi on 09/12/2016.
-//  Copyright © 2016 Keith. All rights reserved.
-//
-
 import UIKit
-
-// TODO: these shapes were traced and as such are erratic and inaccurate; should redo as SVG or PDF
-
-///////////////////
-// SHAPE OBJECTS //
-///////////////////
-
-final class ReturnIconView: IconDrawingView{
-    override func drawCall(_ color: UIColor) {
-        drawReturnArrow(bounds, color: color)
-    }
-}
-
-final class SettingIconView: IconDrawingView {
-    override func drawCall(_ color: UIColor) {
-        drawGear(bounds, color: color)
-    }
-}
-
-final class BackspaceIconView: IconDrawingView {
-    var inscriptColor: UIColor = UIColor.white {didSet{setNeedsDisplay()}}
-    override func drawCall(_ color: UIColor) {
-        drawBackspace(bounds, fillColor: color, inscriptColor: inscriptColor)
-    }
-}
-
-final class ShiftIconView: IconDrawingView {
-    var withLock: Bool = false { didSet {setNeedsDisplay()}}
-    
-    override func drawCall(_ color: UIColor) {
-        drawShift(bounds, color: color, withRect: withLock)
-    }
-}
-
-final class GlobeIconView: IconDrawingView {
-    override func drawCall(_ color: UIColor) {
-        drawGlobe(bounds, color: color)
-    }
-}
-
-class IconDrawingView: UIView {
-
-    override func draw(_ rect: CGRect) {
-        guard let ctx = UIGraphicsGetCurrentContext() else {return}
-        CGColorSpaceCreateDeviceRGB()
-        ctx.saveGState()
-        defer { ctx.restoreGState() }
-        drawCall(color ?? UIColor.black)
-    }
-
-    
-    var color: UIColor? {didSet {if self.color != nil {setNeedsDisplay()}}}
-    
-    convenience init() {
-        self.init(frame: CGRect.zero)
-    }
-    
-    override required init(frame: CGRect) {
-        super.init(frame: frame)
-        self.isOpaque = false
-        self.clipsToBounds = false
-    }
-
-    required init(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
-    func drawCall(_ color: UIColor) { /* override me! */ }
-}
-
-
-
 
 
 /////////////////////
 // SHAPE FUNCTIONS //
 /////////////////////
-extension UIImage {
-    static func backspaceKeyIcon(_ bounds: CGRect, fillColor: UIColor, inscriptColor: UIColor) -> UIImage {
-        return UIGraphicsImageRenderer(bounds:bounds).image { (imgContext) in
-            drawBackspace(bounds, fillColor: fillColor, inscriptColor: inscriptColor)
-        }
-    }
-    static func shiftKeyIcon(_ bounds: CGRect, color: UIColor, withRect: Bool) -> UIImage {
-        return UIGraphicsImageRenderer(bounds:bounds).image { (imgContext) in
-            drawShift(bounds, color: color, withRect: withRect)
-        }
-    }
-    static func globeKeyIcon(_ bounds: CGRect, color: UIColor) -> UIImage {
-        return UIGraphicsImageRenderer(bounds:bounds).image { (imgContext) in
-            drawGlobe(bounds, color: color)
-        }
-    }
-    static func gearKeyIcon(_ bounds: CGRect, color: UIColor) -> UIImage {
-        return UIGraphicsImageRenderer(bounds:bounds).image { (imgContext) in
-            drawGear(bounds, color: color)
-        }
-    }
-    static func returnArrowKeyIcon(_ bounds: CGRect, color: UIColor) -> UIImage {
-        return UIGraphicsImageRenderer(bounds:bounds).image { (imgContext) in
-            drawReturnArrow(bounds, color: color)
-        }
-    }
-}
-
-
-
 
 fileprivate func getFactors(_ fromSize: CGSize, toRect: CGRect)
     -> (xScalingFactor: CGFloat, yScalingFactor: CGFloat, lineWidthScalingFactor: CGFloat, fillIsHorizontal: Bool, offset: CGFloat) {
-    
-    let xSize: CGFloat = {
-        let scaledSize = fromSize.width / 2
-        return scaledSize > toRect.width ? (toRect.width / scaledSize) / 2 : 0.5
-    }()
-    
-    let ySize: CGFloat = {
-        let scaledSize = fromSize.height / 2
-        return scaledSize > toRect.height ? (toRect.height / scaledSize) / 2 : 0.5
-    }()
-    
-    let actualSize = min(xSize, ySize)
-    return (actualSize, actualSize, actualSize, false, 0)
+        
+        let xSize: CGFloat = {
+            let scaledSize = fromSize.width / 2
+            return scaledSize > toRect.width ? (toRect.width / scaledSize) / 2 : 0.5
+        }()
+        
+        let ySize: CGFloat = {
+            let scaledSize = fromSize.height / 2
+            return scaledSize > toRect.height ? (toRect.height / scaledSize) / 2 : 0.5
+        }()
+        
+        let actualSize = min(xSize, ySize)
+        return (actualSize, actualSize, actualSize, false, 0)
 }
 
 fileprivate func drawInContext(_ fromSize: CGSize, toRect: CGRect, drawingFunction: ()->()) {
@@ -142,7 +32,7 @@ fileprivate func drawInContext(_ fromSize: CGSize, toRect: CGRect, drawingFuncti
     drawingFunction()
 }
 
-fileprivate func drawBackspace(_ bounds: CGRect, fillColor: UIColor, inscriptColor: UIColor) {
+public func drawBackspace(_ bounds: CGRect, fillColor: UIColor, inscriptColor: UIColor) {
     let factors = getFactors(CGSize(width: 44, height: 32), toRect: bounds)
     let xScalingFactor = factors.xScalingFactor
     let yScalingFactor = factors.yScalingFactor
@@ -210,11 +100,11 @@ fileprivate func drawBackspace(_ bounds: CGRect, fillColor: UIColor, inscriptCol
     }
 }
 
-fileprivate func drawShift(_ bounds: CGRect, color: UIColor, withRect: Bool) {
+public func drawShift(_ bounds: CGRect, color: UIColor, withRect: Bool) {
     let factors = getFactors(CGSize(width: 38, height: (withRect ? 34 + 4 : 32)), toRect: bounds)
     let xScalingFactor = factors.xScalingFactor
     let yScalingFactor = factors.yScalingFactor
-
+    
     drawInContext(CGSize(width: 38 * xScalingFactor, height: (withRect ? 34 + 4 : 32) * yScalingFactor), toRect: bounds){
         
         //// Bezier Drawing
@@ -254,7 +144,7 @@ fileprivate func drawShift(_ bounds: CGRect, color: UIColor, withRect: Bool) {
     }
 }
 
-fileprivate func drawGlobe(_ bounds: CGRect, color: UIColor) {
+public func drawGlobe(_ bounds: CGRect, color: UIColor) {
     let factors = getFactors(CGSize(width: 41, height: 40), toRect: bounds)
     let xScalingFactor = factors.xScalingFactor
     let yScalingFactor = factors.yScalingFactor
@@ -343,11 +233,11 @@ fileprivate func drawGlobe(_ bounds: CGRect, color: UIColor) {
         color.setStroke()
         bezier6Path.lineWidth = 1 * lineWidthScalingFactor
         bezier6Path.stroke()
-    
+        
     }
 }
 
-fileprivate func drawGear(_ bounds: CGRect, color: UIColor) {
+public func drawGear(_ bounds: CGRect, color: UIColor) {
     let factors = getFactors(CGSize(width: 40, height: 40), toRect: bounds)
     let xScalingFactor = factors.xScalingFactor
     let yScalingFactor = factors.yScalingFactor
@@ -361,7 +251,7 @@ fileprivate func drawGear(_ bounds: CGRect, color: UIColor) {
     }
 }
 
-fileprivate func drawReturnArrow(_ bounds: CGRect, color: UIColor) {
+public func drawReturnArrow(_ bounds: CGRect, color: UIColor) {
     let factors = getFactors(CGSize(width: 57, height: 36), toRect: bounds)
     let xScalingFactor = factors.xScalingFactor
     let yScalingFactor = factors.yScalingFactor
@@ -374,20 +264,4 @@ fileprivate func drawReturnArrow(_ bounds: CGRect, color: UIColor) {
         img.draw(in: rect)
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

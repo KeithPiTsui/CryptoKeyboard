@@ -11,6 +11,14 @@ import ReactiveCocoa
 import ReactiveSwift
 import Result
 
+struct KeyboardViewItemConfig {
+    let icon: UIImage?
+    let iconColor: UIColor?
+    let inscript: String = ""
+    let inscriptFont: UIFont = UIFont.systemFont(ofSize: 12)
+    let inscriptTextColor: UIColor = UIColor.clear
+    let backgroundColor: UIColor = UIColor.clear
+}
 
 final class KeyboardView: UIView {
 

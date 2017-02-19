@@ -8,6 +8,97 @@
 
 import UIKit
 
+//final class KeyboardViewItem: UIView {
+//    override var description: String { return super.description + itemID }
+//    var itemID: String = ""
+//    var inscriptLabel: UILabel = UILabel.keyboardLabel()
+//    var iconImage: UIImage?
+//    var inscript: String?
+//    var normalBackgroundColor: UIColor = UIColor.keyboardViewItemBackgroundColor
+//    var highlightedBackgroundColor: UIColor = UIColor.keyboardViewItemHighlightedBackgroundColor
+//    
+//
+//    private var iconView: UIImageView = UIImageView()
+//    
+//    var shiftState: ShiftState = .disabled {
+//        didSet {
+//            handleShiftStateChanged()
+//        }
+//    }
+//    
+//    private func handleShiftStateChanged() {
+//        if inscript != nil {
+//            inscriptLabel.text = (shiftState.isUppercase ? inscript?.uppercased() : inscript?.lowercased()) ?? ""
+//        }
+//        if key.type == .shift {
+//            switch shiftState {
+//            case .enabled:
+//                UIView.animate(withDuration: 0.1) {
+//                    self.iconView.color = UIColor.shiftIconHighlightDrawingColor
+//                    self.layer.borderWidth = 0
+//                }
+//            case .disabled:
+//                UIView.animate(withDuration: 0.1) {
+//                    self.iconView.color = UIColor.shiftIconDrawingColor
+//                    self.layer.borderWidth = 0
+//                }
+//            case .locked:
+//                UIView.animate(withDuration: 0.1) {
+//                    self.iconView.color = UIColor.shiftIconHighlightDrawingColor
+//                    self.layer.borderWidth = 1
+//                    self.layer.borderColor = UIColor.shiftIconHighlightDrawingColor.cgColor
+//                }
+//            }
+//        }
+//    }
+//    
+//    override init(frame: CGRect = CGRect.zero) {
+//        super.init(frame: frame)
+//        clipsToBounds = true
+//        layer.cornerRadius = 6
+//        addSubview(iconView)
+//        addSubview(inscriptLabel)
+//    }
+//    
+//    required init?(coder aDecoder: NSCoder) {
+//        fatalError("Not implemented")
+//    }
+//    
+//    private var boundSize: CGSize?
+//    override func layoutSubviews() {
+//        super.layoutSubviews()
+//        if (bounds.width != 0 && bounds.height != 0) && (boundSize == nil || (bounds.size.equalTo(boundSize!) == false)) {
+//            layoutItem()
+//        }
+//    }
+//    
+//    private func layoutItem() {
+//        if iconImage != nil {
+//            inscriptLabel.isHidden = true
+//            iconView.isHidden = false
+//            iconView.image = iconImage
+//            iconView.frame = CGRect(x: 4, y: 4, width: bounds.width - 8, height: bounds.height - 8)
+//            iconView.setNeedsDisplay()
+//        } else {
+//            inscriptLabel.isHidden = false
+//            iconView.isHidden = true
+//            inscriptLabel.frame = CGRect(x: 0, y: 0, width: bounds.width, height: bounds.height)
+//        }
+//    }
+//    
+//    var highlighted: Bool = false {
+//        didSet {
+//            UIView.animate(withDuration: 0.1) {
+//                self.backgroundColor = self.highlighted
+//                    ? self.normalBackgroundColor
+//                    : self.highlightedBackgroundColor
+//            }
+//        }
+//    }
+//    
+//}
+
+
 final class KeyboardViewItem: UIView {
     private static func iconDrawingView(keyType type: Key.KeyType) -> IconDrawingView {
         var iv: IconDrawingView! = nil
@@ -141,7 +232,6 @@ final class KeyboardViewItem: UIView {
                 }
             }
         }
-        
     }
     
     var highlighted: Bool = false {didSet {

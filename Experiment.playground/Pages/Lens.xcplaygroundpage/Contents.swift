@@ -10,6 +10,12 @@ let b = Keyboard.defaultKeyboardDiagram
 let a = Keyboard.symbolKeyboardDiagram
 let e = Keyboard.numberPunctuationKeyboardDiagram
 
+let imgRenderer = UIGraphicsImageRenderer(bounds: CGRect(x: 0, y: 0, width: 100, height: 100))
+let img = imgRenderer.image { (imgContext) in
+    drawBackspace(CGRect(x: 0, y: 0, width: 100, height: 100), fillColor: UIColor.black, inscriptColor: UIColor.white)
+}
+
+
 
 
 //var str = "Hello, playground"

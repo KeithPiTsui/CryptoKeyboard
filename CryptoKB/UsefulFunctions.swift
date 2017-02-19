@@ -50,7 +50,7 @@ func dictionaryOfNames(_ arr:UIView...) -> [String:UIView] {
 }
 
 extension UILabel {
-    static func keyboardLabel(font: UIFont, textColor: UIColor, text: String? = nil) -> UILabel {
+    static func keyboardLabel(font: UIFont = UIFont.systemFont(ofSize: 12), textColor: UIColor = UIColor.black, text: String? = nil) -> UILabel {
         let label = UILabel()
         label.backgroundColor = UIColor.clear
         label.translatesAutoresizingMaskIntoConstraints = false
