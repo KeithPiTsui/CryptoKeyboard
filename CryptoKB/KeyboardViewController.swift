@@ -45,48 +45,30 @@ final class KeyboardViewController: UIInputViewController {
     var autoPeriodState: AutoPeriodState = .noSpace
     lazy var textInterpreter: InputInterpreter = { return InputInterpreter(delegate: self)}()
     
-    fileprivate let viewModel: KeyboardViewModel =  KeyboardViewModel()
+    let viewModel: KeyboardViewModel =  KeyboardViewModel()
     
     let backspaceDelay: TimeInterval = 0.5
     let backspaceRepeat: TimeInterval = 0.07
     var backspaceDelayTimer: Timer?
     var backspaceRepeatTimer: Timer?
-
-    
-    var keyboardMode = 0 {
-        didSet {
-            switch keyboardMode {
-            case 0:
-                _ = self.keyboardView |> KeyboardView.lens.keyboardDiagram %~ {_ in Keyboard.defaultKeyboardDiagram}
-            case 1:
-                _ = self.keyboardView |> KeyboardView.lens.keyboardDiagram %~ {_ in Keyboard.numberPunctuationKeyboardDiagram}
-            case 2:
-                _ = self.keyboardView |> KeyboardView.lens.keyboardDiagram %~ {_ in Keyboard.symbolKeyboardDiagram}
-
-            default:
-                fatalError("No corresponding keyboard for mode \(keyboardMode)")
-            }
-        }
-    }
-    
     
     // MARK: -
     // MARK: View Controller Life Cycle
     
     override func viewDidLoad(){
         super.viewDidLoad()
+        loadCipherSetting()
         
         let c = view.heightAnchor.constraint(equalToConstant: LayoutConstraints.keyboardHeight)
         c.priority = UILayoutPriorityDefaultHigh
         c.isActive = true
         keyboardView.heightAnchor.constraint(equalToConstant: LayoutConstraints.keyboardViewHeight).isActive = true
         
-        
-        loadCipherSetting()
-        
         heuristicBtn.reactive.controlEvents(.touchUpInside).observe { (_) in print("Hello")}
         
-        keyboardViewEventBinding()
+        keyboardView.reactive.controlEvents(.allTouchEvents).observeValues{ [weak self] in self?.viewModel.inputs.event($0.1, on: $0.0.key)}
+        
+        viewModel.viewDidLoad()
     }
     
     // MARK: -
@@ -125,7 +107,6 @@ final class KeyboardViewController: UIInputViewController {
     
     internal override func bindStyles() {
         super.bindStyles()
-        
         _ = self.topBarLeftView |> UIView.lens.backgroundColor %~ {_ in UIColor.topBarBackgroundColor}
         _ = self.topBarRightView |> UIView.lens.backgroundColor %~ {_ in UIColor.topBarBackgroundColor}
         _ = self.heuristicLabel |> UILabel.lens.textColor %~ {_ in UIColor.topBarInscriptColor}
@@ -133,15 +114,8 @@ final class KeyboardViewController: UIInputViewController {
         _ = self.leftViewLeftTag |> UILabel.lens.textColor %~ {_ in UIColor.topBarInscriptColor}
         _ = self.rightViewLeftTag |> UILabel.lens.textColor %~ {_ in UIColor.topBarInscriptColor}
         _ = self.cipherLabel |> UILabel.lens.textColor %~ {_ in UIColor.topBarInscriptColor}
-        _ = self.keyboardView |> KeyboardView.lens.keyboardDiagram %~ {_ in Keyboard.defaultKeyboardDiagram}
     }
     
-    /// Handle view mode output signal
-    internal override func bindViewModel() {
-        super.bindViewModel()
-        
-        
-    }
     
 }
 

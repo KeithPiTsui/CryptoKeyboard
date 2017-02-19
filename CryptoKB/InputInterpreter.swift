@@ -63,7 +63,6 @@ class InputInterpreter: InputInterpreterProtocol {
         }
         delegate.receiveHeuristicOutputCharacter(char: message)
     }
-    
 }
 
 

@@ -2,6 +2,15 @@ import UIKit
 import Library
 
 public struct Keyboard {
+    
+    public enum Mode {
+        case defaultKeyboard
+        case numberPunctuationKeyboard
+        case numberSymbolKeyboard
+        case alphaKeyboard
+        case numericKeyboard
+    }
+    
     public static let symbols = "()[]{}#%^*+=-\\|~<>€£¥•/:&$@_"
     public static let letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
     public static let puncutations = ".,?!';\""
@@ -44,17 +53,17 @@ public struct Keyboard {
         return "123" --- "456" --- "789" --- 1 ||| "0" ||| "backspace"
     }()
     
-    static let keywords: [String] = ["shift", "backspace","modechange123","modechangeABC","modechangeSym","keyboardchange","space","return", "settings"]
+    fileprivate static let keywords: [String] = ["shift", "backspace","modechange123","modechangeABC","modechangeSym","keyboardchange","space","return", "settings"]
 }
 
 
 
 extension String {
-    var compositeDiagram: Diagram<Key> {
+    fileprivate var compositeDiagram: Diagram<Key> {
         return chars.map{ $0.singularDiagram }.reduce(Diagram()){$0 ||| $1}
     }
     
-    var singularDiagram: Diagram<Key> {
+    fileprivate var singularDiagram: Diagram<Key> {
         let values = self.components(separatedBy: "><")
         guard values.count >= 1 && values.count <= 3 else { fatalError("keyboard layout syntax error") }
         let key: Key = Key(stringLiteral: values.first!)
@@ -72,50 +81,50 @@ extension String {
         }
     }
     
-    var diagram: Diagram<Key> {
+    fileprivate var diagram: Diagram<Key> {
         guard let value = self.components(separatedBy: "><").first else { fatalError("keyboard layout syntax error") }
         return Keyboard.keywords.contains(value) ? self.singularDiagram : self.compositeDiagram
     }
     
-    static func ||| (g: CGFloat, r: String) -> Diagram<Key> {
+    fileprivate static func ||| (g: CGFloat, r: String) -> Diagram<Key> {
         return .beside(Diagram(), g, r.diagram)
     }
     
-    static func ||| (l: String, g: CGFloat) -> Diagram<Key> {
+    fileprivate static func ||| (l: String, g: CGFloat) -> Diagram<Key> {
         return .beside(l.diagram, g, Diagram())
     }
     
-    static func ||| (l: String, r: String) -> Diagram<Key> {
+    fileprivate static func ||| (l: String, r: String) -> Diagram<Key> {
         return .beside(l.diagram, 0, r.diagram)
     }
     
-    static func ||| (l: String, r: Diagram<Key>) -> Diagram<Key> {
+    fileprivate static func ||| (l: String, r: Diagram<Key>) -> Diagram<Key> {
         return .beside(l.diagram, 0, r)
     }
     
-    static func ||| (l: Diagram<Key>, r: String) -> Diagram<Key> {
+    fileprivate static func ||| (l: Diagram<Key>, r: String) -> Diagram<Key> {
         return .beside(l, 0, r.diagram)
     }
     
     
-    static func --- (g: CGFloat, r: String) -> Diagram<Key> {
+    fileprivate static func --- (g: CGFloat, r: String) -> Diagram<Key> {
         return .below(Diagram(), g, r.diagram)
     }
     
-    static func --- (l: String, g: CGFloat) -> Diagram<Key> {
+    fileprivate static func --- (l: String, g: CGFloat) -> Diagram<Key> {
         return .below(l.diagram, g, Diagram())
     }
     
     
-    static func --- (l: String, r: String) -> Diagram<Key> {
+    fileprivate static func --- (l: String, r: String) -> Diagram<Key> {
         return .below(l.diagram, 0, r.diagram)
     }
     
-    static func --- (l: Diagram<Key>, r: String) -> Diagram<Key> {
+    fileprivate static func --- (l: Diagram<Key>, r: String) -> Diagram<Key> {
         return .below(l, 0, r.diagram)
     }
     
-    static func --- (l: String, r: Diagram<Key>) -> Diagram<Key> {
+    fileprivate static func --- (l: String, r: Diagram<Key>) -> Diagram<Key> {
         return .below(l.diagram, 0, r)
     }
 }

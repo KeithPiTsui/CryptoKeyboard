@@ -101,17 +101,17 @@ protocol KeyboardViewEventHanlder: class {
 }
 
 final class ObserverWrapper {
-    let observer: Observer<KeyboardViewItem, NoError>
-    init(ob: Observer<KeyboardViewItem, NoError>) { observer = ob }
+    let observer: Observer<(KeyboardViewItem, UIControlEvents), NoError>
+    init(ob: Observer<(KeyboardViewItem, UIControlEvents), NoError>) { observer = ob }
 }
 
 extension ObserverWrapper: KeyboardViewEventHanlder {
-    func event(_ e: UIControlEvents, on item: KeyboardViewItem, at Keyboard: KeyboardView) { observer.send(value: item)}
+    func event(_ e: UIControlEvents, on item: KeyboardViewItem, at Keyboard: KeyboardView) { observer.send(value: (item, e))}
 }
 
 
 extension Reactive where Base: KeyboardView {
-    func controlEvents(_ event: UIControlEvents) -> Signal<KeyboardViewItem, NoError> {
+    func controlEvents(_ event: UIControlEvents) -> Signal<(KeyboardViewItem, UIControlEvents), NoError> {
         return Signal { observer in
             let obWrapper = ObserverWrapper(ob: observer)
             base.addEventHandler(obWrapper, for: event)
@@ -122,10 +122,6 @@ extension Reactive where Base: KeyboardView {
             }
         }
     }
-    
-    var continuousKeyPressed: Signal<KeyboardViewItem, NoError> { return controlEvents(.touchUpInside) }
-    
-    var continuousKeyDoubleClicked: Signal<KeyboardViewItem, NoError> { return controlEvents(.touchDownRepeat) }
 }
 
 
@@ -171,6 +167,11 @@ extension KeyboardView {
 extension KeyboardView {
     private func handleControl(_ view: UIView?, controlEvent: UIControlEvents) {
         guard let control = view as? KeyboardViewItem else { return }
+        
+        if let touchEventHandlers = eventHanlders[UIControlEvents.allTouchEvents.rawValue] {
+            touchEventHandlers.forEach{$0.event(controlEvent, on: control, at: self)}
+        }
+        
         guard let handlers = eventHanlders[controlEvent.rawValue] else { return }
         handlers.forEach { $0.event(controlEvent, on: control, at: self) }
     }

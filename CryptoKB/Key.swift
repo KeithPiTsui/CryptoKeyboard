@@ -40,7 +40,7 @@ public struct Key: Hashable, CustomStringConvertible {
     let type: KeyType
     let meaning: String?
     let inscript: String?
-    let toMode: Int?
+    let toMode: Keyboard.Mode?
     
     var uppercaseKeyCap: String? {return self.inscript?.uppercased()}
     var lowercaseKeyCap: String? {return self.inscript?.lowercased()}
@@ -54,7 +54,7 @@ public struct Key: Hashable, CustomStringConvertible {
     var hasOutput: Bool { return meaning != nil }
     
     
-    init(type: KeyType, meaning: String? = nil,  inscript: String? = nil, mode: Int? = nil) {
+    init(type: KeyType, meaning: String? = nil,  inscript: String? = nil, mode: Keyboard.Mode? = nil) {
         self.type = type
         self.meaning = meaning
         self.inscript = inscript ?? meaning
@@ -76,13 +76,13 @@ public struct Key: Hashable, CustomStringConvertible {
 
 extension Key: ExpressibleByStringLiteral {
     public init(stringLiteral value: String) {
-        var mode: Int? = nil
+        var mode: Keyboard.Mode? = nil
         if value == "modechange123" {
-            mode = 1
+            mode = .numberPunctuationKeyboard
         } else if value == "modechangeABC" {
-            mode = 0
+            mode = .defaultKeyboard
         } else if value == "modechangeSym" {
-            mode = 2
+            mode = .numberSymbolKeyboard
         }
         self.init(type: value.keyType, meaning: value.keyMeaning, inscript: value.keyInscript, mode: mode)
     }
@@ -98,7 +98,7 @@ extension Key: ExpressibleByStringLiteral {
 }
 
 extension String {
-    var keyType: Key.KeyType {
+    fileprivate var keyType: Key.KeyType {
         let text = self
         if Keyboard.symbols.contains(text) && text.characters.count == 1{
             return .symbol
@@ -127,7 +127,7 @@ extension String {
         }
     }
     
-    var keyMeaning: String? {
+    fileprivate var keyMeaning: String? {
         switch self.keyType {
         case .alphabet, .number, .punctuation, .symbol:
             return self
@@ -140,7 +140,7 @@ extension String {
         }
     }
     
-    var keyInscript: String? {
+    fileprivate var keyInscript: String? {
         if self == "modechange123" {
             return "123"
         } else if self == "modechangeABC" {

@@ -606,8 +606,8 @@
 		0E1E32CF1E56F24A00750CF2 /* Keyboard */ = {
 			isa = PBXGroup;
 			children = (
-				0E1E32F31E56F29700750CF2 /* Key.swift */,
 				0E1E32F41E56F29700750CF2 /* Keyboard.swift */,
+				0E1E32F31E56F29700750CF2 /* Key.swift */,
 			);
 			name = Keyboard;
 			sourceTree = "<group>";
@@ -792,7 +792,7 @@
 				0EC280911E555F550070712E /* Storyboards */,
 				0E28CCE01DFE73E900BCAC75 /* controllers */,
 				0E7673431E5590DA008AA089 /* ViewModels */,
-				0EA85D171DFD2E3900AFB546 /* BusinessModels */,
+				0EA85D171DFD2E3900AFB546 /* Models */,
 				0E28CCDB1DFE640D00BCAC75 /* library */,
 				0E1E330F1E57253F00750CF2 /* Resources */,
 				0E6B6A551DFA4B5400712C0A /* SupportingFiles */,
@@ -816,12 +816,12 @@
 			name = ViewModels;
 			sourceTree = "<group>";
 		};
-		0EA85D171DFD2E3900AFB546 /* BusinessModels */ = {
+		0EA85D171DFD2E3900AFB546 /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				0E1E32CF1E56F24A00750CF2 /* Keyboard */,
 			);
-			name = BusinessModels;
+			name = Models;
 			sourceTree = "<group>";
 		};
 		0EA85D181DFD2E7A00AFB546 /* Views */ = {

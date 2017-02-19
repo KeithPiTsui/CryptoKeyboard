@@ -19,44 +19,32 @@ import ExtSwift
 extension KeyboardViewController {
     
     func keyboardViewEventBinding() {
-        bind(.touchUpInside, to: .keyboardChange, with: self.changeKeyboard)
         
-        bind(.touchDown, to: .backspace, with: self.pressBackspace)
-        bind(.touchDragExit, to: .backspace, with: self.pressBackspaceCancel)
-        bind(.touchUpOutside, to: .backspace, with: self.pressBackspaceCancel)
-        bind(.touchCancel, to: .backspace, with: self.pressBackspaceCancel)
-        bind(.touchDragOutside, to: .backspace, with: self.pressBackspaceCancel)
-        bind(.touchUpInside, to: .backspace, with: self.pressBackspaceCancel)
-        
-        bind(.touchDown, to: .shift, with: self.pressShiftDown)
-        bind(.touchDownRepeat, to: .shift, with: self.doubleTapShift)
-        bind(.touchUpInside, to: .modeChange, with: self.nextKeyboardPage)
-        bind(.touchUpInside, to: .settings, with: self.pressSettings)
-        
-        keyboardView.reactive.controlEvents(.touchDown).filter{$0.key.isHighlightable}.observeValues{self.highlightItem($0)}
-        keyboardView.reactive.controlEvents(.touchDragInside).filter{$0.key.isHighlightable}.observeValues{self.highlightItem($0)}
-        keyboardView.reactive.controlEvents(.touchDragEnter).filter{$0.key.isHighlightable}.observeValues{self.highlightItem($0)}
-        
-        keyboardView.reactive.controlEvents(.touchUpInside).filter{$0.key.isHighlightable}.observeValues{self.unhighlightItem($0)}
-        keyboardView.reactive.controlEvents(.touchUpOutside).filter{$0.key.isHighlightable}.observeValues{self.unhighlightItem($0)}
-        keyboardView.reactive.controlEvents(.touchDragOutside).filter{$0.key.isHighlightable}.observeValues{self.unhighlightItem($0)}
-        
-        keyboardView.reactive.controlEvents(.touchUpInside).filter{$0.key.hasOutput}.observeValues{self.pressAnOutputItem($0)}
-        keyboardView.reactive.controlEvents(.touchDown).observeValues{self.playClickSound($0)}
-    }
-    
-    func bind(_ event: UIControlEvents, to keyType: Key.KeyType, with action: @escaping (KeyboardViewItem) -> Void) {
-        keyboardView.reactive.controlEvents(event).filter{$0.key.type == keyType}.observeValues{action($0)}
-    }
-    
-    
-    private func changeKeyboard(_ sender: KeyboardViewItem) {
-        advanceToNextInputMode()
     }
     
     
     
-    private func pressShiftDown(_ sender: KeyboardViewItem) {
+    /// Handle view mode output signal
+    internal override func bindViewModel() {
+        super.bindViewModel()
+        
+        viewModel.outputs.keyboardDiagram.observeValues { [weak self] in self?.keyboardView.keyboardDiagram = $0 }
+        viewModel.outputs.changeToSystemKeyboard.observeValues{ [weak self] in self?.advanceToNextInputMode() }
+        viewModel.outputs.deleteCharacterBackward.observeValues{ [weak self] in self?.pressBackspace() }
+        viewModel.outputs.stopDeletingCharacterBackward.observeValues { [weak self] in self?.pressBackspaceCancel()}
+        viewModel.outputs.highlightKey.observeValues{[weak self] in self?.highlight(true, key: $0)}
+        viewModel.outputs.unhighlightKey.observeValues{[weak self] in self?.highlight(false, key: $0)}
+        viewModel.outputs.outputOneKey.observeValues{[weak self] in self?.pressAnOutputItem($0)}
+        viewModel.outputs.clickSound.observeValues{[weak self] in self?.playKeySound()}
+        viewModel.outputs.goToSetting.observeValues {[weak self] in self?.gotoSetting()}
+        viewModel.outputs.shiftDown.observeValues{[weak self] in self?.pressShiftDown()}
+        viewModel.outputs.shiftDoubletapped.observeValues{[weak self] in self?.doubleTapShift()}
+    }
+    
+    
+    
+    
+    private func pressShiftDown() {
         switch shiftState {
         case .disabled:
             shiftState = .enabled
@@ -67,7 +55,7 @@ extension KeyboardViewController {
         }
     }
     
-    private func doubleTapShift(_ sender: KeyboardViewItem) {
+    private func doubleTapShift() {
         switch shiftState {
         case .disabled:
             shiftState = .locked
@@ -80,10 +68,11 @@ extension KeyboardViewController {
     
     private func nextKeyboardPage(_ sender: KeyboardViewItem) {
         guard let mode = sender.key.toMode else {return}
-        self.keyboardMode = mode
+        viewModel.inputs.changeKeyboard(mode)
+        
     }
     
-    private func pressSettings(_ sender: KeyboardViewItem) {
+    private func gotoSetting() {
         let vc = CipherSettingViewController(cipherName: cipherName, cipherType: cipherType, cipherKey: cipherKey)
         vc.delegate = self
         let nvc = UINavigationController(rootViewController: vc)
@@ -95,9 +84,8 @@ extension KeyboardViewController {
     }
     
     /// Delete a character backward
-    private func pressBackspace(_ sender: KeyboardViewItem) {
-        print("\(#function)")
-        deleteACharacterBackward()
+    private func pressBackspace() {
+        textDocumentProxy.deleteBackward()
         textInterpreter.removeLastReceiveCharacter()
         setCapsIfNeeded()
         // trigger for subsequent deletes
@@ -115,7 +103,7 @@ extension KeyboardViewController {
         backspaceRepeatTimer = nil
     }
     
-    private func pressBackspaceCancel(_ sender: KeyboardViewItem) {
+    private func pressBackspaceCancel() {
         cancelBackspaceTimers()
     }
     
@@ -130,18 +118,14 @@ extension KeyboardViewController {
     
     func backspaceRepeatCallback() {
         playKeySound()
-        deleteACharacterBackward()
+        textDocumentProxy.deleteBackward()
         textInterpreter.removeLastReceiveCharacter()
         setCapsIfNeeded()
     }
-    
-    private func deleteACharacterBackward(){
-        textDocumentProxy.deleteBackward()
-    }
 
     /// Output a character forward
-    private func pressAnOutputItem(_ sender: KeyboardViewItem) {
-        guard let key = sender.key else { return }
+    private func pressAnOutputItem(_ key: Key) {
+//        guard let key = sender.key else { return }
         let outputCharacter = key.outputForCase(self.shiftState.isUppercase)
         
         textDocumentProxy.insertText(outputCharacter)
@@ -159,7 +143,7 @@ extension KeyboardViewController {
         
         if key.type == .punctuation {
             delay(0.2) {
-                self.keyboardMode = 0
+                self.viewModel.inputs.changeKeyboard(.defaultKeyboard)
             }
         }
         
@@ -170,6 +154,15 @@ extension KeyboardViewController {
     func discardAllInput() {
         textInterpreter.resetState()
 
+    }
+    
+    private func highlight(_ b: Bool, key: Key) {
+        keyboardView.subviews.forEach { (subView) in
+            guard let sv = subView as? KeyboardViewItem else { return }
+            if sv.key == key {
+                sv.highlighted = b
+            }
+        }
     }
     
     private func highlightItem(_ sender: KeyboardViewItem) {
