@@ -39,6 +39,7 @@ final class KeyboardViewController: UIInputViewController {
     var autoPeriodState: AutoPeriodState = .noSpace
     lazy var textInterpreter: InputInterpreter = { return InputInterpreter(delegate: self)}()
     
+    fileprivate let viewModel: KeyboardViewModel =  KeyboardViewModel()
     
     let backspaceDelay: TimeInterval = 0.5
     let backspaceRepeat: TimeInterval = 0.07

@@ -26,6 +26,9 @@ protocol KeyboardViewModelType {
 
 internal final class KeyboardViewModel: KeyboardViewModelType, KeyboardViewModelInputs, KeyboardViewModelOutputs {
     
+    public init() {
+        
+    }
     
     var inputs: KeyboardViewModelInputs { return self }
     var outputs: KeyboardViewModelOutputs { return self }
