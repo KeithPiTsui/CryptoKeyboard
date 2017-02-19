@@ -134,7 +134,6 @@ final class CipherSettingViewController: UIViewController {
     }
     
     func cancel() {
-        print("\(#function)")
         updateDoneButton()
         if alphabetKeyboardSlideIned {
             alphabetKeyboardSlideOut()
@@ -146,7 +145,6 @@ final class CipherSettingViewController: UIViewController {
     }
     
     func done() {
-        print("\(#function)")
         if cipherUpdated {
             delegate?.didSelect(cipherName: cipherName(), cipherType: cipherType, cipherKey: cipherKey())
         }
@@ -158,6 +156,9 @@ final class CipherSettingViewController: UIViewController {
     private lazy var numericKeyboard: KeyboardView = {
         let v = KeyboardView()
         v.keyboardDiagram = Keyboard.numberKeyboardDiagram
+        v.reactive.controlEvents(.touchUpInside).observeForUI().observeValues { [weak self] in
+            self?.handleKeyPressDown($0.0.key)
+        }
         return v
     }()
     
@@ -191,6 +192,9 @@ final class CipherSettingViewController: UIViewController {
     private lazy var alphabetkeyboard: KeyboardView = {
         let v = KeyboardView()
         v.keyboardDiagram = Keyboard.alphaKeyboardDiagram
+        v.reactive.controlEvents(.touchUpInside).observeForUI().observeValues { [weak self] in
+            self?.handleKeyPressDown($0.0.key)
+        }
         return v}()
     private var alphabetKeyboardSlideIned: Bool = false
     private lazy var alphabetKeyboardConstraints: [NSLayoutConstraint] = {
@@ -251,11 +255,9 @@ final class CipherSettingViewController: UIViewController {
     
     
     func sliderValueChanged(sender: UISlider) {
-        print("\(#function): \(sender.value)")
     }
     
     func sliderDragUp(sender: UISlider) {
-        print("\(#function): \(sender.value)")
         guard let idx  = (ranges.index{$0.contains(sender.value)}) else { return }
         sender.setValue(locations[idx], animated: true)
         cipherType = cipherTypes[idx]
@@ -366,24 +368,9 @@ extension CipherSettingViewController: CipherSettingTopBarViewDelegate {
     }
     
     func getTouched() {
-        print("\(#function)")
         numericKeyboardSlideIn()
     }
 }
-
-//NumericKeyboardDelegate
-//extension CipherSettingViewController: KeyboardViewDelegate {
-//    func keyboardViewItem(_ item: KeyboardViewItem,
-//                          receivedEvent event: UIControlEvents,
-//                          inKeyboard keyboard: KeyboardView){
-//        print("\(#function)")
-//        if event == .touchUpInside {
-//            handleKeyPressDown(item.key)
-//        }
-//        
-//    }
-//}
-
 
 
 

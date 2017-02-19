@@ -25,7 +25,7 @@ extension UILabel {
     }
 }
 
-class CipherSettingTopBarView: UIView {
+final class CipherSettingTopBarView: UIView {
     
     unowned var delegate: CipherSettingTopBarViewDelegate
 
@@ -42,7 +42,6 @@ class CipherSettingTopBarView: UIView {
     }
     
     func recieveATouch() {
-        print("\(#function)")
         delegate.getTouched()
     }
     

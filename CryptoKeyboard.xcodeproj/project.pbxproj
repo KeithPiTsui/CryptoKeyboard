@@ -645,6 +645,7 @@
 		0E28CCE01DFE73E900BCAC75 /* controllers */ = {
 			isa = PBXGroup;
 			children = (
+				0E5DE9221E00E82600FAEF09 /* CipherSettingViewController.swift */,
 				0E1261471DFD75EE00E7EFE4 /* KeyboardViewController.swift */,
 				0E28CCD51DFE480200BCAC75 /* KeyboardViewController+BindViewModel.swift */,
 				0E28CCF81DFE7BE000BCAC75 /* KeyboardViewController+InputInterpreterOutputReceiverDelegate.swift */,
@@ -673,13 +674,12 @@
 			name = SpellingAutoCorrector;
 			sourceTree = "<group>";
 		};
-		0E3F186D1E001F3600E80D0C /* Setting */ = {
+		0E3F186D1E001F3600E80D0C /* SettingTopBarView */ = {
 			isa = PBXGroup;
 			children = (
-				0E5DE9221E00E82600FAEF09 /* CipherSettingViewController.swift */,
 				0E3F18701E001F7700E80D0C /* CipherSettingTopBarView.swift */,
 			);
-			name = Setting;
+			name = SettingTopBarView;
 			sourceTree = "<group>";
 		};
 		0E420C061E07F7DE00F41640 /* supportingFiles */ = {
@@ -828,7 +828,7 @@
 			isa = PBXGroup;
 			children = (
 				0E56FE3D1E0E1AE000BF4377 /* KeyboardView */,
-				0E3F186D1E001F3600E80D0C /* Setting */,
+				0E3F186D1E001F3600E80D0C /* SettingTopBarView */,
 			);
 			name = Views;
 			sourceTree = "<group>";

@@ -45,7 +45,7 @@ public struct Keyboard {
     public static let alphaKeyboardDiagram: Diagram<Key> = {
         return "QWERTYUIOP"
             --- 0.5 ||| "ASDFGHJKL" ||| 0.5
-            --- "shift><1.2" ||| 0.1 ||| "ZXCVBNM" ||| 0.1 ||| "backspace><1.2"
+            --- 1.3 ||| "ZXCVBNM" ||| 0.1 ||| "backspace><1.2"
             --- 1
     }()
     

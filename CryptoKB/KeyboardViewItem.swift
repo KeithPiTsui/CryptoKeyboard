@@ -220,7 +220,7 @@ final class KeyboardViewItem: UIView {
         self.key = key
         super.init(frame: frame)
         backgroundColor = UIColor.keyboardViewItemBackgroundColor
-        clipsToBounds = true
+//        clipsToBounds = true
         layer.cornerRadius = 6
         if key != nil { installKey()}
     }

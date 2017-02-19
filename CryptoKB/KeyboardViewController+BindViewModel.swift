@@ -59,7 +59,6 @@ extension KeyboardViewController {
             .observeForUI()
             .observeValues{[weak self] in self?.doubleTapShift()}
         
-        heuristicBtn.reactive.controlEvents(.touchUpInside).observe { (_) in print("Hello")}
         keyboardView.reactive.controlEvents(.allTouchEvents).observeValues{ [weak self] in self?.viewModel.inputs.event($0.1, on: $0.0.key)}
     }
     
@@ -131,7 +130,7 @@ extension KeyboardViewController {
             let characterCount = textInterpreter.receivedCharacters.count
             for _ in 0...characterCount {textDocumentProxy.deleteBackward()}
             textDocumentProxy.insertText(text+outputCharacter)
-            textInterpreter.resetState()
+            discardAllInput()
         }
         
         if key.type == .punctuation {
@@ -143,6 +142,8 @@ extension KeyboardViewController {
     }
     
     func discardAllInput() {
+        leftChars.removeAll(keepingCapacity: true)
+        rightChars.removeAll(keepingCapacity: true)
         textInterpreter.resetState()
 
     }
