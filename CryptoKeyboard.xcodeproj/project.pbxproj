@@ -246,9 +246,9 @@
 /* Begin PBXFileReference section */
 		0E0D87B11E553D64007432C8 /* AboutCryptoKeyboardTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutCryptoKeyboardTableViewController.swift; sourceTree = "<group>"; };
 		0E0D87D51E553DD1007432C8 /* AboutCryptoKeyboardViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutCryptoKeyboardViewModel.swift; sourceTree = "<group>"; };
-		0E0D87D71E554380007432C8 /* Storyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Storyboard.swift; sourceTree = "<group>"; };
-		0E0D87D91E554439007432C8 /* NSBundleType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSBundleType.swift; sourceTree = "<group>"; };
-		0E0D87DB1E55447A007432C8 /* UIViewController-Preparation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController-Preparation.swift"; sourceTree = "<group>"; };
+		0E0D87D71E554380007432C8 /* Storyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Storyboard.swift; path = ../CryptoKeyboard/Storyboard.swift; sourceTree = "<group>"; };
+		0E0D87D91E554439007432C8 /* NSBundleType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NSBundleType.swift; path = ../CryptoKeyboard/NSBundleType.swift; sourceTree = "<group>"; };
+		0E0D87DB1E55447A007432C8 /* UIViewController-Preparation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIViewController-Preparation.swift"; path = "../CryptoKeyboard/UIViewController-Preparation.swift"; sourceTree = "<group>"; };
 		0E0D87DD1E554712007432C8 /* AboutCryptoKeyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AboutCryptoKeyboard.storyboard; sourceTree = "<group>"; };
 		0E1261451DFD680900E7EFE4 /* LayoutConstraints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayoutConstraints.swift; sourceTree = "<group>"; };
 		0E1261471DFD75EE00E7EFE4 /* KeyboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
@@ -385,6 +385,9 @@
 		0E28CCDB1DFE640D00BCAC75 /* library */ = {
 			isa = PBXGroup;
 			children = (
+				0E0D87DB1E55447A007432C8 /* UIViewController-Preparation.swift */,
+				0E0D87D91E554439007432C8 /* NSBundleType.swift */,
+				0E0D87D71E554380007432C8 /* Storyboard.swift */,
 				0E1E33101E57270800750CF2 /* Schemes */,
 				0E28CCE31DFE76FF00BCAC75 /* Cyphers */,
 				0E3F18661DFFE22400E80D0C /* SpellingAutoCorrector */,
@@ -602,9 +605,6 @@
 				0E48DDFA1E59BBCA000F388F /* views */,
 				0E48DDF91E59BBB9000F388F /* controllers */,
 				0E48DDF61E59B4BE000F388F /* Storyboards */,
-				0E0D87DB1E55447A007432C8 /* UIViewController-Preparation.swift */,
-				0E0D87D91E554439007432C8 /* NSBundleType.swift */,
-				0E0D87D71E554380007432C8 /* Storyboard.swift */,
 				0E420C171E07F9AF00F41640 /* About */,
 				0E420C061E07F7DE00F41640 /* supportingFiles */,
 			);
