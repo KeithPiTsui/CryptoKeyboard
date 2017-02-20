@@ -113,7 +113,7 @@ internal final class KeyboardViewModel: KeyboardViewModelType, KeyboardViewModel
 
         unhighlightKey = eventOnKeyProperty.signal.skipNil()
             .filter{
-                [.touchUpInside, .touchUpOutside,.touchDragOutside].contains($0.0) && $0.1.isHighlightable
+                [.touchUpInside, .touchUpOutside,.touchDragOutside, .touchDragExit].contains($0.0) && $0.1.isHighlightable
             }
             .map{return $0.1}
         

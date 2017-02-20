@@ -133,7 +133,10 @@ final class CipherSettingViewController: UIViewController {
         layoutElements()
     }
     
+    private var cipherEditing: Bool = false
+    
     func cancel() {
+        cipherEditing = false
         updateDoneButton()
         if alphabetKeyboardSlideIned {
             alphabetKeyboardSlideOut()
@@ -266,7 +269,8 @@ final class CipherSettingViewController: UIViewController {
         updateDoneButton()
     }
     
-    private func slideInKeyboard() {
+    fileprivate func slideInKeyboard() {
+        guard cipherEditing == false else { return }
         delay(0.2){
             switch CipherManager.ciphers[self.cipherType]!.keyType {
             case .letter:
@@ -368,7 +372,7 @@ extension CipherSettingViewController: CipherSettingTopBarViewDelegate {
     }
     
     func getTouched() {
-        numericKeyboardSlideIn()
+        slideInKeyboard()
     }
 }
 
