@@ -16,10 +16,10 @@ import ExtSwift
 
 class CipherInterpreterViewController: UIViewController {
 
-    private var cipherType: CipherType = .caesar
+    var cipherType: CipherType = .caesar
     fileprivate var cipherKey: String {return cipherKeys.joined()}
     private var cipherName: String { return CipherManager.ciphers[cipherType]!.name }
-    fileprivate var cipherKeys:[String] = ["0","3"]
+    var cipherKeys:[String] = ["0","3"]
     private var keyDigits: UInt {return CipherManager.ciphers[cipherType]?.digits ?? 0}
     
     
@@ -91,6 +91,16 @@ class CipherInterpreterViewController: UIViewController {
     
     override func bindStyles() {
         super.bindStyles()
+        _ = self.plaintextView |> UITextView.lens.backgroundColor %~ {_ in UIColor(43,181,255)}
+        _ = self.plaintextView |> UITextView.lens.font %~ {_ in UIFont.translatorOriginalTextFont}
+        _ = self.encryptedTextView |> UITextView.lens.backgroundColor %~ {_ in UIColor(249,252,255)}
+        _ = self.encryptedTextView |> UITextView.lens.font %~ {_ in UIFont.translatorOriginalTextFont}
+        self.plaintextView.reactive.continuousTextValues.observeValues{[weak self]_ in self?.lastFocusTextView = 0 }
+        self.encryptedTextView.reactive.continuousTextValues.observeValues{[weak self]_ in self?.lastFocusTextView = 1 }
+    }
+    
+    
+    private func updateStackView() {
         _ = self.keyStackView |> UIStackView.lens.arrangedSubviews %~ { [weak self] _ in
             guard let digits = self?.keyDigits, digits > 0 else { return [] }
             var views = [UIView]()
@@ -105,11 +115,8 @@ class CipherInterpreterViewController: UIViewController {
             }
             return views
         }
-        _ = self.plaintextView |> UITextView.lens.backgroundColor %~ {_ in UIColor(43,181,255)}
-        _ = self.plaintextView |> UITextView.lens.font %~ {_ in UIFont.translatorOriginalTextFont}
-        _ = self.encryptedTextView |> UITextView.lens.backgroundColor %~ {_ in UIColor(249,252,255)}
-        _ = self.encryptedTextView |> UITextView.lens.font %~ {_ in UIFont.translatorOriginalTextFont}
     }
+    
     
     override func bindViewModel() {
         super.bindViewModel()
@@ -154,7 +161,6 @@ class CipherInterpreterViewController: UIViewController {
     // MARK: -
     // MARK: Slide in Numerics Keyboard
     private lazy var numericKeyboard: KeyboardView = {
-        //        let v  = NumericKeyboardView(withDelegate: self)
         let v = KeyboardView()
         v.keyboardDiagram = Keyboard.numberKeyboardDiagram
         v.reactive.controlEvents(.touchUpInside).observeValues { [weak self] in
@@ -166,9 +172,7 @@ class CipherInterpreterViewController: UIViewController {
         var constraints = [NSLayoutConstraint]()
         constraints.append(self.numericKeyboard.leftAnchor.constraint(equalTo: self.view.leftAnchor))
         constraints.append(self.numericKeyboard.rightAnchor.constraint(equalTo: self.view.rightAnchor))
-        
         constraints.append(self.numericKeyboard.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 0.3))
-        //constraints.append(self.numericKeyboard.topAnchor.constraint(equalTo: self.topLayoutGuide.bottomAnchor))
         constraints.append(self.numericKeyboard.bottomAnchor.constraint(equalTo: self.bottomLayoutGuide.topAnchor))
         return constraints
     }()
@@ -225,7 +229,7 @@ class CipherInterpreterViewController: UIViewController {
             guard cipherKeys.isEmpty == false else { return }
             cipherKeys.removeLast()
         }
-//        keyArea.reloadValues()
+        updateStackView()
     }
     
     private var editingKey = false
@@ -251,18 +255,19 @@ class CipherInterpreterViewController: UIViewController {
         translateMessage()
     }
     
-    func translateMessage() {
-//        if lastFocusTextView == 0 {
-//            guard let message = originalTextView.text else { return }
-//            guard let translatedMsg = try? CipherManager.encrypt(message: message, withKey: cipherKey, andCipherType: cipherType) else { return }
-//            translatedTextView.text = translatedMsg
-//        } else {
-//            guard let message = translatedTextView.text else { return }
-//            guard let translatedMsg = try? CipherManager.decrypt(message: message, withKey: cipherKey, andCipherType: cipherType) else { return }
-//            originalTextView.text = translatedMsg
-//        }
-    }
+    private var lastFocusTextView = 0
     
+    func translateMessage() {
+        if lastFocusTextView == 0 {
+            guard let message = plaintextView.text else { return }
+            guard let translatedMsg = try? CipherManager.encrypt(message: message, withKey: cipherKey, andCipherType: cipherType) else { return }
+            encryptedTextView.text = translatedMsg
+        } else {
+            guard let message = encryptedTextView.text else { return }
+            guard let translatedMsg = try? CipherManager.decrypt(message: message, withKey: cipherKey, andCipherType: cipherType) else { return }
+            plaintextView.text = translatedMsg
+        }
+    }
 }
 
 

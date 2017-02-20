@@ -14,9 +14,9 @@ import Result
 
 class CipherTranslatorViewController: UIViewController {
     
-    private var cipherType: CipherType = .caesar
+    fileprivate var cipherType: CipherType = .caesar
     fileprivate var cipherKey: String {return cipherKeys.joined()}
-    private var cipherName: String { return CipherManager.ciphers[cipherType]!.name }
+    fileprivate var cipherName: String { return CipherManager.ciphers[cipherType]!.name }
     fileprivate var cipherKeys:[String]
     fileprivate var lastFocusTextView: Int = 0
     
@@ -51,6 +51,7 @@ class CipherTranslatorViewController: UIViewController {
         tv.text = "Hello"
         tv.textColor = UIColor(249,252,255)
         tv.font = UIFont.translatorOriginalTextFont
+        
         tv.delegate = self
         return tv
     }()
@@ -86,20 +87,6 @@ class CipherTranslatorViewController: UIViewController {
         return btn
     }()
     
-    private lazy var closeBtn: UIButton = {
-        let btn = UIButton(type: UIButtonType.roundedRect)
-        btn.translatesAutoresizingMaskIntoConstraints = false
-        btn.setTitle("X", for: .normal)
-        btn.backgroundColor = UIColor.white
-        btn.alpha = 0.8
-        btn.layer.cornerRadius = 6
-        btn.layer.shadowOpacity = 1
-        btn.layer.shadowOffset = CGSize(1,1)
-        btn.addTarget(self, action: #selector(CipherTranslatorViewController.closeTranslator), for: .touchUpInside)
-        return btn
-    }()
-    
-    
     private lazy var keyArea: CipherSettingTopBarView = {
         let v = CipherSettingTopBarView(withDelegate: self)
         v.translatesAutoresizingMaskIntoConstraints = false
@@ -125,8 +112,10 @@ class CipherTranslatorViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = cipherName
+        loadCipherSetting()
+        self.automaticallyAdjustsScrollViewInsets = false
         view.backgroundColor = UIColor(236,248,255)
-        navigationController?.isNavigationBarHidden = true
         
         view.addSubview(wholeArea)
         wholeArea.addSubview(originalArea)
@@ -135,7 +124,6 @@ class CipherTranslatorViewController: UIViewController {
         translatedArea.addSubview(translatedTextView)
         wholeArea.addSubview(translateBtn)
         wholeArea.addSubview(keyArea)
-        view.addSubview(closeBtn)
         
         assembleConstraints()
         NSLayoutConstraint.activate(layoutConstraints)
@@ -157,7 +145,7 @@ class CipherTranslatorViewController: UIViewController {
         layoutConstraints.append(originalArea.leftAnchor.constraint(equalTo: wholeArea.leftAnchor))
         layoutConstraints.append(originalArea.rightAnchor.constraint(equalTo: wholeArea.rightAnchor))
         layoutConstraints.append(originalArea.topAnchor.constraint(equalTo: wholeArea.topAnchor))
-        layoutConstraints.append(originalArea.heightAnchor.constraint(equalTo: wholeArea.heightAnchor, multiplier: 0.5))
+        layoutConstraints.append(originalArea.heightAnchor.constraint(equalTo: wholeArea.heightAnchor, multiplier: 0.4))
         
         layoutConstraints.append(translatedArea.leftAnchor.constraint(equalTo: wholeArea.leftAnchor))
         layoutConstraints.append(translatedArea.rightAnchor.constraint(equalTo: wholeArea.rightAnchor))
@@ -166,7 +154,7 @@ class CipherTranslatorViewController: UIViewController {
         
         layoutConstraints.append(originalTextView.leftAnchor.constraint(equalTo: originalArea.leftAnchor, constant: 16))
         layoutConstraints.append(originalTextView.rightAnchor.constraint(equalTo: originalArea.rightAnchor, constant: -16))
-        layoutConstraints.append(originalTextView.topAnchor.constraint(equalTo: originalArea.topAnchor, constant: 32))
+        layoutConstraints.append(originalTextView.topAnchor.constraint(equalTo: originalArea.topAnchor, constant: 0))
         layoutConstraints.append(originalTextView.bottomAnchor.constraint(equalTo: originalArea.bottomAnchor, constant: -32))
         
         layoutConstraints.append(translatedTextView.leftAnchor.constraint(equalTo: translatedArea.leftAnchor, constant: 16))
@@ -175,16 +163,13 @@ class CipherTranslatorViewController: UIViewController {
         layoutConstraints.append(translatedTextView.bottomAnchor.constraint(equalTo: translatedArea.bottomAnchor, constant: -8))
         
         layoutConstraints.append(translateBtn.rightAnchor.constraint(equalTo: wholeArea.rightAnchor, constant:-12))
-        layoutConstraints.append(translateBtn.centerYAnchor.constraint(equalTo: wholeArea.centerYAnchor))
-        
-        layoutConstraints.append(closeBtn.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor, constant:8))
-        layoutConstraints.append(closeBtn.leftAnchor.constraint(equalTo: view.leftAnchor, constant:8))
+        layoutConstraints.append(translateBtn.centerYAnchor.constraint(equalTo: originalArea.bottomAnchor))
         
         if cipherKey.chars.count > 0 {
             keyAreaLayoutConstraints.append(keyArea.heightAnchor.constraint(equalToConstant: 30))
             keyAreaLayoutConstraints.append(keyArea.widthAnchor.constraint(equalTo: wholeArea.widthAnchor, multiplier: 0.4))
             keyAreaLayoutConstraints.append(keyArea.leftAnchor.constraint(equalTo: wholeArea.leftAnchor, constant:12))
-            keyAreaLayoutConstraints.append(keyArea.centerYAnchor.constraint(equalTo: wholeArea.centerYAnchor))
+            keyAreaLayoutConstraints.append(keyArea.centerYAnchor.constraint(equalTo: originalArea.bottomAnchor))
         }
     }
 
@@ -193,12 +178,7 @@ class CipherTranslatorViewController: UIViewController {
         translateMessage()
     }
     
-    func closeTranslator() {
-        dismiss(animated: true, completion: nil)
-        
-    }
-    
-    func tranlateButtonGetClick() {
+    private func slideOutkeyboard() {
         if editingKey {
             if cipherKeys.count > 0 {
                 translateBtn.setImage(nil, for: .normal)
@@ -212,10 +192,14 @@ class CipherTranslatorViewController: UIViewController {
             } else {
                 return
             }
-        } else {
-            originalTextView.resignFirstResponder()
-            translatedTextView.resignFirstResponder()
         }
+    }
+    
+    
+    func tranlateButtonGetClick() {
+        slideOutkeyboard()
+        originalTextView.resignFirstResponder()
+        translatedTextView.resignFirstResponder()
         translateMessage()
     }
     
@@ -245,18 +229,24 @@ class CipherTranslatorViewController: UIViewController {
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         NotificationCenter.default.removeObserver(self)
+        saveCipherSetting()
     }
     
     func keyboardDidShow(_ notification: Notification){
+        slideOutkeyboard()
+        guard translatedTextView.isFirstResponder else { return }
         guard view.frame.origin.y == 0 else { return }
         guard let info = notification.userInfo else { return }
         guard let kbSizeValue = info[UIKeyboardFrameBeginUserInfoKey] as? NSValue else { return }
         let kbSize = kbSizeValue.cgRectValue.size
+        let translateBtnY = self.translateBtn.frame.origin.y
         var rect = view.frame
-        rect.origin.y -= kbSize.height
+        rect.origin.y -= translateBtnY
+        var translatedTextAreaFrame = self.translatedTextView.frame
+        translatedTextAreaFrame.size.height -= (kbSize.height - translateBtnY)
         UIView.animate(withDuration: 0.3) {
             self.view.frame = rect
-            self.view.setNeedsLayout()
+            self.translatedTextView.frame = translatedTextAreaFrame
         }
     }
     
@@ -264,9 +254,9 @@ class CipherTranslatorViewController: UIViewController {
         guard view.frame.origin.y < 0 else { return }
         var rect = view.frame
         rect.origin.y = 0
-        UIView.animate(withDuration: 0.3) {
+        UIView.animate(withDuration: 0.5) {
             self.view.frame = rect
-            self.view.setNeedsLayout()
+            self.view.layoutIfNeeded()
         }
     }
     
@@ -402,21 +392,29 @@ extension CipherTranslatorViewController: UITextViewDelegate{
     }
 }
 
+struct KeyboardExtensionConstants {
+    static let cipherType = "CipherType"
+    static let cipherKey = "CipherKey"
+    static let cipherName = "CipherName"
+}
 
-
-//extension CipherTranslatorViewController: KeyboardViewDelegate {
-//    func keyboardViewItem(_ item: KeyboardViewItem, receivedEvent event: UIControlEvents, inKeyboard keyboard: KeyboardView) {
-//        print("\(#function)")
-//        
-//        if event == .touchUpInside {
-//            handleKeyPressDown(item.key)
-//        }
-//    }
-//    
-//    
-//}
-
-
+extension CipherTranslatorViewController {
+    // MARK: -
+    // MARK: Cipher Setting
+    fileprivate func loadCipherSetting() {
+        if let cipherKey = UserDefaults.standard.value(forKey: self.cipherName) as? String{
+            self.cipherKeys = cipherKey.chars
+        } else {
+            UserDefaults.standard.setValue(self.cipherKey, forKey: self.cipherName)
+            UserDefaults.standard.synchronize()
+        }
+    }
+    
+    fileprivate func saveCipherSetting() {
+        UserDefaults.standard.setValue(self.cipherKey, forKey: self.cipherName)
+        UserDefaults.standard.synchronize()
+    }
+}
 
 
 

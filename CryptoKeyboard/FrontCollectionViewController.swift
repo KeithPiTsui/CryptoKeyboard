@@ -84,16 +84,12 @@ final class FrontCollectionViewController: UICollectionViewController {
         let cellModel = cellModes[indexPath.item]
         switch cellModel {
         case .cipher(let type, _):
-//            let vc = CipherTranslatorViewController(cipherType: type, cipherKey: CipherManager.ciphers[type]!.defaultKey)
-            let vc = CipherInterpreterViewController.instantiate()
+            let vc = CipherTranslatorViewController(cipherType: type, cipherKey: CipherManager.ciphers[type]!.defaultKey)
             navigationController?.pushViewController(vc, animated: true)
-//            present(vc, animated: true, completion: nil)
         case .feedback(_, _):
             sendFeedbackEmail()
         case.setting(_, _):
             break
-//            let aboutVC = PDLiteAboutTableViewController()
-//            navigationController?.pushViewController(aboutVC, animated: true)
             
         }
         
