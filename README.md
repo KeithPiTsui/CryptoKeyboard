@@ -13,7 +13,7 @@ The following list is for particular thanks.
 ## Somethings worthwhile
 Concerning the layout of each individual key on a whole keyboard, I use somewhat functional idea 
 and follow the idea from [Functional Swift](https://www.objc.io/books/functional-swift/) to create
-a small library named <Diagram>, which is as a container for individual key and layout them just
+a small library named Diagram, which is as a container for individual key and layout them just
 like describe the layout in plaintext.(Like the following code snap)
 
 ```
