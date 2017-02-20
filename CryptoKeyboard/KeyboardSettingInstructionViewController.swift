@@ -55,8 +55,6 @@ final class KeyboardSettingInstructionViewController: UIViewController {
     }()
     
     func gotoSetting() {
-        print("\(#function):\(UIApplicationOpenSettingsURLString)")
-        
         guard let url = URL(string:UIApplicationOpenSettingsURLString) else { return }
         guard let url2 = URL(string:"prefs:root=General&path=Keyboard/KEYBOARDS") else { return }
         if UIApplication.shared.canOpenURL(url2) {
@@ -74,7 +72,6 @@ final class KeyboardSettingInstructionViewController: UIViewController {
                 UIApplication.shared.openURL(url)
             }
         }
-
     }
     
     var layoutConstraints: [NSLayoutConstraint] = []

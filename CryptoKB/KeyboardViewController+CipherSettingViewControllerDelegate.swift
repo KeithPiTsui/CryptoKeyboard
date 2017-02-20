@@ -15,6 +15,7 @@ extension KeyboardViewController: CipherSettingViewControllerDelegate {
         self.cipherKey = cipherKey
         syncCipherSetting()
         discardAllInput()
+        textInterpreter.resetAll()
     }
     
     private func syncCipherSetting () {

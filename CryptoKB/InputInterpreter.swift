@@ -51,17 +51,36 @@ final class InputInterpreter: InputInterpreterProtocol {
         receivedCharacters.removeAll(keepingCapacity: true)
     }
     
+    func resetAll() {
+        receivedCharacters.removeAll(keepingCapacity: true)
+        archivedCharacters.removeAll(keepingCapacity: true)
+    }
+    
+    
     private func translateIntoCipherOf(cipherType: CipherType, andKey key: String) {
-        guard let message = receivedCharacters.last, let delegate = delegate else { return }
-        
-        if let message = try? CipherManager.encrypt(message: message, withKey: key, andCipherType: cipherType) {
-            delegate.receiveEncryptedOutputCharacter(char: message)
+        if cipherType == .keyword || cipherType == .vigenere {
+            guard let delegate = delegate else { return }
+            let message = archivedCharacters.flatMap{$0}.reduce("", +) + receivedCharacters.reduce("", +)
+            if let secret = try? CipherManager.encrypt(message: message, withKey: key, andCipherType: cipherType) {
+                delegate.receiveEncryptedOutputCharacter(char: secret.chars.last!)
+            }
+            
+            if let plaintext = try? CipherManager.decrypt(message: message, withKey: key, andCipherType: cipherType) {
+                delegate.receiveDecryptedOutputCharacter(char: plaintext.chars.last!)
+            }
+            delegate.receiveHeuristicOutputCharacter(char: receivedCharacters.last!)
+        } else {
+            guard let message = receivedCharacters.last, let delegate = delegate else { return }
+            if let secret = try? CipherManager.encrypt(message: message, withKey: key, andCipherType: cipherType) {
+                delegate.receiveEncryptedOutputCharacter(char: secret)
+            }
+            
+            if let plaintext = try? CipherManager.decrypt(message: message, withKey: key, andCipherType: cipherType) {
+                delegate.receiveDecryptedOutputCharacter(char: plaintext)
+            }
+            delegate.receiveHeuristicOutputCharacter(char: message)
+            
         }
-        
-        if let message = try? CipherManager.decrypt(message: message, withKey: key, andCipherType: cipherType) {
-            delegate.receiveDecryptedOutputCharacter(char: message)
-        }
-        delegate.receiveHeuristicOutputCharacter(char: message)
     }
 }
 
